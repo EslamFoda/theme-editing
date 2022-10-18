@@ -3,6 +3,7 @@ import MainHero from "./theme/hero";
 import MainAbout from "./theme/about";
 import MainFeatured from "./theme/featured";
 const MainContainer = ({ containerWidth }) => {
+  const containers = [MainHero, MainAbout, MainFeatured];
   return (
     <div
       style={{
@@ -13,9 +14,13 @@ const MainContainer = ({ containerWidth }) => {
       }}
       className="flex flex-col"
     >
-      <MainHero />
-      <MainAbout/>
-      <MainFeatured/>
+      {containers.map((Comp, i) => {
+        return (
+          <div key={i}>
+            <Comp />
+          </div>
+        );
+      })}
     </div>
   );
 };
