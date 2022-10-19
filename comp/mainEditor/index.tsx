@@ -63,7 +63,7 @@ const MainEditor = () => {
           </svg>
         </div>
       </div>
-      <MainContainer containerWidth={containerWidth}/>
+      <MainContainer containerWidth={containerWidth} />
     </>
   );
 };

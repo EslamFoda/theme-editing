@@ -4,7 +4,7 @@ import Design2 from "./designs/design2";
 import Design3 from "./designs/design3";
 import { useSelector, useDispatch } from "react-redux";
 import { next, prev } from "../../../../features/about-section";
-const MainAbout = () => {
+const MainAbout = ({index}) => {
   const count = useSelector((state: any) => state.aboutComp.value);
   const dispatch = useDispatch();
   const designs = {

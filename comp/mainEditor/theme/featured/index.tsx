@@ -4,7 +4,7 @@ import Design2 from "../featured/designs/design2";
 import Design3 from "../featured/designs/design3";
 import { useSelector, useDispatch } from "react-redux";
 import { next, prev } from "../../../../features/featured-section";
-const MainFeatured = () => {
+const MainFeatured = ({index}) => {
   const count = useSelector((state: any) => state.featured.value);
   const dispatch = useDispatch();
   const designs = {
