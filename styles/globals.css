@@ -10,3 +10,144 @@
   margin: 0;
 }
 
+.test-container:hover > .text {
+  display: block;
+  white-space: nowrap;
+}
+
+.text{
+  display: none;
+  transition: all 12s ease-in-out !important;
+  white-space: nowrap;
+}
+
+
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+button.btn {
+  width: 12rem;
+  height: auto;
+}
+button.btn .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: white;
+  border-radius: 1.625rem;
+  box-shadow: 0 1px 6px 1px rgba(2,18,43,.25);
+}
+button.btn .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 16px;
+  margin: auto;
+  color: black;
+  /* background: #fff; */
+}
+button.btn .circle .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+button.btn .circle .icon.arrow::before {
+  position: absolute;
+  content: '';
+  top: -0.25rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid #fff;
+  border-right: 0.125rem solid #fff;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+button.btn .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 1.85rem;
+  color: #282936;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+}
+.button-text{
+  display: none;
+  transition: all 1s ease-in-out;
+}
+button:hover .circle {
+  width: 100%;
+}
+button:hover .circle .icon.arrow {
+  background: #fff;
+  -webkit-transform: translate(1rem, 0);
+          transform: translate(1rem, 0);
+}
+button:hover .button-text {
+  color: black;
+  display: block;
+}
+
+
+.coolBeans {
+  border: 2px solid currentColor;
+  border-radius: 3rem;
+  color: #23cba5;
+  font-family: roboto;
+  background:  white;
+  font-weight: 100;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  transition: 0.2s transform ease-in-out;
+  will-change: transform;
+  z-index: 0;
+}
+.coolBeans::after {
+  background-color: #23cba5;;
+  border-radius: 3rem;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-100%, 0) rotate(10deg);
+  transform-origin: top left;
+  transition: 0.2s transform ease-out;
+  will-change: transform;
+  z-index: -1;
+}
+.coolBeans:hover::after {
+  transform: translate(0, 0);
+}
+.coolBeans:hover {
+  border: 2px solid transparent;
+  color: white;
+  transform: scale(1.05);
+  will-change: transform;
+}

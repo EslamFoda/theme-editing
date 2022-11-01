@@ -1,0 +1,72 @@
+.root {
+    transition: all .3s ease-in-out;
+    height: 50px;
+    padding: 0 46px;
+    display: inline-flex; 
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    border-radius: 8px;
+}
+.root:disabled {
+    opacity: .7;
+}
+
+.root svg {
+    height: 18px;
+    width: 18px;
+  }
+.primary {
+    color: white;
+    background-color: var(--primary);
+}
+.primary:disabled:hover{
+    background-color: var(--primary);
+}
+.primary:hover{
+    background-color: var(--primary-hover);
+}
+
+.ghost {
+    background-color: var(--primary);
+    color: white;
+}
+.ghost:hover{
+    background-color: white;
+    color: var(--primary);
+}
+
+.outline{
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+.outline:hover{
+    background-color: var(--primary);
+    color: white;
+   
+}
+
+.secondary {
+    background-color: white;
+    color: black;
+    opacity: .9;
+    font-weight: 600;
+}
+.secondary:hover{
+    background-color: var(--primary);
+    color:white;
+    opacity: .8;
+}
+
+.custom{
+    background: #f8dc68;
+    color: black;
+}
+.custom:hover{
+    background: #dfc65d;
+}
+.custom:disabled:hover{
+    background: #f8dc68;
+}
+
