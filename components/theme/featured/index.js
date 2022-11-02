@@ -6,7 +6,7 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
-const MainFeatured = ({ comps, index, setComps, comp, device }) => {
+const MainFeatured = ({ comps, index, setComps, comp, device,editSections }) => {
   const { compName, designNum } = comp;
 
   const designs = {
@@ -18,7 +18,9 @@ const MainFeatured = ({ comps, index, setComps, comp, device }) => {
   };
   const FeaturedComp = designs[`design${designNum}`];
   return (
-    <div className="relative  group hover:shadow-inner hover:shadow-green-600  w-full ">
+    <div className={`relative group  ${
+      editSections ? "hover:shadow-[#23cba5] hover:shadow-inner" : ""
+    }  w-full `}>
       <FeaturedComp device={device} />
       <ChangeSection
         comp={comp}
@@ -28,7 +30,7 @@ const MainFeatured = ({ comps, index, setComps, comp, device }) => {
         designNum={designNum}
         setComps={setComps}
       />
-      <AddSection index={index} />
+         {editSections && <AddSection index={index} />}
     </div>
   );
 };

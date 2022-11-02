@@ -27,7 +27,7 @@ const DesignFromSection = ({
     <div className="h-40 flex items-center  overflow-auto gap-8  w-full">
       {designs.map((Design, i) => (
         <div
-          className={`h-32 relative rounded-md  cursor-pointer min-w-[288px]`}
+          className={`h-32 relative rounded-md overflow-hidden cursor-pointer min-w-[288px]`}
           key={i}
           onClick={() => {
             handleCreateSection(i);

@@ -7,7 +7,7 @@ const Container = ({
   clean = false, // Full Width Screen
 }) => {
   const rootClassName = cn(className, {
-    "mx-auto max-w-6xl px-6 w-full": !clean,
+    "mx-auto max-w-6xl  px-6 w-full": !clean,
   });
 
   

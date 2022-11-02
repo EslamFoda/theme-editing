@@ -18,7 +18,7 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-const DragAndDrop = ({ comps, containerWidth, setComps, device }) => {
+const DragAndDrop = ({ comps, containerWidth, setComps, device, editSections }) => {
   const [placeholderProps, setPlaceholderProps] = useState({});
   const onDragEnd = (result) => {
     // dropped outside the list
@@ -116,6 +116,7 @@ const DragAndDrop = ({ comps, containerWidth, setComps, device }) => {
                         comps={comps}
                         index={i}
                         device={device}
+                        editSections={editSections}
                       />
                       <ControlBtns
                         comps={comps}

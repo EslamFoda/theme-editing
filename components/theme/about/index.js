@@ -6,7 +6,7 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
-const MainAbout = ({ index, comps, setComps, comp,device }) => {
+const MainAbout = ({ index, comps, setComps, comp, device, editSections }) => {
   const { compName, designNum } = comp;
   const designs = {
     design1: Design1,
@@ -17,8 +17,12 @@ const MainAbout = ({ index, comps, setComps, comp,device }) => {
   };
   const AboutComp = designs[`design${designNum}`];
   return (
-    <div className="relative group hover:shadow-inner hover:shadow-green-600 w-full ">
-      <AboutComp choose={false} device={device}/>
+    <div
+    className={`relative group  ${
+      editSections ? "hover:shadow-[#23cba5] hover:shadow-inner" : ""
+    }  w-full `}
+    >
+      <AboutComp choose={false} device={device} />
       <ChangeSection
         comp={comp}
         compName={compName}
@@ -27,7 +31,7 @@ const MainAbout = ({ index, comps, setComps, comp,device }) => {
         designNum={designNum}
         setComps={setComps}
       />
-      <AddSection index={index} />
+      {editSections && <AddSection index={index} />}
     </div>
   );
 };

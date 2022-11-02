@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { selectAboutDesign } from "../features/about-section";
 import { selectHeroDesign } from "../features/hero";
 import { selectFeaturedDesign } from "../features/featured-section";
-
+import { selectServicesDesign } from "../features/servies-section";
 const useSelectDesign = (compName) => {
   const dispatch = useDispatch();
 
@@ -13,6 +13,8 @@ const useSelectDesign = (compName) => {
       dispatch(selectAboutDesign(i + 1));
     } else if (compName === "featured") {
       dispatch(selectFeaturedDesign(i + 1));
+    } else if (compName === "services") {
+      dispatch(selectServicesDesign(i + 1));
     }
   };
 

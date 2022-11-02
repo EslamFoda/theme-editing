@@ -15,6 +15,7 @@ const MainContainer = ({ containerWidth, comps, setComps }) => {
           setComps={setComps}
           containerWidth={containerWidth}
           device={device}
+          editSections={editSections}
         />
       ) : (
         <Preview
@@ -22,6 +23,7 @@ const MainContainer = ({ containerWidth, comps, setComps }) => {
           containerWidth={containerWidth}
           setComps={setComps}
           device={device}
+          editSections={editSections}
         />
       )}
     </>

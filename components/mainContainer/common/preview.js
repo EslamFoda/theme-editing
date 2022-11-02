@@ -1,4 +1,4 @@
-const Preview = ({ containerWidth, comps, setComps, device }) => {
+const Preview = ({ containerWidth, comps, setComps, device,editSections }) => {
   return (
     <div
       style={{
@@ -18,6 +18,7 @@ const Preview = ({ containerWidth, comps, setComps, device }) => {
               comps={comps}
               index={i}
               device={device}
+              editSections={editSections}
             />
           </div>
         );

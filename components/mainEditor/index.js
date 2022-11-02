@@ -82,9 +82,9 @@ const MainEditor = () => {
         />
       </StyledFrame> */}
       <MainContainer
-        containerWidth={containerWidth}
         comps={comps}
         setComps={setComps}
+        containerWidth={containerWidth}
       />
     </>
   );
