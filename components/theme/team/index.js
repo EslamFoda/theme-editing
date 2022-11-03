@@ -1,19 +1,13 @@
 import React from "react";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
-import Design1 from "./designs/design1";
-import Design2 from "./designs/design2";
-import Design3 from "./designs/design3";
-import Design4 from "./designs/design4";
-import Design5 from "./designs/design5";
-const MainServices = ({
-  comps,
-  index,
-  setComps,
-  comp,
-  device,
-  editSections,
-}) => {
+import Design1 from "./design/design1";
+import Design2 from "./design/design2";
+import Design3 from "./design/design3";
+import Design4 from "./design/design4";
+import Design5 from "./design/design5";
+
+const MainTeam = ({ comps, index, setComps, comp, device, editSections }) => {
   const { compName, designNum } = comp;
 
   const designs = {
@@ -32,7 +26,7 @@ const MainServices = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <ServicesComp device={device}  />
+      <ServicesComp device={device} />
       <ChangeSection
         comp={comp}
         compName={compName}
@@ -46,4 +40,4 @@ const MainServices = ({
   );
 };
 
-export default MainServices;
+export default MainTeam;

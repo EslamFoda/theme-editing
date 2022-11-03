@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "primary": "#2879fe",
+        "primary": "#864B9E",
         "primary-hover": "#2267d8",
         "gray-color": "#999999",
         "gray": "#777777",
@@ -21,6 +21,10 @@ module.exports = {
       },
       width:{
         "small":"100px"
+      },
+      boxShadow:{
+        "custom":"0px 0px 5px rgba(0, 0, 0, 0.25)",
+        "inside":"inset 0px 0px 0px 4px"
       }
     },
   },

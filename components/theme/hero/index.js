@@ -20,8 +20,8 @@ const MainHero = ({ comps, index, setComps, comp, device,editSections }) => {
   const HeroComp = designs[`design${designNum}`];
 
   return (
-    <div className={`relative group  ${
-      editSections ? "hover:shadow-[#23cba5] hover:shadow-inner" : ""
+    <div  className={`relative group  ${
+      editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
     }  w-full `}>
       <HeroComp device={device}/>
       <ChangeSection

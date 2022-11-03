@@ -18,14 +18,13 @@
     width: 18px;
   }
 .primary {
-    color: white;
-    background-color: var(--primary);
+    @apply bg-primary text-white
 }
 .primary:disabled:hover{
     background-color: var(--primary);
 }
 .primary:hover{
-    background-color: var(--primary-hover);
+    @apply bg-primary text-white opacity-90
 }
 
 .ghost {

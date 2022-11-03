@@ -19,7 +19,7 @@ const MainFeatured = ({ comps, index, setComps, comp, device,editSections }) => 
   const FeaturedComp = designs[`design${designNum}`];
   return (
     <div className={`relative group  ${
-      editSections ? "hover:shadow-[#23cba5] hover:shadow-inner" : ""
+      editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
     }  w-full `}>
       <FeaturedComp device={device} />
       <ChangeSection

@@ -40,7 +40,9 @@ const ChangeSection = ({
           >
             <FaChevronLeft />
             {device === "mobile" ? null : (
-              <span className="text-sm hidden lg:block md:block">Previous Design</span>
+              <span className="text-sm hidden lg:block md:block">
+                Previous Design
+              </span>
             )}
           </div>
           <div
@@ -51,7 +53,7 @@ const ChangeSection = ({
             onClick={() => {
               dispatch(selectCompName(compName));
               dispatch(getNextIndex(index));
-              if (designNum <= 2) {
+              if (designNum <= 4) {
                 const objectIndex = comps.findIndex(
                   (obj) => obj.id === comp.id
                 );
@@ -62,7 +64,9 @@ const ChangeSection = ({
             }}
           >
             {device === "mobile" ? null : (
-              <span className="text-sm hidden lg:block md:block">Next Design</span>
+              <span className="text-sm hidden lg:block md:block">
+                Next Design
+              </span>
             )}
             <FaChevronRight />
           </div>

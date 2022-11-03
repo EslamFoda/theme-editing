@@ -19,7 +19,7 @@ const MainAbout = ({ index, comps, setComps, comp, device, editSections }) => {
   return (
     <div
     className={`relative group  ${
-      editSections ? "hover:shadow-[#23cba5] hover:shadow-inner" : ""
+      editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
     }  w-full `}
     >
       <AboutComp choose={false} device={device} />

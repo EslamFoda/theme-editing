@@ -17,6 +17,13 @@ import FeaturedDesign5 from "../components/theme/featured/designs/design5";
 import ServiceDesign1 from "../components/theme/services/designs/design1";
 import ServiceDesign2 from "../components/theme/services/designs/design2";
 import ServiceDesign3 from "../components/theme/services/designs/design3";
+import ServiceDesign4 from "../components/theme/services/designs/design4";
+import ServiceDesign5 from "../components/theme/services/designs/design5";
+import TeamDesign1 from "../components/theme/team/design/design1";
+import TeamDesign2 from "../components/theme/team/design/design2";
+import TeamDesign3 from "../components/theme/team/design/design3";
+import TeamDesign4 from "../components/theme/team/design/design4";
+import TeamDesign5 from "../components/theme/team/design/design5";
 const useChooseDesign = (compName) => {
   const aboutDesigns = [
     AboutDesign1,
@@ -40,7 +47,15 @@ const useChooseDesign = (compName) => {
     FeaturedDesign5,
   ];
 
-  const servicesDesigns = [ServiceDesign1, ServiceDesign2, ServiceDesign3];
+  const servicesDesigns = [
+    ServiceDesign1,
+    ServiceDesign2,
+    ServiceDesign3,
+    ServiceDesign4,
+    ServiceDesign5,
+  ];
+
+  const TeamDesigns = [TeamDesign1,TeamDesign2,TeamDesign3,TeamDesign4,TeamDesign5];
 
   const [designs, setDesigns] = useState(heroDesigns);
 
@@ -53,6 +68,8 @@ const useChooseDesign = (compName) => {
       setDesigns(featuredDesigns);
     } else if (compName === "services") {
       setDesigns(servicesDesigns);
+    } else if (compName === "team") {
+      setDesigns(TeamDesigns);
     }
   };
 
