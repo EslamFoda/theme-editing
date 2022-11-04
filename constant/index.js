@@ -96,3 +96,30 @@ export const clientsData = [
   { img: "https://assets.wuiltsite.com/defaults/evernote-logo.png", id: 7 },
   { img: "https://assets.wuiltsite.com/defaults/shutterstock-logo.png", id: 8 },
 ];
+
+export const galleryData = [
+  {
+    img: "https://images.unsplash.com/photo-1580197370215-38fdb17dfe8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1590&q=80",
+    id:1
+  },
+  {
+    img: "https://images.unsplash.com/photo-1580124173799-934609852db8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80",
+    id:2
+  },
+  {
+    img: "https://images.unsplash.com/photo-1580152040915-ad6ceeaeb8c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80",
+    id:3
+  },
+  {
+    img: "https://images.unsplash.com/photo-1558981822-0c0c5b070026?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80",
+    id:4
+  },
+  {
+    img: "https://images.unsplash.com/photo-1580118586709-50d0a0eea2cb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80",
+    id:5
+  },
+  {
+    img: "https://images.unsplash.com/photo-1580142541272-4f6b7e815563?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2851&q=80",
+    id:6
+  },
+];

@@ -23,7 +23,7 @@ module.exports = {
         "small":"100px"
       },
       boxShadow:{
-        "custom":"0px 0px 5px rgba(0, 0, 0, 0.25)",
+        "custom":"0px 0px 5px rgba(0, 0, 0, 0.50)",
         "inside":"inset 0px 0px 0px 4px"
       }
     },

@@ -5,9 +5,9 @@ import SubTitle from "../../services/common/subTitle";
 import { galleryData } from "../../../../constant/";
 import cn from "clsx";
 import Image from "next/image";
-const Design1 = ({ device, choose }) => {
+const Design5 = ({ device, choose }) => {
   const gridClassName = cn(
-    "grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
+    "grid   lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
     {
       "!grid-cols-1": device === "mobile",
     }
@@ -19,6 +19,7 @@ const Design1 = ({ device, choose }) => {
           <div className="text-center space-y-1  mb-2">
             <Title choose={choose} />
             <SubTitle choose={choose} />
+            <button className="">Start Now</button>
           </div>
           <div
             className={
@@ -36,14 +37,15 @@ const Design1 = ({ device, choose }) => {
           </div>
         </Container>
       ) : (
-        <Container className="py-16 ">
+        <Container clean className="py-16 ">
           <div className="text-center space-y-4 mb-16">
             <Title />
             <SubTitle />
+            <button className="bg-primary p-2 text-white">Start Now</button>
           </div>
           <div className={gridClassName}>
             {galleryData.map((gallery) => (
-              <div key={gallery.id} className="relative hover:shadow-custom transition-all h-80 w-full">
+              <div key={gallery.id} className="relative  lg:h-60 md:h-52 h-52 w-full">
                 <Image src={gallery.img} className="absolute" objectFit="cover" layout="fill" />
               </div>
             ))}
@@ -54,4 +56,4 @@ const Design1 = ({ device, choose }) => {
   );
 };
 
-export default Design1;
+export default Design5;
