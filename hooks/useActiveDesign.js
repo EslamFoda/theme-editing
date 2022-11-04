@@ -5,6 +5,8 @@ const useActiveDesign = (compName) => {
   const featuredDesign = useSelector((state) => state.featured.design);
   const servicesDesign = useSelector((state) => state.services.design);
   const teamDesign = useSelector((state) => state.team.design);
+  const clientsDesign = useSelector((state) => state.clients.design);
+  const galleryDesign = useSelector((state) => state.gallery.design);
 
   const handleActive = () => {
     if (compName === "hero") {
@@ -17,6 +19,10 @@ const useActiveDesign = (compName) => {
       return Number(servicesDesign[servicesDesign.length - 1]);
     } else if (compName === "team") {
       return Number(teamDesign[teamDesign.length - 1]);
+    } else if (compName === "clients") {
+      return Number(clientsDesign[clientsDesign.length - 1]);
+    } else if (compName === "gallery") {
+      return Number(galleryDesign[galleryDesign.length - 1]);
     }
   };
   return { handleActive };

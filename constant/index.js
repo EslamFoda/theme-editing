@@ -2,6 +2,8 @@ import MainAbout from "../components/theme/about";
 import MainFeatured from "../components/theme/featured";
 import MainServices from "../components/theme/services";
 import MainTeam from "../components/theme/team";
+import MainClients from "../components/theme/clients";
+import MainGallery from "../components/theme/gallery";
 
 export const sectionsImgs = [
   { src: "/assets/about.png", id: 1, title: "about", Section: MainAbout },
@@ -18,6 +20,8 @@ export const sectionsImgs = [
     Section: MainServices,
   },
   { src: "/assets/team.png", id: 4, title: "team", Section: MainTeam },
+  { src: "/assets/clients.png", id: 5, title: "clients", Section: MainClients },
+  { src: "/assets/gallery.png", id: 6, title: "gallery", Section: MainGallery },
 ];
 
 export const servicesData = [
@@ -80,4 +84,15 @@ export const teamData = [
     about:
       "Bradley Hanson grew up in Newton, Massachusetts, and graduated from the University of Massachusetts at Amherst with a degree in Graphic Design.",
   },
+];
+
+export const clientsData = [
+  { img: "https://assets.wuiltsite.com/defaults/google-logo.png", id: 1 },
+  { img: "https://assets.wuiltsite.com/defaults/facebook-logo.png", id: 2 },
+  { img: "https://assets.wuiltsite.com/defaults/evernote-logo.png", id: 3 },
+  { img: "https://assets.wuiltsite.com/defaults/shutterstock-logo.png", id: 4 },
+  { img: "https://assets.wuiltsite.com/defaults/google-logo.png", id: 5 },
+  { img: "https://assets.wuiltsite.com/defaults/facebook-logo.png", id: 6 },
+  { img: "https://assets.wuiltsite.com/defaults/evernote-logo.png", id: 7 },
+  { img: "https://assets.wuiltsite.com/defaults/shutterstock-logo.png", id: 8 },
 ];

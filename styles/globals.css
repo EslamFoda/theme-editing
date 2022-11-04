@@ -10,6 +10,26 @@
   margin: 0;
 }
 
+.image-container {
+
+  width: 100%;
+
+
+ 
+}
+.image-container > div {
+    position: unset !important;
+  }
+
+  .image-container .image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+  }
+
+
+
 .test-container:hover > .text {
   display: block;
   white-space: nowrap;

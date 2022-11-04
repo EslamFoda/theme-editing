@@ -24,6 +24,13 @@ import TeamDesign2 from "../components/theme/team/design/design2";
 import TeamDesign3 from "../components/theme/team/design/design3";
 import TeamDesign4 from "../components/theme/team/design/design4";
 import TeamDesign5 from "../components/theme/team/design/design5";
+import ClientsDesign1 from "../components/theme/clients/designs/design1";
+import ClientsDesign2 from "../components/theme/clients/designs/design2";
+import ClientsDesign3 from "../components/theme/clients/designs/design3";
+import ClientsDesign4 from "../components/theme/clients/designs/design4";
+import ClientsDesign5 from "../components/theme/clients/designs/design5";
+import GalleryDesing1 from "../components/theme/gallery/designs/design1";
+
 const useChooseDesign = (compName) => {
   const aboutDesigns = [
     AboutDesign1,
@@ -55,7 +62,21 @@ const useChooseDesign = (compName) => {
     ServiceDesign5,
   ];
 
-  const TeamDesigns = [TeamDesign1,TeamDesign2,TeamDesign3,TeamDesign4,TeamDesign5];
+  const TeamDesigns = [
+    TeamDesign1,
+    TeamDesign2,
+    TeamDesign3,
+    TeamDesign4,
+    TeamDesign5,
+  ];
+  const clientsDesigns = [
+    ClientsDesign1,
+    ClientsDesign2,
+    ClientsDesign3,
+    ClientsDesign4,
+    ClientsDesign5,
+  ];
+  const GalleryDesigns = [GalleryDesing1];
 
   const [designs, setDesigns] = useState(heroDesigns);
 
@@ -70,6 +91,10 @@ const useChooseDesign = (compName) => {
       setDesigns(servicesDesigns);
     } else if (compName === "team") {
       setDesigns(TeamDesigns);
+    } else if (compName === "clients") {
+      setDesigns(clientsDesigns);
+    } else if (compName === "gallery") {
+      setDesigns(GalleryDesigns);
     }
   };
 
