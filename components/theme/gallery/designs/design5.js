@@ -15,23 +15,28 @@ const Design5 = ({ device, choose }) => {
   return (
     <>
       {choose ? (
-        <Container className="py-0 pt-2">
+        <Container clean className="py-0 pt-2">
           <div className="text-center space-y-1  mb-2">
             <Title choose={choose} />
             <SubTitle choose={choose} />
-            <button className="">Start Now</button>
+            <button className="text-very-small bg-primary text-white p-[2px]">Start Now</button>
           </div>
           <div
             className={
-              "grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 w-full"
+              "grid  lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2"
             }
           >
             {galleryData.map((gallery) => (
-              <div key={gallery.id} className="text-center space-y-1">
-                <div
-                  style={{ backgroundImage: `url(${gallery.img})` }}
-                  className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-5 w-5 rounded-full"
-                ></div>
+              <div
+                key={gallery.id}
+                className="relative  h-12 w-full"
+              >
+                <Image
+                  src={gallery.img}
+                  className="absolute"
+                  objectFit="cover"
+                  layout="fill"
+                />
               </div>
             ))}
           </div>
@@ -45,8 +50,16 @@ const Design5 = ({ device, choose }) => {
           </div>
           <div className={gridClassName}>
             {galleryData.map((gallery) => (
-              <div key={gallery.id} className="relative  lg:h-60 md:h-52 h-52 w-full">
-                <Image src={gallery.img} className="absolute" objectFit="cover" layout="fill" />
+              <div
+                key={gallery.id}
+                className="relative  lg:h-60 md:h-52 h-52 w-full"
+              >
+                <Image
+                  src={gallery.img}
+                  className="absolute"
+                  objectFit="cover"
+                  layout="fill"
+                />
               </div>
             ))}
           </div>

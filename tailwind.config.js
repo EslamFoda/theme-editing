@@ -24,7 +24,9 @@ module.exports = {
       },
       boxShadow:{
         "custom":"0px 0px 5px rgba(0, 0, 0, 0.50)",
-        "inside":"inset 0px 0px 0px 4px"
+        "big":"0 6px 50px rgba(0,0,0,.2)",
+        "inside":"inset 0px 0px 0px 4px",
+        "inside-small":"inset 0px 0px 0px 3px",
       }
     },
   },

@@ -6,9 +6,9 @@ import {
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getNextIndex } from "../../../features/add-section";
+import { addSectionTurnOff } from "../../../features/edit-sections";
 import { selectCompName } from "../../../features/comp-name";
 import ControlBtns from "./controlBtns";
-
 const queryAttr = "data-rbd-drag-handle-draggable-id";
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -18,14 +18,21 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-const DragAndDrop = ({ comps, containerWidth, setComps, device, editSections }) => {
+const DragAndDrop = ({
+  comps,
+  containerWidth,
+  setComps,
+  device,
+  editSections,
+}) => {
+  const dispatch = useDispatch();
   const [placeholderProps, setPlaceholderProps] = useState({});
   const onDragEnd = (result) => {
     // dropped outside the list
     if (!result.destination) {
       return;
     }
-
+    dispatch(addSectionTurnOff())
     setPlaceholderProps({});
     dispatch(getNextIndex(result.destination.index));
     const compName = comps[result.source.index].compName;
@@ -41,7 +48,6 @@ const DragAndDrop = ({ comps, containerWidth, setComps, device, editSections }) 
     }
     const draggableId = update.draggableId;
     const destinationIndex = update.destination.index;
-
     const domQuery = `[${queryAttr}='${draggableId}']`;
     const draggedDOM = document.querySelector(domQuery);
 
@@ -69,7 +75,7 @@ const DragAndDrop = ({ comps, containerWidth, setComps, device, editSections }) 
       ),
     });
   };
-  const dispatch = useDispatch();
+
   // const onDragEnd = (result) => {
   //   const newItems = [...comps];
   //   const [removed] = newItems.splice(result.source.index, 1);

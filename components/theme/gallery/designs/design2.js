@@ -16,22 +16,27 @@ const Design2 = ({ device, choose }) => {
     <>
       {choose ? (
         <Container className="py-0 pt-2">
-          <div className="text-center space-y-1  mb-2">
+          <div className="text-center">
             <Title choose={choose} />
             <SubTitle choose={choose} />
-            <button className="">Start Now</button>
+            <button className="text-very-small bg-primary p-[2px] text-white">Start Now</button>
           </div>
           <div
             className={
-              "grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 w-full"
+              "grid gap-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2"
             }
           >
             {galleryData.map((gallery) => (
-              <div key={gallery.id} className="text-center space-y-1">
-                <div
-                  style={{ backgroundImage: `url(${gallery.img})` }}
-                  className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-5 w-5 rounded-full"
-                ></div>
+              <div
+                key={gallery.id}
+                className="relative hover:shadow-custom transition-all lg:h-10 md:h-12 h-12 w-full"
+              >
+                <Image
+                  src={gallery.img}
+                  className="absolute"
+                  objectFit="cover"
+                  layout="fill"
+                />
               </div>
             ))}
           </div>
@@ -45,8 +50,16 @@ const Design2 = ({ device, choose }) => {
           </div>
           <div className={gridClassName}>
             {galleryData.map((gallery) => (
-              <div key={gallery.id} className="relative hover:shadow-custom transition-all lg:h-60 md:h-52 h-32 w-full">
-                <Image src={gallery.img} className="absolute" objectFit="cover" layout="fill" />
+              <div
+                key={gallery.id}
+                className="relative hover:shadow-custom transition-all lg:h-60 md:h-52 h-32 w-full"
+              >
+                <Image
+                  src={gallery.img}
+                  className="absolute"
+                  objectFit="cover"
+                  layout="fill"
+                />
               </div>
             ))}
           </div>

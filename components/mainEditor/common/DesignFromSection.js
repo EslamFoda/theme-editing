@@ -1,5 +1,5 @@
 import { selectSectionOff } from "../../../features/add-section";
-
+import Designs from "./designs";
 const DesignFromSection = ({
   designs,
   setComps,
@@ -26,15 +26,14 @@ const DesignFromSection = ({
   return (
     <div className="h-40 flex items-center  overflow-auto gap-8  w-full">
       {designs.map((Design, i) => (
-        <div
-          className={`h-32 relative rounded-md overflow-hidden cursor-pointer min-w-[288px]`}
-          key={i}
-          onClick={() => {
-            handleCreateSection(i);
-            // handleSelectDesign(i);
-          }}
-        >
-          {<Design choose={true} />}
+        <div key={i}>
+          <Designs
+            Design={Design}
+            comps={comps}
+            i={i}
+            nextIndex={nextIndex}
+            handle={handleCreateSection}
+          />
         </div>
       ))}
     </div>

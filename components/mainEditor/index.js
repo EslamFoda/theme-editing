@@ -10,7 +10,7 @@ import DesignFromSection from "./common/DesignFromSection";
 import { sectionsImgs } from "../../constant";
 import { useContext } from "react";
 import { CompsContext } from "../../context/compsContext";
-import { FaArrowUp } from "react-icons/fa";
+import ActionBarDesc from "./common/actionBarDesc";
 const MainEditor = () => {
   const { comps, setComps } = useContext(CompsContext);
 
@@ -28,43 +28,44 @@ const MainEditor = () => {
 
   return (
     <>
-      <ActionNavBar />
-      {editSections && compName && !addSection && (
-        <SelectDesign
-          comps={comps}
-          designs={designs}
-          nextIndex={nextIndex}
-          setComps={setComps}
-        />
-      )}
-      {addSection && (
-        <div className="bg-[#26313f] flex px-5">
-          <div className="w-80  py-4 border-r mr-4 border-solid border-[#353f4b] h-[164px]">
-            <h2 className="text-2xl  font-bold text-white">
-              Choose your section
-            </h2>
-            <h5 className="text-white">choose on of them</h5>
-          </div>
-          {!selectSection ? (
-            <SelectSection
+      <div className="sticky top-0 right-0 z-50">
+        <ActionNavBar />
+        {editSections && compName && !addSection && (
+          <SelectDesign
+            comps={comps}
+            designs={designs}
+            nextIndex={nextIndex}
+            setComps={setComps}
+          />
+        )}
+        {addSection && (
+          <div className="bg-[#26313f] flex px-5">
+            <ActionBarDesc
+              selectSection={selectSection}
               dispatch={dispatch}
-              sectionsImgs={sectionsImgs}
-              setSelectedSection={setSelectedSection}
-            />
-          ) : (
-            <DesignFromSection
-              designs={designs}
-              dispatch={dispatch}
-              sectionsImgs={sectionsImgs}
-              selectedSection={selectedSection}
-              setComps={setComps}
               compName={compName}
-              comps={comps}
-              nextIndex={nextIndex}
             />
-          )}
-        </div>
-      )}
+            {selectSection ? (
+              <DesignFromSection
+                designs={designs}
+                dispatch={dispatch}
+                sectionsImgs={sectionsImgs}
+                selectedSection={selectedSection}
+                setComps={setComps}
+                compName={compName}
+                comps={comps}
+                nextIndex={nextIndex}
+              />
+            ) : (
+              <SelectSection
+                dispatch={dispatch}
+                sectionsImgs={sectionsImgs}
+                setSelectedSection={setSelectedSection}
+              />
+            )}
+          </div>
+        )}
+      </div>
       {/* <StyledFrame
         style={{
           width: containerWidth,

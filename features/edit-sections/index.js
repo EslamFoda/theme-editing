@@ -16,6 +16,7 @@ export const editSectionsSlice = createSlice({
       // immutable state based off those changes
       state.value = !state.value;
     },
+    
     addSectionTurnOn: (state) => {
       state.addSection = true;
     },
@@ -29,7 +30,11 @@ export const editSectionsSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { toggleEdit, addSectionTurnOn, addSectionTurnOff,getCurrentIndex } =
-  editSectionsSlice.actions;
+export const {
+  toggleEdit,
+  addSectionTurnOn,
+  addSectionTurnOff,
+  getCurrentIndex,
+} = editSectionsSlice.actions;
 
 export default editSectionsSlice.reducer;

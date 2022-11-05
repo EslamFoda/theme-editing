@@ -19,19 +19,21 @@ const Design3 = ({ device, choose }) => {
           <div className="text-center space-y-1  mb-2">
             <Title choose={choose} />
             <SubTitle choose={choose} />
-            <button className="">Start Now</button>
           </div>
           <div
-            className={
-              "grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 w-full"
-            }
+            className={"grid gap-1 lg:grid-cols-2 md:grid-cols-2  grid-cols-2"}
           >
             {galleryData.map((gallery) => (
-              <div key={gallery.id} className="text-center space-y-1">
-                <div
-                  style={{ backgroundImage: `url(${gallery.img})` }}
-                  className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-5 w-5 rounded-full"
-                ></div>
+              <div
+                key={gallery.id}
+                className="relative hover:shadow-custom transition-all h-12 w-full"
+              >
+                <Image
+                  src={gallery.img}
+                  className="absolute"
+                  objectFit="cover"
+                  layout="fill"
+                />
               </div>
             ))}
           </div>
@@ -44,8 +46,16 @@ const Design3 = ({ device, choose }) => {
           </div>
           <div className={gridClassName}>
             {galleryData.map((gallery) => (
-              <div key={gallery.id} className="relative hover:shadow-custom transition-all lg:h-72 md:h-52 h-32 w-full">
-                <Image src={gallery.img} className="absolute" objectFit="cover" layout="fill" />
+              <div
+                key={gallery.id}
+                className="relative hover:shadow-custom transition-all lg:h-72 md:h-52 h-32 w-full"
+              >
+                <Image
+                  src={gallery.img}
+                  className="absolute"
+                  objectFit="cover"
+                  layout="fill"
+                />
               </div>
             ))}
           </div>

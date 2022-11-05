@@ -1,13 +1,21 @@
 import { useSelector, useDispatch } from "react-redux";
-import { toggleEdit } from "../../../features/edit-sections";
+import { addSectionTurnOff, toggleEdit } from "../../../features/edit-sections";
 import { changeDevice, changeWidth } from "../../../features/main-width";
+import { FaEye, FaEdit } from "react-icons/fa";
 const ActionNavBar = () => {
   const editSections = useSelector((state) => state.editSections.value);
   const dispatch = useDispatch();
   return (
     <>
       {" "}
-      <div className="bg-[#353f4b] h-20 flex justify-center items-center">
+      <div className="bg-[#353f4b] h-20 flex grid grid-cols-3 items-center">
+        <div className="px-4">
+          {editSections ? (
+            <span className="text-white font-bold">Edit Mode</span>
+          ) : (
+            <span className="text-white font-bold">Preview Mode</span>
+          )}
+        </div>
         <div className="flex gap-4 justify-center items-cenater group">
           <svg
             onClick={() => {
@@ -68,12 +76,23 @@ const ActionNavBar = () => {
           </svg>
         </div>
         <div
-          className="bg-white mx-4 cursor-pointer"
+          className=" mx-4 justify-self-end cursor-pointer"
           onClick={() => {
             dispatch(toggleEdit());
+            dispatch(addSectionTurnOff());
           }}
         >
-          {editSections ? <span>preview</span> : <span>edit</span>}
+          {editSections ? (
+            <div className="flex text-[#98A2B3] hover:text-white items-center gap-3">
+              <span>preview</span>
+              <FaEye size={16} />
+            </div>
+          ) : (
+            <div className="flex text-[#98A2B3] hover:text-white items-center gap-3">
+              <span>edit</span>
+              <FaEdit size={16} />
+            </div>
+          )}
         </div>
       </div>
     </>

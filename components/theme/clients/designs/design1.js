@@ -1,8 +1,8 @@
 import Container from "../../../ui/Container/container";
-import Title from "../common/title";
 import { clientsData } from "../../../../constant/";
 import cn from "clsx";
 import Image from "next/image";
+import Title from "../common/title";
 import SubTitle from "../common/subTitle";
 const Design1 = ({ device, choose }) => {
   const gridClassName = cn(

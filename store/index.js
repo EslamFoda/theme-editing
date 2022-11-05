@@ -9,8 +9,8 @@ import editSectionsReducer from "../features/edit-sections";
 import compNameReducer from "../features/comp-name";
 import addSectionReducer from "../features/add-section";
 import widthReducer from "../features/main-width";
-import galleryReducer from '../features/gallery-section'
-
+import galleryReducer from "../features/gallery-section";
+import testimonialsReducer from "../features/testimonials-section";
 export const store = configureStore({
   reducer: {
     hero: heroReducer,
@@ -24,5 +24,6 @@ export const store = configureStore({
     mainWidth: widthReducer,
     clients: clientsReducer,
     gallery: galleryReducer,
+    testimonials: testimonialsReducer,
   },
 });
