@@ -1,6 +1,16 @@
 import Container from "../../../ui/Container/container";
 import cn from "clsx";
-const Design5 = ({ device, choose }) => {
+import EditorComp from "../../../editor";
+import Button from "../../../ui/Button";
+const Design5 = ({
+  device,
+  choose,
+  editHeroTitle,
+  editHeroSubtitle,
+  heroData,
+  editPrimaryBtn,
+  editSecondaryBtn,
+}) => {
   const imageClassName = cn("lg:h-[450px] md:h-[400px] h-80  w-full  ", {
     "!h-80": device === "mobile",
   });
@@ -72,20 +82,30 @@ const Design5 = ({ device, choose }) => {
           <Container>
             <div className={gridClassName}>
               <div>
-                <h1 className={headerClassName}>
-                  clothes is a leading business in the clothes industry
-                </h1>
-                <p className="mt-5">
-                  Learn about our services and join our community today
-                </p>
+                <div className={headerClassName}>
+                  <EditorComp
+                    handleEdit={editHeroTitle}
+                    initialValue={heroData.title}
+                  />
+                </div>
+                <EditorComp
+                  handleEdit={editHeroSubtitle}
+                  initialValue={heroData.subTitle}
+                />
               </div>
               <div className={btnFlexClassName}>
-                <button className="bg-red-500   w-full  text-white p-3">
-                  Get in Touch
-                </button>
-                <button className=" border border-solid   w-full border-red-500 p-3">
-                  learn more
-                </button>
+                <Button full>
+                  <EditorComp
+                    handleEdit={editPrimaryBtn}
+                    initialValue={heroData.primaryBtn}
+                  />
+                </Button>
+                <Button full variant="outline">
+                  <EditorComp
+                    handleEdit={editSecondaryBtn}
+                    initialValue={heroData.secondaryBtn}
+                  />
+                </Button>
               </div>
             </div>
           </Container>

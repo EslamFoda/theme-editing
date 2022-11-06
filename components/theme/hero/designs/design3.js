@@ -1,6 +1,15 @@
 import React from "react";
+import EditorComp from "../../../editor";
 import Container from "../../../ui/Container/container";
-const Design3 = ({ choose = false }) => {
+import Button from "../../../ui/Button";
+const Design3 = ({
+  choose = false,
+  editHeroTitle,
+  editHeroSubtitle,
+  heroData,
+  editPrimaryBtn,
+  editSecondaryBtn,
+}) => {
   return (
     <>
       {choose ? (
@@ -23,15 +32,28 @@ const Design3 = ({ choose = false }) => {
       ) : (
         <div className="bg-red-600 ">
           <Container className="flex h-[80vh] space-y-10 flex-col justify-center text-center items-center">
-            <h1 className="text-4xl">
-              clothes is a leading business in the clothes industry
-            </h1>
-            <span>Learn about our services and join our community today</span>
+            <EditorComp
+              handleEdit={editHeroTitle}
+              initialValue={heroData.title}
+            />
+            <EditorComp
+              handleEdit={editHeroSubtitle}
+              initialValue={heroData.subTitle}
+            />
             <div className="flex items-center gap-6">
-              <button className="bg-white p-2">Shop Now</button>
-              <button className="p-2 border border-solid border-white">
-                Learn More
-              </button>
+             
+              <Button >
+                <EditorComp
+                  handleEdit={editPrimaryBtn}
+                  initialValue={heroData.primaryBtn}
+                />
+              </Button>
+              <Button variant="outline" >
+                <EditorComp
+                  handleEdit={editSecondaryBtn}
+                  initialValue={heroData.secondaryBtn}
+                />
+              </Button>
             </div>
           </Container>
         </div>

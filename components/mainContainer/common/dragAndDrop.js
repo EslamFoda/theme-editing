@@ -32,7 +32,7 @@ const DragAndDrop = ({
     if (!result.destination) {
       return;
     }
-    dispatch(addSectionTurnOff())
+    dispatch(addSectionTurnOff());
     setPlaceholderProps({});
     dispatch(getNextIndex(result.destination.index));
     const compName = comps[result.source.index].compName;
@@ -91,65 +91,67 @@ const DragAndDrop = ({
   //   setComps(newItems);
   // };
   return (
-    <DragDropContext onDragEnd={onDragEnd} onDragUpdate={onDragUpdate}>
-      <Droppable droppableId="droppable">
-        {(provided) => (
-          <div
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-            style={{
-              margin: "0px auto",
-              flex: "1 1 0%",
-              transition: "width 0.2s ease 0s",
-              width: containerWidth,
-            }}
-            className="flex flex-col"
-          >
-            {comps.map((comp, i) => {
-              return (
-                <Draggable key={comp.id} draggableId={comp.id} index={i}>
-                  {(provided) => (
-                    <div
-                      className="relative"
-                      key={comp.id}
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                    >
-                      <comp.Component
-                        comp={comp}
-                        setComps={setComps}
-                        comps={comps}
-                        index={i}
-                        device={device}
-                        editSections={editSections}
-                      />
-                      <ControlBtns
-                        comps={comps}
-                        i={i}
-                        comp={comp}
-                        setComps={setComps}
-                      />
-                    </div>
-                  )}
-                </Draggable>
-              );
-            })}
-            {provided.placeholder}
+    <div className="demo-inline">
+      <DragDropContext onDragEnd={onDragEnd} onDragUpdate={onDragUpdate}>
+        <Droppable droppableId="droppable">
+          {(provided) => (
             <div
+              {...provided.droppableProps}
+              ref={provided.innerRef}
               style={{
-                position: "absolute",
-                top: placeholderProps.clientY,
-                left: placeholderProps.clientX,
-                height: placeholderProps.clientHeight,
-                background: "tomato",
-                width: placeholderProps.clientWidth,
+                margin: "0px auto",
+                flex: "1 1 0%",
+                transition: "width 0.2s ease 0s",
+                width: containerWidth,
               }}
-            />
-          </div>
-        )}
-      </Droppable>
-    </DragDropContext>
+              className="flex flex-col"
+            >
+              {comps.map((comp, i) => {
+                return (
+                  <Draggable key={comp.id} draggableId={comp.id} index={i}>
+                    {(provided) => (
+                      <div
+                        className="relative"
+                        key={comp.id}
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                      >
+                        <comp.Component
+                          comp={comp}
+                          setComps={setComps}
+                          comps={comps}
+                          index={i}
+                          device={device}
+                          editSections={editSections}
+                        />
+                        <ControlBtns
+                          comps={comps}
+                          i={i}
+                          comp={comp}
+                          setComps={setComps}
+                        />
+                      </div>
+                    )}
+                  </Draggable>
+                );
+              })}
+              {provided.placeholder}
+              <div
+                style={{
+                  position: "absolute",
+                  top: placeholderProps.clientY,
+                  left: placeholderProps.clientX,
+                  height: placeholderProps.clientHeight,
+                  background: "tomato",
+                  width: placeholderProps.clientWidth,
+                }}
+              />
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </div>
   );
 };
 

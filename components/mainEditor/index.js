@@ -11,6 +11,7 @@ import { sectionsImgs } from "../../constant";
 import { useContext } from "react";
 import { CompsContext } from "../../context/compsContext";
 import ActionBarDesc from "./common/actionBarDesc";
+import EditorComp from "../editor";
 const MainEditor = () => {
   const { comps, setComps } = useContext(CompsContext);
 
@@ -28,7 +29,7 @@ const MainEditor = () => {
 
   return (
     <>
-      <div className="sticky top-0 right-0 z-50">
+      <div className="">
         <ActionNavBar />
         {editSections && compName && !addSection && (
           <SelectDesign
@@ -87,6 +88,7 @@ const MainEditor = () => {
         setComps={setComps}
         containerWidth={containerWidth}
       />
+     
     </>
   );
 };

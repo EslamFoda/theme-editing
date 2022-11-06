@@ -1,6 +1,12 @@
 import ControlBtns from "./controlBtns";
 
-const Preview = ({ containerWidth, comps, setComps, device,editSections }) => {
+const Editable = ({
+  containerWidth,
+  comps,
+  setComps,
+  device,
+  editSections,
+}) => {
   return (
     <div
       style={{
@@ -22,7 +28,7 @@ const Preview = ({ containerWidth, comps, setComps, device,editSections }) => {
               device={device}
               editSections={editSections}
             />
-            {editSections ? <ControlBtns comps={comps} i={i} comp={comp} setComps={setComps} />:null}
+            <ControlBtns comps={comps} i={i} comp={comp} setComps={setComps} />
           </div>
         );
       })}
@@ -30,4 +36,4 @@ const Preview = ({ containerWidth, comps, setComps, device,editSections }) => {
   );
 };
 
-export default Preview;
+export default Editable;

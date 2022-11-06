@@ -6,9 +6,11 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
-const MainHero = ({ comps, index, setComps, comp, device,editSections }) => {
+import { useSelector } from "react-redux";
+import { editHeroTitle, editHeroSubtitle,editPrimaryBtn,editSecondaryBtn } from "../../../features/hero";
+const MainHero = ({ comps, index, setComps, comp, device, editSections }) => {
   const { compName, designNum } = comp;
-
+  const heroData = useSelector((state) => state.hero.heroData);
   const designs = {
     design1: Design1,
     design2: Design2,
@@ -20,10 +22,20 @@ const MainHero = ({ comps, index, setComps, comp, device,editSections }) => {
   const HeroComp = designs[`design${designNum}`];
 
   return (
-    <div  className={`relative group  ${
-      editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
-    }  w-full `}>
-      <HeroComp device={device}/>
+    <div
+      className={`relative group  ${
+        editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
+      }  w-full `}
+    >
+      <HeroComp
+        heroData={heroData}
+        useSelector={useSelector}
+        editHeroTitle={editHeroTitle}
+        editHeroSubtitle={editHeroSubtitle}
+        device={device}
+        editPrimaryBtn={editPrimaryBtn}
+        editSecondaryBtn={editSecondaryBtn}
+      />
       <ChangeSection
         comp={comp}
         compName={compName}

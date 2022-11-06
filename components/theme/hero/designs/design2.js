@@ -1,6 +1,14 @@
 import React from "react";
+import EditorComp from "../../../editor";
 import Container from "../../../ui/Container/Container";
-const Design2 = ({ choose=false }) => {
+import Button from "../../../ui/Button";
+const Design2 = ({
+  choose = false,
+  editHeroTitle,
+  editHeroSubtitle,
+  heroData,
+  editPrimaryBtn,
+}) => {
   return (
     <>
       {choose ? (
@@ -43,13 +51,20 @@ const Design2 = ({ choose=false }) => {
         >
           <Container>
             <div className="max-w-sm bg-white space-y-10 p-8">
-              <h1 className="text-4xl">
-                clothes is a leading business in the clothes industry
-              </h1>
-              <span className="block">
-                Learn about our services and join our community today
-              </span>
-              <button className="w-full p-3 bg-blue-500">shop now</button>
+              <EditorComp
+                handleEdit={editHeroTitle}
+                initialValue={heroData.title}
+              />
+              <EditorComp
+                handleEdit={editHeroSubtitle}
+                initialValue={heroData.subTitle}
+              />
+              <Button full>
+              <EditorComp
+                handleEdit={editPrimaryBtn}
+                initialValue={heroData.primaryBtn}
+              />
+              </Button>
             </div>
           </Container>
         </div>

@@ -1,6 +1,6 @@
 .root {
     transition: all .3s ease-in-out;
-    height: 50px;
+    min-height: 50px;
     padding: 0 46px;
     display: inline-flex; 
     justify-content: center;
@@ -37,12 +37,10 @@
 }
 
 .outline{
-    border: 1px solid var(--primary);
-    color: var(--primary);
+    @apply border-primary text-primary border-2 border-solid
 }
 .outline:hover{
-    background-color: var(--primary);
-    color: white;
+    @apply bg-primary text-white
    
 }
 

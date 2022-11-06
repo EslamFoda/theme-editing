@@ -9,13 +9,17 @@
   padding: 0;
   margin: 0;
 }
-
+.demo-inline *[contentEditable="true"]:focus,
+.demo-inline *[contentEditable="true"]:hover {
+  outline: 2px solid #23cba5;
+}
 .image-container {
-
   width: 100%;
-
-
  
+}
+
+.demo-inline .test-headerss {
+  font-size: 40px;
 }
 .image-container > div {
     position: unset !important;
