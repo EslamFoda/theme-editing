@@ -7,7 +7,27 @@ import {
 } from "react-icons/hi";
 import { TbAsteriskSimple } from "react-icons/tb";
 import cn from "clsx";
-const Design5 = ({ choose = false, device }) => {
+import EditorComp from "../../../editor";
+const Design5 = ({
+  choose = false,
+  device,
+  featuredData,
+  editFeaturedTitle,
+  editFeaturedDesc,
+  editFeaturedHeader,
+  featuredHeader,
+}) => {
+  const icons = (id) => {
+    if (id === 1) {
+      return <HiOutlineSupport />;
+    } else if (id === 2) {
+      return <HiOutlineUsers />;
+    } else if (id === 3) {
+      return <HiOutlineBriefcase />;
+    } else if (id === 4) {
+      return <TbAsteriskSimple />;
+    }
+  };
   const data = [
     {
       icon: (
@@ -65,7 +85,7 @@ const Design5 = ({ choose = false, device }) => {
             <div className="grid lg:grid-cols-3  sm:grid-cols-2   grid-cols-1 md-grid-cols-2 py-1  gap-2">
               {data.map((card) => {
                 return (
-                    <div className="flex  flex-col space-y-1 items-start  ">
+                  <div className="flex  flex-col space-y-1 items-start  ">
                     <div className="flex gap-2">
                       <div>
                         <div className="w-3 h-3  bg-red-200 rounded-full flex justify-center items-center">
@@ -73,7 +93,9 @@ const Design5 = ({ choose = false, device }) => {
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <h3 className="text-small font-semibold">{card.title}</h3>
+                        <h3 className="text-small font-semibold">
+                          {card.title}
+                        </h3>
                         <p className="text-very-small">{card.subTitle}</p>
                       </div>
                     </div>
@@ -85,21 +107,37 @@ const Design5 = ({ choose = false, device }) => {
         </div>
       ) : (
         <div>
-          <Container>
-            <h1 className="text-2xl text-center pt-5">features</h1>
+          <Container className="py-10">
+            <EditorComp
+              initialValue={featuredHeader}
+              handleEdit={editFeaturedHeader}
+            />
             <div className={gridClassName}>
-              {data.map((card) => {
+              {featuredData.map((card) => {
                 return (
-                  <div className="flex  flex-col space-y-5 items-start  ">
+                  <div
+                    key={card.id}
+                    className="flex flex-col space-y-5 items-start  "
+                  >
                     <div className="flex gap-4">
                       <div>
                         <div className="w-12 h-12  bg-red-200 rounded-full flex justify-center items-center">
-                          <div>{card.icon}</div>
+                          <div className="feat5-icon">{icons(card.id)}</div>
                         </div>
                       </div>
                       <div className="space-y-4">
-                        <h3 className="text-xl font-semibold">{card.title}</h3>
-                        <p>{card.subTitle}</p>
+                        <div className="text-xl">
+                          <EditorComp
+                            initialValue={card.title}
+                            id={card.id}
+                            handleMultiEdit={editFeaturedTitle}
+                          />
+                        </div>
+                        <EditorComp
+                          initialValue={card.desc}
+                          id={card.id}
+                          handleMultiEdit={editFeaturedDesc}
+                        />
                       </div>
                     </div>
                   </div>

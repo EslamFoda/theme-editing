@@ -1,7 +1,15 @@
 import React from "react";
 import Container from "../../../ui/Container/container";
 import cn from "clsx";
-const Design2 = ({ choose = false, device }) => {
+import EditorComp from "../../../editor";
+const Design2 = ({
+  choose = false,
+  device,
+  editAboutBtn,
+  editAboutTitle,
+  editAboutSubtitle,
+  aboutData,
+}) => {
   const gridClassName = cn(
     "grid lg:grid-cols-2 gap-4 grid-cols-1 sm:grid-cols-1",
     {
@@ -32,14 +40,16 @@ const Design2 = ({ choose = false, device }) => {
           <Container>
             <div className={gridClassName}>
               <div>
-                <h1 className="text-4xl font-bold">About us</h1>
+              <EditorComp
+                initialValue={aboutData.title}
+                handleEdit={editAboutTitle}
+              />
               </div>
               <div>
-                <p>
-                  Write a background about your work, including your history,
-                  your accomplishments, and any awards you've received. Use this
-                  section to showcase the features of your brand.
-                </p>
+              <EditorComp
+                initialValue={aboutData.subTitle}
+                handleEdit={editAboutSubtitle}
+              />
               </div>
             </div>
           </Container>

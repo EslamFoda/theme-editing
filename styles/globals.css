@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -15,36 +13,32 @@
 }
 .image-container {
   width: 100%;
- 
 }
 
 .demo-inline .test-headerss {
   font-size: 40px;
 }
 .image-container > div {
-    position: unset !important;
-  }
+  position: unset !important;
+}
 
-  .image-container .image {
-    object-fit: contain;
-    width: 100% !important;
-    position: relative !important;
-    height: unset !important;
-  }
-
-
+.image-container .image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+}
 
 .test-container:hover > .text {
   display: block;
   white-space: nowrap;
 }
 
-.text{
+.text {
   display: none;
   transition: all 12s ease-in-out !important;
   white-space: nowrap;
 }
-
 
 button {
   position: relative;
@@ -72,7 +66,7 @@ button.btn .circle {
   height: 3rem;
   background: white;
   border-radius: 1.625rem;
-  box-shadow: 0 1px 6px 1px rgba(2,18,43,.25);
+  box-shadow: 0 1px 6px 1px rgba(2, 18, 43, 0.25);
 }
 button.btn .circle .icon {
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
@@ -93,7 +87,7 @@ button.btn .circle .icon.arrow {
 }
 button.btn .circle .icon.arrow::before {
   position: absolute;
-  content: '';
+  content: "";
   top: -0.25rem;
   right: 0.0625rem;
   width: 0.625rem;
@@ -101,7 +95,7 @@ button.btn .circle .icon.arrow::before {
   border-top: 0.125rem solid #fff;
   border-right: 0.125rem solid #fff;
   -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 button.btn .button-text {
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
@@ -118,7 +112,7 @@ button.btn .button-text {
   text-align: center;
   text-transform: uppercase;
 }
-.button-text{
+.button-text {
   display: none;
   transition: all 1s ease-in-out;
 }
@@ -128,20 +122,19 @@ button:hover .circle {
 button:hover .circle .icon.arrow {
   background: #fff;
   -webkit-transform: translate(1rem, 0);
-          transform: translate(1rem, 0);
+  transform: translate(1rem, 0);
 }
 button:hover .button-text {
   color: black;
   display: block;
 }
 
-
 .coolBeans {
   border: 2px solid currentColor;
   border-radius: 3rem;
   color: #23cba5;
   font-family: roboto;
-  background:  white;
+  background: white;
   font-weight: 100;
   overflow: hidden;
   position: relative;
@@ -151,9 +144,9 @@ button:hover .button-text {
   z-index: 0;
 }
 .coolBeans::after {
-  background-color: #23cba5;;
+  background-color: #23cba5;
   border-radius: 3rem;
-  content: '';
+  content: "";
   display: block;
   height: 100%;
   width: 100%;
@@ -174,4 +167,20 @@ button:hover .button-text {
   color: white;
   transform: scale(1.05);
   will-change: transform;
+}
+
+/* featured icons  */
+
+.feat1-icon > svg {
+  @apply text-primary w-10 h-10;
+}
+.feat2-icon > svg {
+  @apply text-primary h-4 w-4;
+}
+
+.feat4-icon > svg {
+  @apply text-primary h-6 w-6;
+}
+.feat5-icon > svg {
+  @apply text-primary h-5 w-5;
 }

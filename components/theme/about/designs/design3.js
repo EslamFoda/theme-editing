@@ -1,7 +1,15 @@
 import React from "react";
-import Container from "../../../ui/Container/container";
 import cn from "clsx";
-const Design3 = ({ choose = false, device }) => {
+import EditorComp from "../../../editor";
+import Button from "../../../ui/Button";
+const Design3 = ({
+  choose = false,
+  device,
+  editAboutBtn,
+  editAboutTitle,
+  editAboutSubtitle,
+  aboutData,
+}) => {
   const gridClassName = cn(
     "grid  lg:grid-cols-2 grid-cols-1 md:grid-cols-2 sm:grid-cols-1",
     {
@@ -12,7 +20,7 @@ const Design3 = ({ choose = false, device }) => {
     "!order-2": device === "mobile",
   });
   const order2ClassName = cn(
-    "space-y-4  order-1 lg:order-2 md:order-2 self-center p-5",
+    "space-y-4  order-1 lg:order-2 md:order-2 self-center max-w-xl px-16 p-5",
     {
       "!order-1": device === "mobile",
     }
@@ -59,14 +67,21 @@ const Design3 = ({ choose = false, device }) => {
             }}
           ></div>
           <div className={order2ClassName}>
-            <h1 className="text-4xl font-bold">About us</h1>
-            <p className="max-w-lg">
-              {" "}
-              Write a background about your work, including your history, your
-              accomplishments, and any awards you've received. Use this section
-              to showcase the features of your brand.
-            </p>
-            <button>more</button>
+            <EditorComp
+              initialValue={aboutData.title}
+              handleEdit={editAboutTitle}
+            />
+
+            <EditorComp
+              initialValue={aboutData.subTitle}
+              handleEdit={editAboutSubtitle}
+            />
+            <Button variant="link" >
+              <EditorComp
+                initialValue={aboutData.btn}
+                handleEdit={editAboutBtn}
+              />
+            </Button>
           </div>
         </div>
       )}

@@ -1,13 +1,32 @@
 import React from "react";
-import Design1 from "./designs/design1";
-import Design2 from "./designs/design2";
-import Design3 from "./designs/design3";
-import Design4 from "./designs/design4";
-import Design5 from "./designs/design5";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
-const MainFeatured = ({ comps, index, setComps, comp, device,editSections }) => {
+import { useSelector } from "react-redux";
+import dynamic from "next/dynamic";
+import {
+  editFeaturedTitle,
+  editFeaturedBtn,
+  editFeaturedDesc,
+  editFeaturedHeader,
+} from "../../../features/featured-section";
+
+const Design1 = dynamic(() => import("./designs/design1"));
+const Design2 = dynamic(() => import("./designs/design2"));
+const Design3 = dynamic(() => import("./designs/design3"));
+const Design4 = dynamic(() => import("./designs/design4"));
+const Design5 = dynamic(() => import("./designs/design5"));
+
+const MainFeatured = ({
+  comps,
+  index,
+  setComps,
+  comp,
+  device,
+  editSections,
+}) => {
   const { compName, designNum } = comp;
+  const featuredData = useSelector((state) => state.featured.featuredData);
+  const featuredHeader = useSelector((state) => state.featured.header);
 
   const designs = {
     design1: Design1,
@@ -18,10 +37,20 @@ const MainFeatured = ({ comps, index, setComps, comp, device,editSections }) => 
   };
   const FeaturedComp = designs[`design${designNum}`];
   return (
-    <div className={`relative group  ${
-      editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
-    }  w-full `}>
-      <FeaturedComp device={device} />
+    <div
+      className={`relative group  ${
+        editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
+      }  w-full `}
+    >
+      <FeaturedComp
+        editFeaturedTitle={editFeaturedTitle}
+        editFeaturedBtn={editFeaturedBtn}
+        editFeaturedDesc={editFeaturedDesc}
+        editFeaturedHeader={editFeaturedHeader}
+        featuredHeader={featuredHeader}
+        featuredData={featuredData}
+        device={device}
+      />
       <ChangeSection
         comp={comp}
         compName={compName}
@@ -30,7 +59,7 @@ const MainFeatured = ({ comps, index, setComps, comp, device,editSections }) => 
         designNum={designNum}
         setComps={setComps}
       />
-         {editSections && <AddSection index={index} />}
+      {editSections && <AddSection index={index} />}
     </div>
   );
 };

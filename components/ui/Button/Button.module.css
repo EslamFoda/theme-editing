@@ -36,6 +36,13 @@
     color: var(--primary);
 }
 
+.link {
+    @apply text-primary !p-0  !min-h-max
+}
+.link:hover {
+    @apply opacity-80
+}
+
 .outline{
     @apply border-primary text-primary border-2 border-solid
 }

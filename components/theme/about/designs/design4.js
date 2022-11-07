@@ -1,6 +1,14 @@
 import React from "react";
+import EditorComp from "../../../editor";
+import Button from "../../../ui/Button";
 import Container from "../../../ui/Container/container";
-const Design4 = ({ choose = false }) => {
+const Design4 = ({
+  choose = false,
+  editAboutBtn,
+  editAboutTitle,
+  editAboutSubtitle,
+  aboutData,
+}) => {
   return (
     <>
       {choose ? (
@@ -28,18 +36,26 @@ const Design4 = ({ choose = false }) => {
           <Container>
             <div
               className={
-                "flex  h-[55vh] justify-center flex-col text-center space-y-8 items-center"
+                "flex  h-[55vh] justify-center  flex-col text-center items-center"
               }
             >
-              <h1 className="text-4xl font-bold">About us</h1>
-              <p className="max-w-2xl">
-                Write a background about your work, including your history, your
-                accomplishments, and any awards you've received. Use this
-                section to showcase the features of your brand.
-              </p>
-              <button className="bg-red-500 p-2 px-5 rounded-md text-white">
-                more
-              </button>
+              <div className="max-w-2xl  space-y-8">
+                <EditorComp
+                  initialValue={aboutData.title}
+                  handleEdit={editAboutTitle}
+                />
+
+                <EditorComp
+                  initialValue={aboutData.subTitle}
+                  handleEdit={editAboutSubtitle}
+                />
+                <Button className="self-start">
+                  <EditorComp
+                    initialValue={aboutData.btn}
+                    handleEdit={editAboutBtn}
+                  />
+                </Button>
+              </div>
             </div>
           </Container>
         </div>

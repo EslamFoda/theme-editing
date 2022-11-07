@@ -8,7 +8,25 @@ import {
 } from "react-icons/hi";
 import { TbAsteriskSimple } from "react-icons/tb";
 import cn from "clsx";
-const Design4 = ({ choose = false, device }) => {
+import EditorComp from "../../../editor";
+const Design4 = ({
+  choose = false,
+  device,
+  featuredData,
+  editFeaturedTitle,
+  editFeaturedDesc,
+}) => {
+  const icons = (id) => {
+    if (id === 1) {
+      return <HiOutlineSupport />;
+    } else if (id === 2) {
+      return <HiOutlineUsers />;
+    } else if (id === 3) {
+      return <HiOutlineBriefcase />;
+    } else if (id === 4) {
+      return <TbAsteriskSimple />;
+    }
+  };
   const data = [
     {
       icon: (
@@ -70,7 +88,9 @@ const Design4 = ({ choose = false, device }) => {
                       <div className="w-4 h-4 bg-red-200 rounded-full flex justify-center items-center">
                         <div>{card.icon}</div>
                       </div>
-                      <h3 className="text-very-small font-semibold">{card.title}</h3>
+                      <h3 className="text-very-small font-semibold">
+                        {card.title}
+                      </h3>
                     </div>
                     <p className="text-very-small">{card.subTitle}</p>
                   </div>
@@ -83,16 +103,26 @@ const Design4 = ({ choose = false, device }) => {
         <div>
           <Container>
             <div className={gridClassName}>
-              {data.map((card) => {
+              {featuredData.map((card) => {
                 return (
-                  <div className="p-4 flex  flex-col space-y-5 items-start  ">
+                  <div  key={card.id} className="p-4 flex  flex-col space-y-5 items-start  ">
                     <div className="flex flex-col gap-5">
                       <div className="w-12 h-12 bg-red-200 rounded-full flex justify-center items-center">
-                        <div>{card.icon}</div>
+                        <div className="feat4-icon">{icons(card.id)}</div>
                       </div>
-                      <h3 className="text-xl font-semibold">{card.title}</h3>
+                      <div className="text-xl">
+                        <EditorComp
+                          initialValue={card.title}
+                          id={card.id}
+                          handleMultiEdit={editFeaturedTitle}
+                        />
+                      </div>
                     </div>
-                    <p>{card.subTitle}</p>
+                    <EditorComp
+                      initialValue={card.desc}
+                      id={card.id}
+                      handleMultiEdit={editFeaturedDesc}
+                    />
                   </div>
                 );
               })}

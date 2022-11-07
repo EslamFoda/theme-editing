@@ -4,10 +4,11 @@ import s from "../Button/Button.module.css";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  variant?: "primary" | "secondary" | "ghost" | "outline" | "custom";
+  variant?: "primary" | "secondary" | "ghost" | "outline" | "link" | "custom";
   icon?: any;
   height?: number;
-  full?:boolean
+  full?: boolean;
+  rounded?: boolean;
 }
 
 // eslint-disable-next-line react/display-name
@@ -15,6 +16,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   const {
     className,
     icon,
+    rounded = true,
     variant = "primary",
     children,
     height,
@@ -29,8 +31,10 @@ const Button: React.FC<ButtonProps> = (props) => {
       [s.primary]: variant === "primary",
       [s.secondary]: variant === "secondary",
       [s.ghost]: variant === "ghost",
-      [s.custom]:variant === "custom",
-      [s.outline]:variant === "outline",
+      [s.custom]: variant === "custom",
+      [s.outline]: variant === "outline",
+      [s.link]: variant === "link",
+      "!rounded-none": rounded === false,
       "w-full": full,
     },
     className

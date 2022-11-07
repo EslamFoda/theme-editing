@@ -1,6 +1,14 @@
 import React from "react";
 import Container from "../../../ui/Container/container";
-const Design1 = ({ choose = false }) => {
+import EditorComp from "../../../editor";
+import Button from "../../../ui/Button";
+const Design1 = ({
+  choose = false,
+  editAboutBtn,
+  editAboutTitle,
+  editAboutSubtitle,
+  aboutData,
+}) => {
   return (
     <div>
       {choose ? (
@@ -32,16 +40,21 @@ const Design1 = ({ choose = false }) => {
       ) : (
         <Container>
           <div className="flex gap-6  mx-auto  lg:justify-between md:justify-center  justify-center items-center py-16 flex-wrap ">
-            <div className="flex  flex-col lg:w-[450px] md:w-[400px] w-[450px]">
-              <h2 className="text-4xl font-semibold">
-                A section for you to write about just anything{" "}
-              </h2>
-              <span className="mt-5">
-                Need a place to add in your awards? This is it. Want to include
-                more information about your products, history, or features? This
-                is the spot for that. Use this content section for anything and
-                everything.{" "}
-              </span>
+            <div className="flex  flex-col space-y-8 lg:w-[450px] md:w-[400px] w-[450px]">
+              <EditorComp
+                initialValue={aboutData.title}
+                handleEdit={editAboutTitle}
+              />
+              <EditorComp
+                initialValue={aboutData.subTitle}
+                handleEdit={editAboutSubtitle}
+              />
+              <Button variant="link" className="self-start">
+                <EditorComp
+                  initialValue={aboutData.btn}
+                  handleEdit={editAboutBtn}
+                />
+              </Button>
             </div>
             <div
               style={{
@@ -51,7 +64,7 @@ const Design1 = ({ choose = false }) => {
                 MozBackgroundSize: "center center",
                 backgroundRepeat: "no-repeat",
               }}
-              className="h-96 lg:w-[450px] md:w-[400px] w-[450px]   bg-blue-100"
+              className="h-96 lg:w-[450px] shadow-big md:w-[400px] w-[450px]   bg-blue-100"
             ></div>
           </div>
         </Container>

@@ -1,7 +1,7 @@
 import Container from "../../../ui/Container/container";
 import Title from "../../clients/common/title";
 import SubTitle from "../../clients/common/subTitle";
-import { testimonialsData } from "../../../../constant";
+import { testimonialsData,testiData } from "../../../../constant";
 import cn from "clsx";
 const Design4 = ({ device, choose }) => {
   const gridClassName = cn(
@@ -22,7 +22,7 @@ const Design4 = ({ device, choose }) => {
           />
         </div>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-8">
-          {testimonialsData.map((client) => (
+          {testimonialsData?.map((client) => (
             <div className="flex" key={client.id}>
               <div className="w-full h-full justify-between flex flex-col gap-4   p-6  rounded-md   border-gray-border border">
                 <p className="text-sm">{client.review}</p>

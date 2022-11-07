@@ -1,13 +1,37 @@
 import React from "react";
 import Container from "../../../ui/Container/container";
 import cn from "clsx";
+import EditorComp from "../../../editor";
 import { FaAd, FaUsers, FaBriefcase, FaAsterisk } from "react-icons/fa";
-
-const Design1 = ({ choose, device }) => {
-  console.log(device);
+import Button from "../../../ui/Button";
+import {
+  HiOutlineSupport,
+  HiOutlineBriefcase,
+  HiOutlineUsers,
+} from "react-icons/hi";
+import { TbAsteriskSimple } from "react-icons/tb";
+const Design1 = ({
+  choose,
+  device,
+  featuredData,
+  editFeaturedTitle,
+  editFeaturedBtn,
+  editFeaturedDesc,
+}) => {
+  const icons = (id) => {
+    if (id === 1) {
+      return <HiOutlineSupport />;
+    } else if (id === 2) {
+      return <HiOutlineUsers />;
+    } else if (id === 3) {
+      return <HiOutlineBriefcase />;
+    } else if (id === 4) {
+      return <TbAsteriskSimple />;
+    }
+  };
   const data = [
     {
-      icon: <FaAd  className="text-red-500" size={choose ? 5 : 40} />,
+      icon: <FaAd className="text-red-500" size={choose ? 5 : 40} />,
       title: "Professional Support",
       subTitle:
         "Our team works diligently to ensure that all your questions are answered and your needs met.",
@@ -72,13 +96,32 @@ const Design1 = ({ choose, device }) => {
         <div>
           <Container>
             <div className={gridClassName}>
-              {data.map((card) => {
+              {featuredData.map((card) => {
                 return (
-                  <div className="p-4 flex flex-col space-y-5 text-center items-center  bg-red-100 ">
-                    <div>{card.icon}</div>
-                    <h3 className="text-4xl font-semibold">{card.title}</h3>
-                    <p>{card.subTitle}</p>
-                    <button className="bg-red-500 p-3">{card.button}</button>
+                  <div
+                    key={card.id}
+                    className="p-4 flex flex-col space-y-5 text-center items-center"
+                  >
+                    <div className="feat1-icon">{icons(card.id)}</div>
+                    <div className="text-4xl">
+                      <EditorComp
+                        initialValue={card.title}
+                        id={card.id}
+                        handleMultiEdit={editFeaturedTitle}
+                      />
+                    </div>
+                    <EditorComp
+                      initialValue={card.desc}
+                      id={card.id}
+                      handleMultiEdit={editFeaturedDesc}
+                    />
+                    <Button rounded={false}>
+                      <EditorComp
+                        initialValue={card.btn}
+                        id={card.id}
+                        handleMultiEdit={editFeaturedBtn}
+                      />
+                    </Button>
                   </div>
                 );
               })}

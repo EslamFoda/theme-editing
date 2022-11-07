@@ -3,11 +3,15 @@ import { Editor } from "@tinymce/tinymce-react";
 import { useSelector } from "react-redux";
 import parse from "html-react-parser";
 import { useDispatch } from "react-redux";
-const EditorComp = ({ initialValue, handleEdit }) => {
+const EditorComp = ({
+  initialValue,
+  handleEdit,
+  handleMultiEdit = false,
+  id = undefined,
+}) => {
   const editSections = useSelector((state) => state.editSections.value);
   const dispatch = useDispatch();
   const [value, setValue] = useState(initialValue ?? "");
-
 
   useEffect(() => setValue(initialValue ?? ""), [initialValue]);
   const editorRef = useRef(null);
@@ -19,7 +23,9 @@ const EditorComp = ({ initialValue, handleEdit }) => {
           value={value}
           apiKey="wofsz7vjfejaxoulvwsud2qp5pe1lqlyslyr4w7kqv5391u0"
           onBlur={() => {
-            dispatch(handleEdit(value));
+            handleEdit
+              ? dispatch(handleEdit(value))
+              : dispatch(handleMultiEdit({ value: value, id: id }));
           }}
           onEditorChange={(newValue, editor) => {
             setValue(newValue);

@@ -1,6 +1,14 @@
 import React from "react";
+import EditorComp from "../../../editor";
+import Button from "../../../ui/Button";
 import Container from "../../../ui/Container/container";
-const Design5 = ({ choose = false }) => {
+const Design5 = ({
+  choose = false,
+  editAboutBtn,
+  editAboutTitle,
+  editAboutSubtitle,
+  aboutData,
+}) => {
   return (
     <>
       {choose ? (
@@ -29,13 +37,33 @@ const Design5 = ({ choose = false }) => {
                 "flex justify-center flex-col text-center space-y-8 items-center"
               }
             >
-              <h1 className="text-4xl font-bold">About us</h1>
-              <p className="max-w-2xl">
-                Write a background about your work, including your history, your
-                accomplishments, and any awards you've received. Use this
-                section to showcase the features of your brand.
-              </p>
-              <button className="text-red-500 ">more</button>
+              <div className="max-w-2xl  space-y-8">
+                <EditorComp
+                  initialValue={aboutData.title}
+                  handleEdit={editAboutTitle}
+                />
+
+                <EditorComp
+                  initialValue={aboutData.subTitle}
+                  handleEdit={editAboutSubtitle}
+                />
+                <Button variant="outline">
+                  <EditorComp
+                    initialValue={aboutData.btn}
+                    handleEdit={editAboutBtn}
+                  />
+                </Button>
+                <div
+                  style={{
+                    backgroundImage:
+                      "url(https://image.shutterstock.com/shutterstock/photos/2025365270/display_1500/stock-photo-beautiful-attractive-asia-lady-choosing-clothes-on-clothes-rack-dressing-looking-herself-in-mirror-2025365270.jpg)",
+                    backgroundSize: "cover",
+                    MozBackgroundSize: "center center",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                  className="h-96 lg:w-full"
+                ></div>
+              </div>
             </div>
           </Container>
         </div>

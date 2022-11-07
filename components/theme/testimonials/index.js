@@ -6,7 +6,7 @@ import Design2 from "./designs/design2";
 import Design3 from "./designs/design3";
 import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
-
+import {useSelector} from 'react-redux'
 const MainTestimonials = ({
   comps,
   index,
@@ -16,7 +16,8 @@ const MainTestimonials = ({
   editSections,
 }) => {
   const { compName, designNum } = comp;
-
+  const testiData = useSelector((state) => state.testimonials.testiData);
+  const header = useSelector((state) => state.testimonials.header);
   const designs = {
     design1: Design1,
     design2: Design2,
@@ -33,7 +34,7 @@ const MainTestimonials = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <ServicesComp device={device} />
+      <ServicesComp header={header} device={device} testiData={testiData}/>
       <ChangeSection
         comp={comp}
         compName={compName}

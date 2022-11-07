@@ -4,7 +4,7 @@ import SubTitle from "../../clients/common/subTitle";
 import { testimonialsData } from "../../../../constant";
 import { TbQuote } from "react-icons/tb";
 import cn from "clsx";
-const Design5 = ({ device, choose }) => {
+const Design5 = ({ device, choose,testiData }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
     {
@@ -23,7 +23,7 @@ const Design5 = ({ device, choose }) => {
           />
         </div>
         <div className="grid lg:grid-cols-3  md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-x-10 gap-y-14">
-          {testimonialsData.map((client) => (
+          {testimonialsData?.map((client) => (
             <div
               key={client.id}
               className="w-full flex odd:bg-purple-500 odd:text-white rounded-md flex-col gap-4 self-start  p-8   shadow-big "
