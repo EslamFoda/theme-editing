@@ -7,7 +7,7 @@ const useActiveDesign = (compName) => {
   const teamDesign = useSelector((state) => state.team.design);
   const clientsDesign = useSelector((state) => state.clients.design);
   const galleryDesign = useSelector((state) => state.gallery.design);
-  const testimonialsDesign = useSelector((state) => state.testimonials.design);
+  const testimonialsDesign = useSelector((state) => state.testi.design);
 
   const handleActive = () => {
     if (compName === "hero") {

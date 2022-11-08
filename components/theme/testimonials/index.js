@@ -6,7 +6,14 @@ import Design2 from "./designs/design2";
 import Design3 from "./designs/design3";
 import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
-import {useSelector} from 'react-redux'
+import { useSelector } from "react-redux";
+import {
+  editTestiUserName,
+  editTestiPosition,
+  editTestiReview,
+  editTestiTitle,
+  editTestiSubTitle,
+} from "../../../features/testi";
 const MainTestimonials = ({
   comps,
   index,
@@ -16,8 +23,9 @@ const MainTestimonials = ({
   editSections,
 }) => {
   const { compName, designNum } = comp;
-  const testiData = useSelector((state) => state.testimonials.testiData);
-  const header = useSelector((state) => state.testimonials.header);
+  const testiData = useSelector((state) => state.testi.testiData);
+  const headers = useSelector((state) => state.testi.headers);
+
   const designs = {
     design1: Design1,
     design2: Design2,
@@ -26,7 +34,7 @@ const MainTestimonials = ({
     design5: Design5,
   };
 
-  const ServicesComp = designs[`design${designNum}`];
+  const TestiComp = designs[`design${designNum}`];
 
   return (
     <div
@@ -34,7 +42,16 @@ const MainTestimonials = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <ServicesComp header={header} device={device} testiData={testiData}/>
+      <TestiComp
+        device={device}
+        testiData={testiData}
+        editTestiReview={editTestiReview}
+        editTestiPosition={editTestiPosition}
+        editTestiUserName={editTestiUserName}
+        headers={headers}
+        editTestiTitle={editTestiTitle}
+        editTestiSubTitle={editTestiSubTitle}
+      />
       <ChangeSection
         comp={comp}
         compName={compName}

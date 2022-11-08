@@ -6,7 +6,11 @@ import Design2 from "./designs/design2";
 import Design3 from "./designs/design3";
 import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
-
+import { useSelector } from "react-redux";
+import {
+  editClientTitle,
+  editClientSubTitle,
+} from "../../../features/clients-section";
 const MainClients = ({
   comps,
   index,
@@ -25,7 +29,8 @@ const MainClients = ({
     design5: Design5,
   };
 
-  const ServicesComp = designs[`design${designNum}`];
+  const ClientsComp = designs[`design${designNum}`];
+  const headers = useSelector((state) => state.clients.headers);
 
   return (
     <div
@@ -33,7 +38,12 @@ const MainClients = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <ServicesComp device={device} />
+      <ClientsComp
+        device={device}
+        editClientTitle={editClientTitle}
+        editClientSubTitle={editClientSubTitle}
+        headers={headers}
+      />
       <ChangeSection
         comp={comp}
         compName={compName}

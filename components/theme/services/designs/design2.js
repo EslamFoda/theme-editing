@@ -6,7 +6,19 @@ import ServiceSubTilte from "../common/serviceSubTitle";
 import { servicesData } from "../../../../constant/";
 
 import cn from "clsx";
-const Design2 = ({ device, choose }) => {
+import EditorComp from "../../../editor";
+import Button from "../../../ui/Button";
+const Design2 = ({
+  device,
+  choose,
+  serviceData,
+  editServiceDesc,
+  editServiceBtn,
+  editServiceTitle,
+  editServiceHeadTitle,
+  editServiceSubTitle,
+  serviceHeaders,
+}) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
     {
@@ -14,14 +26,16 @@ const Design2 = ({ device, choose }) => {
     }
   );
   const headersClassName = cn(
-    "grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 mb-16",
+    "grid lg:grid-cols-2 gap-4 md:grid-cols-2 grid-cols-1 mb-16",
     { "!grid-cols-1": device === "mobile" }
   );
   return (
     <>
       {choose ? (
         <Container className="py-2 ">
-          <div className={"grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 mb-3"}>
+          <div
+            className={"grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 mb-3"}
+          >
             <Title choose={choose} />
             <SubTitle choose={choose} />
           </div>
@@ -46,19 +60,40 @@ const Design2 = ({ device, choose }) => {
       ) : (
         <Container className="py-16 ">
           <div className={headersClassName}>
-            <Title />
-            <SubTitle />
+           
+            <EditorComp
+              initialValue={serviceHeaders.title}
+              handleEdit={editServiceHeadTitle}
+            />
+            <EditorComp
+              initialValue={serviceHeaders.subTitle}
+              handleEdit={editServiceSubTitle}
+            />
           </div>
           <div className={gridClassName}>
-            {servicesData.map((service) => (
+            {serviceData.map((service) => (
               <div key={service.id} className=" space-y-5">
                 <div
-                  style={{ backgroundImage: `url(${service.imgUrl})` }}
+                  style={{ backgroundImage: `url(${service.pic})` }}
                   className="bg-no-repeat bg-center bg-cover   h-72 w-full"
                 ></div>
-                <ServiceTitle title={service.title} />
-                <ServiceSubTilte subTitle={service.subTitle} />
-                <button className="text-red-600">READ MORE</button>
+                <EditorComp
+                  id={service.id}
+                  initialValue={service.title}
+                  handleMultiEdit={editServiceTitle}
+                />
+                <EditorComp
+                  id={service.id}
+                  initialValue={service.desc}
+                  handleMultiEdit={editServiceDesc}
+                />
+                <Button variant="link">
+                  <EditorComp
+                    id={service.id}
+                    initialValue={service.btn}
+                    handleMultiEdit={editServiceBtn}
+                  />
+                </Button>
               </div>
             ))}
           </div>

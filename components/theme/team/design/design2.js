@@ -4,10 +4,20 @@ import SubTitle from "../common/subTitle";
 import Name from "../common/name";
 import Position from "../common/position";
 import About from "../common/about";
-import { teamData } from "../../../../constant/";
-
+import { teamsData } from "../../../../constant";
 import cn from "clsx";
-const Design2 = ({ device, choose }) => {
+import EditorComp from "../../../editor";
+const Design2 = ({
+  device,
+  choose,
+  editTeamAbout,
+  editTeamSubTitle,
+  editTeamTitle,
+  editTeamUserName,
+  editTeamUserPosition,
+  teamData,
+  headers,
+}) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 text-center sm:grid-cols-2 grid-cols-1",
     {
@@ -31,10 +41,10 @@ const Design2 = ({ device, choose }) => {
               "grid gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1"
             }
           >
-            {teamData.map((team) => (
+            {teamsData?.map((team) => (
               <div key={team.id} className=" space-y-1">
                 <div
-                  style={{ backgroundImage: `url(${team.img})` }}
+                  style={{ backgroundImage: `url(${team.pic})` }}
                   className="bg-no-repeat bg-center bg-cover   h-12 w-full"
                 ></div>
                 <Name name={team.name} choose={choose} />
@@ -47,19 +57,37 @@ const Design2 = ({ device, choose }) => {
       ) : (
         <Container className="py-16 ">
           <div className="text-center space-y-4 mb-16">
-            <Title choose={choose} />
-            <SubTitle choose={choose} />
+            <EditorComp
+              initialValue={headers.title}
+              handleEdit={editTeamTitle}
+            />
+            <EditorComp
+              initialValue={headers.subTitle}
+              handleEdit={editTeamSubTitle}
+            />
           </div>
           <div className={gridClassName}>
-            {teamData.map((team) => (
+            {teamData?.map((team) => (
               <div key={team.id} className=" space-y-5">
                 <div
-                  style={{ backgroundImage: `url(${team.img})` }}
+                  style={{ backgroundImage: `url(${team.pic})` }}
                   className="bg-no-repeat bg-center bg-cover   h-72 w-full"
                 ></div>
-                <Name name={team.name} />
-                <Position position={team.position} />
-                <About about={team.about} />
+                <EditorComp
+                  initialValue={team.userName}
+                  id={team.id}
+                  handleMultiEdit={editTeamUserName}
+                />
+                <EditorComp
+                  initialValue={team.position}
+                  id={team.id}
+                  handleMultiEdit={editTeamUserPosition}
+                />
+                <EditorComp
+                  initialValue={team.about}
+                  id={team.id}
+                  handleMultiEdit={editTeamAbout}
+                />
               </div>
             ))}
           </div>

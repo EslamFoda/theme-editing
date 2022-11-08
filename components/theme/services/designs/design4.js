@@ -6,7 +6,19 @@ import ServiceSubTilte from "../common/serviceSubTitle";
 import { servicesData } from "../../../../constant/";
 
 import cn from "clsx";
-const Design4 = ({ device, choose }) => {
+import EditorComp from "../../../editor";
+import Button from "../../../ui/Button";
+const Design4 = ({
+  device,
+  choose,
+  serviceData,
+  editServiceDesc,
+  editServiceTitle,
+  editServiceBtn,
+  editServiceHeadTitle,
+  editServiceSubTitle,
+  serviceHeaders,
+}) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
     {
@@ -58,14 +70,20 @@ const Design4 = ({ device, choose }) => {
       ) : (
         <Container className="py-16 ">
           <div className="text-center space-y-4 mb-16">
-            <Title />
-            <SubTitle />
+            <EditorComp
+              initialValue={serviceHeaders.title}
+              handleEdit={editServiceHeadTitle}
+            />
+            <EditorComp
+              initialValue={serviceHeaders.subTitle}
+              handleEdit={editServiceSubTitle}
+            />
           </div>
           <div className={gridClassName}>
-            {servicesData.map((service) => (
+            {serviceData?.map((service) => (
               <div key={service.id} className=" shadow-xl">
                 <div
-                  style={{ backgroundImage: `url(${service.imgUrl})` }}
+                  style={{ backgroundImage: `url(${service.pic})` }}
                   className="bg-no-repeat bg-center bg-cover overflow-hidden relative h-72 w-full"
                 >
                   <svg
@@ -81,9 +99,23 @@ const Design4 = ({ device, choose }) => {
                   </svg>
                 </div>
                 <div className="p-8 space-y-4">
-                  <ServiceTitle title={service.title} />
-                  <ServiceSubTilte subTitle={service.subTitle} />
-                  <button className="text-red-600">READ MORE</button>
+                  <EditorComp
+                    initialValue={service.title}
+                    id={service.id}
+                    handleMultiEdit={editServiceTitle}
+                  />
+                  <EditorComp
+                    initialValue={service.desc}
+                    id={service.id}
+                    handleMultiEdit={editServiceDesc}
+                  />
+                  <Button variant="link">
+                    <EditorComp
+                      id={service.id}
+                      initialValue={service.btn}
+                      handleMultiEdit={editServiceBtn}
+                    />
+                  </Button>
                 </div>
               </div>
             ))}

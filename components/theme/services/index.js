@@ -6,6 +6,14 @@ import Design2 from "./designs/design2";
 import Design3 from "./designs/design3";
 import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
+import { useSelector } from "react-redux";
+import {
+  editServiceDesc,
+  editServiceBtn,
+  editServiceTitle,
+  editServiceHeadTitle,
+  editServiceSubTitle
+} from "../../../features/servies-section";
 const MainServices = ({
   comps,
   index,
@@ -15,6 +23,8 @@ const MainServices = ({
   editSections,
 }) => {
   const { compName, designNum } = comp;
+  const serviceData = useSelector((state) => state.services.servicesData);
+  const serviceHeaders = useSelector((state) => state.services.headers);
 
   const designs = {
     design1: Design1,
@@ -32,7 +42,16 @@ const MainServices = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <ServicesComp device={device}  />
+      <ServicesComp
+        device={device}
+        serviceData={serviceData}
+        editServiceDesc={editServiceDesc}
+        editServiceBtn={editServiceBtn}
+        editServiceTitle={editServiceTitle}
+        editServiceHeadTitle={editServiceHeadTitle}
+        editServiceSubTitle={editServiceSubTitle}
+        serviceHeaders={serviceHeaders}
+      />
       <ChangeSection
         comp={comp}
         compName={compName}

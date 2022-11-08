@@ -58,7 +58,7 @@ export const servicesData = [
   },
 ];
 
-export const teamData = [
+export const teamsData = [
   {
     name: "Angelica Johnson",
     id: 1,

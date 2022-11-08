@@ -4,28 +4,32 @@ import { clientsData } from "../../../../constant/";
 import cn from "clsx";
 import Image from "next/image";
 import SubTitle from "../common/subTitle";
-const Design5 = ({ device, choose }) => {
-    const gridClassName = cn(
-        "grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1",
-        {
-          "!grid-cols-1": device === "mobile",
-        }
-      );
+import EditorComp from "../../../editor";
+const Design5 = ({
+  device,
+  choose,
+  editClientTitle,
+  editClientSubTitle,
+  headers,
+}) => {
+  const gridClassName = cn("grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1", {
+    "!grid-cols-1": device === "mobile",
+  });
   return (
     <>
       {choose ? (
         <div className="grid lg:grid-cols-2 md:grid-cols-2  grid-cols-1 gap-1">
           <div className="p-2  bg-purple-700  h-full">
-              <div className="h-28 flex justify-center  flex-col space-y-4 ">
-                <Title choose={choose} title={"Our Clients"} />
-                <SubTitle
+            <div className="h-28 flex justify-center  flex-col space-y-4 ">
+              <Title choose={choose} title={"Our Clients"} />
+              <SubTitle
                 choose={choose}
-                  subTitle={
-                    "Some of the world’s biggest brands trust us with their services"
-                  }
-                />
-              </div>
+                subTitle={
+                  "Some of the world’s biggest brands trust us with their services"
+                }
+              />
             </div>
+          </div>
           <div className="self-center">
             <div className={"flex  flex-wrap items-center"}>
               {clientsData.map((client) => (
@@ -44,15 +48,17 @@ const Design5 = ({ device, choose }) => {
           </div>
         </div>
       ) : (
-        <Container clean >
+        <Container clean>
           <div className={gridClassName}>
             <div className="p-5   bg-purple-700  h-full">
               <div className="h-full flex justify-center  flex-col space-y-4 ">
-                <Title title={"Our Clients"} />
-                <SubTitle
-                  subTitle={
-                    "Some of the world’s biggest brands trust us with their services"
-                  }
+                <EditorComp
+                  initialValue={headers.title}
+                  handleEdit={editClientTitle}
+                />
+                <EditorComp
+                  initialValue={headers.subTitle}
+                  handleEdit={editClientSubTitle}
                 />
               </div>
             </div>

@@ -5,7 +5,14 @@ import SubTitle from "../../services/common/subTitle";
 import { galleryData } from "../../../../constant/";
 import cn from "clsx";
 import Image from "next/image";
-const Design3 = ({ device, choose }) => {
+import EditorComp from "../../../editor";
+const Design3 = ({
+  device,
+  choose,
+  editGallerySubTitle,
+  editGalleryTitle,
+  headers,
+}) => {
   const gridClassName = cn(
     "grid gap-6 lg:grid-cols-2 md:grid-cols-2  grid-cols-2",
     {
@@ -41,8 +48,14 @@ const Design3 = ({ device, choose }) => {
       ) : (
         <Container className="py-16 ">
           <div className="text-center space-y-4 mb-16">
-            <Title />
-            <SubTitle />
+            <EditorComp
+              initialValue={headers.title}
+              handleEdit={editGalleryTitle}
+            />
+            <EditorComp
+              initialValue={headers.subTitle}
+              handleEdit={editGallerySubTitle}
+            />
           </div>
           <div className={gridClassName}>
             {galleryData.map((gallery) => (

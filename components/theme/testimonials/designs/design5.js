@@ -4,7 +4,18 @@ import SubTitle from "../../clients/common/subTitle";
 import { testimonialsData } from "../../../../constant";
 import { TbQuote } from "react-icons/tb";
 import cn from "clsx";
-const Design5 = ({ device, choose,testiData }) => {
+import EditorComp from "../../../editor";
+const Design5 = ({
+  device,
+  choose,
+  testiData,
+  editTestiUserName,
+  editTestiPosition,
+  editTestiReview,
+  editTestiTitle,
+  editTestiSubTitle,
+  headers,
+}) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
     {
@@ -15,29 +26,38 @@ const Design5 = ({ device, choose,testiData }) => {
     <>
       <Container className="py-16">
         <div className="text-center space-y-4 mb-16">
-          <Title title={"What Our Clients Say"} />
-          <SubTitle
-            subTitle={
-              "Hundreds of customers rely on our services. See what they have to say."
-            }
+          <EditorComp
+            initialValue={headers?.title}
+            handleEdit={editTestiTitle}
+          />
+          <EditorComp
+            initialValue={headers?.subTitle}
+            handleEdit={editTestiSubTitle}
           />
         </div>
         <div className="grid lg:grid-cols-3  md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-x-10 gap-y-14">
-          {testimonialsData?.map((client) => (
+          {testiData?.map((client) => (
             <div
               key={client.id}
               className="w-full flex odd:bg-purple-500 odd:text-white rounded-md flex-col gap-4 self-start  p-8   shadow-big "
             >
-              {/* <div
-                style={{ backgroundImage: `url(${client.pic})` }}
-                className="w-20 h-20 bg-no-reapeat bg-cover bg-center bg-white shadow-md  rounded-full  border-4 border-[#dfe0e1]"
-              ></div> */}
-              <TbQuote size={40}/>
-               <p className="text-sm">{client.review}</p>
-              <h3 className="text-2xl font-semibold">{client.name}</h3>
-              <span className="block text-sm font-semibold">
-                {client.position}
-              </span>
+              <TbQuote size={40} />
+              <EditorComp
+                id={client.id}
+                initialValue={client.review}
+                handleMultiEdit={editTestiReview}
+              />
+              <EditorComp
+                id={client.id}
+                initialValue={client.userName}
+                handleMultiEdit={editTestiUserName}
+              />
+
+              <EditorComp
+                id={client.id}
+                initialValue={client.position}
+                handleMultiEdit={editTestiPosition}
+              />
             </div>
           ))}
         </div>

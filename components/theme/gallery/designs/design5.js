@@ -5,7 +5,16 @@ import SubTitle from "../../services/common/subTitle";
 import { galleryData } from "../../../../constant/";
 import cn from "clsx";
 import Image from "next/image";
-const Design5 = ({ device, choose }) => {
+import EditorComp from "../../../editor";
+import Button from "../../../ui/Button";
+const Design5 = ({
+  device,
+  choose,
+  editGallerySubTitle,
+  editGalleryTitle,
+  headers,
+  editGalleryBtn,
+}) => {
   const gridClassName = cn(
     "grid   lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
     {
@@ -19,7 +28,9 @@ const Design5 = ({ device, choose }) => {
           <div className="text-center space-y-1  mb-2">
             <Title choose={choose} />
             <SubTitle choose={choose} />
-            <button className="text-very-small bg-primary text-white p-[2px]">Start Now</button>
+            <button className="text-very-small bg-primary text-white p-[2px]">
+              Start Now
+            </button>
           </div>
           <div
             className={
@@ -27,10 +38,7 @@ const Design5 = ({ device, choose }) => {
             }
           >
             {galleryData.map((gallery) => (
-              <div
-                key={gallery.id}
-                className="relative  h-12 w-full"
-              >
+              <div key={gallery.id} className="relative  h-12 w-full">
                 <Image
                   src={gallery.img}
                   className="absolute"
@@ -43,16 +51,28 @@ const Design5 = ({ device, choose }) => {
         </Container>
       ) : (
         <Container clean className="py-16 ">
-          <div className="text-center space-y-4 mb-16">
-            <Title />
-            <SubTitle />
-            <button className="bg-primary p-2 text-white">Start Now</button>
+          <div className="text-center max-w-5xl space-y-4 mx-auto mb-16">
+            <EditorComp
+              initialValue={headers.title}
+              handleEdit={editGalleryTitle}
+            />
+            <EditorComp
+              initialValue={headers.subTitle}
+              handleEdit={editGallerySubTitle}
+            />
+            <Button>
+              <EditorComp
+                initialValue={headers.btn}
+                handleEdit={editGalleryBtn}
+              />
+            </Button>
           </div>
           <div className={gridClassName}>
             {galleryData.map((gallery) => (
               <div
+              style={{zIndex:-1}}
                 key={gallery.id}
-                className="relative  lg:h-60 md:h-52 h-52 w-full"
+                className="relative   lg:h-60 md:h-52 h-52 w-full"
               >
                 <Image
                   src={gallery.img}

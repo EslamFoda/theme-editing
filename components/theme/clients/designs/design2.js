@@ -4,7 +4,14 @@ import { clientsData } from "../../../../constant/";
 import cn from "clsx";
 import Image from "next/image";
 import SubTitle from "../common/subTitle";
-const Design2 = ({ device, choose }) => {
+import EditorComp from "../../../editor";
+const Design2 = ({
+  device,
+  choose,
+  editClientTitle,
+  editClientSubTitle,
+  headers,
+}) => {
   const gridClassName = cn(
     "grid gap-6 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
     {
@@ -30,30 +37,32 @@ const Design2 = ({ device, choose }) => {
             }
           >
             {clientsData.map((client) => (
-               <div
-               key={client.id}
-               className="border p-1 items-center border-gray-border flex justify-center"
-             >
-               <div className="relative h-4 w-6">
-                 <Image
-                   src={client.img}
-                   layout="fill"
-                   objectFit="contain"
-                   className="absolute"
-                 />
-               </div>
-             </div>
+              <div
+                key={client.id}
+                className="border p-1 items-center border-gray-border flex justify-center"
+              >
+                <div className="relative h-4 w-6">
+                  <Image
+                    src={client.img}
+                    layout="fill"
+                    objectFit="contain"
+                    className="absolute"
+                  />
+                </div>
+              </div>
             ))}
           </div>
         </Container>
       ) : (
         <Container className="py-16 ">
           <div className="text-center space-y-4 mb-16">
-            <Title title={"Our Clients"} />
-            <SubTitle
-              subTitle={
-                "Some of the world’s biggest brands trust us with their services"
-              }
+          <EditorComp
+              initialValue={headers.title}
+              handleEdit={editClientTitle}
+            />
+            <EditorComp
+              initialValue={headers.subTitle}
+              handleEdit={editClientSubTitle}
             />
           </div>
           <div className={gridClassName}>

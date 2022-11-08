@@ -35,6 +35,10 @@ import GalleryDesing3 from "../components/theme/gallery/designs/design3";
 import GalleryDesing4 from "../components/theme/gallery/designs/design4";
 import GalleryDesing5 from "../components/theme/gallery/designs/design5";
 import TestimonialsDesign1 from "../components/theme/testimonials/designs/design1";
+import TestimonialsDesign2 from "../components/theme/testimonials/designs/design2";
+import TestimonialsDesign3 from "../components/theme/testimonials/designs/design3";
+import TestimonialsDesign4 from "../components/theme/testimonials/designs/design4";
+import TestimonialsDesign5 from "../components/theme/testimonials/designs/design5";
 
 const useChooseDesign = (compName) => {
   const aboutDesigns = [
@@ -89,7 +93,13 @@ const useChooseDesign = (compName) => {
     GalleryDesing5,
   ];
 
-  const TestimonialsDesigns = [TestimonialsDesign1];
+  const TestimonialsDesigns = [
+    TestimonialsDesign1,
+    TestimonialsDesign2,
+    TestimonialsDesign3,
+    TestimonialsDesign4,
+    TestimonialsDesign5,
+  ];
 
   const [designs, setDesigns] = useState(heroDesigns);
 

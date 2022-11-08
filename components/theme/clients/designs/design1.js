@@ -4,7 +4,14 @@ import cn from "clsx";
 import Image from "next/image";
 import Title from "../common/title";
 import SubTitle from "../common/subTitle";
-const Design1 = ({ device, choose }) => {
+import EditorComp from "../../../editor";
+const Design1 = ({
+  device,
+  choose,
+  editClientTitle,
+  editClientSubTitle,
+  headers,
+}) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
     {
@@ -18,7 +25,7 @@ const Design1 = ({ device, choose }) => {
           <div className="text-center space-y-1  mb-5">
             <Title choose={choose} title={"Our Clients"} />
             <SubTitle
-             choose={choose}
+              choose={choose}
               subTitle={
                 "Some of the world’s biggest brands trust us with their services"
               }
@@ -47,11 +54,13 @@ const Design1 = ({ device, choose }) => {
       ) : (
         <Container className="py-16 ">
           <div className="text-center space-y-4 mb-16">
-            <Title title={"Our Clients"} />
-            <SubTitle
-              subTitle={
-                "Some of the world’s biggest brands trust us with their services"
-              }
+          <EditorComp
+              initialValue={headers.title}
+              handleEdit={editClientTitle}
+            />
+            <EditorComp
+              initialValue={headers.subTitle}
+              handleEdit={editClientSubTitle}
             />
           </div>
           <div className={gridClassName}>

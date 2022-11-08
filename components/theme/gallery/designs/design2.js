@@ -5,7 +5,16 @@ import SubTitle from "../../services/common/subTitle";
 import { galleryData } from "../../../../constant/";
 import cn from "clsx";
 import Image from "next/image";
-const Design2 = ({ device, choose }) => {
+import EditorComp from "../../../editor";
+import Button from "../../../ui/Button";
+const Design2 = ({
+  device,
+  choose,
+  editGallerySubTitle,
+  editGalleryTitle,
+  headers,
+  editGalleryBtn,
+}) => {
   const gridClassName = cn(
     "grid lg:gap-8 md:gap-6 gap-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
     {
@@ -19,7 +28,9 @@ const Design2 = ({ device, choose }) => {
           <div className="text-center">
             <Title choose={choose} />
             <SubTitle choose={choose} />
-            <button className="text-very-small bg-primary p-[2px] text-white">Start Now</button>
+            <button className="text-very-small bg-primary p-[2px] text-white">
+              Start Now
+            </button>
           </div>
           <div
             className={
@@ -44,9 +55,20 @@ const Design2 = ({ device, choose }) => {
       ) : (
         <Container className="py-16 ">
           <div className="text-center space-y-4 mb-16">
-            <Title />
-            <SubTitle />
-            <button className="bg-primary p-2 text-white">Start Now</button>
+            <EditorComp
+              initialValue={headers.title}
+              handleEdit={editGalleryTitle}
+            />
+            <EditorComp
+              initialValue={headers.subTitle}
+              handleEdit={editGallerySubTitle}
+            />
+            <Button>
+              <EditorComp
+                initialValue={headers.btn}
+                handleEdit={editGalleryBtn}
+              />
+            </Button>
           </div>
           <div className={gridClassName}>
             {galleryData.map((gallery) => (

@@ -4,7 +4,14 @@ import { clientsData } from "../../../../constant/";
 import cn from "clsx";
 import Image from "next/image";
 import SubTitle from "../common/subTitle";
-const Design4 = ({ device, choose }) => {
+import EditorComp from "../../../editor";
+const Design4 = ({
+  device,
+  choose,
+  editClientTitle,
+  editClientSubTitle,
+  headers,
+}) => {
   const gridClassName = cn(
     "grid lg:grid-cols-3 md:grid-cols-3  grid-cols-1 gap-4",
     {
@@ -50,12 +57,14 @@ const Design4 = ({ device, choose }) => {
           <div className={gridClassName}>
             <div className="self-center">
               <div className="  space-y-4 ">
-                <Title title={"Our Clients"} />
-                <SubTitle
-                  subTitle={
-                    "Some of the world’s biggest brands trust us with their services"
-                  }
-                />
+              <EditorComp
+              initialValue={headers.title}
+              handleEdit={editClientTitle}
+            />
+            <EditorComp
+              initialValue={headers.subTitle}
+              handleEdit={editClientSubTitle}
+            />
               </div>
             </div>
             <div className="col-span-2">

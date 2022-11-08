@@ -6,7 +6,12 @@ import Design2 from "./designs/design2";
 import Design3 from "./designs/design3";
 import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
-
+import { useSelector } from "react-redux";
+import {
+  editGallerySubTitle,
+  editGalleryTitle,
+  editGalleryBtn,
+} from "../../../features/gallery-section";
 const MainGallery = ({
   comps,
   index,
@@ -16,7 +21,7 @@ const MainGallery = ({
   editSections,
 }) => {
   const { compName, designNum } = comp;
-
+  const headers = useSelector((state) => state.gallery.headers);
   const designs = {
     design1: Design1,
     design2: Design2,
@@ -33,7 +38,13 @@ const MainGallery = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <ServicesComp device={device} />
+      <ServicesComp
+        device={device}
+        editGallerySubTitle={editGallerySubTitle}
+        editGalleryTitle={editGalleryTitle}
+        headers={headers}
+        editGalleryBtn={editGalleryBtn}
+      />
       <ChangeSection
         comp={comp}
         compName={compName}

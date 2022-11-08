@@ -3,9 +3,21 @@ import Title from "../common/title";
 import SubTitle from "../common/subTitle";
 import ServiceTitle from "../common/serviceTitle";
 import ServiceSubTilte from "../common/serviceSubTitle";
-import {servicesData} from '../../../../constant/'
+import { servicesData } from "../../../../constant/";
 import cn from "clsx";
-const Design1 = ({ device, choose }) => {
+import EditorComp from "../../../editor";
+import Button from "../../../ui/Button";
+const Design1 = ({
+  device,
+  choose,
+  serviceData,
+  editServiceDesc,
+  editServiceBtn,
+  editServiceTitle,
+  editServiceHeadTitle,
+  editServiceSubTitle,
+  serviceHeaders,
+}) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
     {
@@ -14,13 +26,17 @@ const Design1 = ({ device, choose }) => {
   );
   return (
     <>
-      {choose  ? (
+      {choose ? (
         <Container className="py-0 pt-2">
           <div className="text-center space-y-1  mb-2">
-            <Title choose={choose}/>
-            <SubTitle choose={choose}/>
+            <Title choose={choose} />
+            <SubTitle choose={choose} />
           </div>
-          <div className={"grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 w-full"}>
+          <div
+            className={
+              "grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 w-full"
+            }
+          >
             {servicesData.map((service) => (
               <div key={service.id} className="text-center space-y-1">
                 <div
@@ -37,19 +53,41 @@ const Design1 = ({ device, choose }) => {
       ) : (
         <Container className="py-16 ">
           <div className="text-center space-y-4 mb-16">
-            <Title />
-            <SubTitle />
+            <EditorComp
+              initialValue={serviceHeaders.title}
+              handleEdit={editServiceHeadTitle}
+            />
+            <EditorComp
+              initialValue={serviceHeaders.subTitle}
+              handleEdit={editServiceSubTitle}
+            />
           </div>
           <div className={gridClassName}>
-            {servicesData?.map((service) => (
+            {serviceData?.map((service) => (
               <div key={service.id} className="text-center space-y-5">
                 <div
-                  style={{ backgroundImage: `url(${service.imgUrl})` }}
+                  style={{ backgroundImage: `url(${service.pic})` }}
                   className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-40 w-40 rounded-full"
                 ></div>
-                <ServiceTitle title={service.title} />
-                <ServiceSubTilte subTitle={service.subTitle} />
-                <button className="text-red-600">READ MORE</button>
+                {/* <ServiceTitle title={service.title} /> */}
+                <EditorComp
+                  id={service.id}
+                  initialValue={service.title}
+                  handleMultiEdit={editServiceTitle}
+                />
+                <EditorComp
+                  id={service.id}
+                  initialValue={service.desc}
+                  handleMultiEdit={editServiceDesc}
+                />
+                <Button variant="link">
+                  <EditorComp
+                    id={service.id}
+                    initialValue={service.btn}
+                    handleMultiEdit={editServiceBtn}
+                  />
+                </Button>
+                {/* <button className="text-red-600">READ MORE</button> */}
               </div>
             ))}
           </div>
