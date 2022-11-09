@@ -1,6 +1,7 @@
 import ControlBtns from "./controlBtns";
+import EditBackground from "./editBackground";
 
-const Preview = ({ containerWidth, comps, setComps, device,editSections }) => {
+const Preview = ({ containerWidth, comps, setComps, device, editSections }) => {
   return (
     <div
       style={{
@@ -14,6 +15,7 @@ const Preview = ({ containerWidth, comps, setComps, device,editSections }) => {
       {comps.map((comp, i) => {
         return (
           <div className="relative demo-inline" key={comp.id}>
+            <EditBackground/>
             <comp.Component
               comp={comp}
               setComps={setComps}
@@ -22,7 +24,14 @@ const Preview = ({ containerWidth, comps, setComps, device,editSections }) => {
               device={device}
               editSections={editSections}
             />
-            {editSections ? <ControlBtns comps={comps} i={i} comp={comp} setComps={setComps} />:null}
+            {editSections ? (
+              <ControlBtns
+                comps={comps}
+                i={i}
+                comp={comp}
+                setComps={setComps}
+              />
+            ) : null}
           </div>
         );
       })}

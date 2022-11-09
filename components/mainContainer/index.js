@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import DragAndDrop from "./common/dragAndDrop";
 import Preview from "./common/preview";
 import Editable from "./common/editable";
-
 const MainContainer = ({ containerWidth, comps, setComps }) => {
   const editSections = useSelector((state) => state.editSections.value);
   const device = useSelector((state) => state.mainWidth.device);

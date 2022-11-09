@@ -25,35 +25,38 @@ const ControlBtns = ({ i, comp, comps, setComps }) => {
     setComps([...arr]);
   };
   return (
-    <div className="absolute space-y-5 top-1/2 left-28 transform -translate-x-1/2 -translate-y-1/2 ">
+    <div className="absolute space-y-16 top-1/2 left-5 transform -translate-x-1/2  -translate-y-1/2 ">
       {i === 0 ? null : (
-        
-        <button
-          className="btn block"
+        <div
           onClick={() => {
             const { compName } = comp;
             moveInArray(comps, i, i - 1, compName);
           }}
+          className="expand-container"
         >
-          <span class="circle">
-            <FaArrowUp className="icon" />
-          </span>{" "}
-          <span className="button-text">move up</span>
-        </button>
+          <div className="icon-container">
+            <span className="expand-icon">
+              <FaArrowUp size={20} />
+            </span>
+            <span className="text">move up</span>
+          </div>
+        </div>
       )}
       {comps.lastIndexOf(comps[comps.length - 1]) === i ? null : (
-        <button
-        className="btn block"
+        <div
           onClick={() => {
             const { compName } = comp;
             moveInArray(comps, i, i + 1, compName);
           }}
+          className="expand-container"
         >
-          <span className="circle">
-            <FaArrowDown className="icon" />
-          </span>
-          <span className="button-text">Move Down</span>
-        </button>
+          <div className="icon-container">
+            <span className="expand-icon">
+              <FaArrowDown size={20} />
+            </span>
+            <span className="text">Move Down</span>
+          </div>
+        </div>
       )}
     </div>
   );

@@ -184,3 +184,86 @@ button:hover .button-text {
 .feat5-icon > svg {
   @apply text-primary h-5 w-5;
 }
+
+.expand-container {
+  list-style: none;
+  padding: 0;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: inherit;
+}
+
+.expand-container .icon-container {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px #4442;
+  cursor: pointer;
+  width: 50px;
+  transition: 0.3s ease-in-out;
+}
+
+.expand-container .icon-container:hover {
+  border-radius: 20px;
+  width: 190px;
+  box-shadow: 0 4px 6px #4441, 0 4px 20px #4442;
+}
+
+.expand-container .icon-container .expand-icon {
+  font-size: 30px;
+  min-width: 50px;
+  max-width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px #0002, 0 0 18px #0002;
+}
+
+.expand-container .icon-container .text {
+  text-decoration: none;
+  display: block;
+  padding: 0 10px;
+  text-align: center;
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* icon style start */
+.expand-container .icon-container .iconss {
+  background: white;
+}
+
+.expand-container .icon-container .text {
+  color: black;
+}
+
+.add-section {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  background: #23cba5;
+  text-align: center;
+  line-height: 100px;
+  font-family: sans-serif;
+  overflow: hidden;
+  color: white;
+  box-shadow: 5px 10px 20px rgba(150, 150, 150, 0.3);
+  transition: all 0.3s ease-out;
+}
+.add-section:hover .add-icon {
+  rotate: 180deg;
+}
+.add-section:hover {
+  width: 140px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+}

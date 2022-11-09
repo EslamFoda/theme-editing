@@ -36,20 +36,20 @@ const Design2 = ({
           </Container>
         </div>
       ) : (
-        <div className="py-14">
+        <div className="py-40">
           <Container>
             <div className={gridClassName}>
               <div>
-              <EditorComp
-                initialValue={aboutData.title}
-                handleEdit={editAboutTitle}
-              />
+                <EditorComp
+                  initialValue={aboutData.title}
+                  handleEdit={editAboutTitle}
+                />
               </div>
               <div>
-              <EditorComp
-                initialValue={aboutData.subTitle}
-                handleEdit={editAboutSubtitle}
-              />
+                <EditorComp
+                  initialValue={aboutData.subTitle}
+                  handleEdit={editAboutSubtitle}
+                />
               </div>
             </div>
           </Container>

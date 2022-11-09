@@ -7,7 +7,7 @@ const AddSection = ({ index }) => {
   const dispatch = useDispatch();
 
   return (
-    <>
+    <div className="absolute transition-all   z-10 duration-300 -bottom-21 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
       <div
         onClick={() => {
           const nextIndex = index + 1;
@@ -15,17 +15,14 @@ const AddSection = ({ index }) => {
           dispatch(addSectionTurnOn());
           dispatch(selectCompName(""));
         }}
-        style={{ boxShadow: "0 1px 6px 1px rgba(2,18,43,.25)" }}
-        className="hidden z-10 overflow-hidden  group-hover:flex cursor-pointer hover:w-28  h-10 w-10 rounded-full  absolute transition-all duration-300 -bottom-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        class="add-section fb "
       >
-        <div className="h-full w-full test-container  group bg-[#23cba5] flex gap-2 justify-center items-center">
-          <span className="text-sm font-semibold text-white text transition-all">
-            add section
-          </span>
-          <FaPlus color="white" size={12} />
+        <div className="h-full flex justify-center items-center">
+          <FaPlus className="add-icon" style={{transition:"all .3s ease-in-out"}}/>
         </div>
+        <span> add section</span>
       </div>
-    </>
+    </div>
   );
 };
 
