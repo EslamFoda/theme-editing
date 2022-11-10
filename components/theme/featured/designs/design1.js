@@ -10,14 +10,7 @@ import {
   HiOutlineUsers,
 } from "react-icons/hi";
 import { TbAsteriskSimple } from "react-icons/tb";
-const Design1 = ({
-  choose,
-  device,
-  featuredData,
-  editFeaturedTitle,
-  editFeaturedBtn,
-  editFeaturedDesc,
-}) => {
+const Design1 = ({ choose, device, featuredData, handleMultiEdit }) => {
   const icons = (id) => {
     if (id === 1) {
       return <HiOutlineSupport />;
@@ -107,19 +100,22 @@ const Design1 = ({
                       <EditorComp
                         initialValue={card.title}
                         id={card.id}
-                        handleMultiEdit={editFeaturedTitle}
+                        handleMultiEdit={handleMultiEdit}
+                        keys="title"
                       />
                     </div>
                     <EditorComp
                       initialValue={card.desc}
                       id={card.id}
-                      handleMultiEdit={editFeaturedDesc}
+                      handleMultiEdit={handleMultiEdit}
+                      keys="desc"
                     />
                     <Button rounded={false}>
                       <EditorComp
                         initialValue={card.btn}
                         id={card.id}
-                        handleMultiEdit={editFeaturedBtn}
+                        handleMultiEdit={handleMultiEdit}
+                        keys="btn"
                       />
                     </Button>
                   </div>

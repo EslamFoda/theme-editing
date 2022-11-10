@@ -8,9 +8,7 @@ import EditorComp from "../../../editor";
 const Design2 = ({
   device,
   choose,
-  editClientTitle,
-  editClientSubTitle,
-  headers,
+  handleEdit, clientData
 }) => {
   const gridClassName = cn(
     "grid gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -57,12 +55,14 @@ const Design2 = ({
         <Container className="py-16 ">
           <div className="text-center space-y-4 mb-16">
           <EditorComp
-              initialValue={headers.title}
-              handleEdit={editClientTitle}
+              initialValue={clientData.title}
+              handleEdit={handleEdit}
+              keys='title'
             />
             <EditorComp
-              initialValue={headers.subTitle}
-              handleEdit={editClientSubTitle}
+              initialValue={clientData.subTitle}
+              handleEdit={handleEdit}
+              keys='subTitle'
             />
           </div>
           <div className={gridClassName}>

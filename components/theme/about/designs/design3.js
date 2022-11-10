@@ -2,14 +2,7 @@ import React from "react";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-const Design3 = ({
-  choose = false,
-  device,
-  editAboutBtn,
-  editAboutTitle,
-  editAboutSubtitle,
-  aboutData,
-}) => {
+const Design3 = ({ choose = false, device, handleEdit, aboutData }) => {
   const gridClassName = cn(
     "grid  lg:grid-cols-2 grid-cols-1 md:grid-cols-2 sm:grid-cols-1",
     {
@@ -69,17 +62,20 @@ const Design3 = ({
           <div className={order2ClassName}>
             <EditorComp
               initialValue={aboutData.title}
-              handleEdit={editAboutTitle}
+              handleEdit={handleEdit}
+              keys="title"
             />
 
             <EditorComp
               initialValue={aboutData.subTitle}
-              handleEdit={editAboutSubtitle}
+              handleEdit={handleEdit}
+              keys="subTitle"
             />
-            <Button variant="link" >
+            <Button variant="link">
               <EditorComp
                 initialValue={aboutData.btn}
-                handleEdit={editAboutBtn}
+                handleEdit={handleEdit}
+                keys="btn"
               />
             </Button>
           </div>

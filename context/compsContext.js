@@ -10,6 +10,14 @@ const CompsProvider = ({ children }) => {
       id: useId(),
       compName: "hero",
       designNum: 1,
+      compData: {
+        title:
+          "<p class='text-3xl mb-5'>clothes is a leading business in the clothes industry</p>",
+        subTitle:
+          "<span class='tinymce-header'>Learn about our services and join our community today </span>",
+        primaryBtn: "<span>shop now</span>",
+        secondaryBtn: "<span>Learn More</span>",
+      },
     },
   ]);
   return (

@@ -6,15 +6,12 @@ import About from "../common/about";
 import Position from "../common/position";
 import cn from "clsx";
 import EditorComp from "../../../editor";
-import {teamsData} from '../../../../constant'
+import { teamsData } from "../../../../constant";
 const Design1 = ({
   device,
   choose,
-  editTeamAbout,
-  editTeamSubTitle,
-  editTeamTitle,
-  editTeamUserName,
-  editTeamUserPosition,
+  handleMultiEdit,
+  handleEdit,
   teamData,
   headers,
 }) => {
@@ -55,11 +52,13 @@ const Design1 = ({
           <div className="text-center space-y-4 mb-16">
             <EditorComp
               initialValue={headers.title}
-              handleEdit={editTeamTitle}
+              handleEdit={handleEdit}
+              keys="title"
             />
             <EditorComp
               initialValue={headers.subTitle}
-              handleEdit={editTeamSubTitle}
+              handleEdit={handleEdit}
+              keys="subTitle"
             />
           </div>
           <div className={gridClassName}>
@@ -72,17 +71,20 @@ const Design1 = ({
                 <EditorComp
                   initialValue={team.userName}
                   id={team.id}
-                  handleMultiEdit={editTeamUserName}
+                  handleMultiEdit={handleMultiEdit}
+                  keys="userName"
                 />
                 <EditorComp
                   initialValue={team.position}
                   id={team.id}
-                  handleMultiEdit={editTeamUserPosition}
+                  handleMultiEdit={handleMultiEdit}
+                  keys="position"
                 />
                 <EditorComp
                   initialValue={team.about}
                   id={team.id}
-                  handleMultiEdit={editTeamAbout}
+                  handleMultiEdit={handleMultiEdit}
+                  keys="about"
                 />
               </div>
             ))}

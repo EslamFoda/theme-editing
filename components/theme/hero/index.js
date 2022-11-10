@@ -6,11 +6,9 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
-import { useSelector } from "react-redux";
-import { editHeroTitle, editHeroSubtitle,editPrimaryBtn,editSecondaryBtn } from "../../../features/hero";
+
 const MainHero = ({ comps, index, setComps, comp, device, editSections }) => {
-  const { compName, designNum } = comp;
-  const heroData = useSelector((state) => state.hero.heroData);
+  const { compName, designNum, compData } = comp;
   const designs = {
     design1: Design1,
     design2: Design2,
@@ -21,21 +19,20 @@ const MainHero = ({ comps, index, setComps, comp, device, editSections }) => {
 
   const HeroComp = designs[`design${designNum}`];
 
+  const handleEdit = (value, keys) => {
+    const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
+    if (objectIndex === index) {
+      comp.compData[keys] = value;
+    }
+    setComps([...comps]);
+  };
   return (
     <div
       className={`relative group  ${
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <HeroComp
-        heroData={heroData}
-        useSelector={useSelector}
-        editHeroTitle={editHeroTitle}
-        editHeroSubtitle={editHeroSubtitle}
-        device={device}
-        editPrimaryBtn={editPrimaryBtn}
-        editSecondaryBtn={editSecondaryBtn}
-      />
+      <HeroComp heroData={compData} handleEdit={handleEdit} device={device} />
       <ChangeSection
         comp={comp}
         compName={compName}

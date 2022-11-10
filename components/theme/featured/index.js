@@ -1,14 +1,8 @@
 import React from "react";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
-import { useSelector } from "react-redux";
 import dynamic from "next/dynamic";
-import {
-  editFeaturedTitle,
-  editFeaturedBtn,
-  editFeaturedDesc,
-  editFeaturedHeader,
-} from "../../../features/featured-section";
+
 
 const Design1 = dynamic(() => import("./designs/design1"));
 const Design2 = dynamic(() => import("./designs/design2"));
@@ -24,9 +18,8 @@ const MainFeatured = ({
   device,
   editSections,
 }) => {
-  const { compName, designNum } = comp;
-  const featuredData = useSelector((state) => state.featured.featuredData);
-  const featuredHeader = useSelector((state) => state.featured.header);
+  const { compName, designNum, compData } = comp;
+  
 
   const designs = {
     design1: Design1,
@@ -36,6 +29,22 @@ const MainFeatured = ({
     design5: Design5,
   };
   const FeaturedComp = designs[`design${designNum}`];
+
+  const handleMultiEdit = (value, id, keys) => {
+    const update = compData.items.map((item) =>
+      item.id === id ? { ...item, [keys]: value } : item
+    );
+    comp.compData.items = update;
+    setComps([...comps]);
+  };
+  const handleEdit = (value, keys) => {
+    const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
+    if (objectIndex === index) {
+      comp.compData[keys] = value;
+    }
+    setComps([...comps]);
+  };
+
   return (
     <div
       className={`relative group  ${
@@ -43,12 +52,10 @@ const MainFeatured = ({
       }  w-full `}
     >
       <FeaturedComp
-        editFeaturedTitle={editFeaturedTitle}
-        editFeaturedBtn={editFeaturedBtn}
-        editFeaturedDesc={editFeaturedDesc}
-        editFeaturedHeader={editFeaturedHeader}
-        featuredHeader={featuredHeader}
-        featuredData={featuredData}
+        handleMultiEdit={handleMultiEdit}
+        handleEdit={handleEdit}
+        featuredHeader={compData.header}
+        featuredData={compData.items}
         device={device}
       />
       <ChangeSection

@@ -5,6 +5,7 @@ import parse from "html-react-parser";
 import { useDispatch } from "react-redux";
 const EditorComp = ({
   initialValue,
+  keys,
   handleEdit,
   handleMultiEdit = false,
   id = undefined,
@@ -24,8 +25,8 @@ const EditorComp = ({
           apiKey="wofsz7vjfejaxoulvwsud2qp5pe1lqlyslyr4w7kqv5391u0"
           onBlur={() => {
             handleEdit
-              ? dispatch(handleEdit(value))
-              : dispatch(handleMultiEdit({ value: value, id: id }));
+              ? handleEdit(value, keys)
+              : handleMultiEdit(value, id, keys);
           }}
           onEditorChange={(newValue, editor) => {
             setValue(newValue);

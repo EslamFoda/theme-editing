@@ -4,9 +4,7 @@ import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 const Design1 = ({
   choose = false,
-  editAboutBtn,
-  editAboutTitle,
-  editAboutSubtitle,
+  handleEdit,
   aboutData,
 }) => {
   return (
@@ -43,16 +41,19 @@ const Design1 = ({
             <div className="flex  flex-col space-y-8 lg:w-[450px] md:w-[400px] w-[450px]">
               <EditorComp
                 initialValue={aboutData.title}
-                handleEdit={editAboutTitle}
+                handleEdit={handleEdit}
+                keys="title"
               />
               <EditorComp
                 initialValue={aboutData.subTitle}
-                handleEdit={editAboutSubtitle}
+                handleEdit={handleEdit}
+                keys="subTitle"
               />
               <Button variant="link" className="self-start">
                 <EditorComp
                   initialValue={aboutData.btn}
-                  handleEdit={editAboutBtn}
+                  handleEdit={handleEdit}
+                  keys="btn"
                 />
               </Button>
             </div>

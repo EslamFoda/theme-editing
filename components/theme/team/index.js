@@ -6,18 +6,10 @@ import Design2 from "./design/design2";
 import Design3 from "./design/design3";
 import Design4 from "./design/design4";
 import Design5 from "./design/design5";
-import { useSelector } from "react-redux";
-import {
-  editTeamAbout,
-  editTeamSubTitle,
-  editTeamTitle,
-  editTeamUserName,
-  editTeamUserPosition,
-} from "../../../features/team-section";
+
 const MainTeam = ({ comps, index, setComps, comp, device, editSections }) => {
-  const { compName, designNum } = comp;
-  const teamData = useSelector((state) => state.team.teamData);
-  const headers = useSelector((state) => state.team.headers);
+  const { compName, designNum, compData } = comp;
+
   const designs = {
     design1: Design1,
     design2: Design2,
@@ -28,6 +20,21 @@ const MainTeam = ({ comps, index, setComps, comp, device, editSections }) => {
 
   const ServicesComp = designs[`design${designNum}`];
 
+  const handleMultiEdit = (value, id, keys) => {
+    const update = compData.items.map((item) =>
+      item.id === id ? { ...item, [keys]: value } : item
+    );
+    comp.compData.items = update;
+    setComps([...comps]);
+  };
+  const handleEdit = (value, keys) => {
+    const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
+    if (objectIndex === index) {
+      comp.compData.headers[keys] = value;
+    }
+    setComps([...comps]);
+  };
+
   return (
     <div
       className={`relative group  ${
@@ -36,13 +43,10 @@ const MainTeam = ({ comps, index, setComps, comp, device, editSections }) => {
     >
       <ServicesComp
         device={device}
-        teamData={teamData}
-        headers={headers}
-        editTeamAbout={editTeamAbout}
-        editTeamSubTitle={editTeamSubTitle}
-        editTeamTitle={editTeamTitle}
-        editTeamUserName={editTeamUserName}
-        editTeamUserPosition={editTeamUserPosition}
+        teamData={compData.items}
+        headers={compData.headers}
+        handleMultiEdit={handleMultiEdit}
+        handleEdit={handleEdit}
       />
       <ChangeSection
         comp={comp}

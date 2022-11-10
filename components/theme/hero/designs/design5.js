@@ -2,15 +2,7 @@ import Container from "../../../ui/Container/container";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-const Design5 = ({
-  device,
-  choose,
-  editHeroTitle,
-  editHeroSubtitle,
-  heroData,
-  editPrimaryBtn,
-  editSecondaryBtn,
-}) => {
+const Design5 = ({ device, choose, heroData, handleEdit }) => {
   const imageClassName = cn("lg:h-[450px] md:h-[400px] h-80  w-full  ", {
     "!h-80": device === "mobile",
   });
@@ -84,26 +76,30 @@ const Design5 = ({
               <div>
                 <div className={headerClassName}>
                   <EditorComp
-                    handleEdit={editHeroTitle}
+                    handleEdit={handleEdit}
                     initialValue={heroData.title}
+                    keys="title"
                   />
                 </div>
                 <EditorComp
-                  handleEdit={editHeroSubtitle}
+                  handleEdit={handleEdit}
                   initialValue={heroData.subTitle}
+                  keys="subTitle"
                 />
               </div>
               <div className={btnFlexClassName}>
                 <Button full>
                   <EditorComp
-                    handleEdit={editPrimaryBtn}
+                    handleEdit={handleEdit}
                     initialValue={heroData.primaryBtn}
+                    keys="primaryBtn"
                   />
                 </Button>
                 <Button full variant="outline">
                   <EditorComp
-                    handleEdit={editSecondaryBtn}
+                    handleEdit={handleEdit}
                     initialValue={heroData.secondaryBtn}
+                    keys="secondaryBtn"
                   />
                 </Button>
               </div>

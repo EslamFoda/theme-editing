@@ -10,9 +10,7 @@ import EditorComp from "../../../editor";
 const Design3 = ({
   device,
   choose,
-  editTeamAbout,
-  editTeamUserName,
-  editTeamUserPosition,
+  handleMultiEdit,
   teamData,
 }) => {
   const gridClassName = cn(
@@ -55,17 +53,20 @@ const Design3 = ({
                  <EditorComp
                   initialValue={team.userName}
                   id={team.id}
-                  handleMultiEdit={editTeamUserName}
+                  handleMultiEdit={handleMultiEdit}
+                  keys='userName'
                 />
                 <EditorComp
                   initialValue={team.position}
                   id={team.id}
-                  handleMultiEdit={editTeamUserPosition}
+                  handleMultiEdit={handleMultiEdit}
+                  keys='position'
                 />
                 <EditorComp
                   initialValue={team.about}
                   id={team.id}
-                  handleMultiEdit={editTeamAbout}
+                  handleMultiEdit={handleMultiEdit}
+                  keys='about'
                 />
               </div>
             ))}

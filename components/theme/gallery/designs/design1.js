@@ -2,16 +2,15 @@ import Container from "../../../ui/Container/container";
 import Title from "../../services/common/title";
 import SubTitle from "../../services/common/subTitle";
 
-import { galleryData } from "../../../../constant/";
+import { galleryDatas } from "../../../../constant/";
 import cn from "clsx";
 import Image from "next/image";
 import EditorComp from "../../../editor";
 const Design1 = ({
   device,
   choose,
-  editGallerySubTitle,
-  editGalleryTitle,
-  headers,
+  handleEdit,
+  galleryData
 }) => {
   const gridClassName = cn(
     "grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -32,7 +31,7 @@ const Design1 = ({
               "grid gap-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1"
             }
           >
-            {galleryData.map((gallery) => (
+            {galleryDatas.map((gallery) => (
               <div
                 key={gallery.id}
                 className="relative hover:shadow-custom transition-all h-10 w-full"
@@ -51,16 +50,18 @@ const Design1 = ({
         <Container className="py-16 ">
           <div className="text-center space-y-4 mb-16">
             <EditorComp
-              initialValue={headers.title}
-              handleEdit={editGalleryTitle}
+              initialValue={galleryData.title}
+              handleEdit={handleEdit}
+              keys="title"
             />
             <EditorComp
-              initialValue={headers.subTitle}
-              handleEdit={editGallerySubTitle}
+              initialValue={galleryData.subTitle}
+              handleEdit={handleEdit}
+              keys="subTitle"
             />
           </div>
           <div className={gridClassName}>
-            {galleryData.map((gallery) => (
+            {galleryDatas.map((gallery) => (
               <div
                 key={gallery.id}
                 className="relative hover:shadow-custom transition-all h-80 w-full"

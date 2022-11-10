@@ -9,13 +9,7 @@ import {
 import { TbAsteriskSimple } from "react-icons/tb";
 import cn from "clsx";
 import EditorComp from "../../../editor";
-const Design3 = ({
-  choose = false,
-  device,
-  featuredData,
-  editFeaturedTitle,
-  editFeaturedDesc,
-}) => {
+const Design3 = ({ choose = false, device, featuredData, handleMultiEdit }) => {
   const icons = (id) => {
     if (id === 1) {
       return <HiOutlineSupport />;
@@ -117,14 +111,16 @@ const Design3 = ({
                         <EditorComp
                           initialValue={card.title}
                           id={card.id}
-                          handleMultiEdit={editFeaturedTitle}
+                          handleMultiEdit={handleMultiEdit}
+                          keys="title"
                         />
                       </div>
                     </div>
                     <EditorComp
                       initialValue={card.desc}
                       id={card.id}
-                      handleMultiEdit={editFeaturedDesc}
+                      handleMultiEdit={handleMultiEdit}
+                      keys="desc"
                     />
                   </div>
                 );

@@ -12,11 +12,8 @@ const Design4 = ({
   device,
   choose,
   serviceData,
-  editServiceDesc,
-  editServiceTitle,
-  editServiceBtn,
-  editServiceHeadTitle,
-  editServiceSubTitle,
+  handleEdit,
+  handleMultiEdit,
   serviceHeaders,
 }) => {
   const gridClassName = cn(
@@ -72,11 +69,13 @@ const Design4 = ({
           <div className="text-center space-y-4 mb-16">
             <EditorComp
               initialValue={serviceHeaders.title}
-              handleEdit={editServiceHeadTitle}
+              handleEdit={handleEdit}
+              keys="title"
             />
             <EditorComp
               initialValue={serviceHeaders.subTitle}
-              handleEdit={editServiceSubTitle}
+              handleEdit={handleEdit}
+              keys="subTitle"
             />
           </div>
           <div className={gridClassName}>
@@ -102,18 +101,21 @@ const Design4 = ({
                   <EditorComp
                     initialValue={service.title}
                     id={service.id}
-                    handleMultiEdit={editServiceTitle}
+                    handleMultiEdit={handleMultiEdit}
+                    keys="title"
                   />
                   <EditorComp
                     initialValue={service.desc}
                     id={service.id}
-                    handleMultiEdit={editServiceDesc}
+                    handleMultiEdit={handleMultiEdit}
+                    keys="desc"
                   />
                   <Button variant="link">
                     <EditorComp
                       id={service.id}
                       initialValue={service.btn}
-                      handleMultiEdit={editServiceBtn}
+                      handleMultiEdit={handleMultiEdit}
+                      keys="btn"
                     />
                   </Button>
                 </div>

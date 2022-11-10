@@ -5,9 +5,7 @@ import EditorComp from "../../../editor";
 const Design2 = ({
   choose = false,
   device,
-  editAboutBtn,
-  editAboutTitle,
-  editAboutSubtitle,
+  handleEdit,
   aboutData,
 }) => {
   const gridClassName = cn(
@@ -42,13 +40,15 @@ const Design2 = ({
               <div>
                 <EditorComp
                   initialValue={aboutData.title}
-                  handleEdit={editAboutTitle}
+                  handleEdit={handleEdit}
+                  keys="title"
                 />
               </div>
               <div>
                 <EditorComp
                   initialValue={aboutData.subTitle}
-                  handleEdit={editAboutSubtitle}
+                  handleEdit={handleEdit}
+                  keys="subTitle"
                 />
               </div>
             </div>

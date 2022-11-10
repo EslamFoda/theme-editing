@@ -5,13 +5,7 @@ import cn from "clsx";
 import Image from "next/image";
 import SubTitle from "../common/subTitle";
 import EditorComp from "../../../editor";
-const Design5 = ({
-  device,
-  choose,
-  editClientTitle,
-  editClientSubTitle,
-  headers,
-}) => {
+const Design5 = ({ device, choose, handleEdit, clientData }) => {
   const gridClassName = cn("grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1", {
     "!grid-cols-1": device === "mobile",
   });
@@ -53,12 +47,14 @@ const Design5 = ({
             <div className="p-5   bg-purple-700  h-full">
               <div className="h-full flex justify-center  flex-col space-y-4 ">
                 <EditorComp
-                  initialValue={headers.title}
-                  handleEdit={editClientTitle}
+                  initialValue={clientData.title}
+                  handleEdit={handleEdit}
+                  keys="title"
                 />
                 <EditorComp
-                  initialValue={headers.subTitle}
-                  handleEdit={editClientSubTitle}
+                  initialValue={clientData.subTitle}
+                  handleEdit={handleEdit}
+                  keys="subTitle"
                 />
               </div>
             </div>

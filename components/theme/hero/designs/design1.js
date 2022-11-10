@@ -3,15 +3,7 @@ import Container from "../../../ui/Container/container";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-const Design1 = ({
-  device,
-  choose = false,
-  editHeroTitle,
-  editHeroSubtitle,
-  heroData,
-  editPrimaryBtn,
-  editSecondaryBtn,
-}) => {
+const Design1 = ({ device, choose = false, heroData, handleEdit }) => {
   const rootClassName = cn("", {
     "bg-black": device === "mobile",
     "bg-blue-500": device === "tablet",
@@ -58,25 +50,29 @@ const Design1 = ({
             <div className="flex   mx-auto  lg:justify-between md:justify-center  justify-center items-center py-16 gap-3 flex-wrap ">
               <div className="flex  flex-col lg:w-[450px] md:w-[400px] w-[450px]">
                 <EditorComp
-                  handleEdit={editHeroTitle}
+                  handleEdit={handleEdit}
                   initialValue={heroData.title}
+                  keys="title"
                 />
                 <EditorComp
-                  handleEdit={editHeroSubtitle}
+                  handleEdit={handleEdit}
                   initialValue={heroData.subTitle}
+                  keys="subTitle"
                 />
                 {/* <span className="mt-5">{heroData.subTitle}</span> */}
                 <div className="flex items-center w-full justify-between gap-4 mt-4">
                   <Button className="flex-1">
                     <EditorComp
-                      handleEdit={editPrimaryBtn}
+                      handleEdit={handleEdit}
                       initialValue={heroData.primaryBtn}
+                      keys="primaryBtn"
                     />
                   </Button>
                   <Button variant="outline" className="flex-1">
                     <EditorComp
-                      handleEdit={editSecondaryBtn}
+                      handleEdit={handleEdit}
                       initialValue={heroData.secondaryBtn}
+                      keys="secondaryBtn"
                     />
                   </Button>
                   {/* <button className="flex-1 border border-solid border-red-500 p-3">

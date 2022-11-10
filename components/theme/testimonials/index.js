@@ -6,14 +6,7 @@ import Design2 from "./designs/design2";
 import Design3 from "./designs/design3";
 import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
-import { useSelector } from "react-redux";
-import {
-  editTestiUserName,
-  editTestiPosition,
-  editTestiReview,
-  editTestiTitle,
-  editTestiSubTitle,
-} from "../../../features/testi";
+
 const MainTestimonials = ({
   comps,
   index,
@@ -22,9 +15,8 @@ const MainTestimonials = ({
   device,
   editSections,
 }) => {
-  const { compName, designNum } = comp;
-  const testiData = useSelector((state) => state.testi.testiData);
-  const headers = useSelector((state) => state.testi.headers);
+  const { compName, designNum, compData } = comp;
+ 
 
   const designs = {
     design1: Design1,
@@ -36,6 +28,21 @@ const MainTestimonials = ({
 
   const TestiComp = designs[`design${designNum}`];
 
+  const handleMultiEdit = (value, id, keys) => {
+    const update = compData.items.map((item) =>
+      item.id === id ? { ...item, [keys]: value } : item
+    );
+    comp.compData.items = update;
+    setComps([...comps]);
+  };
+  const handleEdit = (value, keys) => {
+    const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
+    if (objectIndex === index) {
+      comp.compData.headers[keys] = value;
+    }
+    setComps([...comps]);
+  };
+
   return (
     <div
       className={`relative group  ${
@@ -44,13 +51,10 @@ const MainTestimonials = ({
     >
       <TestiComp
         device={device}
-        testiData={testiData}
-        editTestiReview={editTestiReview}
-        editTestiPosition={editTestiPosition}
-        editTestiUserName={editTestiUserName}
-        headers={headers}
-        editTestiTitle={editTestiTitle}
-        editTestiSubTitle={editTestiSubTitle}
+        testiData={compData.items}
+        handleMultiEdit={handleMultiEdit}
+        headers={compData.headers}
+        handleEdit={handleEdit}
       />
       <ChangeSection
         comp={comp}

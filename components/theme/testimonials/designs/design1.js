@@ -8,11 +8,8 @@ const Design1 = ({
   device,
   choose,
   testiData,
-  editTestiUserName,
-  editTestiPosition,
-  editTestiReview,
-  editTestiTitle,
-  editTestiSubTitle,
+  handleMultiEdit,
+  handleEdit,
   headers,
 }) => {
   const gridClassName = cn(
@@ -28,11 +25,13 @@ const Design1 = ({
           {/* <Title title={"What Our Clients Say"} /> */}
           <EditorComp
             initialValue={headers?.title}
-            handleEdit={editTestiTitle}
+            handleEdit={handleEdit}
+            keys='title'
           />
           <EditorComp
             initialValue={headers?.subTitle}
-            handleEdit={editTestiSubTitle}
+            handleEdit={handleEdit}
+            keys='subTitle'
           />
         </div>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-x-10 gap-y-14">
@@ -45,21 +44,23 @@ const Design1 = ({
                 style={{ backgroundImage: `url(${client.pic})` }}
                 className="w-20 h-20 bg-no-reapeat bg-cover bg-center bg-white shadow-md absolute -top-10 rounded-full left-8 border-4 border-[#dfe0e1]"
               ></div>
-              {/* <h3 className="text-2xl font-semibold">{client.userName}</h3> */}
               <EditorComp
                 id={client.id}
-                handleMultiEdit={editTestiUserName}
+                handleMultiEdit={handleMultiEdit}
                 initialValue={client.userName}
+                keys='userName'
               />
               <EditorComp
                 id={client.id}
-                handleMultiEdit={editTestiPosition}
+                handleMultiEdit={handleMultiEdit}
                 initialValue={client.position}
+                keys='position'
               />
               <EditorComp
                 id={client.id}
-                handleMultiEdit={editTestiReview}
+                handleMultiEdit={handleMultiEdit}
                 initialValue={client.review}
+                keys='review'
               />
             </div>
           ))}

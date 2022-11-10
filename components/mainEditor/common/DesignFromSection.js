@@ -1,5 +1,6 @@
 import { selectSectionOff } from "../../../features/add-section";
 import Designs from "./designs";
+import useCompData from "../../../hooks/useCompData";
 const DesignFromSection = ({
   designs,
   setComps,
@@ -10,6 +11,7 @@ const DesignFromSection = ({
   nextIndex,
   comps,
 }) => {
+  const { compData } = useCompData();
   const handleCreateSection = (i) => {
     dispatch(selectSectionOff());
     const findSection = sectionsImgs.find(
@@ -20,6 +22,7 @@ const DesignFromSection = ({
       id: Math.floor(Math.random() * Date.now()).toString(),
       compName: compName,
       designNum: i + 1,
+      compData: compData(),
     });
     setComps([...comps]);
   };

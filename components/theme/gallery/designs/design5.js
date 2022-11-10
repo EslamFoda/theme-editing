@@ -2,7 +2,7 @@ import Container from "../../../ui/Container/container";
 import Title from "../../services/common/title";
 import SubTitle from "../../services/common/subTitle";
 
-import { galleryData } from "../../../../constant/";
+import { galleryDatas } from "../../../../constant/";
 import cn from "clsx";
 import Image from "next/image";
 import EditorComp from "../../../editor";
@@ -10,10 +10,7 @@ import Button from "../../../ui/Button";
 const Design5 = ({
   device,
   choose,
-  editGallerySubTitle,
-  editGalleryTitle,
-  headers,
-  editGalleryBtn,
+  handleEdit, galleryData
 }) => {
   const gridClassName = cn(
     "grid   lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
@@ -37,7 +34,7 @@ const Design5 = ({
               "grid  lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2"
             }
           >
-            {galleryData.map((gallery) => (
+            {galleryDatas.map((gallery) => (
               <div key={gallery.id} className="relative  h-12 w-full">
                 <Image
                   src={gallery.img}
@@ -53,22 +50,25 @@ const Design5 = ({
         <Container clean className="py-16 ">
           <div className="text-center max-w-5xl space-y-4 mx-auto mb-16">
             <EditorComp
-              initialValue={headers.title}
-              handleEdit={editGalleryTitle}
+              initialValue={galleryData.title}
+              handleEdit={handleEdit}
+              keys='title'
             />
             <EditorComp
-              initialValue={headers.subTitle}
-              handleEdit={editGallerySubTitle}
+              initialValue={galleryData.subTitle}
+              handleEdit={handleEdit}
+              keys="subTitle"
             />
             <Button>
               <EditorComp
-                initialValue={headers.btn}
-                handleEdit={editGalleryBtn}
+                initialValue={galleryData.btn}
+                handleEdit={handleEdit}
+                keys='btn'
               />
             </Button>
           </div>
           <div className={gridClassName}>
-            {galleryData.map((gallery) => (
+            {galleryDatas.map((gallery) => (
               <div
               style={{zIndex:-1}}
                 key={gallery.id}

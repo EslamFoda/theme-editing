@@ -2,13 +2,7 @@ import React from "react";
 import EditorComp from "../../../editor";
 import Container from "../../../ui/Container/Container";
 import Button from "../../../ui/Button";
-const Design2 = ({
-  choose = false,
-  editHeroTitle,
-  editHeroSubtitle,
-  heroData,
-  editPrimaryBtn,
-}) => {
+const Design2 = ({ choose = false, heroData, handleEdit }) => {
   return (
     <>
       {choose ? (
@@ -52,18 +46,21 @@ const Design2 = ({
           <Container>
             <div className="max-w-sm bg-white space-y-10 p-8">
               <EditorComp
-                handleEdit={editHeroTitle}
+                handleEdit={handleEdit}
                 initialValue={heroData.title}
+                keys="title"
               />
               <EditorComp
-                handleEdit={editHeroSubtitle}
+                handleEdit={handleEdit}
                 initialValue={heroData.subTitle}
+                keys="subTitle"
               />
               <Button full>
-              <EditorComp
-                handleEdit={editPrimaryBtn}
-                initialValue={heroData.primaryBtn}
-              />
+                <EditorComp
+                  handleEdit={handleEdit}
+                  initialValue={heroData.primaryBtn}
+                  keys="primaryBtn"
+                />
               </Button>
             </div>
           </Container>

@@ -9,11 +9,8 @@ const Design5 = ({
   device,
   choose,
   testiData,
-  editTestiUserName,
-  editTestiPosition,
-  editTestiReview,
-  editTestiTitle,
-  editTestiSubTitle,
+  handleMultiEdit,
+  handleEdit,
   headers,
 }) => {
   const gridClassName = cn(
@@ -28,11 +25,13 @@ const Design5 = ({
         <div className="text-center space-y-4 mb-16">
           <EditorComp
             initialValue={headers?.title}
-            handleEdit={editTestiTitle}
+            handleEdit={handleEdit}
+            keys='title'
           />
           <EditorComp
             initialValue={headers?.subTitle}
-            handleEdit={editTestiSubTitle}
+            handleEdit={handleEdit}
+            keys='subTitle'
           />
         </div>
         <div className="grid lg:grid-cols-3  md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-x-10 gap-y-14">
@@ -45,18 +44,21 @@ const Design5 = ({
               <EditorComp
                 id={client.id}
                 initialValue={client.review}
-                handleMultiEdit={editTestiReview}
+                handleMultiEdit={handleMultiEdit}
+                keys='review'
               />
               <EditorComp
                 id={client.id}
                 initialValue={client.userName}
-                handleMultiEdit={editTestiUserName}
+                handleMultiEdit={handleMultiEdit}
+                keys='userName'
               />
 
               <EditorComp
                 id={client.id}
                 initialValue={client.position}
-                handleMultiEdit={editTestiPosition}
+                handleMultiEdit={handleMultiEdit}
+                keys='position'
               />
             </div>
           ))}

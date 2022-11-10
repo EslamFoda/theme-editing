@@ -9,13 +9,7 @@ import {
 import { TbAsteriskSimple } from "react-icons/tb";
 import cn from "clsx";
 import EditorComp from "../../../editor";
-const Design4 = ({
-  choose = false,
-  device,
-  featuredData,
-  editFeaturedTitle,
-  editFeaturedDesc,
-}) => {
+const Design4 = ({ choose = false, device, featuredData, handleMultiEdit }) => {
   const icons = (id) => {
     if (id === 1) {
       return <HiOutlineSupport />;
@@ -105,7 +99,10 @@ const Design4 = ({
             <div className={gridClassName}>
               {featuredData.map((card) => {
                 return (
-                  <div  key={card.id} className="p-4 flex  flex-col space-y-5 items-start  ">
+                  <div
+                    key={card.id}
+                    className="p-4 flex  flex-col space-y-5 items-start  "
+                  >
                     <div className="flex flex-col gap-5">
                       <div className="w-12 h-12 bg-red-200 rounded-full flex justify-center items-center">
                         <div className="feat4-icon">{icons(card.id)}</div>
@@ -114,14 +111,16 @@ const Design4 = ({
                         <EditorComp
                           initialValue={card.title}
                           id={card.id}
-                          handleMultiEdit={editFeaturedTitle}
+                          handleMultiEdit={handleMultiEdit}
+                          keys="title"
                         />
                       </div>
                     </div>
                     <EditorComp
                       initialValue={card.desc}
                       id={card.id}
-                      handleMultiEdit={editFeaturedDesc}
+                      handleMultiEdit={handleMultiEdit}
+                      keys="desc"
                     />
                   </div>
                 );

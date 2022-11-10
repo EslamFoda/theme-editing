@@ -8,9 +8,7 @@ import EditorComp from "../../../editor";
 const Design4 = ({
   device,
   choose,
-  editClientTitle,
-  editClientSubTitle,
-  headers,
+  handleEdit, clientData
 }) => {
   const gridClassName = cn(
     "grid lg:grid-cols-3 md:grid-cols-3  grid-cols-1 gap-4",
@@ -58,12 +56,14 @@ const Design4 = ({
             <div className="self-center">
               <div className="  space-y-4 ">
               <EditorComp
-              initialValue={headers.title}
-              handleEdit={editClientTitle}
+              initialValue={clientData.title}
+              handleEdit={handleEdit}
+              keys='title'
             />
             <EditorComp
-              initialValue={headers.subTitle}
-              handleEdit={editClientSubTitle}
+              initialValue={clientData.subTitle}
+              handleEdit={handleEdit}
+              keys='subtitle'
             />
               </div>
             </div>

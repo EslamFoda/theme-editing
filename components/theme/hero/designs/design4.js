@@ -2,15 +2,7 @@ import Container from "../../../ui/Container/container";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-const Design4 = ({
-  device,
-  choose,
-  editHeroTitle,
-  editHeroSubtitle,
-  heroData,
-  editPrimaryBtn,
-  editSecondaryBtn,
-}) => {
+const Design4 = ({ device, choose, heroData, handleEdit }) => {
   const imageClassName = cn("lg:h-[550px] md:h-[500px] h-80  w-full  ", {
     "!h-80": device === "mobile",
   });
@@ -67,25 +59,29 @@ const Design4 = ({
             <div className="space-y-8">
               <div className={headerClassName}>
                 <EditorComp
-                  handleEdit={editHeroTitle}
+                  handleEdit={handleEdit}
                   initialValue={heroData.title}
+                  keys="title"
                 />
               </div>
               <EditorComp
-                handleEdit={editHeroSubtitle}
+                handleEdit={handleEdit}
                 initialValue={heroData.subTitle}
+                keys="subTitle"
               />
               <div className="flex items-center w-full justify-center gap-4 mt-4">
                 <Button>
                   <EditorComp
-                    handleEdit={editPrimaryBtn}
+                    handleEdit={handleEdit}
                     initialValue={heroData.primaryBtn}
+                    keys="primaryBtn"
                   />
                 </Button>
                 <Button variant="outline">
                   <EditorComp
-                    handleEdit={editSecondaryBtn}
+                    handleEdit={handleEdit}
                     initialValue={heroData.secondaryBtn}
+                    keys="secondaryBtn"
                   />
                 </Button>
               </div>

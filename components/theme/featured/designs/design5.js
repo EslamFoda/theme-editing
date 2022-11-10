@@ -12,9 +12,8 @@ const Design5 = ({
   choose = false,
   device,
   featuredData,
-  editFeaturedTitle,
-  editFeaturedDesc,
-  editFeaturedHeader,
+  handleMultiEdit,
+  handleEdit,
   featuredHeader,
 }) => {
   const icons = (id) => {
@@ -110,7 +109,8 @@ const Design5 = ({
           <Container className="py-10">
             <EditorComp
               initialValue={featuredHeader}
-              handleEdit={editFeaturedHeader}
+              handleEdit={handleEdit}
+              keys="header"
             />
             <div className={gridClassName}>
               {featuredData.map((card) => {
@@ -130,13 +130,15 @@ const Design5 = ({
                           <EditorComp
                             initialValue={card.title}
                             id={card.id}
-                            handleMultiEdit={editFeaturedTitle}
+                            handleMultiEdit={handleMultiEdit}
+                            keys="title"
                           />
                         </div>
                         <EditorComp
                           initialValue={card.desc}
                           id={card.id}
-                          handleMultiEdit={editFeaturedDesc}
+                          handleMultiEdit={handleMultiEdit}
+                          keys="desc"
                         />
                       </div>
                     </div>

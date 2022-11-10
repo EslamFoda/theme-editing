@@ -11,7 +11,7 @@ import { sectionsImgs } from "../../constant";
 import { useContext } from "react";
 import { CompsContext } from "../../context/compsContext";
 import ActionBarDesc from "./common/actionBarDesc";
-import EditorComp from "../editor";
+
 const MainEditor = () => {
   const { comps, setComps } = useContext(CompsContext);
 

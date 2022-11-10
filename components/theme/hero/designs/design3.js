@@ -2,14 +2,7 @@ import React from "react";
 import EditorComp from "../../../editor";
 import Container from "../../../ui/Container/container";
 import Button from "../../../ui/Button";
-const Design3 = ({
-  choose = false,
-  editHeroTitle,
-  editHeroSubtitle,
-  heroData,
-  editPrimaryBtn,
-  editSecondaryBtn,
-}) => {
+const Design3 = ({ choose = false, heroData, handleEdit }) => {
   return (
     <>
       {choose ? (
@@ -33,25 +26,28 @@ const Design3 = ({
         <div className="bg-red-600 ">
           <Container className="flex h-[80vh] space-y-10 flex-col justify-center text-center items-center">
             <EditorComp
-              handleEdit={editHeroTitle}
+              handleEdit={handleEdit}
               initialValue={heroData.title}
+              keys="title"
             />
             <EditorComp
-              handleEdit={editHeroSubtitle}
+              handleEdit={handleEdit}
               initialValue={heroData.subTitle}
+              keys="subTitle"
             />
             <div className="flex items-center gap-6">
-             
-              <Button >
+              <Button>
                 <EditorComp
-                  handleEdit={editPrimaryBtn}
+                  handleEdit={handleEdit}
                   initialValue={heroData.primaryBtn}
+                  keys="primaryBtn"
                 />
               </Button>
-              <Button variant="outline" >
+              <Button variant="outline">
                 <EditorComp
-                  handleEdit={editSecondaryBtn}
+                  handleEdit={handleEdit}
                   initialValue={heroData.secondaryBtn}
+                  keys="secondaryBtn"
                 />
               </Button>
             </div>

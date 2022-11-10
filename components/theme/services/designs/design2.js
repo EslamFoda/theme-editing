@@ -12,11 +12,8 @@ const Design2 = ({
   device,
   choose,
   serviceData,
-  editServiceDesc,
-  editServiceBtn,
-  editServiceTitle,
-  editServiceHeadTitle,
-  editServiceSubTitle,
+  handleEdit,
+  handleMultiEdit,
   serviceHeaders,
 }) => {
   const gridClassName = cn(
@@ -60,14 +57,15 @@ const Design2 = ({
       ) : (
         <Container className="py-16 ">
           <div className={headersClassName}>
-           
             <EditorComp
               initialValue={serviceHeaders.title}
-              handleEdit={editServiceHeadTitle}
+              handleEdit={handleEdit}
+              keys="title"
             />
             <EditorComp
               initialValue={serviceHeaders.subTitle}
-              handleEdit={editServiceSubTitle}
+              handleEdit={handleEdit}
+              keys="subTitle"
             />
           </div>
           <div className={gridClassName}>
@@ -80,18 +78,21 @@ const Design2 = ({
                 <EditorComp
                   id={service.id}
                   initialValue={service.title}
-                  handleMultiEdit={editServiceTitle}
+                  handleMultiEdit={handleMultiEdit}
+                  keys="title"
                 />
                 <EditorComp
                   id={service.id}
                   initialValue={service.desc}
-                  handleMultiEdit={editServiceDesc}
+                  handleMultiEdit={handleMultiEdit}
+                  keys="desc"
                 />
                 <Button variant="link">
                   <EditorComp
                     id={service.id}
                     initialValue={service.btn}
-                    handleMultiEdit={editServiceBtn}
+                    handleMultiEdit={handleMultiEdit}
+                    keys="btn"
                   />
                 </Button>
               </div>

@@ -6,11 +6,7 @@ import Design2 from "./designs/design2";
 import Design3 from "./designs/design3";
 import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
-import { useSelector } from "react-redux";
-import {
-  editClientTitle,
-  editClientSubTitle,
-} from "../../../features/clients-section";
+
 const MainClients = ({
   comps,
   index,
@@ -19,7 +15,7 @@ const MainClients = ({
   device,
   editSections,
 }) => {
-  const { compName, designNum } = comp;
+  const { compName, designNum,compData } = comp;
 
   const designs = {
     design1: Design1,
@@ -30,8 +26,13 @@ const MainClients = ({
   };
 
   const ClientsComp = designs[`design${designNum}`];
-  const headers = useSelector((state) => state.clients.headers);
-
+  const handleEdit = (value, keys) => {
+    const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
+    if (objectIndex === index) {
+      comp.compData[keys] = value;
+    }
+    setComps([...comps]);
+  };
   return (
     <div
       className={`relative group  ${
@@ -40,9 +41,8 @@ const MainClients = ({
     >
       <ClientsComp
         device={device}
-        editClientTitle={editClientTitle}
-        editClientSubTitle={editClientSubTitle}
-        headers={headers}
+        handleEdit={handleEdit}
+        clientData={compData}
       />
       <ChangeSection
         comp={comp}

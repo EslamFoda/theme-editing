@@ -6,14 +6,7 @@ import Design2 from "./designs/design2";
 import Design3 from "./designs/design3";
 import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
-import { useSelector } from "react-redux";
-import {
-  editServiceDesc,
-  editServiceBtn,
-  editServiceTitle,
-  editServiceHeadTitle,
-  editServiceSubTitle
-} from "../../../features/servies-section";
+
 const MainServices = ({
   comps,
   index,
@@ -22,9 +15,8 @@ const MainServices = ({
   device,
   editSections,
 }) => {
-  const { compName, designNum } = comp;
-  const serviceData = useSelector((state) => state.services.servicesData);
-  const serviceHeaders = useSelector((state) => state.services.headers);
+  const { compName, designNum, compData } = comp;
+ 
 
   const designs = {
     design1: Design1,
@@ -36,6 +28,21 @@ const MainServices = ({
 
   const ServicesComp = designs[`design${designNum}`];
 
+  const handleMultiEdit = (value, id, keys) => {
+    const update = compData.items.map((item) =>
+      item.id === id ? { ...item, [keys]: value } : item
+    );
+    comp.compData.items = update;
+    setComps([...comps]);
+  };
+  const handleEdit = (value, keys) => {
+    const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
+    if (objectIndex === index) {
+      comp.compData.headers[keys] = value;
+    }
+    setComps([...comps]);
+  };
+
   return (
     <div
       className={`relative group  ${
@@ -44,13 +51,10 @@ const MainServices = ({
     >
       <ServicesComp
         device={device}
-        serviceData={serviceData}
-        editServiceDesc={editServiceDesc}
-        editServiceBtn={editServiceBtn}
-        editServiceTitle={editServiceTitle}
-        editServiceHeadTitle={editServiceHeadTitle}
-        editServiceSubTitle={editServiceSubTitle}
-        serviceHeaders={serviceHeaders}
+        serviceData={compData.items}
+        handleMultiEdit={handleMultiEdit}
+        handleEdit={handleEdit}
+        serviceHeaders={compData.headers}
       />
       <ChangeSection
         comp={comp}

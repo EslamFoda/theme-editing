@@ -9,10 +9,8 @@ import EditorComp from "../../../editor";
 const Design5 = ({
   device,
   choose,
-  editTeamSubTitle,
-  editTeamTitle,
-  editTeamUserName,
-  editTeamUserPosition,
+  handleMultiEdit,
+  handleEdit,
   teamData,
   headers,
 }) => {
@@ -52,11 +50,13 @@ const Design5 = ({
           <div className="text-center space-y-4 mb-16">
             <EditorComp
               initialValue={headers.title}
-              handleEdit={editTeamTitle}
+              handleEdit={handleEdit}
+              keys='title'
             />
             <EditorComp
               initialValue={headers.subTitle}
-              handleEdit={editTeamSubTitle}
+              handleEdit={handleEdit}
+              keys='subTitle'
             />
           </div>
           <div className={gridClassName}>
@@ -72,12 +72,14 @@ const Design5 = ({
                 <EditorComp
                   initialValue={team.userName}
                   id={team.id}
-                  handleMultiEdit={editTeamUserName}
+                  handleMultiEdit={handleMultiEdit}
+                  keys='userName'
                 />
                 <EditorComp
                   initialValue={team.position}
                   id={team.id}
-                  handleMultiEdit={editTeamUserPosition}
+                  handleMultiEdit={handleMultiEdit}
+                  keys='position'
                 />
               </div>
             ))}

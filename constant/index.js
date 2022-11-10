@@ -104,7 +104,7 @@ export const clientsData = [
   { img: "https://assets.wuiltsite.com/defaults/shutterstock-logo.png", id: 8 },
 ];
 
-export const galleryData = [
+export const galleryDatas = [
   {
     img: "https://images.unsplash.com/photo-1580197370215-38fdb17dfe8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1590&q=80",
     id: 1,
