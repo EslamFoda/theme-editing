@@ -6,6 +6,7 @@ const Design1 = ({
   choose = false,
   handleEdit,
   aboutData,
+  backgroundColor,
 }) => {
   return (
     <div>
@@ -36,39 +37,46 @@ const Design1 = ({
           </div>
         </Container>
       ) : (
-        <Container>
-          <div className="flex gap-6  mx-auto  lg:justify-between md:justify-center  justify-center items-center py-16 flex-wrap ">
-            <div className="flex  flex-col space-y-8 lg:w-[450px] md:w-[400px] w-[450px]">
-              <EditorComp
-                initialValue={aboutData.title}
-                handleEdit={handleEdit}
-                keys="title"
-              />
-              <EditorComp
-                initialValue={aboutData.subTitle}
-                handleEdit={handleEdit}
-                keys="subTitle"
-              />
-              <Button variant="link" className="self-start">
+        <div
+          style={{
+            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+            transition: "all .5s ease-in-out",
+          }}
+        >
+          <Container>
+            <div className="flex gap-6  mx-auto  lg:justify-between md:justify-center  justify-center items-center py-16 flex-wrap ">
+              <div className="flex  flex-col space-y-8 lg:w-[450px] md:w-[400px] w-[450px]">
                 <EditorComp
-                  initialValue={aboutData.btn}
+                  initialValue={aboutData.title}
                   handleEdit={handleEdit}
-                  keys="btn"
+                  keys="title"
                 />
-              </Button>
+                <EditorComp
+                  initialValue={aboutData.subTitle}
+                  handleEdit={handleEdit}
+                  keys="subTitle"
+                />
+                <Button variant="link" className="self-start">
+                  <EditorComp
+                    initialValue={aboutData.btn}
+                    handleEdit={handleEdit}
+                    keys="btn"
+                  />
+                </Button>
+              </div>
+              <div
+                style={{
+                  backgroundImage:
+                    "url(https://image.shutterstock.com/shutterstock/photos/2025365270/display_1500/stock-photo-beautiful-attractive-asia-lady-choosing-clothes-on-clothes-rack-dressing-looking-herself-in-mirror-2025365270.jpg)",
+                  backgroundSize: "cover",
+                  MozBackgroundSize: "center center",
+                  backgroundRepeat: "no-repeat",
+                }}
+                className="h-96 lg:w-[450px] shadow-big md:w-[400px] w-[450px]   bg-blue-100"
+              ></div>
             </div>
-            <div
-              style={{
-                backgroundImage:
-                  "url(https://image.shutterstock.com/shutterstock/photos/2025365270/display_1500/stock-photo-beautiful-attractive-asia-lady-choosing-clothes-on-clothes-rack-dressing-looking-herself-in-mirror-2025365270.jpg)",
-                backgroundSize: "cover",
-                MozBackgroundSize: "center center",
-                backgroundRepeat: "no-repeat",
-              }}
-              className="h-96 lg:w-[450px] shadow-big md:w-[400px] w-[450px]   bg-blue-100"
-            ></div>
-          </div>
-        </Container>
+          </Container>
+        </div>
       )}
     </div>
   );

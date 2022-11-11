@@ -12,6 +12,7 @@ const DesignFromSection = ({
   comps,
 }) => {
   const { compData } = useCompData();
+
   const handleCreateSection = (i) => {
     dispatch(selectSectionOff());
     const findSection = sectionsImgs.find(
@@ -23,6 +24,12 @@ const DesignFromSection = ({
       compName: compName,
       designNum: i + 1,
       compData: compData(),
+      backgroundColor: {
+        r: "255",
+        g: "255",
+        b: "255",
+        a: "1",
+      },
     });
     setComps([...comps]);
   };

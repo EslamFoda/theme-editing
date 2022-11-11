@@ -13,6 +13,7 @@ const Design4 = ({
   handleEdit,
   teamData,
   headers,
+  backgroundColor,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -46,45 +47,52 @@ const Design4 = ({
           </div>
         </Container>
       ) : (
-        <Container className="py-16 ">
-          <div className="text-center space-y-4 mb-16">
-            <EditorComp
-              initialValue={headers.title}
-              handleEdit={handleEdit}
-              keys='title'
-            />
-            <EditorComp
-              initialValue={headers.subTitle}
-              handleEdit={handleEdit}
-              keys='subTitle'
-            />
-          </div>
-          <div className={gridClassName}>
-            {teamData?.map((team) => (
-              <div
-                key={team.id}
-                className="text-center hover:shadow-custom rounded-md transition-all py-4 space-y-5"
-              >
+        <div
+          style={{
+            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+            transition: "all .5s ease-in-out",
+          }}
+        >
+          <Container className="py-16 ">
+            <div className="text-center space-y-4 mb-16">
+              <EditorComp
+                initialValue={headers.title}
+                handleEdit={handleEdit}
+                keys="title"
+              />
+              <EditorComp
+                initialValue={headers.subTitle}
+                handleEdit={handleEdit}
+                keys="subTitle"
+              />
+            </div>
+            <div className={gridClassName}>
+              {teamData?.map((team) => (
                 <div
-                  style={{ backgroundImage: `url(${team.pic})` }}
-                  className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-32 w-32 rounded-full"
-                ></div>
-                <EditorComp
-                  initialValue={team.userName}
-                  id={team.id}
-                  handleMultiEdit={handleMultiEdit}
-                  keys='userName'
-                />
-                <EditorComp
-                  initialValue={team.position}
-                  id={team.id}
-                  handleMultiEdit={handleMultiEdit}
-                  keys='position'
-                />
-              </div>
-            ))}
-          </div>
-        </Container>
+                  key={team.id}
+                  className="text-center hover:shadow-custom rounded-md transition-all py-4 space-y-5"
+                >
+                  <div
+                    style={{ backgroundImage: `url(${team.pic})` }}
+                    className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-32 w-32 rounded-full"
+                  ></div>
+                  <EditorComp
+                    initialValue={team.userName}
+                    id={team.id}
+                    handleMultiEdit={handleMultiEdit}
+                    keys="userName"
+                  />
+                  <EditorComp
+                    initialValue={team.position}
+                    id={team.id}
+                    handleMultiEdit={handleMultiEdit}
+                    keys="position"
+                  />
+                </div>
+              ))}
+            </div>
+          </Container>
+        </div>
       )}
     </>
   );

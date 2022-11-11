@@ -10,7 +10,8 @@ const Design1 = ({
   device,
   choose,
   handleEdit,
-  galleryData
+  galleryData,
+  backgroundColor
 }) => {
   const gridClassName = cn(
     "grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -47,6 +48,11 @@ const Design1 = ({
           </div>
         </Container>
       ) : (
+        <div  style={{
+          backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+          transition: "all .5s ease-in-out",
+        }}>
+
         <Container className="py-16 ">
           <div className="text-center space-y-4 mb-16">
             <EditorComp
@@ -76,6 +82,7 @@ const Design1 = ({
             ))}
           </div>
         </Container>
+        </div>
       )}
     </>
   );

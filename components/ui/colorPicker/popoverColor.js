@@ -15,7 +15,7 @@ export const PopoverColor = ({ color, onChange }) => {
       <div
         className="swatch"
         style={{
-          background: `rgba(${color?.rgb?.r}, ${color?.rgb?.g}, ${color?.rgb?.b}, ${color?.rgb?.a})`,
+          backgroundColor: `rgba(${color?.rgb?.r}, ${color?.rgb?.g}, ${color?.rgb?.b}, ${color?.rgb?.a})`,
         }}
         onClick={() => toggle(true)}
       />
@@ -23,8 +23,9 @@ export const PopoverColor = ({ color, onChange }) => {
       {isOpen && (
         <div className="popover" ref={popover}>
           <ChromePicker
-            color={color.rgb ? color.rgb : color}
+            color={color.rgb}
             onChange={onChange}
+    
           />
         </div>
       )}

@@ -11,6 +11,7 @@ const Design4 = ({
   handleMultiEdit,
   handleEdit,
   headers,
+  backgroundColor,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -19,18 +20,23 @@ const Design4 = ({
     }
   );
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+        transition: "all .5s ease-in-out",
+      }}
+    >
       <Container className="py-16">
         <div className="text-center space-y-4 mb-16">
-        <EditorComp
+          <EditorComp
             initialValue={headers?.title}
             handleEdit={handleEdit}
-            keys='title'
+            keys="title"
           />
           <EditorComp
             initialValue={headers?.subTitle}
             handleEdit={handleEdit}
-            keys='subTitle'
+            keys="subTitle"
           />
         </div>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-8">
@@ -41,7 +47,7 @@ const Design4 = ({
                   id={client.id}
                   initialValue={client.review}
                   handleMultiEdit={handleMultiEdit}
-                  keys='review'
+                  keys="review"
                 />
                 <div className="flex items-center gap-4">
                   <div
@@ -53,14 +59,14 @@ const Design4 = ({
                       id={client.id}
                       initialValue={client.userName}
                       handleMultiEdit={handleMultiEdit}
-                      keys='userName'
+                      keys="userName"
                     />
 
                     <EditorComp
                       id={client.id}
                       initialValue={client.position}
                       handleMultiEdit={handleMultiEdit}
-                      keys='position'
+                      keys="position"
                     />
                   </div>
                 </div>
@@ -69,7 +75,7 @@ const Design4 = ({
           ))}
         </div>
       </Container>
-    </>
+    </div>
   );
 };
 

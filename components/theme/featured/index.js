@@ -2,7 +2,8 @@ import React from "react";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
 import dynamic from "next/dynamic";
-
+import useBgColor from "../../../hooks/useBgColor";
+import EditBackground from "../../mainContainer/common/editBackground";
 
 const Design1 = dynamic(() => import("./designs/design1"));
 const Design2 = dynamic(() => import("./designs/design2"));
@@ -18,8 +19,8 @@ const MainFeatured = ({
   device,
   editSections,
 }) => {
-  const { compName, designNum, compData } = comp;
-  
+  const { compName, designNum, compData, backgroundColor } = comp;
+  const { setColor, handleReset } = useBgColor(index);
 
   const designs = {
     design1: Design1,
@@ -51,7 +52,9 @@ const MainFeatured = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
+      <EditBackground handleReset={handleReset} setColor={setColor} />
       <FeaturedComp
+        backgroundColor={backgroundColor}
         handleMultiEdit={handleMultiEdit}
         handleEdit={handleEdit}
         featuredHeader={compData.header}

@@ -6,7 +6,7 @@ import { galleryDatas } from "../../../../constant/";
 import cn from "clsx";
 import Image from "next/image";
 import EditorComp from "../../../editor";
-const Design4 = ({ device, choose, handleEdit, galleryData }) => {
+const Design4 = ({ device, choose, handleEdit, galleryData,backgroundColor }) => {
   const gridClassName = cn("grid grid-cols-1  gap-8", {
     "!grid-cols-1": device === "mobile",
   });
@@ -35,6 +35,11 @@ const Design4 = ({ device, choose, handleEdit, galleryData }) => {
           </div>
         </Container>
       ) : (
+        <div  style={{
+          backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+          transition: "all .5s ease-in-out",
+        }}>
+
         <Container className="py-16 ">
           <div className="text-center space-y-4 mb-16">
             <EditorComp
@@ -64,6 +69,7 @@ const Design4 = ({ device, choose, handleEdit, galleryData }) => {
             ))}
           </div>
         </Container>
+        </div>
       )}
     </>
   );

@@ -10,7 +10,9 @@ import Button from "../../../ui/Button";
 const Design5 = ({
   device,
   choose,
-  handleEdit, galleryData
+  handleEdit,
+  galleryData,
+  backgroundColor,
 }) => {
   const gridClassName = cn(
     "grid   lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
@@ -47,43 +49,50 @@ const Design5 = ({
           </div>
         </Container>
       ) : (
-        <Container clean className="py-16 ">
-          <div className="text-center max-w-5xl space-y-4 mx-auto mb-16">
-            <EditorComp
-              initialValue={galleryData.title}
-              handleEdit={handleEdit}
-              keys='title'
-            />
-            <EditorComp
-              initialValue={galleryData.subTitle}
-              handleEdit={handleEdit}
-              keys="subTitle"
-            />
-            <Button>
+        <div
+          style={{
+            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+            transition: "all .5s ease-in-out",
+          }}
+        >
+          <Container clean className="py-16 ">
+            <div className="text-center max-w-5xl space-y-4 mx-auto mb-16">
               <EditorComp
-                initialValue={galleryData.btn}
+                initialValue={galleryData.title}
                 handleEdit={handleEdit}
-                keys='btn'
+                keys="title"
               />
-            </Button>
-          </div>
-          <div className={gridClassName}>
-            {galleryDatas.map((gallery) => (
-              <div
-              style={{zIndex:-1}}
-                key={gallery.id}
-                className="relative   lg:h-60 md:h-52 h-52 w-full"
-              >
-                <Image
-                  src={gallery.img}
-                  className="absolute"
-                  objectFit="cover"
-                  layout="fill"
+              <EditorComp
+                initialValue={galleryData.subTitle}
+                handleEdit={handleEdit}
+                keys="subTitle"
+              />
+              <Button>
+                <EditorComp
+                  initialValue={galleryData.btn}
+                  handleEdit={handleEdit}
+                  keys="btn"
                 />
-              </div>
-            ))}
-          </div>
-        </Container>
+              </Button>
+            </div>
+            <div className={gridClassName}>
+              {galleryDatas.map((gallery) => (
+                <div
+                  style={{ zIndex: -1 }}
+                  key={gallery.id}
+                  className="relative lg:h-60 md:h-52 h-52 w-full"
+                >
+                  <Image
+                    src={gallery.img}
+                    className="absolute"
+                    objectFit="cover"
+                    layout="fill"
+                  />
+                </div>
+              ))}
+            </div>
+          </Container>
+        </div>
       )}
     </>
   );

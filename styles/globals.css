@@ -185,6 +185,11 @@ button:hover .button-text {
   @apply text-primary h-5 w-5;
 }
 
+/*  testi icons */
+.testi5:nth-child(even) > svg {
+  @apply text-primary;
+}
+
 .expand-container {
   list-style: none;
   padding: 0;
@@ -266,7 +271,6 @@ button:hover .button-text {
   align-items: center;
   justify-content: space-evenly;
   color: white;
-  
 }
 
 /**  color picker */

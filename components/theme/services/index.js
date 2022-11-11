@@ -6,6 +6,8 @@ import Design2 from "./designs/design2";
 import Design3 from "./designs/design3";
 import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
+import useBgColor from "../../../hooks/useBgColor";
+import EditBackground from "../../mainContainer/common/editBackground";
 
 const MainServices = ({
   comps,
@@ -15,8 +17,8 @@ const MainServices = ({
   device,
   editSections,
 }) => {
-  const { compName, designNum, compData } = comp;
- 
+  const { compName, designNum, compData, backgroundColor } = comp;
+  const { handleReset, setColor } = useBgColor(index);
 
   const designs = {
     design1: Design1,
@@ -49,7 +51,9 @@ const MainServices = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
+      <EditBackground setColor={setColor}  handleReset={handleReset}/>
       <ServicesComp
+        backgroundColor={backgroundColor}
         device={device}
         serviceData={compData.items}
         handleMultiEdit={handleMultiEdit}

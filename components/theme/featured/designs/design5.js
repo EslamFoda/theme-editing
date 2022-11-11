@@ -15,6 +15,7 @@ const Design5 = ({
   handleMultiEdit,
   handleEdit,
   featuredHeader,
+  backgroundColor,
 }) => {
   const icons = (id) => {
     if (id === 1) {
@@ -105,7 +106,12 @@ const Design5 = ({
           </Container>
         </div>
       ) : (
-        <div>
+        <div
+          style={{
+            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+            transition: "all .5s ease-in-out",
+          }}
+        >
           <Container className="py-10">
             <EditorComp
               initialValue={featuredHeader}

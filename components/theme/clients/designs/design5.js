@@ -5,7 +5,13 @@ import cn from "clsx";
 import Image from "next/image";
 import SubTitle from "../common/subTitle";
 import EditorComp from "../../../editor";
-const Design5 = ({ device, choose, handleEdit, clientData }) => {
+const Design5 = ({
+  device,
+  choose,
+  handleEdit,
+  clientData,
+  backgroundColor,
+}) => {
   const gridClassName = cn("grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1", {
     "!grid-cols-1": device === "mobile",
   });
@@ -42,40 +48,47 @@ const Design5 = ({ device, choose, handleEdit, clientData }) => {
           </div>
         </div>
       ) : (
-        <Container clean>
-          <div className={gridClassName}>
-            <div className="p-5   bg-purple-700  h-full">
-              <div className="h-full flex justify-center  flex-col space-y-4 ">
-                <EditorComp
-                  initialValue={clientData.title}
-                  handleEdit={handleEdit}
-                  keys="title"
-                />
-                <EditorComp
-                  initialValue={clientData.subTitle}
-                  handleEdit={handleEdit}
-                  keys="subTitle"
-                />
+        <div
+          style={{
+            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+            transition: "all .5s ease-in-out",
+          }}
+        >
+          <Container clean>
+            <div className={gridClassName}>
+              <div className="p-20 px-5   bg-primary text-white  h-full">
+                <div className="h-full flex justify-center  flex-col space-y-4 ">
+                  <EditorComp
+                    initialValue={clientData.title}
+                    handleEdit={handleEdit}
+                    keys="title"
+                  />
+                  <EditorComp
+                    initialValue={clientData.subTitle}
+                    handleEdit={handleEdit}
+                    keys="subTitle"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="p-5">
-              <div className={"flex  flex-wrap items-center"}>
-                {clientsData.map((client) => (
-                  <div key={client.id} className="p-2 items-center  ">
-                    <div className="relative h-16 w-24">
-                      <Image
-                        src={client.img}
-                        layout="fill"
-                        objectFit="contain"
-                        className="absolute"
-                      />
+              <div className="py-20 px-5">
+                <div className={"flex  flex-wrap items-center"}>
+                  {clientsData.map((client) => (
+                    <div key={client.id} className="p-2 items-center  ">
+                      <div className="relative h-16 w-24">
+                        <Image
+                          src={client.img}
+                          layout="fill"
+                          objectFit="contain"
+                          className="absolute"
+                        />
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </Container>
+          </Container>
+        </div>
       )}
     </>
   );

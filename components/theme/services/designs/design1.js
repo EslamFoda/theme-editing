@@ -14,6 +14,7 @@ const Design1 = ({
   handleEdit,
   handleMultiEdit,
   serviceHeaders,
+  backgroundColor,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -48,52 +49,59 @@ const Design1 = ({
           </div>
         </Container>
       ) : (
-        <Container className="py-16 ">
-          <div className="text-center space-y-4 mb-16">
-            <EditorComp
-              initialValue={serviceHeaders.title}
-              handleEdit={handleEdit}
-              keys="title"
-            />
-            <EditorComp
-              initialValue={serviceHeaders.subTitle}
-              handleEdit={handleEdit}
-              keys="subTitle"
-            />
-          </div>
-          <div className={gridClassName}>
-            {serviceData?.map((service) => (
-              <div key={service.id} className="text-center space-y-5">
-                <div
-                  style={{ backgroundImage: `url(${service.pic})` }}
-                  className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-40 w-40 rounded-full"
-                ></div>
-                {/* <ServiceTitle title={service.title} /> */}
-                <EditorComp
-                  id={service.id}
-                  initialValue={service.title}
-                  handleMultiEdit={handleMultiEdit}
-                  keys="title"
-                />
-                <EditorComp
-                  id={service.id}
-                  initialValue={service.desc}
-                  handleMultiEdit={handleMultiEdit}
-                  keys="desc"
-                />
-                <Button variant="link">
+        <div
+          style={{
+            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+            transition: "all .5s ease-in-out",
+          }}
+        >
+          <Container className="py-16 ">
+            <div className="text-center space-y-4 mb-16">
+              <EditorComp
+                initialValue={serviceHeaders.title}
+                handleEdit={handleEdit}
+                keys="title"
+              />
+              <EditorComp
+                initialValue={serviceHeaders.subTitle}
+                handleEdit={handleEdit}
+                keys="subTitle"
+              />
+            </div>
+            <div className={gridClassName}>
+              {serviceData?.map((service) => (
+                <div key={service.id} className="text-center space-y-5">
+                  <div
+                    style={{ backgroundImage: `url(${service.pic})` }}
+                    className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-40 w-40 rounded-full"
+                  ></div>
+                  {/* <ServiceTitle title={service.title} /> */}
                   <EditorComp
                     id={service.id}
-                    initialValue={service.btn}
+                    initialValue={service.title}
                     handleMultiEdit={handleMultiEdit}
-                    keys="btn"
+                    keys="title"
                   />
-                </Button>
-                {/* <button className="text-red-600">READ MORE</button> */}
-              </div>
-            ))}
-          </div>
-        </Container>
+                  <EditorComp
+                    id={service.id}
+                    initialValue={service.desc}
+                    handleMultiEdit={handleMultiEdit}
+                    keys="desc"
+                  />
+                  <Button variant="link">
+                    <EditorComp
+                      id={service.id}
+                      initialValue={service.btn}
+                      handleMultiEdit={handleMultiEdit}
+                      keys="btn"
+                    />
+                  </Button>
+                  {/* <button className="text-red-600">READ MORE</button> */}
+                </div>
+              ))}
+            </div>
+          </Container>
+        </div>
       )}
     </>
   );

@@ -15,6 +15,7 @@ const Design4 = ({
   handleEdit,
   handleMultiEdit,
   serviceHeaders,
+  backgroundColor
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -65,6 +66,10 @@ const Design4 = ({
           </div>
         </Container>
       ) : (
+        <div  style={{
+          backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+          transition: "all .5s ease-in-out",
+        }}>
         <Container className="py-16 ">
           <div className="text-center space-y-4 mb-16">
             <EditorComp
@@ -80,7 +85,7 @@ const Design4 = ({
           </div>
           <div className={gridClassName}>
             {serviceData?.map((service) => (
-              <div key={service.id} className=" shadow-xl">
+              <div key={service.id} className="bg-white shadow-xl">
                 <div
                   style={{ backgroundImage: `url(${service.pic})` }}
                   className="bg-no-repeat bg-center bg-cover overflow-hidden relative h-72 w-full"
@@ -97,7 +102,7 @@ const Design4 = ({
                     ></path>
                   </svg>
                 </div>
-                <div className="p-8 space-y-4">
+                <div className="p-8 pt-0 space-y-4">
                   <EditorComp
                     initialValue={service.title}
                     id={service.id}
@@ -123,6 +128,8 @@ const Design4 = ({
             ))}
           </div>
         </Container>
+
+        </div>
       )}
     </>
   );

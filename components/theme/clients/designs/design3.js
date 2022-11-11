@@ -8,7 +8,9 @@ import EditorComp from "../../../editor";
 const Design2 = ({
   device,
   choose,
-  handleEdit, clientData
+  handleEdit,
+  clientData,
+  backgroundColor,
 }) => {
   const gridClassName = cn(
     "grid gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -52,37 +54,44 @@ const Design2 = ({
           </div>
         </Container>
       ) : (
-        <Container className="py-16 ">
-          <div className="text-center space-y-4 mb-16">
-          <EditorComp
-              initialValue={clientData.title}
-              handleEdit={handleEdit}
-              keys='title'
-            />
-            <EditorComp
-              initialValue={clientData.subTitle}
-              handleEdit={handleEdit}
-              keys='subTitle'
-            />
-          </div>
-          <div className={gridClassName}>
-            {clientsData.map((client) => (
-              <div
-                key={client.id}
-                className="p-2 items-center bg-gray-border flex justify-center"
-              >
-                <div className="relative h-20 w-44">
-                  <Image
-                    src={client.img}
-                    layout="fill"
-                    objectFit="contain"
-                    className="absolute"
-                  />
+        <div
+          style={{
+            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+            transition: "all .5s ease-in-out",
+          }}
+        >
+          <Container className="py-16 ">
+            <div className="text-center space-y-4 mb-16">
+              <EditorComp
+                initialValue={clientData.title}
+                handleEdit={handleEdit}
+                keys="title"
+              />
+              <EditorComp
+                initialValue={clientData.subTitle}
+                handleEdit={handleEdit}
+                keys="subTitle"
+              />
+            </div>
+            <div className={gridClassName}>
+              {clientsData.map((client) => (
+                <div
+                  key={client.id}
+                  className="p-2 items-center bg-gray-border flex justify-center"
+                >
+                  <div className="relative h-20 w-44">
+                    <Image
+                      src={client.img}
+                      layout="fill"
+                      objectFit="contain"
+                      className="absolute"
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </Container>
+              ))}
+            </div>
+          </Container>
+        </div>
       )}
     </>
   );

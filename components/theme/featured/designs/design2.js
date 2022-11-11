@@ -9,7 +9,13 @@ import { TbAsteriskSimple } from "react-icons/tb";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-const Design2 = ({ choose = false, device, featuredData, handleMultiEdit }) => {
+const Design2 = ({
+  choose = false,
+  device,
+  featuredData,
+  handleMultiEdit,
+  backgroundColor,
+}) => {
   const icons = (id) => {
     if (id === 1) {
       return <HiOutlineSupport />;
@@ -97,7 +103,12 @@ const Design2 = ({ choose = false, device, featuredData, handleMultiEdit }) => {
           </Container>
         </div>
       ) : (
-        <div>
+        <div
+          style={{
+            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+            transition: "all .5s ease-in-out",
+          }}
+        >
           <Container>
             <div className={gridClassName}>
               {featuredData.map((card) => {

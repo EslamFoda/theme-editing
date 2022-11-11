@@ -4,16 +4,34 @@ import { useLayer } from "react-laag";
 import { MdOutlineInvertColors } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 import { PopoverColor } from "../../ui/colorPicker/popoverColor";
-const EditBackground = () => {
-  const [color, setColor] = useState({
-    r: "255",
-    g: "255",
-    b: "255",
-    a: "1",
+import { GrPowerReset } from "react-icons/gr";
+const EditBackground = ({ setColor }) => {
+  const [currentColor, setCurretColor] = useState({
+    rgb: {
+      r: "255",
+      g: "255",
+      b: "255",
+      a: "1",
+    },
   });
   const [isOpen, setOpen] = useState(false);
   const close = () => {
     setOpen(false);
+  };
+
+  const handleApplyColor = () => {
+    setColor(currentColor);
+  };
+
+  const handleReset = () => {
+    setCurretColor({
+      rgb: {
+        r: "255",
+        g: "255",
+        b: "255",
+        a: "1",
+      },
+    });
   };
 
   const { renderLayer, triggerProps, layerProps } = useLayer({
@@ -67,10 +85,34 @@ const EditBackground = () => {
                 <div>
                   <span>Background Color</span>
                   <div className="flex mt-2 items-center gap-4 w-full border border-gray rounded-md p-1 px-2">
-                    <PopoverColor color={color} onChange={setColor} />
+                    <PopoverColor
+                      color={currentColor}
+                      onChange={setCurretColor}
+                    />
                     {/* @ts-ignore */}
-                    <span>{color.hex ? color.hex : "#FFFFFF"}</span>
+                    <span>{currentColor.hex ? currentColor.hex : "#FFFFFF"}</span>
                   </div>
+                </div>
+                <div
+                  onClick={handleReset}
+                  className="inline-flex items-center cursor-pointer font-bold gap-2"
+                >
+                  <GrPowerReset scale={10} size={20} />
+                  <span>Reset Background Color</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span
+                    onClick={close}
+                    className="cursor-pointer font-semibold"
+                  >
+                    Cancel
+                  </span>
+                  <span
+                    onClick={handleApplyColor}
+                    className="bg-[#0e9384] px-6 py-1 cursor-pointer rounded-full text-white"
+                  >
+                    Apply
+                  </span>
                 </div>
               </div>
             </div>

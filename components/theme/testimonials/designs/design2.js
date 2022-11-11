@@ -11,6 +11,7 @@ const Design2 = ({
   handleMultiEdit,
   handleEdit,
   headers,
+  backgroundColor,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -19,7 +20,12 @@ const Design2 = ({
     }
   );
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+        transition: "all .5s ease-in-out",
+      }}
+    >
       <Container className="py-16">
         <div className="text-center space-y-4 mb-16">
           <EditorComp
@@ -36,7 +42,7 @@ const Design2 = ({
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-x-10 gap-y-14">
           {testiData?.map((client) => (
             <div key={client.id}>
-              <div className="w-full flex flex-col gap-4 self-start  p-8 pb-12 rounded-md  shadow-big relative">
+              <div className="w-full bg-white flex flex-col gap-4 self-start  p-8 pb-12 rounded-md  shadow-big relative">
                 <div
                   style={{ backgroundImage: `url(${client.pic})` }}
                   className="w-20 h-20 bg-no-reapeat bg-cover bg-center bg-white shadow-md absolute -bottom-10 rounded-full left-4 border-4 border-[#dfe0e1]"
@@ -67,7 +73,7 @@ const Design2 = ({
           ))}
         </div>
       </Container>
-    </>
+    </div>
   );
 };
 

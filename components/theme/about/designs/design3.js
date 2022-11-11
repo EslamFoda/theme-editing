@@ -2,7 +2,7 @@ import React from "react";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-const Design3 = ({ choose = false, device, handleEdit, aboutData }) => {
+const Design3 = ({ choose = false, device, handleEdit, aboutData,backgroundColor }) => {
   const gridClassName = cn(
     "grid  lg:grid-cols-2 grid-cols-1 md:grid-cols-2 sm:grid-cols-1",
     {
@@ -48,7 +48,7 @@ const Design3 = ({ choose = false, device, handleEdit, aboutData }) => {
           </div>
         </div>
       ) : (
-        <div className={gridClassName}>
+        <div style={{  backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,}} className={gridClassName}>
           <div
             className={order1ClassName}
             style={{

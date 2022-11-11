@@ -12,7 +12,7 @@ const Design1 = ({ device, choose = false, heroData, handleEdit }) => {
   return (
     <>
       {choose ? (
-        <div className="bg-red-600">
+        <div className="">
           <Container className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div className="flex justify-between gap-2 items-center">
               <div className="flex  flex-col h-20 w-small">
@@ -45,7 +45,7 @@ const Design1 = ({ device, choose = false, heroData, handleEdit }) => {
           </Container>
         </div>
       ) : (
-        <div className="bg-red-600">
+        <div className="">
           <Container>
             <div className="flex   mx-auto  lg:justify-between md:justify-center  justify-center items-center py-16 gap-3 flex-wrap ">
               <div className="flex  flex-col lg:w-[450px] md:w-[400px] w-[450px]">
@@ -75,9 +75,6 @@ const Design1 = ({ device, choose = false, heroData, handleEdit }) => {
                       keys="secondaryBtn"
                     />
                   </Button>
-                  {/* <button className="flex-1 border border-solid border-red-500 p-3">
-                    learn more
-                  </button> */}
                 </div>
               </div>
               <div

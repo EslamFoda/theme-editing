@@ -8,7 +8,9 @@ import EditorComp from "../../../editor";
 const Design4 = ({
   device,
   choose,
-  handleEdit, clientData
+  handleEdit,
+  clientData,
+  backgroundColor,
 }) => {
   const gridClassName = cn(
     "grid lg:grid-cols-3 md:grid-cols-3  grid-cols-1 gap-4",
@@ -51,40 +53,50 @@ const Design4 = ({
           </div>
         </Container>
       ) : (
-        <Container className="py-16 ">
-          <div className={gridClassName}>
-            <div className="self-center">
-              <div className="  space-y-4 ">
-              <EditorComp
-              initialValue={clientData.title}
-              handleEdit={handleEdit}
-              keys='title'
-            />
-            <EditorComp
-              initialValue={clientData.subTitle}
-              handleEdit={handleEdit}
-              keys='subtitle'
-            />
+        <div
+          style={{
+            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+            transition: "all .5s ease-in-out",
+          }}
+        >
+          <Container className="py-16 ">
+            <div className={gridClassName}>
+              <div className="self-center">
+                <div className="  space-y-4 ">
+                  <EditorComp
+                    initialValue={clientData.title}
+                    handleEdit={handleEdit}
+                    keys="title"
+                  />
+                  <EditorComp
+                    initialValue={clientData.subTitle}
+                    handleEdit={handleEdit}
+                    keys="subtitle"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="col-span-2">
-              <div className={"flex  flex-wrap items-center"}>
-                {clientsData.map((client) => (
-                  <div key={client.id} className="p-2 items-center col-span-3 ">
-                    <div className="relative h-20 w-40">
-                      <Image
-                        src={client.img}
-                        layout="fill"
-                        objectFit="contain"
-                        className="absolute"
-                      />
+              <div className="col-span-2">
+                <div className={"flex  flex-wrap items-center"}>
+                  {clientsData.map((client) => (
+                    <div
+                      key={client.id}
+                      className="p-2 items-center col-span-3 "
+                    >
+                      <div className="relative h-20 w-40">
+                        <Image
+                          src={client.img}
+                          layout="fill"
+                          objectFit="contain"
+                          className="absolute"
+                        />
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </Container>
+          </Container>
+        </div>
       )}
     </>
   );

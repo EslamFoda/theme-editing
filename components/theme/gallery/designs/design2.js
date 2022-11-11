@@ -7,7 +7,7 @@ import cn from "clsx";
 import Image from "next/image";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-const Design2 = ({ device, choose, handleEdit, galleryData }) => {
+const Design2 = ({ device, choose, handleEdit, galleryData,backgroundColor }) => {
   const gridClassName = cn(
     "grid lg:gap-8 md:gap-6 gap-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
     {
@@ -46,6 +46,11 @@ const Design2 = ({ device, choose, handleEdit, galleryData }) => {
           </div>
         </Container>
       ) : (
+        <div  style={{
+          backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+          transition: "all .5s ease-in-out",
+        }}>
+
         <Container className="py-16 ">
           <div className="text-center space-y-4 mb-16">
             <EditorComp
@@ -82,6 +87,7 @@ const Design2 = ({ device, choose, handleEdit, galleryData }) => {
             ))}
           </div>
         </Container>
+        </div>
       )}
     </>
   );

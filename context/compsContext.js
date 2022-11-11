@@ -18,6 +18,12 @@ const CompsProvider = ({ children }) => {
         primaryBtn: "<span>shop now</span>",
         secondaryBtn: "<span>Learn More</span>",
       },
+      backgroundColor: {
+        r: "255",
+        g: "255",
+        b: "255",
+        a: "1",
+      },
     },
   ]);
   return (
