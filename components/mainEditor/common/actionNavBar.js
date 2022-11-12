@@ -2,13 +2,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { addSectionTurnOff, toggleEdit } from "../../../features/edit-sections";
 import { changeDevice, changeWidth } from "../../../features/main-width";
 import { FaEye, FaEdit } from "react-icons/fa";
+import {closeColors, openColors,toggleColors} from '../../../features/colors'
+import { selectCompName } from "../../../features/comp-name";
 const ActionNavBar = () => {
   const editSections = useSelector((state) => state.editSections.value);
   const dispatch = useDispatch();
   return (
     <>
       {" "}
-      <div className="bg-[#353f4b] h-20 flex grid grid-cols-3 items-center">
+      <div className="bg-[#353f4b] h-20  grid grid-cols-4 items-center">
         <div className="px-4">
           {editSections ? (
             <span className="text-white font-bold">Edit Mode</span>
@@ -75,11 +77,25 @@ const ActionNavBar = () => {
             ></path>
           </svg>
         </div>
+        {editSections ? (
+          <div
+            onClick={() => {
+              dispatch(toggleColors());
+              dispatch(selectCompName(""));
+              dispatch(addSectionTurnOff());
+            }}
+            className="text-white"
+          >
+            colors
+          </div>
+        ) : null}
         <div
           className=" mx-4 justify-self-end cursor-pointer"
           onClick={() => {
             dispatch(toggleEdit());
             dispatch(addSectionTurnOff());
+            dispatch(selectCompName(""));
+            dispatch(closeColors());
           }}
         >
           {editSections ? (

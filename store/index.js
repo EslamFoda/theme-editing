@@ -11,6 +11,7 @@ import addSectionReducer from "../features/add-section";
 import widthReducer from "../features/main-width";
 import galleryReducer from "../features/gallery-section";
 import testiReducer from "../features/testi";
+import colorsReducer from "../features/colors";
 export const store = configureStore({
   reducer: {
     hero: heroReducer,
@@ -25,5 +26,6 @@ export const store = configureStore({
     clients: clientsReducer,
     gallery: galleryReducer,
     testi: testiReducer,
+    colors: colorsReducer,
   },
 });

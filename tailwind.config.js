@@ -6,14 +6,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "primary": "#864B9E",
         "primary-hover": "#2267d8",
         "gray-color": "#999999",
-        "gray": "#d0d5dd",
         "light-gray": "#f7f8fa",
         "light": "#f7f8fa",
         "font-color": "#191919",
         "gray-border": "#e9e7e7",
+        onNeutralBg: 'var(--onNeutralBg)',
+        neutralBg: 'var(--neutralBg)',
+        onPrimaryBg: 'var(--onPrimaryBg)',
+        primaryBg: 'var(--primaryBg)',
+        primary: 'var(--primary)',
+        secondary:'var(--secondary)'
       },
       fontSize: {
         "very-small": "4px",

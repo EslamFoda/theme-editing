@@ -34,7 +34,7 @@ const DesignFromSection = ({
     setComps([...comps]);
   };
   return (
-    <div className="h-40 flex items-center  overflow-auto gap-8  w-full">
+    <>
       {designs.map((Design, i) => (
         <div key={i}>
           <Designs
@@ -46,7 +46,7 @@ const DesignFromSection = ({
           />
         </div>
       ))}
-    </div>
+    </>
   );
 };
 

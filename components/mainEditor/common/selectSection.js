@@ -3,7 +3,7 @@ import { selectCompName } from "../../../features/comp-name";
 import Image from "next/image";
 const SelectSection = ({ sectionsImgs, setSelectedSection, dispatch }) => {
   return (
-    <div className="h-40 flex items-center gap-4  overflow-auto   w-full">
+    <>
       {sectionsImgs.map(({ src, id, title }, i) => (
         <div
           className={`h-32 relative rounded-md  cursor-pointer min-w-[208px] `}
@@ -27,7 +27,7 @@ const SelectSection = ({ sectionsImgs, setSelectedSection, dispatch }) => {
           </div>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 

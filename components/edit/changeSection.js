@@ -3,6 +3,7 @@ import { selectCompName } from "../../features/comp-name";
 import { addSectionTurnOff } from "../../features/edit-sections";
 import { getNextIndex } from "../../features/add-section";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { closeColors } from "../../features/colors";
 const ChangeSection = ({
   compName,
   designNum,
@@ -36,6 +37,7 @@ const ChangeSection = ({
                 setComps([...comps]);
               }
               dispatch(addSectionTurnOff());
+              dispatch(closeColors());
             }}
           >
             <FaChevronLeft />
@@ -61,6 +63,7 @@ const ChangeSection = ({
                 setComps([...comps]);
               }
               dispatch(addSectionTurnOff());
+               dispatch(closeColors());
             }}
           >
             {device === "mobile" ? null : (
