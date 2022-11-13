@@ -1,33 +1,20 @@
 import React from "react";
-import Container from "../../../ui/Container/container";
+import Container from "../../../ui/container/container";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import { FaAd, FaUsers, FaBriefcase, FaAsterisk } from "react-icons/fa";
 import Button from "../../../ui/Button";
-import {
-  HiOutlineSupport,
-  HiOutlineBriefcase,
-  HiOutlineUsers,
-} from "react-icons/hi";
-import { TbAsteriskSimple } from "react-icons/tb";
+import { EditPopover } from "../../../ui/popover/EditPopover";
+
 const Design1 = ({
   choose,
   device,
   featuredData,
   handleMultiEdit,
   backgroundColor,
+  comp,
 }) => {
-  const icons = (id) => {
-    if (id === 1) {
-      return <HiOutlineSupport />;
-    } else if (id === 2) {
-      return <HiOutlineUsers />;
-    } else if (id === 3) {
-      return <HiOutlineBriefcase />;
-    } else if (id === 4) {
-      return <TbAsteriskSimple />;
-    }
-  };
+ 
   const data = [
     {
       icon: <FaAd className="text-red-500" size={choose ? 5 : 40} />,
@@ -92,41 +79,44 @@ const Design1 = ({
           </Container>
         </div>
       ) : (
-        <div style={{
-          backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-          transition: "all .5s ease-in-out",
-        }}>
+        <div
+          style={{
+            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+            transition: "all .5s ease-in-out",
+          }}
+        >
           <Container>
             <div className={gridClassName}>
-              {featuredData.map((card) => {
+              {featuredData.map((card, index) => {
                 return (
-                  <div
-                    key={card.id}
-                    className="p-4 flex flex-col space-y-5 text-center items-center"
-                  >
-                    <div className="feat1-icon">{icons(card.id)}</div>
-                    <div className="text-4xl">
-                      <EditorComp
-                        initialValue={card.title}
-                        id={card.id}
-                        handleMultiEdit={handleMultiEdit}
-                        keys="title"
-                      />
-                    </div>
-                    <EditorComp
-                      initialValue={card.desc}
-                      id={card.id}
-                      handleMultiEdit={handleMultiEdit}
-                      keys="desc"
-                    />
-                    <Button rounded={false}>
-                      <EditorComp
-                        initialValue={card.btn}
-                        id={card.id}
-                        handleMultiEdit={handleMultiEdit}
-                        keys="btn"
-                      />
-                    </Button>
+                  <div key={card.id}>
+                    <EditPopover comp={comp} index={index}>
+                      <div className="p-4 flex flex-col space-y-5 text-center items-center">
+                        <div className="feat1-icon">{card.icon}</div>
+                        <div className="text-4xl">
+                          <EditorComp
+                            initialValue={card.title}
+                            id={card.id}
+                            handleMultiEdit={handleMultiEdit}
+                            keys="title"
+                          />
+                        </div>
+                        <EditorComp
+                          initialValue={card.desc}
+                          id={card.id}
+                          handleMultiEdit={handleMultiEdit}
+                          keys="desc"
+                        />
+                        <Button rounded={false}>
+                          <EditorComp
+                            initialValue={card.btn}
+                            id={card.id}
+                            handleMultiEdit={handleMultiEdit}
+                            keys="btn"
+                          />
+                        </Button>
+                      </div>
+                    </EditPopover>
                   </div>
                 );
               })}

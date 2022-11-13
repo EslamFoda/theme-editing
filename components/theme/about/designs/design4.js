@@ -1,7 +1,7 @@
 import React from "react";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-import Container from "../../../ui/Container/container";
+import Container from "../../../ui/container/container";
 const Design4 = ({ choose = false, handleEdit, aboutData,backgroundColor }) => {
   return (
     <>

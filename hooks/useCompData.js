@@ -1,4 +1,10 @@
 import { useSelector } from "react-redux";
+import {
+  HiOutlineSupport,
+  HiOutlineBriefcase,
+  HiOutlineUsers,
+} from "react-icons/hi";
+import { TbAsteriskSimple } from "react-icons/tb";
 const useCompData = () => {
   const compName = useSelector((state) => state.compName.compName);
   //   const aboutData = useSelector((state) => state.aboutComp.aboutData);
@@ -6,24 +12,28 @@ const useCompData = () => {
     header: "<h1 class='text-2xl font-semibold text-center'>Features</h1>",
     items: [
       {
+        icon:<HiOutlineSupport/>,
         title: "<h2 class=' font-semibold'>Professional Support</h2>",
         desc: " <p>Our team works diligently to ensure that all your questions are answered and your needs met.</p>",
         id: 1,
         btn: "<span>Read More</span>",
       },
       {
+        icon:<HiOutlineUsers/>,
         title: "<h2 class=' font-semibold'>Qualified Team</h2>",
         desc: " <p>From designers to developers to writers, our team is equipped with a diverse set of skills.</p>",
         id: 2,
         btn: "<span>Read More</span>",
       },
       {
+        icon:<HiOutlineBriefcase/>,
         title: "<h2 class=' font-semibold'>High Quality Work</h2>",
         desc: " <p>All our work is executed with the highest degree of efficiency.</p>",
         id: 3,
         btn: "<span>Read More</span>",
       },
       {
+        icon:<TbAsteriskSimple/>,
         title: "<h2 class=' font-semibold'>Detail-oriented approach</h2>",
         desc: " <p>We focus on every aspect of our clients’ needs to leave nothing to chance.</p>",
         id: 4,

@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../../ui/Container/container";
+import Container from "../../../ui/container/container";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";

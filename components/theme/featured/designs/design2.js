@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../../ui/Container/container";
+import Container from "../../../ui/container/container";
 import {
   HiOutlineSupport,
   HiOutlineBriefcase,
@@ -9,24 +9,16 @@ import { TbAsteriskSimple } from "react-icons/tb";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
+import { EditPopover } from "../../../ui/popover/EditPopover";
 const Design2 = ({
   choose = false,
   device,
   featuredData,
   handleMultiEdit,
   backgroundColor,
+  comp,
 }) => {
-  const icons = (id) => {
-    if (id === 1) {
-      return <HiOutlineSupport />;
-    } else if (id === 2) {
-      return <HiOutlineUsers />;
-    } else if (id === 3) {
-      return <HiOutlineBriefcase />;
-    } else if (id === 4) {
-      return <TbAsteriskSimple />;
-    }
-  };
+ 
   const data = [
     {
       icon: (
@@ -111,39 +103,40 @@ const Design2 = ({
         >
           <Container>
             <div className={gridClassName}>
-              {featuredData.map((card) => {
+              {featuredData.map((card, index) => {
                 return (
-                  <div
-                    key={card.id}
-                    className="p-4 flex border border-solid border-gray-border rounded-lg flex-col space-y-5 items-start  "
-                  >
-                    <div className="flex gap-2">
-                      <div className="w-8 h-8 min-w-max bg-red-200 rounded-full flex justify-center items-center">
-                        <div className="feat2-icon">{icons(card.id)}</div>
-                      </div>
-                      <div className="flex-1 text-xl">
+                  <div key={card.id}>
+                    <EditPopover comp={comp} index={index}>
+                      <div className="p-4 flex border border-solid border-gray-border rounded-lg flex-col space-y-5 items-start  ">
+                        <div className="flex gap-2">
+                          <div className="w-8 h-8 min-w-max bg-red-200 rounded-full flex justify-center items-center">
+                            <div className="feat2-icon">{card.icon}</div>
+                          </div>
+                          <div className="flex-1 text-xl">
+                            <EditorComp
+                              initialValue={card.title}
+                              id={card.id}
+                              handleMultiEdit={handleMultiEdit}
+                              keys="title"
+                            />
+                          </div>
+                        </div>
                         <EditorComp
-                          initialValue={card.title}
+                          initialValue={card.desc}
                           id={card.id}
                           handleMultiEdit={handleMultiEdit}
-                          keys="title"
+                          keys="desc"
                         />
+                        <Button variant="link">
+                          <EditorComp
+                            initialValue={card.btn}
+                            id={card.id}
+                            handleMultiEdit={handleMultiEdit}
+                            keys="btn"
+                          />
+                        </Button>
                       </div>
-                    </div>
-                    <EditorComp
-                      initialValue={card.desc}
-                      id={card.id}
-                      handleMultiEdit={handleMultiEdit}
-                      keys="desc"
-                    />
-                    <Button variant="link">
-                      <EditorComp
-                        initialValue={card.btn}
-                        id={card.id}
-                        handleMultiEdit={handleMultiEdit}
-                        keys="btn"
-                      />
-                    </Button>
+                    </EditPopover>
                   </div>
                 );
               })}

@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../../ui/Container/container";
+import Container from "../../../ui/container/container";
 import {
   HiOutlineSupport,
   HiOutlineBriefcase,
@@ -8,6 +8,7 @@ import {
 import { TbAsteriskSimple } from "react-icons/tb";
 import cn from "clsx";
 import EditorComp from "../../../editor";
+import { EditPopover } from "../../../ui/popover/EditPopover";
 const Design5 = ({
   choose = false,
   device,
@@ -16,18 +17,8 @@ const Design5 = ({
   handleEdit,
   featuredHeader,
   backgroundColor,
+  comp,
 }) => {
-  const icons = (id) => {
-    if (id === 1) {
-      return <HiOutlineSupport />;
-    } else if (id === 2) {
-      return <HiOutlineUsers />;
-    } else if (id === 3) {
-      return <HiOutlineBriefcase />;
-    } else if (id === 4) {
-      return <TbAsteriskSimple />;
-    }
-  };
   const data = [
     {
       icon: (
@@ -119,35 +110,36 @@ const Design5 = ({
               keys="header"
             />
             <div className={gridClassName}>
-              {featuredData.map((card) => {
+              {featuredData.map((card, index) => {
                 return (
-                  <div
-                    key={card.id}
-                    className="flex flex-col space-y-5 items-start  "
-                  >
-                    <div className="flex gap-4">
-                      <div>
-                        <div className="w-12 h-12  bg-red-200 rounded-full flex justify-center items-center">
-                          <div className="feat5-icon">{icons(card.id)}</div>
+                  <div key={card.id}>
+                    <EditPopover comp={comp} index={index}>
+                      <div className="flex flex-col space-y-5 items-start  ">
+                        <div className="flex gap-4">
+                          <div>
+                            <div className="w-12 h-12  bg-red-200 rounded-full flex justify-center items-center">
+                              <div className="feat5-icon">{card.icon}</div>
+                            </div>
+                          </div>
+                          <div className="space-y-4">
+                            <div className="text-xl">
+                              <EditorComp
+                                initialValue={card.title}
+                                id={card.id}
+                                handleMultiEdit={handleMultiEdit}
+                                keys="title"
+                              />
+                            </div>
+                            <EditorComp
+                              initialValue={card.desc}
+                              id={card.id}
+                              handleMultiEdit={handleMultiEdit}
+                              keys="desc"
+                            />
+                          </div>
                         </div>
                       </div>
-                      <div className="space-y-4">
-                        <div className="text-xl">
-                          <EditorComp
-                            initialValue={card.title}
-                            id={card.id}
-                            handleMultiEdit={handleMultiEdit}
-                            keys="title"
-                          />
-                        </div>
-                        <EditorComp
-                          initialValue={card.desc}
-                          id={card.id}
-                          handleMultiEdit={handleMultiEdit}
-                          keys="desc"
-                        />
-                      </div>
-                    </div>
+                    </EditPopover>
                   </div>
                 );
               })}

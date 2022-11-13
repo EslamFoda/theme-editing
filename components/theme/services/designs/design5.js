@@ -1,11 +1,11 @@
-import Container from "../../../ui/Container/container";
+import Container from "../../../ui/container/container";
 import Title from "../common/title";
 import SubTitle from "../common/subTitle";
 import ServiceTitle from "../common/serviceTitle";
 import ServiceSubTilte from "../common/serviceSubTitle";
 import Button from "../../../ui/Button";
 import { servicesData } from "../../../../constant/";
-
+import { EditPopover } from "../../../ui/popover/EditPopover";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 const Design5 = ({
@@ -15,7 +15,8 @@ const Design5 = ({
   handleEdit,
   handleMultiEdit,
   serviceHeaders,
-  backgroundColor
+  comp,
+  backgroundColor,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-2 text-center md:grid-cols-2 sm:grid-cols-1 grid-cols-1",
@@ -71,32 +72,36 @@ const Design5 = ({
               />
             </div>
             <div className={gridClassName}>
-              {serviceData?.map((service) => (
-                <div key={service.id} className=" space-y-5">
-                  <div
-                    style={{ backgroundImage: `url(${service.pic})` }}
-                    className="bg-no-repeat bg-center bg-cover   h-72 w-full"
-                  ></div>
-                  <EditorComp
-                    initialValue={service.title}
-                    id={service.id}
-                    handleMultiEdit={handleMultiEdit}
-                    keys="title"
-                  />
-                  <EditorComp
-                    initialValue={service.desc}
-                    id={service.id}
-                    handleMultiEdit={handleMultiEdit}
-                    keys="desc"
-                  />
-                  <Button variant="primary">
-                    <EditorComp
-                      id={service.id}
-                      initialValue={service.btn}
-                      handleMultiEdit={handleMultiEdit}
-                      keys="btn"
-                    />
-                  </Button>
+              {serviceData?.map((service, index) => (
+                <div key={service.id}>
+                  <EditPopover comp={comp} index={index}>
+                    <div className=" space-y-5">
+                      <div
+                        style={{ backgroundImage: `url(${service.pic})` }}
+                        className="bg-no-repeat bg-center bg-cover   h-72 w-full"
+                      ></div>
+                      <EditorComp
+                        initialValue={service.title}
+                        id={service.id}
+                        handleMultiEdit={handleMultiEdit}
+                        keys="title"
+                      />
+                      <EditorComp
+                        initialValue={service.desc}
+                        id={service.id}
+                        handleMultiEdit={handleMultiEdit}
+                        keys="desc"
+                      />
+                      <Button variant="primary">
+                        <EditorComp
+                          id={service.id}
+                          initialValue={service.btn}
+                          handleMultiEdit={handleMultiEdit}
+                          keys="btn"
+                        />
+                      </Button>
+                    </div>
+                  </EditPopover>
                 </div>
               ))}
             </div>

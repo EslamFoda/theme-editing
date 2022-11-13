@@ -1,4 +1,4 @@
-import Container from "../../../ui/Container/container";
+import Container from "../../../ui/container/container";
 import { clientsData } from "../../../../constant/";
 import cn from "clsx";
 import Image from "next/image";

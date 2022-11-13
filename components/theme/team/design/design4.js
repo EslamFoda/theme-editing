@@ -1,4 +1,4 @@
-import Container from "../../../ui/Container/container";
+import Container from "../../../ui/container/container";
 import Title from "../common/title";
 import SubTitle from "../common/subTitle";
 import { teamsData } from "../../../../constant/";
@@ -6,6 +6,7 @@ import Name from "../common/name";
 import Position from "../common/position";
 import cn from "clsx";
 import EditorComp from "../../../editor";
+import { EditPopover } from "../../../ui/popover/EditPopover";
 const Design4 = ({
   device,
   choose,
@@ -14,6 +15,7 @@ const Design4 = ({
   teamData,
   headers,
   backgroundColor,
+  comp,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -67,27 +69,28 @@ const Design4 = ({
               />
             </div>
             <div className={gridClassName}>
-              {teamData?.map((team) => (
-                <div
-                  key={team.id}
-                  className="text-center hover:shadow-custom rounded-md transition-all py-4 space-y-5"
-                >
-                  <div
-                    style={{ backgroundImage: `url(${team.pic})` }}
-                    className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-32 w-32 rounded-full"
-                  ></div>
-                  <EditorComp
-                    initialValue={team.userName}
-                    id={team.id}
-                    handleMultiEdit={handleMultiEdit}
-                    keys="userName"
-                  />
-                  <EditorComp
-                    initialValue={team.position}
-                    id={team.id}
-                    handleMultiEdit={handleMultiEdit}
-                    keys="position"
-                  />
+              {teamData?.map((team, index) => (
+                <div key={team.id}>
+                  <EditPopover comp={comp} index={index}>
+                    <div className="text-center hover:shadow-custom rounded-md transition-all py-4 space-y-5">
+                      <div
+                        style={{ backgroundImage: `url(${team.pic})` }}
+                        className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-32 w-32 rounded-full"
+                      ></div>
+                      <EditorComp
+                        initialValue={team.userName}
+                        id={team.id}
+                        handleMultiEdit={handleMultiEdit}
+                        keys="userName"
+                      />
+                      <EditorComp
+                        initialValue={team.position}
+                        id={team.id}
+                        handleMultiEdit={handleMultiEdit}
+                        keys="position"
+                      />
+                    </div>
+                  </EditPopover>
                 </div>
               ))}
             </div>

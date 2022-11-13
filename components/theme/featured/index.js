@@ -54,6 +54,7 @@ const MainFeatured = ({
     >
       <EditBackground handleReset={handleReset} setColor={setColor} />
       <FeaturedComp
+      comp={comp}
         backgroundColor={backgroundColor}
         handleMultiEdit={handleMultiEdit}
         handleEdit={handleEdit}

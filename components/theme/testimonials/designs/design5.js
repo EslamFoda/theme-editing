@@ -1,7 +1,5 @@
-import Container from "../../../ui/Container/container";
-import Title from "../../clients/common/title";
-import SubTitle from "../../clients/common/subTitle";
-import { testimonialsData } from "../../../../constant";
+import Container from "../../../ui/container/container";
+import { EditPopover } from "../../../ui/popover/EditPopover";
 import { TbQuote } from "react-icons/tb";
 import cn from "clsx";
 import EditorComp from "../../../editor";
@@ -13,6 +11,7 @@ const Design5 = ({
   handleEdit,
   headers,
   backgroundColor,
+  comp,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -41,31 +40,35 @@ const Design5 = ({
           />
         </div>
         <div className="grid lg:grid-cols-3  md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-x-10 gap-y-14">
-          {testiData?.map((client) => (
+          {testiData?.map((client, index) => (
             <div
+              className="odd:bg-primary   testi5  flex  rounded-md flex-col self-start   even:bg-white odd:text-white"
               key={client.id}
-              className="w-full testi5 flex odd:bg-primary even:bg-white odd:text-white rounded-md flex-col gap-4 self-start  p-8   shadow-big "
             >
-              <TbQuote size={40}/>
-              <EditorComp
-                id={client.id}
-                initialValue={client.review}
-                handleMultiEdit={handleMultiEdit}
-                keys="review"
-              />
-              <EditorComp
-                id={client.id}
-                initialValue={client.userName}
-                handleMultiEdit={handleMultiEdit}
-                keys="userName"
-              />
+              <EditPopover comp={comp} index={index}>
+                <div className="w-full space-y-4  p-8  shadow-big ">
+                  <TbQuote size={40} className="quote-icon" />
+                  <EditorComp
+                    id={client.id}
+                    initialValue={client.review}
+                    handleMultiEdit={handleMultiEdit}
+                    keys="review"
+                  />
+                  <EditorComp
+                    id={client.id}
+                    initialValue={client.userName}
+                    handleMultiEdit={handleMultiEdit}
+                    keys="userName"
+                  />
 
-              <EditorComp
-                id={client.id}
-                initialValue={client.position}
-                handleMultiEdit={handleMultiEdit}
-                keys="position"
-              />
+                  <EditorComp
+                    id={client.id}
+                    initialValue={client.position}
+                    handleMultiEdit={handleMultiEdit}
+                    keys="position"
+                  />
+                </div>
+              </EditPopover>
             </div>
           ))}
         </div>

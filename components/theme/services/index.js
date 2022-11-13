@@ -51,8 +51,9 @@ const MainServices = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <EditBackground setColor={setColor}  handleReset={handleReset}/>
+      <EditBackground setColor={setColor} handleReset={handleReset} />
       <ServicesComp
+        comp={comp}
         backgroundColor={backgroundColor}
         device={device}
         serviceData={compData.items}

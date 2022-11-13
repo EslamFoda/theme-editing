@@ -1,4 +1,4 @@
-import Container from "../../../ui/Container/container";
+import Container from "../../../ui/container/container";
 import Title from "../common/title";
 import SubTitle from "../common/subTitle";
 import Name from "../common/name";
@@ -7,6 +7,7 @@ import Position from "../common/position";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import { teamsData } from "../../../../constant";
+import { EditPopover } from "../../../ui/popover/EditPopover";
 const Design1 = ({
   device,
   choose,
@@ -15,6 +16,7 @@ const Design1 = ({
   teamData,
   headers,
   backgroundColor,
+  comp,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -49,52 +51,58 @@ const Design1 = ({
           </div>
         </Container>
       ) : (
-        <div style={{
-          backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-          transition: "all .5s ease-in-out",
-        }}>
-        <Container className="py-16 ">
-          <div className="text-center space-y-4 mb-16">
-            <EditorComp
-              initialValue={headers.title}
-              handleEdit={handleEdit}
-              keys="title"
-            />
-            <EditorComp
-              initialValue={headers.subTitle}
-              handleEdit={handleEdit}
-              keys="subTitle"
-            />
-          </div>
-          <div className={gridClassName}>
-            {teamData?.map((team) => (
-              <div key={team.id} className="text-center space-y-5">
-                <div
-                  style={{ backgroundImage: `url(${team.pic})` }}
-                  className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-28 w-28 rounded-full"
-                ></div>
-                <EditorComp
-                  initialValue={team.userName}
-                  id={team.id}
-                  handleMultiEdit={handleMultiEdit}
-                  keys="userName"
-                />
-                <EditorComp
-                  initialValue={team.position}
-                  id={team.id}
-                  handleMultiEdit={handleMultiEdit}
-                  keys="position"
-                />
-                <EditorComp
-                  initialValue={team.about}
-                  id={team.id}
-                  handleMultiEdit={handleMultiEdit}
-                  keys="about"
-                />
-              </div>
-            ))}
-          </div>
-        </Container>
+        <div
+          style={{
+            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+            transition: "all .5s ease-in-out",
+          }}
+        >
+          <Container className="py-16 ">
+            <div className="text-center space-y-4 mb-16">
+              <EditorComp
+                initialValue={headers.title}
+                handleEdit={handleEdit}
+                keys="title"
+              />
+              <EditorComp
+                initialValue={headers.subTitle}
+                handleEdit={handleEdit}
+                keys="subTitle"
+              />
+            </div>
+            <div className={gridClassName}>
+              {teamData?.map((team, index) => (
+                <div key={team.id}>
+                  <EditPopover comp={comp} index={index}>
+                    <div className="text-center space-y-5">
+                      <div
+                        style={{ backgroundImage: `url(${team.pic})` }}
+                        className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-28 w-28 rounded-full"
+                      ></div>
+                      <EditorComp
+                        initialValue={team.userName}
+                        id={team.id}
+                        handleMultiEdit={handleMultiEdit}
+                        keys="userName"
+                      />
+                      <EditorComp
+                        initialValue={team.position}
+                        id={team.id}
+                        handleMultiEdit={handleMultiEdit}
+                        keys="position"
+                      />
+                      <EditorComp
+                        initialValue={team.about}
+                        id={team.id}
+                        handleMultiEdit={handleMultiEdit}
+                        keys="about"
+                      />
+                    </div>
+                  </EditPopover>
+                </div>
+              ))}
+            </div>
+          </Container>
         </div>
       )}
     </>

@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../../ui/Container/container";
+import Container from "../../../ui/container/container";
 import { GrGroup } from "react-icons/gr";
 import {
   HiOutlineSupport,
@@ -9,24 +9,15 @@ import {
 import { TbAsteriskSimple } from "react-icons/tb";
 import cn from "clsx";
 import EditorComp from "../../../editor";
+import { EditPopover } from "../../../ui/popover/EditPopover";
 const Design4 = ({
   choose = false,
   device,
   featuredData,
   handleMultiEdit,
   backgroundColor,
+  comp,
 }) => {
-  const icons = (id) => {
-    if (id === 1) {
-      return <HiOutlineSupport />;
-    } else if (id === 2) {
-      return <HiOutlineUsers />;
-    } else if (id === 3) {
-      return <HiOutlineBriefcase />;
-    } else if (id === 4) {
-      return <TbAsteriskSimple />;
-    }
-  };
   const data = [
     {
       icon: (
@@ -108,31 +99,32 @@ const Design4 = ({
         >
           <Container>
             <div className={gridClassName}>
-              {featuredData.map((card) => {
+              {featuredData.map((card, index) => {
                 return (
-                  <div
-                    key={card.id}
-                    className="p-4 flex  flex-col space-y-5 items-start  "
-                  >
-                    <div className="flex flex-col gap-5">
-                      <div className="w-12 h-12 bg-red-200 rounded-full flex justify-center items-center">
-                        <div className="feat4-icon">{icons(card.id)}</div>
-                      </div>
-                      <div className="text-xl">
+                  <div key={card.id}>
+                    <EditPopover comp={comp} index={index}>
+                      <div className="p-4 flex  flex-col space-y-5 items-start  ">
+                        <div className="flex flex-col gap-5">
+                          <div className="w-12 h-12 bg-red-200 rounded-full flex justify-center items-center">
+                            <div className="feat4-icon">{card.icon}</div>
+                          </div>
+                          <div className="text-xl">
+                            <EditorComp
+                              initialValue={card.title}
+                              id={card.id}
+                              handleMultiEdit={handleMultiEdit}
+                              keys="title"
+                            />
+                          </div>
+                        </div>
                         <EditorComp
-                          initialValue={card.title}
+                          initialValue={card.desc}
                           id={card.id}
                           handleMultiEdit={handleMultiEdit}
-                          keys="title"
+                          keys="desc"
                         />
                       </div>
-                    </div>
-                    <EditorComp
-                      initialValue={card.desc}
-                      id={card.id}
-                      handleMultiEdit={handleMultiEdit}
-                      keys="desc"
-                    />
+                    </EditPopover>
                   </div>
                 );
               })}

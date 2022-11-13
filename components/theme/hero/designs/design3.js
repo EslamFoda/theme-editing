@@ -1,6 +1,6 @@
 import React from "react";
 import EditorComp from "../../../editor";
-import Container from "../../../ui/Container/container";
+import Container from "../../../ui/container/container";
 import Button from "../../../ui/Button";
 const Design3 = ({ choose = false, heroData, handleEdit }) => {
   return (

@@ -53,6 +53,7 @@ const MainTestimonials = ({
     >
       <EditBackground setColor={setColor} handleReset={handleReset} />
       <TestiComp
+        comp={comp}
         backgroundColor={backgroundColor}
         device={device}
         testiData={compData.items}

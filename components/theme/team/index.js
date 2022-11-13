@@ -46,6 +46,7 @@ const MainTeam = ({ comps, index, setComps, comp, device, editSections }) => {
     >
       <EditBackground setColor={setColor} handleReset={handleReset} />
       <ServicesComp
+        comp={comp}
         backgroundColor={backgroundColor}
         device={device}
         teamData={compData.items}

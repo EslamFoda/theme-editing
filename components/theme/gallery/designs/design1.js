@@ -1,4 +1,4 @@
-import Container from "../../../ui/Container/container";
+import Container from "../../../ui/container/container";
 import Title from "../../services/common/title";
 import SubTitle from "../../services/common/subTitle";
 

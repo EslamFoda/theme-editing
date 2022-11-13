@@ -1,7 +1,5 @@
-import Container from "../../../ui/Container/container";
-import Title from "../../clients/common/title";
-import SubTitle from "../../clients/common/subTitle";
-import { testimonialsData } from "../../../../constant";
+import Container from "../../../ui/container/container";
+import { EditPopover } from "../../../ui/popover/EditPopover";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 const Design4 = ({
@@ -12,6 +10,7 @@ const Design4 = ({
   handleEdit,
   headers,
   backgroundColor,
+  comp,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -40,37 +39,41 @@ const Design4 = ({
           />
         </div>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-8">
-          {testiData?.map((client) => (
-            <div className="flex" key={client.id}>
-              <div className="w-full h-full justify-between flex flex-col gap-4   p-6  rounded-md   border-gray-border border">
-                <EditorComp
-                  id={client.id}
-                  initialValue={client.review}
-                  handleMultiEdit={handleMultiEdit}
-                  keys="review"
-                />
-                <div className="flex items-center gap-4">
-                  <div
-                    style={{ backgroundImage: `url(${client.pic})` }}
-                    className="w-14 h-14 bg-no-reapeat bg-cover bg-center   rounded-full   "
-                  ></div>
-                  <div className="space-y-4 flex-1">
+          {testiData?.map((client, index) => (
+            <div key={client.id}>
+              <EditPopover comp={comp} index={index}>
+                <div className="flex">
+                  <div className="w-full h-full justify-between flex flex-col gap-4   p-6  rounded-md   border-gray-border border">
                     <EditorComp
                       id={client.id}
-                      initialValue={client.userName}
+                      initialValue={client.review}
                       handleMultiEdit={handleMultiEdit}
-                      keys="userName"
+                      keys="review"
                     />
+                    <div className="flex items-center gap-4">
+                      <div
+                        style={{ backgroundImage: `url(${client.pic})` }}
+                        className="w-14 h-14 bg-no-reapeat bg-cover bg-center   rounded-full   "
+                      ></div>
+                      <div className="space-y-4 flex-1">
+                        <EditorComp
+                          id={client.id}
+                          initialValue={client.userName}
+                          handleMultiEdit={handleMultiEdit}
+                          keys="userName"
+                        />
 
-                    <EditorComp
-                      id={client.id}
-                      initialValue={client.position}
-                      handleMultiEdit={handleMultiEdit}
-                      keys="position"
-                    />
+                        <EditorComp
+                          id={client.id}
+                          initialValue={client.position}
+                          handleMultiEdit={handleMultiEdit}
+                          keys="position"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </EditPopover>
             </div>
           ))}
         </div>

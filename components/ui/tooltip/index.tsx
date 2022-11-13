@@ -29,13 +29,13 @@ const Tooltip: React.FC<Props> = ({
 }) => {
   // We use `useHover()` to determine whether we should show the tooltip.
   // Notice how we're configuring a small delay on enter / leave.
-  const [isOver, hoverProps] = useHover({ delayEnter: 100, delayLeave: 300 });
+  const [isOver, hoverProps] = useHover({ delayEnter: 100, delayLeave: 100 });
 
   // Tell `useLayer()` how we would like to position our tooltip
   const { triggerProps, layerProps, arrowProps, renderLayer } = useLayer({
     isOpen: isOver,
     placement: placement,
-    triggerOffset: 8, // small gap between wrapped content and the tooltip
+    triggerOffset: 15, // small gap between wrapped content and the tooltip
   });
 
   // when children equals text (string | number), we need to wrap it in an
@@ -60,7 +60,7 @@ const Tooltip: React.FC<Props> = ({
   }
 
   const rootClassName = cn(
-    "tooltip-box text-xs bg-white shadow-md rounded-sm z-50 text-black px-2 py-[3px]",
+    "tooltip-box text-xs bg-[#444f5b] shadow-md rounded-sm z-50 text-white px-2 py-[3px]",
     className
   );
 
@@ -74,8 +74,8 @@ const Tooltip: React.FC<Props> = ({
               {text}
               <Arrow
                 {...arrowProps}
-                backgroundColor={"white"}
-                borderColor={"white"}
+                backgroundColor={"#444f5b"}
+                borderColor={"#444f5b"}
                 borderWidth={2}
                 size={6}
               />

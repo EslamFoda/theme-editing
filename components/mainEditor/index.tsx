@@ -113,22 +113,6 @@ const MainEditor = () => {
           />
         ) : null}
       </div>
-      {/* <StyledFrame
-        style={{
-          width: containerWidth,
-          height: "85vh",
-          minHeight:"85vh",
-          transition: "width 0.2s ease 0s",
-          margin: "0px auto",
-          
-        }}
-      >
-        <MainContainer
-          containerWidth={containerWidth}
-          comps={comps}
-          setComps={setComps}
-        />
-      </StyledFrame> */}
       <MainContainer
         comps={comps}
         setComps={setComps}
