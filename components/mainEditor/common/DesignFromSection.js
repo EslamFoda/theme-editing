@@ -5,8 +5,6 @@ const DesignFromSection = ({
   designs,
   setComps,
   dispatch,
-  selectedSection,
-  sectionsImgs,
   compName,
   nextIndex,
   comps,
@@ -15,11 +13,7 @@ const DesignFromSection = ({
 
   const handleCreateSection = (i) => {
     dispatch(selectSectionOff());
-    const findSection = sectionsImgs.find(
-      (section) => section.id === selectedSection
-    );
     comps.splice(nextIndex, 0, {
-      Component: findSection.Section,
       id: Math.floor(Math.random() * Date.now()).toString(),
       compName: compName,
       designNum: i + 1,

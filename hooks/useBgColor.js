@@ -15,6 +15,7 @@ const useBgColor = (index) => {
   const handleChangeColor = () => {
     comps[index].backgroundColor = color.rgb;
     setComps([...comps]);
+    console.log(comps[index])
   };
 
   const handleReset = () => {

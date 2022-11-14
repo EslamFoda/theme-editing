@@ -7,12 +7,14 @@ import cn from "clsx";
 import Image from "next/image";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
+import { EditPopover } from "../../../ui/popover/EditPopover";
 const Design5 = ({
   device,
   choose,
   handleEdit,
   galleryData,
   backgroundColor,
+  comp,
 }) => {
   const gridClassName = cn(
     "grid   lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
@@ -76,18 +78,21 @@ const Design5 = ({
               </Button>
             </div>
             <div className={gridClassName}>
-              {galleryDatas.map((gallery) => (
-                <div
-                  style={{ zIndex: -1 }}
-                  key={gallery.id}
-                  className="relative lg:h-60 md:h-52 h-52 w-full"
-                >
-                  <Image
-                    src={gallery.img}
-                    className="absolute"
-                    objectFit="cover"
-                    layout="fill"
-                  />
+              {galleryData.items.map((gallery, index) => (
+                <div key={gallery.id}>
+                  <EditPopover comp={comp} index={index}>
+                    <div
+                      key={gallery.id}
+                      className="relative lg:h-60 md:h-52 h-52 w-full"
+                    >
+                      <Image
+                        src={gallery.img}
+                        className="absolute"
+                        objectFit="cover"
+                        layout="fill"
+                      />
+                    </div>
+                  </EditPopover>
                 </div>
               ))}
             </div>

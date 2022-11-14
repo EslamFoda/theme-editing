@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect } from "react";
 import MainContainer from "../mainContainer";
 import ActionNavBar from "./common/actionNavBar";
 import { useSelector, useDispatch } from "react-redux";
@@ -42,7 +42,6 @@ const MainEditor = () => {
     "theme-color"
   );
   const [mode, setMode] = useStickyState(modes[0], "theme-mode");
-  const [selectedSection, setSelectedSection] = useState(null);
   const dispatch = useDispatch();
   const editSections = useSelector((state: any) => state.editSections.value);
   const addSection = useSelector((state: any) => state.editSections.addSection);
@@ -54,6 +53,15 @@ const MainEditor = () => {
   const compName = useSelector((state: any) => state.compName.compName);
   const { designs } = useChooseDesign(compName);
   const containerWidth = useSelector((state: any) => state.mainWidth.width);
+
+  useEffect(() => {
+    const data = window.localStorage.getItem("ALL_SECTIONS");
+    if (data !== null) setComps([...JSON.parse(data)]);
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("ALL_SECTIONS", JSON.stringify(comps));
+  }, [comps]);
 
   return (
     <div
@@ -87,8 +95,6 @@ const MainEditor = () => {
                 <DesignFromSection
                   designs={designs}
                   dispatch={dispatch}
-                  sectionsImgs={sectionsImgs}
-                  selectedSection={selectedSection}
                   setComps={setComps}
                   compName={compName}
                   comps={comps}
@@ -98,7 +104,6 @@ const MainEditor = () => {
                 <SelectSection
                   dispatch={dispatch}
                   sectionsImgs={sectionsImgs}
-                  setSelectedSection={setSelectedSection}
                 />
               )}
             </div>

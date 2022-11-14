@@ -17,8 +17,8 @@ const MainClients = ({
   device,
   editSections,
 }) => {
-  const { compName, designNum,compData,backgroundColor } = comp;
-  const {  setColor,handleReset } = useBgColor(index);
+  const { compName, designNum, compData, backgroundColor } = comp;
+  const { setColor, handleReset } = useBgColor(index);
 
   const designs = {
     design1: Design1,
@@ -42,10 +42,11 @@ const MainClients = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-       <EditBackground  handleReset={handleReset} setColor={setColor}  />
+      <EditBackground handleReset={handleReset} setColor={setColor} />
       <ClientsComp
-      backgroundColor={backgroundColor}
+        backgroundColor={backgroundColor}
         device={device}
+        comp={comp}
         handleEdit={handleEdit}
         clientData={compData}
       />

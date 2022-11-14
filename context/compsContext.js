@@ -6,7 +6,7 @@ export const CompsContext = createContext();
 const CompsProvider = ({ children }) => {
   const [comps, setComps] = useState([
     {
-      Component: MainHero,
+      // Component: MainHero,
       id: useId(),
       compName: "hero",
       designNum: 1,

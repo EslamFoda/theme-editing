@@ -47,6 +47,7 @@ const MainGallery = ({
         device={device}
         handleEdit={handleEdit}
         galleryData={compData}
+        comp={comp}
         backgroundColor={backgroundColor}
       />
       <ChangeSection

@@ -1,7 +1,7 @@
 import ControlBtns from "./controlBtns";
-
+import { containersData } from "../../../constant/data";
+import DeleteContainers from "../../deleteContainers";
 const Preview = ({ containerWidth, comps, setComps, device, editSections }) => {
-
   return (
     <div
       style={{
@@ -13,10 +13,11 @@ const Preview = ({ containerWidth, comps, setComps, device, editSections }) => {
       className="flex flex-col"
     >
       {comps.map((comp, i) => {
+        const Component = containersData[comp.compName];
         return (
           <div className="relative demo-inline" key={comp.id}>
-           
-            <comp.Component
+            <DeleteContainers index={i}/>
+            <Component
               comp={comp}
               setComps={setComps}
               comps={comps}

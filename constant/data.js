@@ -1,6 +1,19 @@
- const aboutData = {
-  title: "<h1 class='text-4xl font-semibold'>About Us</h1>",
-  subTitle:
-    "<p>Write about your businesses background, including your history, accomplishments and any awards you may have received. Use this section to show your brand’s personality.</p>",
-  btn: "<span>Learn More</span>",
+import MainAbout from "../components/theme/about";
+import MainFeatured from "../components/theme/featured";
+import MainServices from "../components/theme/services";
+import MainTeam from "../components/theme/team";
+import MainClients from "../components/theme/clients";
+import MainGallery from "../components/theme/gallery";
+import MainTestimonials from "../components/theme/testimonials";
+import MainHero from "../components/theme/hero";
+
+export const containersData = {
+  hero: MainHero,
+  about: MainAbout,
+  featured: MainFeatured,
+  services: MainServices,
+  team: MainTeam,
+  gallery: MainGallery,
+  testimonials: MainTestimonials,
+  clients: MainClients,
 };

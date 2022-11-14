@@ -57,7 +57,7 @@ const Design1 = ({
             transition: "all .5s ease-in-out",
           }}
         >
-          <Container className="py-16 ">
+          <Container className="py-16  ">
             <div className="text-center space-y-4 mb-16">
               <EditorComp
                 initialValue={serviceHeaders.title}

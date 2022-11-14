@@ -5,12 +5,14 @@ import cn from "clsx";
 import Image from "next/image";
 import SubTitle from "../common/subTitle";
 import EditorComp from "../../../editor";
+import { EditPopover } from "../../../ui/popover/EditPopover";
 const Design5 = ({
   device,
   choose,
   handleEdit,
   clientData,
   backgroundColor,
+  comp,
 }) => {
   const gridClassName = cn("grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1", {
     "!grid-cols-1": device === "mobile",
@@ -72,16 +74,20 @@ const Design5 = ({
               </div>
               <div className="py-20 px-5">
                 <div className={"flex  flex-wrap items-center"}>
-                  {clientsData.map((client) => (
-                    <div key={client.id} className="p-2 items-center  ">
-                      <div className="relative h-16 w-24">
-                        <Image
-                          src={client.img}
-                          layout="fill"
-                          objectFit="contain"
-                          className="absolute"
-                        />
-                      </div>
+                  {clientData.items.map((client,index) => (
+                    <div key={client.id}>
+                      <EditPopover comp={comp} index={index}>
+                        <div className="p-2 items-center  ">
+                          <div className="relative h-16 w-24">
+                            <Image
+                              src={client.img}
+                              layout="fill"
+                              objectFit="contain"
+                              className="absolute"
+                            />
+                          </div>
+                        </div>
+                      </EditPopover>
                     </div>
                   ))}
                 </div>

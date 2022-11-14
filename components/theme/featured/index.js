@@ -4,7 +4,12 @@ import AddSection from "../../edit/addSection";
 import dynamic from "next/dynamic";
 import useBgColor from "../../../hooks/useBgColor";
 import EditBackground from "../../mainContainer/common/editBackground";
-
+import {
+  HiOutlineSupport,
+  HiOutlineBriefcase,
+  HiOutlineUsers,
+} from "react-icons/hi";
+import { TbAsteriskSimple } from "react-icons/tb";
 const Design1 = dynamic(() => import("./designs/design1"));
 const Design2 = dynamic(() => import("./designs/design2"));
 const Design3 = dynamic(() => import("./designs/design3"));
@@ -29,6 +34,13 @@ const MainFeatured = ({
     design4: Design4,
     design5: Design5,
   };
+
+  const icons = {
+    support: HiOutlineSupport,
+    users: HiOutlineUsers,
+    briefcase: HiOutlineBriefcase,
+    asterisk: TbAsteriskSimple,
+  };
   const FeaturedComp = designs[`design${designNum}`];
 
   const handleMultiEdit = (value, id, keys) => {
@@ -52,9 +64,10 @@ const MainFeatured = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <EditBackground handleReset={handleReset} setColor={setColor} />
+      <EditBackground setColor={setColor} />
       <FeaturedComp
-      comp={comp}
+        icons={icons}
+        comp={comp}
         backgroundColor={backgroundColor}
         handleMultiEdit={handleMultiEdit}
         handleEdit={handleEdit}

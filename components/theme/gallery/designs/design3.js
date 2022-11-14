@@ -6,7 +6,15 @@ import { galleryDatas } from "../../../../constant/";
 import cn from "clsx";
 import Image from "next/image";
 import EditorComp from "../../../editor";
-const Design3 = ({ device, choose, handleEdit, galleryData,backgroundColor }) => {
+import { EditPopover } from "../../../ui/popover/EditPopover";
+const Design3 = ({
+  device,
+  choose,
+  handleEdit,
+  galleryData,
+  backgroundColor,
+  comp,
+}) => {
   const gridClassName = cn(
     "grid gap-6 lg:grid-cols-2 md:grid-cols-2  grid-cols-2",
     {
@@ -40,40 +48,42 @@ const Design3 = ({ device, choose, handleEdit, galleryData,backgroundColor }) =>
           </div>
         </Container>
       ) : (
-        <div  style={{
-          backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-          transition: "all .5s ease-in-out",
-        }}>  
-        <Container className="py-16 ">
-          <div className="text-center space-y-4 mb-16">
-            <EditorComp
-              initialValue={galleryData.title}
-              handleEdit={handleEdit}
-              keys="title"
-            />
-            <EditorComp
-              initialValue={galleryData.subTitle}
-              handleEdit={handleEdit}
-              keys="subtitle"
-            />
-          </div>
-          <div className={gridClassName}>
-            {galleryDatas.map((gallery) => (
-              <div
-                key={gallery.id}
-                className="relative hover:shadow-custom transition-all lg:h-72 md:h-52 h-32 w-full"
-              >
-                <Image
-                  src={gallery.img}
-                  className="absolute"
-                  objectFit="cover"
-                  layout="fill"
-                />
-              </div>
-            ))}
-          </div>
-        </Container>
-
+        <div
+          style={{
+            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+            transition: "all .5s ease-in-out",
+          }}
+        >
+          <Container className="py-16 ">
+            <div className="text-center space-y-4 mb-16">
+              <EditorComp
+                initialValue={galleryData.title}
+                handleEdit={handleEdit}
+                keys="title"
+              />
+              <EditorComp
+                initialValue={galleryData.subTitle}
+                handleEdit={handleEdit}
+                keys="subtitle"
+              />
+            </div>
+            <div className={gridClassName}>
+              {galleryData.items.map((gallery, index) => (
+                <div key={gallery.id}>
+                  <EditPopover comp={comp} index={index}>
+                    <div className="relative hover:shadow-custom transition-all lg:h-72 md:h-52 h-32 w-full">
+                      <Image
+                        src={gallery.img}
+                        className="absolute"
+                        objectFit="cover"
+                        layout="fill"
+                      />
+                    </div>
+                  </EditPopover>
+                </div>
+              ))}
+            </div>
+          </Container>
         </div>
       )}
     </>

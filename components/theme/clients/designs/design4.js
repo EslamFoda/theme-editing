@@ -5,12 +5,14 @@ import cn from "clsx";
 import Image from "next/image";
 import SubTitle from "../common/subTitle";
 import EditorComp from "../../../editor";
+import { EditPopover } from "../../../ui/popover/EditPopover";
 const Design4 = ({
   device,
   choose,
   handleEdit,
   clientData,
   backgroundColor,
+  comp,
 }) => {
   const gridClassName = cn(
     "grid lg:grid-cols-3 md:grid-cols-3  grid-cols-1 gap-4",
@@ -77,19 +79,20 @@ const Design4 = ({
               </div>
               <div className="col-span-2">
                 <div className={"flex  flex-wrap items-center"}>
-                  {clientsData.map((client) => (
-                    <div
-                      key={client.id}
-                      className="p-2 items-center col-span-3 "
-                    >
-                      <div className="relative h-20 w-40">
-                        <Image
-                          src={client.img}
-                          layout="fill"
-                          objectFit="contain"
-                          className="absolute"
-                        />
-                      </div>
+                  {clientData.items.map((client,index) => (
+                    <div key={client.id}>
+                      <EditPopover comp={comp} index={index}>
+                        <div className="p-2 items-center col-span-3 ">
+                          <div className="relative h-20 w-40">
+                            <Image
+                              src={client.img}
+                              layout="fill"
+                              objectFit="contain"
+                              className="absolute"
+                            />
+                          </div>
+                        </div>
+                      </EditPopover>
                     </div>
                   ))}
                 </div>

@@ -5,12 +5,14 @@ import Image from "next/image";
 import Title from "../common/title";
 import SubTitle from "../common/subTitle";
 import EditorComp from "../../../editor";
+import { EditPopover } from "../../../ui/popover/EditPopover";
 const Design1 = ({
   device,
   choose,
   handleEdit,
   clientData,
-  backgroundColor
+  backgroundColor,
+  comp,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -52,39 +54,42 @@ const Design1 = ({
           </div>
         </Container>
       ) : (
-        <div style={{
-          backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-          transition: "all .5s ease-in-out",
-        }}>
-        <Container className="py-16 ">
-          <div className="text-center space-y-4 mb-16">
-          <EditorComp
-              initialValue={clientData.title}
-              handleEdit={handleEdit}
-              keys='title'
-            />
-            <EditorComp
-              initialValue={clientData.subTitle}
-              handleEdit={handleEdit}
-              keys='subTitle'
-            />
-          </div>
-          <div className={gridClassName}>
-            {clientsData.map((client) => (
-              <div
-                key={client.id}
-                className="relative justify-self-center h-20 w-44"
-              >
-                <Image
-                  src={client.img}
-                  layout="fill"
-                  objectFit="contain"
-                  className="absolute"
-                />
-              </div>
-            ))}
-          </div>
-        </Container>
+        <div
+          style={{
+            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+            transition: "all .5s ease-in-out",
+          }}
+        >
+          <Container className="py-16 ">
+            <div className="text-center space-y-4 mb-16">
+              <EditorComp
+                initialValue={clientData.title}
+                handleEdit={handleEdit}
+                keys="title"
+              />
+              <EditorComp
+                initialValue={clientData.subTitle}
+                handleEdit={handleEdit}
+                keys="subTitle"
+              />
+            </div>
+            <div className={gridClassName}>
+              {clientData.items.map((client, index) => (
+                <div key={client.id}>
+                  <EditPopover comp={comp} index={index}>
+                    <div className="relative justify-self-center h-20 w-44">
+                      <Image
+                        src={client.img}
+                        layout="fill"
+                        objectFit="contain"
+                        className="absolute"
+                      />
+                    </div>
+                  </EditPopover>
+                </div>
+              ))}
+            </div>
+          </Container>
         </div>
       )}
     </>

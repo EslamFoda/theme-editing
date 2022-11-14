@@ -5,12 +5,14 @@ import cn from "clsx";
 import Image from "next/image";
 import SubTitle from "../common/subTitle";
 import EditorComp from "../../../editor";
+import { EditPopover } from "../../../ui/popover/EditPopover";
 const Design2 = ({
   device,
   choose,
   handleEdit,
   clientData,
   backgroundColor,
+  comp,
 }) => {
   const gridClassName = cn(
     "grid gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -74,19 +76,23 @@ const Design2 = ({
               />
             </div>
             <div className={gridClassName}>
-              {clientsData.map((client) => (
-                <div
-                  key={client.id}
-                  className="p-2 items-center bg-gray-border flex justify-center"
-                >
-                  <div className="relative h-20 w-44">
-                    <Image
-                      src={client.img}
-                      layout="fill"
-                      objectFit="contain"
-                      className="absolute"
-                    />
-                  </div>
+              {clientData.items.map((client, index) => (
+                <div key={client.id}>
+                  <EditPopover comp={comp} index={index}>
+                    <div
+                      key={client.id}
+                      className="p-2 items-center bg-gray-border flex justify-center"
+                    >
+                      <div className="relative h-20 w-44">
+                        <Image
+                          src={client.img}
+                          layout="fill"
+                          objectFit="contain"
+                          className="absolute"
+                        />
+                      </div>
+                    </div>
+                  </EditPopover>
                 </div>
               ))}
             </div>

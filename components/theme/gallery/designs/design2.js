@@ -7,7 +7,15 @@ import cn from "clsx";
 import Image from "next/image";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-const Design2 = ({ device, choose, handleEdit, galleryData,backgroundColor }) => {
+import { EditPopover } from "../../../ui/popover/EditPopover";
+const Design2 = ({
+  device,
+  choose,
+  handleEdit,
+  galleryData,
+  backgroundColor,
+  comp,
+}) => {
   const gridClassName = cn(
     "grid lg:gap-8 md:gap-6 gap-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
     {
@@ -46,47 +54,52 @@ const Design2 = ({ device, choose, handleEdit, galleryData,backgroundColor }) =>
           </div>
         </Container>
       ) : (
-        <div  style={{
-          backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-          transition: "all .5s ease-in-out",
-        }}>
-
-        <Container className="py-16 ">
-          <div className="text-center space-y-4 mb-16">
-            <EditorComp
-              initialValue={galleryData.title}
-              handleEdit={handleEdit}
-              keys="title"
-            />
-            <EditorComp
-              initialValue={galleryData.subTitle}
-              handleEdit={handleEdit}
-              keys="subTitle"
-            />
-            <Button>
+        <div
+          style={{
+            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+            transition: "all .5s ease-in-out",
+          }}
+        >
+          <Container className="py-16 ">
+            <div className="text-center space-y-4 mb-16">
               <EditorComp
-                initialValue={galleryData.btn}
+                initialValue={galleryData.title}
                 handleEdit={handleEdit}
-                keys="btn"
+                keys="title"
               />
-            </Button>
-          </div>
-          <div className={gridClassName}>
-            {galleryDatas.map((gallery) => (
-              <div
-                key={gallery.id}
-                className="relative hover:shadow-custom transition-all lg:h-60 md:h-52 h-32 w-full"
-              >
-                <Image
-                  src={gallery.img}
-                  className="absolute"
-                  objectFit="cover"
-                  layout="fill"
+              <EditorComp
+                initialValue={galleryData.subTitle}
+                handleEdit={handleEdit}
+                keys="subTitle"
+              />
+              <Button>
+                <EditorComp
+                  initialValue={galleryData.btn}
+                  handleEdit={handleEdit}
+                  keys="btn"
                 />
-              </div>
-            ))}
-          </div>
-        </Container>
+              </Button>
+            </div>
+            <div className={gridClassName}>
+              {galleryData.items.map((gallery, index) => (
+                <div key={gallery.id}>
+                  <EditPopover comp={comp} index={index}>
+                    <div
+                      key={gallery.id}
+                      className="relative hover:shadow-custom transition-all lg:h-60 md:h-52 h-32 w-full"
+                    >
+                      <Image
+                        src={gallery.img}
+                        className="absolute"
+                        objectFit="cover"
+                        layout="fill"
+                      />
+                    </div>
+                  </EditPopover>
+                </div>
+              ))}
+            </div>
+          </Container>
         </div>
       )}
     </>

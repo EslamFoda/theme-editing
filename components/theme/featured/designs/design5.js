@@ -18,6 +18,7 @@ const Design5 = ({
   featuredHeader,
   backgroundColor,
   comp,
+  icons,
 }) => {
   const data = [
     {
@@ -111,6 +112,7 @@ const Design5 = ({
             />
             <div className={gridClassName}>
               {featuredData.map((card, index) => {
+                const IconComp = icons[card.icon];
                 return (
                   <div key={card.id}>
                     <EditPopover comp={comp} index={index}>
@@ -118,7 +120,9 @@ const Design5 = ({
                         <div className="flex gap-4">
                           <div>
                             <div className="w-12 h-12  bg-red-200 rounded-full flex justify-center items-center">
-                              <div className="feat5-icon">{card.icon}</div>
+                              <div className="feat5-icon">
+                                <IconComp />
+                              </div>
                             </div>
                           </div>
                           <div className="space-y-4">

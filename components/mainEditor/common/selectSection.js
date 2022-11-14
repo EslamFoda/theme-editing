@@ -1,7 +1,7 @@
 import { selectSectionOn } from "../../../features/add-section";
 import { selectCompName } from "../../../features/comp-name";
 import Image from "next/image";
-const SelectSection = ({ sectionsImgs, setSelectedSection, dispatch }) => {
+const SelectSection = ({ sectionsImgs, dispatch }) => {
   return (
     <>
       {sectionsImgs.map(({ src, id, title }, i) => (
@@ -10,7 +10,6 @@ const SelectSection = ({ sectionsImgs, setSelectedSection, dispatch }) => {
           key={id}
           onClick={() => {
             dispatch(selectCompName(title));
-            setSelectedSection(id);
             dispatch(selectSectionOn());
           }}
         >

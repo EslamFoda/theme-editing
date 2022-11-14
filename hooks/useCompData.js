@@ -1,10 +1,5 @@
 import { useSelector } from "react-redux";
-import {
-  HiOutlineSupport,
-  HiOutlineBriefcase,
-  HiOutlineUsers,
-} from "react-icons/hi";
-import { TbAsteriskSimple } from "react-icons/tb";
+
 const useCompData = () => {
   const compName = useSelector((state) => state.compName.compName);
   //   const aboutData = useSelector((state) => state.aboutComp.aboutData);
@@ -12,28 +7,28 @@ const useCompData = () => {
     header: "<h1 class='text-2xl font-semibold text-center'>Features</h1>",
     items: [
       {
-        icon:<HiOutlineSupport/>,
+        icon: "support",
         title: "<h2 class=' font-semibold'>Professional Support</h2>",
         desc: " <p>Our team works diligently to ensure that all your questions are answered and your needs met.</p>",
         id: 1,
         btn: "<span>Read More</span>",
       },
       {
-        icon:<HiOutlineUsers/>,
+        icon: "users",
         title: "<h2 class=' font-semibold'>Qualified Team</h2>",
         desc: " <p>From designers to developers to writers, our team is equipped with a diverse set of skills.</p>",
         id: 2,
         btn: "<span>Read More</span>",
       },
       {
-        icon:<HiOutlineBriefcase/>,
+        icon: "briefcase",
         title: "<h2 class=' font-semibold'>High Quality Work</h2>",
         desc: " <p>All our work is executed with the highest degree of efficiency.</p>",
         id: 3,
         btn: "<span>Read More</span>",
       },
       {
-        icon:<TbAsteriskSimple/>,
+        icon: "asterisk",
         title: "<h2 class=' font-semibold'>Detail-oriented approach</h2>",
         desc: " <p>We focus on every aspect of our clients’ needs to leave nothing to chance.</p>",
         id: 4,
@@ -177,12 +172,54 @@ const useCompData = () => {
     title: "<h1 class='text-2xl font-semibold'>Our Work</h1>",
     subTitle: "<p>Browse through our collection of stunning images</p>",
     btn: "<span>Start Now</span>",
+    items: [
+      {
+        img: "https://images.unsplash.com/photo-1580197370215-38fdb17dfe8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1590&q=80",
+        id: 1,
+      },
+      {
+        img: "https://images.unsplash.com/photo-1580124173799-934609852db8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80",
+        id: 2,
+      },
+      {
+        img: "https://images.unsplash.com/photo-1580152040915-ad6ceeaeb8c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80",
+        id: 3,
+      },
+      {
+        img: "https://images.unsplash.com/photo-1558981822-0c0c5b070026?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80",
+        id: 4,
+      },
+      {
+        img: "https://images.unsplash.com/photo-1580118586709-50d0a0eea2cb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80",
+        id: 5,
+      },
+      {
+        img: "https://images.unsplash.com/photo-1580142541272-4f6b7e815563?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2851&q=80",
+        id: 6,
+      },
+    ],
   };
 
   const clientsData = {
     title: "<h1 class='text-2xl font-semibold'>Our Clients</h1>",
     subTitle:
       "<p>Some of the world’s biggest brands trust us with their services</p>",
+    items: [
+      { img: "https://assets.wuiltsite.com/defaults/google-logo.png", id: 1 },
+      { img: "https://assets.wuiltsite.com/defaults/facebook-logo.png", id: 2 },
+      { img: "https://assets.wuiltsite.com/defaults/evernote-logo.png", id: 3 },
+      {
+        img: "https://assets.wuiltsite.com/defaults/shutterstock-logo.png",
+        id: 4,
+      },
+      { img: "https://assets.wuiltsite.com/defaults/google-logo.png", id: 5 },
+      { img: "https://assets.wuiltsite.com/defaults/facebook-logo.png", id: 6 },
+      { img: "https://assets.wuiltsite.com/defaults/evernote-logo.png", id: 7 },
+      {
+        img: "https://assets.wuiltsite.com/defaults/shutterstock-logo.png",
+        id: 8,
+      },
+    ],
   };
 
   const compData = () => {

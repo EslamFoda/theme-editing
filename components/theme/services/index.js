@@ -8,7 +8,6 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import useBgColor from "../../../hooks/useBgColor";
 import EditBackground from "../../mainContainer/common/editBackground";
-
 const MainServices = ({
   comps,
   index,

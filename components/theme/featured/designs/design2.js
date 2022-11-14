@@ -16,7 +16,7 @@ const Design2 = ({
   featuredData,
   handleMultiEdit,
   backgroundColor,
-  comp,
+  comp,icons,
 }) => {
  
   const data = [
@@ -104,13 +104,14 @@ const Design2 = ({
           <Container>
             <div className={gridClassName}>
               {featuredData.map((card, index) => {
+                 const IconComp = icons[card.icon];
                 return (
                   <div key={card.id}>
                     <EditPopover comp={comp} index={index}>
                       <div className="p-4 flex border border-solid border-gray-border rounded-lg flex-col space-y-5 items-start  ">
                         <div className="flex gap-2">
                           <div className="w-8 h-8 min-w-max bg-red-200 rounded-full flex justify-center items-center">
-                            <div className="feat2-icon">{card.icon}</div>
+                            <div className="feat2-icon"><IconComp/></div>
                           </div>
                           <div className="flex-1 text-xl">
                             <EditorComp

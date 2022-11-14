@@ -13,8 +13,8 @@ const Design1 = ({
   handleMultiEdit,
   backgroundColor,
   comp,
+  icons,
 }) => {
- 
   const data = [
     {
       icon: <FaAd className="text-red-500" size={choose ? 5 : 40} />,
@@ -88,11 +88,14 @@ const Design1 = ({
           <Container>
             <div className={gridClassName}>
               {featuredData.map((card, index) => {
+                const IconComp = icons[card.icon];
                 return (
                   <div key={card.id}>
                     <EditPopover comp={comp} index={index}>
                       <div className="p-4 flex flex-col space-y-5 text-center items-center">
-                        <div className="feat1-icon">{card.icon}</div>
+                        <div className="feat1-icon">
+                          <IconComp />
+                        </div>
                         <div className="text-4xl">
                           <EditorComp
                             initialValue={card.title}
