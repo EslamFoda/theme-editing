@@ -7,7 +7,7 @@ const AddSection = ({ index }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="absolute transition-all   z-10 duration-300 -bottom-21 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+    <div className="absolute transition-all hidden group-hover:flex  z-10 duration-300 -bottom-21 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
       <div
         onClick={() => {
           const nextIndex = index + 1;

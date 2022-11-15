@@ -6,7 +6,6 @@ const Design1 = ({
   choose = false,
   handleEdit,
   aboutData,
-  backgroundColor,
 }) => {
   return (
     <div>
@@ -38,10 +37,7 @@ const Design1 = ({
         </Container>
       ) : (
         <div
-          style={{
-            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-            transition: "all .5s ease-in-out",
-          }}
+          
         >
           <Container>
             <div className="flex gap-6  mx-auto  lg:justify-between md:justify-center  justify-center items-center py-16 flex-wrap ">

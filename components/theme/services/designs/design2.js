@@ -15,7 +15,6 @@ const Design2 = ({
   handleEdit,
   handleMultiEdit,
   serviceHeaders,
-  backgroundColor,
   comp,
 }) => {
   const gridClassName = cn(
@@ -58,10 +57,7 @@ const Design2 = ({
         </Container>
       ) : (
         <div
-          style={{
-            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-            transition: "all .5s ease-in-out",
-          }}
+        
         >
           <Container className="py-16 ">
             <div className={headersClassName}>
@@ -81,10 +77,12 @@ const Design2 = ({
                 <div key={service.id}>
                   <EditPopover index={index} comp={comp}>
                     <div className=" space-y-5">
+                      <EditPopover comp={comp} index={index} editImage>
                       <div
                         style={{ backgroundImage: `url(${service.pic})` }}
                         className="bg-no-repeat bg-center bg-cover   h-72 w-full"
                       ></div>
+                      </EditPopover>
                       <EditorComp
                         id={service.id}
                         initialValue={service.title}

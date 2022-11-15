@@ -13,7 +13,6 @@ const Design2 = ({
   choose,
   handleEdit,
   galleryData,
-  backgroundColor,
   comp,
 }) => {
   const gridClassName = cn(
@@ -55,10 +54,7 @@ const Design2 = ({
         </Container>
       ) : (
         <div
-          style={{
-            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-            transition: "all .5s ease-in-out",
-          }}
+          
         >
           <Container className="py-16 ">
             <div className="text-center space-y-4 mb-16">

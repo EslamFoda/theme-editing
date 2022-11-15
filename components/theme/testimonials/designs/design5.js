@@ -10,7 +10,6 @@ const Design5 = ({
   handleMultiEdit,
   handleEdit,
   headers,
-  backgroundColor,
   comp,
 }) => {
   const gridClassName = cn(
@@ -21,10 +20,7 @@ const Design5 = ({
   );
   return (
     <div
-      style={{
-        backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-        transition: "all .5s ease-in-out",
-      }}
+      
     >
       <Container className="py-16">
         <div className="text-center space-y-4 mb-16">

@@ -30,6 +30,9 @@ const MainAbout = ({ index, comps, setComps, comp, device, editSections }) => {
 
   return (
     <div
+      style={{
+        backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+      }}
       className={`relative group  ${
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}

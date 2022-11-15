@@ -11,7 +11,6 @@ const Design4 = ({
   choose,
   handleEdit,
   clientData,
-  backgroundColor,
   comp,
 }) => {
   const gridClassName = cn(
@@ -56,10 +55,7 @@ const Design4 = ({
         </Container>
       ) : (
         <div
-          style={{
-            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-            transition: "all .5s ease-in-out",
-          }}
+        
         >
           <Container className="py-16 ">
             <div className={gridClassName}>

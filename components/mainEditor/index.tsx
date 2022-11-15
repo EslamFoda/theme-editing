@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect,useRef } from "react";
 import MainContainer from "../mainContainer";
 import ActionNavBar from "./common/actionNavBar";
 import { useSelector, useDispatch } from "react-redux";
@@ -63,6 +63,11 @@ const MainEditor = () => {
     window.localStorage.setItem("ALL_SECTIONS", JSON.stringify(comps));
   }, [comps]);
 
+  const scrollable = useRef<HTMLDivElement>(null)
+
+
+
+
   return (
     <div
       className={[
@@ -90,7 +95,7 @@ const MainEditor = () => {
               dispatch={dispatch}
               compName={compName}
             />
-            <div className="h-40 flex items-center gap-4  overflow-auto w-full">
+            <div ref={scrollable}  className="h-40 flex items-center gap-4  scrollable overflow-auto w-full">
               {selectSection ? (
                 <DesignFromSection
                   designs={designs}

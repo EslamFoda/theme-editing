@@ -1,7 +1,9 @@
 import ControlBtns from "./controlBtns";
 import { containersData } from "../../../constant/data";
 import DeleteContainers from "../../deleteContainers";
+import { useState } from "react";
 const Preview = ({ containerWidth, comps, setComps, device, editSections }) => {
+ 
   return (
     <div
       style={{
@@ -16,7 +18,6 @@ const Preview = ({ containerWidth, comps, setComps, device, editSections }) => {
         const Component = containersData[comp.compName];
         return (
           <div className="relative demo-inline" key={comp.id}>
-            <DeleteContainers index={i}/>
             <Component
               comp={comp}
               setComps={setComps}
@@ -26,12 +27,15 @@ const Preview = ({ containerWidth, comps, setComps, device, editSections }) => {
               editSections={editSections}
             />
             {editSections ? (
+              <>
+              <DeleteContainers index={i} />
               <ControlBtns
                 comps={comps}
                 i={i}
                 comp={comp}
                 setComps={setComps}
               />
+              </>
             ) : null}
           </div>
         );

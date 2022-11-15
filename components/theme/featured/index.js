@@ -60,15 +60,17 @@ const MainFeatured = ({
 
   return (
     <div
-      className={`relative group  ${
-        editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
-      }  w-full `}
+    style={{
+      backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+    }}
+    className={`relative group  ${
+      editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
+    }  w-full `}
     >
       <EditBackground setColor={setColor} />
       <FeaturedComp
         icons={icons}
         comp={comp}
-        backgroundColor={backgroundColor}
         handleMultiEdit={handleMultiEdit}
         handleEdit={handleEdit}
         featuredHeader={compData.header}

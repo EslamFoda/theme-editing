@@ -14,7 +14,6 @@ const Design5 = ({
   handleEdit,
   teamData,
   headers,
-  backgroundColor,
   comp,
 }) => {
   const gridClassName = cn(
@@ -49,12 +48,7 @@ const Design5 = ({
           </div>
         </Container>
       ) : (
-        <div
-          style={{
-            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-            transition: "all .5s ease-in-out",
-          }}
-        >
+        <div>
           <Container className="py-16 ">
             <div className="text-center space-y-4 mb-16">
               <EditorComp
@@ -69,7 +63,7 @@ const Design5 = ({
               />
             </div>
             <div className={gridClassName}>
-              {teamData?.map((team,index) => (
+              {teamData?.map((team, index) => (
                 <div key={team.id}>
                   <EditPopover comp={comp} index={index}>
                     <div className="text-center hover:shadow-custom rounded-md transition-all p-6 space-y-5">

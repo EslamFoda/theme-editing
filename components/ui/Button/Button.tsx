@@ -4,7 +4,15 @@ import s from "../Button/Button.module.css";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  variant?: "primary" | "secondary" | "ghost" | "outline" | "link" | "custom";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "ghost"
+    | "outline"
+    | "link"
+    | "custom"
+    | "danger"
+    | "cancel";
   icon?: any;
   height?: number;
   full?: boolean;
@@ -34,6 +42,8 @@ const Button: React.FC<ButtonProps> = (props) => {
       [s.custom]: variant === "custom",
       [s.outline]: variant === "outline",
       [s.link]: variant === "link",
+      [s.danger]: variant === "danger",
+      [s.cancel]: variant === "cancel",
       "!rounded-none": rounded === false,
       "w-full": full,
     },

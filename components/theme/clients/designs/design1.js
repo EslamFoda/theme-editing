@@ -6,14 +6,7 @@ import Title from "../common/title";
 import SubTitle from "../common/subTitle";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
-const Design1 = ({
-  device,
-  choose,
-  handleEdit,
-  clientData,
-  backgroundColor,
-  comp,
-}) => {
+const Design1 = ({ device, choose, handleEdit, clientData, comp }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
     {
@@ -54,12 +47,7 @@ const Design1 = ({
           </div>
         </Container>
       ) : (
-        <div
-          style={{
-            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-            transition: "all .5s ease-in-out",
-          }}
-        >
+        <div>
           <Container className="py-16 ">
             <div className="text-center space-y-4 mb-16">
               <EditorComp

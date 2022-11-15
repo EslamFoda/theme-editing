@@ -16,7 +16,6 @@ const Design5 = ({
   handleMultiEdit,
   serviceHeaders,
   comp,
-  backgroundColor,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-2 text-center md:grid-cols-2 sm:grid-cols-1 grid-cols-1",
@@ -53,10 +52,7 @@ const Design5 = ({
         </Container>
       ) : (
         <div
-          style={{
-            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-            transition: "all .5s ease-in-out",
-          }}
+          
         >
           <Container className="py-16 ">
             <div className={headersClassName}>

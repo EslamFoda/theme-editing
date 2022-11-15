@@ -38,13 +38,15 @@ const MainClients = ({
   };
   return (
     <div
+      style={{
+        backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+      }}
       className={`relative group  ${
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
       <EditBackground handleReset={handleReset} setColor={setColor} />
       <ClientsComp
-        backgroundColor={backgroundColor}
         device={device}
         comp={comp}
         handleEdit={handleEdit}

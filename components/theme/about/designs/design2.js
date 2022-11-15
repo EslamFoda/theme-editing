@@ -7,7 +7,6 @@ const Design2 = ({
   device,
   handleEdit,
   aboutData,
-  backgroundColor,
 }) => {
   const gridClassName = cn(
     "grid lg:grid-cols-2 gap-4 grid-cols-1 sm:grid-cols-1",
@@ -36,9 +35,7 @@ const Design2 = ({
         </div>
       ) : (
         <div
-          style={{
-            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-          }}
+          
           className="py-40"
         >
           <Container>

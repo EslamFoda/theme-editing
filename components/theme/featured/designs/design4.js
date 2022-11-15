@@ -15,7 +15,6 @@ const Design4 = ({
   device,
   featuredData,
   handleMultiEdit,
-  backgroundColor,
   comp,icons
 }) => {
   const data = [
@@ -92,10 +91,7 @@ const Design4 = ({
         </div>
       ) : (
         <div
-          style={{
-            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-            transition: "all .5s ease-in-out",
-          }}
+          
         >
           <Container>
             <div className={gridClassName}>

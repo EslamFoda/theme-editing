@@ -2,7 +2,7 @@ import React from "react";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 import Container from "../../../ui/container/container";
-const Design4 = ({ choose = false, handleEdit, aboutData,backgroundColor }) => {
+const Design4 = ({ choose = false, handleEdit, aboutData, }) => {
   return (
     <>
       {choose ? (
@@ -26,7 +26,7 @@ const Design4 = ({ choose = false, handleEdit, aboutData,backgroundColor }) => {
           </Container>
         </div>
       ) : (
-        <div style={{  backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,}} className="py-14">
+        <div className="py-14">
           <Container>
             <div
               className={

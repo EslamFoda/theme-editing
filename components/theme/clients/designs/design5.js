@@ -6,14 +6,7 @@ import Image from "next/image";
 import SubTitle from "../common/subTitle";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
-const Design5 = ({
-  device,
-  choose,
-  handleEdit,
-  clientData,
-  backgroundColor,
-  comp,
-}) => {
+const Design5 = ({ device, choose, handleEdit, clientData, comp }) => {
   const gridClassName = cn("grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1", {
     "!grid-cols-1": device === "mobile",
   });
@@ -50,12 +43,7 @@ const Design5 = ({
           </div>
         </div>
       ) : (
-        <div
-          style={{
-            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-            transition: "all .5s ease-in-out",
-          }}
-        >
+        <div>
           <Container clean>
             <div className={gridClassName}>
               <div className="p-20 px-5   bg-primary text-white  h-full">
@@ -74,7 +62,7 @@ const Design5 = ({
               </div>
               <div className="py-20 px-5">
                 <div className={"flex  flex-wrap items-center"}>
-                  {clientData.items.map((client,index) => (
+                  {clientData.items.map((client, index) => (
                     <div key={client.id}>
                       <EditPopover comp={comp} index={index}>
                         <div className="p-2 items-center  ">

@@ -16,7 +16,6 @@ const Design5 = ({
   handleMultiEdit,
   handleEdit,
   featuredHeader,
-  backgroundColor,
   comp,
   icons,
 }) => {
@@ -99,10 +98,7 @@ const Design5 = ({
         </div>
       ) : (
         <div
-          style={{
-            backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-            transition: "all .5s ease-in-out",
-          }}
+         
         >
           <Container className="py-10">
             <EditorComp
