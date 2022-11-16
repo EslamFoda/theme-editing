@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect,useRef } from "react";
+import { useEffect } from "react";
 import MainContainer from "../mainContainer";
 import ActionNavBar from "./common/actionNavBar";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,6 +13,7 @@ import { CompsContext } from "../../context/compsContext";
 import ActionBarDesc from "./common/actionBarDesc";
 import ChangeColors from "../changeColors";
 import { useStickyState } from "../../hooks/useStickyState";
+import ChangeImgs from "../changeImgs";
 
 const colors = [
   "Captain-Green",
@@ -53,6 +54,7 @@ const MainEditor = () => {
   const compName = useSelector((state: any) => state.compName.compName);
   const { designs } = useChooseDesign(compName);
   const containerWidth = useSelector((state: any) => state.mainWidth.width);
+  const editImg = useSelector((state: any) => state.editImg.editImage);
 
   useEffect(() => {
     const data = window.localStorage.getItem("ALL_SECTIONS");
@@ -62,11 +64,6 @@ const MainEditor = () => {
   useEffect(() => {
     window.localStorage.setItem("ALL_SECTIONS", JSON.stringify(comps));
   }, [comps]);
-
-  const scrollable = useRef<HTMLDivElement>(null)
-
-
-
 
   return (
     <div
@@ -95,7 +92,7 @@ const MainEditor = () => {
               dispatch={dispatch}
               compName={compName}
             />
-            <div ref={scrollable}  className="h-40 flex items-center gap-4  scrollable overflow-auto w-full">
+            <div className="h-40 flex items-center gap-4  scrollable overflow-auto w-full">
               {selectSection ? (
                 <DesignFromSection
                   designs={designs}
@@ -122,6 +119,7 @@ const MainEditor = () => {
             currentColor={currentColor}
           />
         ) : null}
+        {editImg ? <ChangeImgs setComps={setComps} comps={comps}/> : null}
       </div>
       <MainContainer
         comps={comps}

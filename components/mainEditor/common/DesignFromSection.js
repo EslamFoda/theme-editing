@@ -29,7 +29,7 @@ const DesignFromSection = ({
   };
   return (
     <>
-      {designs.map((Design, i) => (
+      {designs?.map((Design, i) => (
         <div key={i}>
           <Designs
             Design={Design}

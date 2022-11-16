@@ -2,7 +2,13 @@ import EditItem from "../../editItem";
 import EditImg from "../../edit/editImg";
 import { useSelector } from "react-redux";
 import * as HoverCard from "@radix-ui/react-hover-card";
-export function EditPopover({ children, index, comp, editImage = false }) {
+export function EditPopover({
+  children,
+  index,
+  comp,
+  editImage = false,
+  compIndex,
+}) {
   const editSections = useSelector((state: any) => state.editSections.value);
 
   return (
@@ -26,10 +32,16 @@ export function EditPopover({ children, index, comp, editImage = false }) {
           {editSections ? (
             <HoverCard.Content
               side={editImage ? "left" : "top"}
-              className={editImage ? "HoverCardContent_Img" :"HoverCardContent"}
+              className={
+                editImage ? "HoverCardContent_Img" : "HoverCardContent"
+              }
               sideOffset={14}
             >
-              {editImage ? <EditImg /> : <EditItem comp={comp} index={index} />}
+              {editImage ? (
+                <EditImg comp={comp} index={index} compIndex={compIndex}/>
+              ) : (
+                <EditItem comp={comp} index={index} />
+              )}
               <HoverCard.Arrow fill="#444f5b" className="HoverCardArrow" />
             </HoverCard.Content>
           ) : null}
