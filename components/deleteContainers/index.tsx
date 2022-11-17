@@ -1,7 +1,6 @@
 import { TfiTrash } from "react-icons/tfi";
 import { useContext, useState } from "react";
 import { CompsContext } from "../../context/compsContext";
-import Button from "../ui/Button";
 const DeleteContainers = ({ index }) => {
   const { comps, setComps } = useContext(CompsContext);
   const [overlay, setOverlay] = useState(false);

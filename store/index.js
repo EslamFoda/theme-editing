@@ -13,6 +13,7 @@ import galleryReducer from "../features/gallery-section";
 import testiReducer from "../features/testi";
 import colorsReducer from "../features/colors";
 import editImgReducer from "../features/edit-image";
+import fileReducer from "../features/my-files";
 export const store = configureStore({
   reducer: {
     hero: heroReducer,
@@ -29,5 +30,6 @@ export const store = configureStore({
     testi: testiReducer,
     colors: colorsReducer,
     editImg: editImgReducer,
+    files:fileReducer
   },
 });

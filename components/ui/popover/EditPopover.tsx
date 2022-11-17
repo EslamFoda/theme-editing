@@ -32,13 +32,14 @@ export function EditPopover({
           {editSections ? (
             <HoverCard.Content
               side={editImage ? "left" : "top"}
+              avoidCollisions={editImage ? true : false}
               className={
                 editImage ? "HoverCardContent_Img" : "HoverCardContent"
               }
               sideOffset={14}
             >
               {editImage ? (
-                <EditImg comp={comp} index={index} compIndex={compIndex}/>
+                <EditImg comp={comp} index={index} compIndex={compIndex} />
               ) : (
                 <EditItem comp={comp} index={index} />
               )}

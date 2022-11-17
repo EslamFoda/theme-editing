@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import MainContainer from "../mainContainer";
-import ActionNavBar from "./common/actionNavBar";
+import ActionNavBar from "../actionNavBar";
 import { useSelector, useDispatch } from "react-redux";
 import useChooseDesign from "../../hooks/useChooseDesign";
 import SelectDesign from "./common/selectDesign";
@@ -55,6 +55,7 @@ const MainEditor = () => {
   const { designs } = useChooseDesign(compName);
   const containerWidth = useSelector((state: any) => state.mainWidth.width);
   const editImg = useSelector((state: any) => state.editImg.editImage);
+  const editFiles = useSelector((state: any) => state.files.editFiles);
 
   useEffect(() => {
     const data = window.localStorage.getItem("ALL_SECTIONS");
@@ -119,7 +120,9 @@ const MainEditor = () => {
             currentColor={currentColor}
           />
         ) : null}
-        {editImg ? <ChangeImgs setComps={setComps} comps={comps}/> : null}
+        {editImg || editFiles ? (
+          <ChangeImgs setComps={setComps} comps={comps} />
+        ) : null}
       </div>
       <MainContainer
         comps={comps}

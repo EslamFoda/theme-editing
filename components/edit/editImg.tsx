@@ -3,17 +3,14 @@ import {
   getItemIndex,
   getCompIndex,
 } from "../../features/edit-image";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-
+import { useDispatch } from "react-redux";
+import { addSectionTurnOff } from "../../features/edit-sections";
+import { selectCompName } from "../../features/comp-name";
+import { closeColors } from "../../features/colors";
+import { filesOff } from "../../features/my-files";
 const EditImg = ({ comp, index, compIndex }) => {
-  // const imgData = useSelector((state: any) => state.editImg.imgData);
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   if(imgData){
-  //     console.log(imgData)
-  //   }
-  // }, [imgData]);
+
   return (
     <div className="bg-[#444f5b] divide-x divide-slate-400/[.24]  rounded-md flex ">
       <span
@@ -21,6 +18,10 @@ const EditImg = ({ comp, index, compIndex }) => {
           dispatch(editImgOn());
           dispatch(getCompIndex(compIndex));
           dispatch(getItemIndex(index));
+          dispatch(addSectionTurnOff());
+          dispatch(selectCompName(""));
+          dispatch(closeColors());
+          dispatch(filesOff());
         }}
         className="inline-block p-2 text-white cursor-pointer"
       >

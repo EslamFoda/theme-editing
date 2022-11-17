@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addSectionTurnOn } from "../../features/edit-sections";
 import { selectCompName } from "../../features/comp-name";
 import { getNextIndex } from "../../features/add-section";
+import { editImgOff } from "../../features/edit-image";
 const AddSection = ({ index }) => {
   const dispatch = useDispatch();
 
@@ -14,11 +15,15 @@ const AddSection = ({ index }) => {
           dispatch(getNextIndex(nextIndex));
           dispatch(addSectionTurnOn());
           dispatch(selectCompName(""));
+          dispatch(editImgOff());
         }}
         class="add-section fb "
       >
         <div className="h-full flex justify-center items-center">
-          <FaPlus className="add-icon" style={{transition:"all .3s ease-in-out"}}/>
+          <FaPlus
+            className="add-icon"
+            style={{ transition: "all .3s ease-in-out" }}
+          />
         </div>
         <span> add section</span>
       </div>

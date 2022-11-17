@@ -550,7 +550,7 @@ button:hover .button-text {
 }
 
 .ToggleGroupItem[data-state="on"] > svg {
-  @apply stroke-white;
+  @apply text-white;
 }
 
 .AlertDialogOverlay {
@@ -704,8 +704,6 @@ button:hover .button-text {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-
-
 /**** toast ***/
 
 .ToastViewport {
@@ -728,28 +726,29 @@ button:hover .button-text {
 .ToastRoot {
   background-color: white;
   border-radius: 6px;
-  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   padding: 10px;
   display: grid;
-  grid-template-areas: 'title action' 'description action';
+  grid-template-areas: "title action" "description action";
   grid-template-columns: auto max-content;
   column-gap: 15px;
   align-items: center;
 }
-.ToastRoot[data-state='open'] {
+.ToastRoot[data-state="open"] {
   animation: slideIn 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-.ToastRoot[data-state='closed'] {
+.ToastRoot[data-state="closed"] {
   animation: hide 100ms ease-in;
 }
-.ToastRoot[data-swipe='move'] {
+.ToastRoot[data-swipe="move"] {
   transform: translateX(var(--radix-toast-swipe-move-x));
 }
-.ToastRoot[data-swipe='cancel'] {
+.ToastRoot[data-swipe="cancel"] {
   transform: translateX(0);
   transition: transform 200ms ease-out;
 }
-.ToastRoot[data-swipe='end'] {
+.ToastRoot[data-swipe="end"] {
   animation: swipeOut 100ms ease-out;
 }
 
@@ -841,3 +840,93 @@ button:hover .button-text {
 .Button.green:focus {
   box-shadow: 0 0 0 2px green;
 }
+
+/*** radix tooltip **/
+.TooltipContent {
+  border-radius: 4px;
+  padding: 10px 15px;
+  font-size: 15px;
+  line-height: 1;
+  color: rgb(24, 23, 23);
+  background-color: white;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  user-select: none;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+.TooltipContent[data-state="delayed-open"][data-side="top"] {
+  animation-name: slideDownAndFade;
+}
+.TooltipContent[data-state="delayed-open"][data-side="right"] {
+  animation-name: slideLeftAndFade;
+}
+.TooltipContent[data-state="delayed-open"][data-side="bottom"] {
+  animation-name: slideUpAndFade;
+}
+.TooltipContent[data-state="delayed-open"][data-side="left"] {
+  animation-name: slideRightAndFade;
+}
+
+.TooltipArrow {
+  fill: white;
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRightAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/*** radix toggle */
+
+.Toggle {
+ 
+}
+.Toggle:hover {
+  background-color: var(--violet3);
+}
+.Toggle[data-state="on"] > div > div {
+  background-color: white;
+  color: #1f2b39;
+}
+

@@ -4,6 +4,7 @@ import { addSectionTurnOff } from "../../features/edit-sections";
 import { getNextIndex } from "../../features/add-section";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { closeColors } from "../../features/colors";
+import { editImgOff } from "../../features/edit-image";
 const ChangeSection = ({
   compName,
   designNum,
@@ -16,6 +17,33 @@ const ChangeSection = ({
   const device = useSelector((state) => state.mainWidth.device);
   const dispatch = useDispatch();
 
+  const handlePrev = () => {
+    dispatch(selectCompName(compName));
+    dispatch(getNextIndex(index));
+
+    if (designNum >= 2) {
+      const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
+      comps[objectIndex].designNum -= 1;
+      setComps([...comps]);
+    }
+    dispatch(addSectionTurnOff());
+    dispatch(closeColors());
+    dispatch(editImgOff());
+  };
+
+  const handleNext = () => {
+    dispatch(selectCompName(compName));
+    dispatch(getNextIndex(index));
+    if (designNum <= 4) {
+      const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
+      comps[objectIndex].designNum += 1;
+      setComps([...comps]);
+    }
+    dispatch(addSectionTurnOff());
+    dispatch(closeColors());
+    dispatch(editImgOff());
+  };
+
   return (
     <>
       {editSections && (
@@ -25,20 +53,7 @@ const ChangeSection = ({
             className={`cursor-pointer coolBeans flex items-center duration-300  btn btn-3  transition-all ${
               device === "mobile" ? "w-11" : "lg:w-48 md:w-48 w-11"
             } justify-between  px-4 py-1 rounded-full`}
-            onClick={() => {
-              dispatch(selectCompName(compName));
-              dispatch(getNextIndex(index));
-
-              if (designNum >= 2) {
-                const objectIndex = comps.findIndex(
-                  (obj) => obj.id === comp.id
-                );
-                comps[objectIndex].designNum -= 1;
-                setComps([...comps]);
-              }
-              dispatch(addSectionTurnOff());
-              dispatch(closeColors());
-            }}
+            onClick={handlePrev}
           >
             <FaChevronLeft />
             {device === "mobile" ? null : (
@@ -52,19 +67,7 @@ const ChangeSection = ({
             className={`cursor-pointer coolBeans flex items-center duration-300  btn btn-3  transition-all ${
               device === "mobile" ? "w-11" : "lg:w-48 md:w-48 w-11"
             } justify-between  px-4 py-1 rounded-full`}
-            onClick={() => {
-              dispatch(selectCompName(compName));
-              dispatch(getNextIndex(index));
-              if (designNum <= 4) {
-                const objectIndex = comps.findIndex(
-                  (obj) => obj.id === comp.id
-                );
-                comps[objectIndex].designNum += 1;
-                setComps([...comps]);
-              }
-              dispatch(addSectionTurnOff());
-               dispatch(closeColors());
-            }}
+            onClick={handleNext}
           >
             {device === "mobile" ? null : (
               <span className="text-sm hidden lg:block md:block">

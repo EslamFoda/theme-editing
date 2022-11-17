@@ -23,7 +23,7 @@ const Design3 = ({ choose = false, heroData, handleEdit }) => {
           </Container>
         </div>
       ) : (
-        <div className="bg-red-600 ">
+        <div className=" ">
           <Container className="flex h-[80vh] space-y-10 flex-col justify-center text-center items-center">
             <EditorComp
               handleEdit={handleEdit}
