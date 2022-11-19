@@ -20,9 +20,9 @@ const Design2 = ({ choose = false, device, handleEdit, aboutData }) => {
               </div>
               <div>
                 <p className="text-very-small">
-                  Write a background about your work, including your history,
-                  your accomplishments, and any awards you've received. Use this
-                  section to showcase the features of your brand.
+                Write a background about your work including your history your
+              accomplishments and any awards you have received Use this section
+              to showcase the features of your brand
                 </p>
               </div>
             </div>

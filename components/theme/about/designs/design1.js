@@ -2,11 +2,7 @@ import React from "react";
 import Container from "../../../ui/container/container";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-const Design1 = ({
-  choose = false,
-  handleEdit,
-  aboutData,
-}) => {
+const Design1 = ({ choose = false, handleEdit, aboutData }) => {
   return (
     <div>
       {choose ? (
@@ -17,10 +13,9 @@ const Design1 = ({
                 A section for you to write about just anything{" "}
               </h2>
               <span className="mt-2 text-[4px]">
-                Need a place to add in your awards? This is it. Want to include
-                more information about your products, history, or features? This
-                is the spot for that. Use this content section for anything and
-                everything.{" "}
+                Write a background about your work including your history your
+                accomplishments and any awards you have received Use this
+                section to showcase the features of your brand
               </span>
             </div>
             <div
@@ -36,9 +31,7 @@ const Design1 = ({
           </div>
         </Container>
       ) : (
-        <div
-          
-        >
+        <div>
           <Container>
             <div className="flex gap-6  mx-auto  lg:justify-between md:justify-center  justify-center items-center py-16 flex-wrap ">
               <div className="flex  flex-col space-y-8 lg:w-[450px] md:w-[400px] w-[450px]">
