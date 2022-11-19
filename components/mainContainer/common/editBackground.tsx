@@ -6,7 +6,7 @@ import { PopoverColor } from "../../ui/colorPicker/popoverColor";
 import { GrPowerReset } from "react-icons/gr";
 import * as Popover from "@radix-ui/react-popover";
 const EditBackground = ({ setColor }) => {
-  const [currentColor, setCurretColor] = useState({
+  const [currentColor, setCurretColor] = useState<any>({
     rgb: {
       r: "255",
       g: "255",
@@ -80,9 +80,7 @@ const EditBackground = ({ setColor }) => {
                       color={currentColor}
                       onChange={setCurretColor}
                     />
-                    {/* @ts-ignore */}
                     <span>
-                        {/* @ts-ignore */}
                       {currentColor.hex ? currentColor.hex : "#FFFFFF"}
                     </span>
                   </div>
@@ -110,7 +108,6 @@ const EditBackground = ({ setColor }) => {
                 </div>
               </div>
             </div>
-          
           </Popover.Content>
         </Popover.Portal>
       </Popover.Root>
