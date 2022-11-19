@@ -5,7 +5,7 @@ import { FaArrowLeft } from "react-icons/fa";
 interface Props {
   selectSection: boolean;
   compName: string;
-  dispatch: () => void;
+  dispatch: any;
 }
 const ActionBarDesc: React.FC<Props> = ({
   selectSection,
