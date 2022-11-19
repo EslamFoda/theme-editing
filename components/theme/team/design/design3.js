@@ -1,4 +1,4 @@
-import Container from "../../../ui/container/container";
+import Container from "../../../ui/container";
 
 import { teamsData } from "../../../../constant/";
 import Name from "../common/name";

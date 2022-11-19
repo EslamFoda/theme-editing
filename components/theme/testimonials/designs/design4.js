@@ -1,4 +1,4 @@
-import Container from "../../../ui/container/container";
+import Container from "../../../ui/container";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 import cn from "clsx";
 import EditorComp from "../../../editor";

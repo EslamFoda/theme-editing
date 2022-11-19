@@ -1,4 +1,4 @@
-import Container from "../../../ui/container/container";
+import Container from "../../../ui/container";
 import Title from "../common/title";
 import SubTitle from "../common/subTitle";
 import { teamsData } from "../../../../constant/";

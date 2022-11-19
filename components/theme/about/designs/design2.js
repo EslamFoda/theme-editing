@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../../ui/container/container";
+import Container from "../../../ui/container";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 const Design2 = ({ choose = false, device, handleEdit, aboutData }) => {

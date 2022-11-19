@@ -1,4 +1,4 @@
-import Container from "../../../ui/container/container";
+import Container from "../../../ui/container";
 import Title from "../common/title";
 import { clientsData } from "../../../../constant/";
 import cn from "clsx";

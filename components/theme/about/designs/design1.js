@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../../ui/container/container";
+import Container from "../../../ui/container";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 const Design1 = ({ choose = false, handleEdit, aboutData }) => {

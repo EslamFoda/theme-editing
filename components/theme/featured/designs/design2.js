@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../../ui/container/container";
+import Container from "../../../ui/container";
 import {
   HiOutlineSupport,
   HiOutlineBriefcase,

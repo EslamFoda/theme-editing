@@ -1,4 +1,4 @@
-import Container from "../../../ui/container/container";
+import Container from "../../../ui/container";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 import { TbQuote } from "react-icons/tb";
 import cn from "clsx";
