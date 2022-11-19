@@ -75,6 +75,7 @@ const Design1 = ({
                         className="absolute"
                         objectFit="cover"
                         layout="fill"
+                        alt="gallery img"
                       />
                     </div>
                   </EditPopover>

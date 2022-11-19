@@ -7,13 +7,7 @@ import cn from "clsx";
 import Image from "next/image";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
-const Design3 = ({
-  device,
-  choose,
-  handleEdit,
-  galleryData,
-  comp,
-}) => {
+const Design3 = ({ device, choose, handleEdit, galleryData, comp }) => {
   const gridClassName = cn(
     "grid gap-6 lg:grid-cols-2 md:grid-cols-2  grid-cols-2",
     {
@@ -47,9 +41,7 @@ const Design3 = ({
           </div>
         </Container>
       ) : (
-        <div
-         
-        >
+        <div>
           <Container className="py-16 ">
             <div className="text-center space-y-4 mb-16">
               <EditorComp
@@ -73,6 +65,7 @@ const Design3 = ({
                         className="absolute"
                         objectFit="cover"
                         layout="fill"
+                        alt="gallery img"
                       />
                     </div>
                   </EditPopover>

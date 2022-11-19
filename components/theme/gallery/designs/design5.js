@@ -8,13 +8,7 @@ import Image from "next/image";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 import { EditPopover } from "../../../ui/popover/EditPopover";
-const Design5 = ({
-  device,
-  choose,
-  handleEdit,
-  galleryData,
-  comp,
-}) => {
+const Design5 = ({ device, choose, handleEdit, galleryData, comp }) => {
   const gridClassName = cn(
     "grid   lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
     {
@@ -50,9 +44,7 @@ const Design5 = ({
           </div>
         </Container>
       ) : (
-        <div
-         
-        >
+        <div>
           <Container clean className="py-16 ">
             <div className="text-center max-w-5xl space-y-4 mx-auto mb-16">
               <EditorComp
@@ -86,6 +78,7 @@ const Design5 = ({
                         className="absolute"
                         objectFit="cover"
                         layout="fill"
+                        alt="gallery img"
                       />
                     </div>
                   </EditPopover>

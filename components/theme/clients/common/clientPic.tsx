@@ -27,6 +27,7 @@ const ClientPic: FC<Props> = ({ compIndex, index, comp, client, design }) => {
           layout="fill"
           objectFit="contain"
           className="absolute"
+          alt="client pic"
         />
       </div>
     </EditPopover>

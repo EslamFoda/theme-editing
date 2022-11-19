@@ -15,9 +15,9 @@ const Design4 = ({ choose = false, handleEdit, aboutData }) => {
             >
               <h1 className="text-small font-bold">About us</h1>
               <p className="text-very-small max-w-[150px]">
-                Write a background about your work, including your history, your
-                accomplishments, and any awards you've received. Use this
-                section to showcase the features of your brand.
+                Write a background about your work including your history your
+                accomplishments and any awards you have received Use this
+                section to showcase the features of your brand
               </p>
               <button className="bg-red-500 p-[1px] text-small rounded-sm text-white">
                 more

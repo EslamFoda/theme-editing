@@ -33,7 +33,7 @@ const DeleteContainers = ({ index }) => {
               do you want to delete this section ?
             </h1>
             <span className="text-white text-lg">
-              (You can't go back from this act)
+              {"(You can't go back from this act)"}
             </span>
           </div>
           <div className="flex gap-3 items-center">
