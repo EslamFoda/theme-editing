@@ -73,7 +73,7 @@ const Design4 = ({
             <div className="grid lg:grid-cols-3  sm:grid-cols-2   grid-cols-1 md-grid-cols-2 py-1  gap-1">
               {data.map((card) => {
                 return (
-                  <div className="p-1 flex  flex-col space-y-1 items-start  ">
+                  <div key={card.id} className="p-1 flex  flex-col space-y-1 items-start  ">
                     <div className="flex flex-col gap-1">
                       <div className="w-4 h-4 bg-red-200 rounded-full flex justify-center items-center">
                         <div>{card.icon}</div>

@@ -76,7 +76,7 @@ const Design5 = ({
             <div className="grid lg:grid-cols-3  sm:grid-cols-2   grid-cols-1 md-grid-cols-2 py-1  gap-2">
               {data.map((card) => {
                 return (
-                  <div className="flex  flex-col space-y-1 items-start  ">
+                  <div key={card.id} className="flex  flex-col space-y-1 items-start  ">
                     <div className="flex gap-2">
                       <div>
                         <div className="w-3 h-3  bg-red-200 rounded-full flex justify-center items-center">

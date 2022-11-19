@@ -64,7 +64,7 @@ const Design1 = ({
             <div className="grid grid-cols-1 lg:grid-cols-2 sm:grid-cols-2 md:grid-cols-2  py-1  gap-1">
               {data.map((card) => {
                 return (
-                  <div className="p-1 flex flex-col space-y-1 text-center items-center  bg-red-100">
+                  <div key={card.id} className="p-1 flex flex-col space-y-1 text-center items-center  bg-red-100">
                     <div>{card.icon}</div>
                     <h3 className="text-small font-semibold">{card.title}</h3>
                     <p className="text-very-small">{card.subTitle}</p>

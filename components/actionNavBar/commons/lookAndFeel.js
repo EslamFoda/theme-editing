@@ -31,15 +31,16 @@ const LookAndFeel = ({ editSections, dispatch }) => {
         <div className="text-[#98A2B3] rounded-sm p-1 gap-1 bg-[#1f2b39] flex">
           {btns.map((btn) => {
             return (
-              <MyTooltip content={btn.title}>
-                <div
-                  onClick={btn.action}
-                  key={btn.id}
-                  className="bg-[#283340] rounded-sm cursor-pointer hover:bg-[hsla(0,0%,100%,.7)] hover:text-[#0a0a0a] p-2"
-                >
-                  <btn.Icon size={25} />
-                </div>
-              </MyTooltip>
+              <div key={btn.id}>
+                <MyTooltip content={btn.title}>
+                  <div
+                    onClick={btn.action}
+                    className="bg-[#283340] rounded-sm cursor-pointer hover:bg-[hsla(0,0%,100%,.7)] hover:text-[#0a0a0a] p-2"
+                  >
+                    <btn.Icon size={25} />
+                  </div>
+                </MyTooltip>
+              </div>
             );
           })}
         </div>

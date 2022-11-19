@@ -2,12 +2,7 @@ import React from "react";
 import Container from "../../../ui/container/container";
 import cn from "clsx";
 import EditorComp from "../../../editor";
-const Design2 = ({
-  choose = false,
-  device,
-  handleEdit,
-  aboutData,
-}) => {
+const Design2 = ({ choose = false, device, handleEdit, aboutData }) => {
   const gridClassName = cn(
     "grid lg:grid-cols-2 gap-4 grid-cols-1 sm:grid-cols-1",
     {
@@ -34,10 +29,7 @@ const Design2 = ({
           </Container>
         </div>
       ) : (
-        <div
-          
-          className="py-40"
-        >
+        <div className="py-40">
           <Container>
             <div className={gridClassName}>
               <div>
