@@ -6,7 +6,7 @@ interface Props {
   compIndex: number;
   index: number;
   client: any;
-  comp: any;33
+  comp: any;
 }
 
 const UserPic: FC<Props> = ({ design, compIndex, comp, index, client }) => {

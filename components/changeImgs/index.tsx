@@ -116,6 +116,7 @@ const ChangeImgs = ({ comps, setComps }) => {
                   onClick={() => {
                     if (!editFiles) {
                       comps[compIndex].compData.items[itemIndex].pic = img;
+                      console.log(comps[compIndex].compData.items[itemIndex])
                       setComps([...comps]);
                     }
                   }}

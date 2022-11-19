@@ -8,6 +8,7 @@ import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 import { EditPopover } from "../../../ui/popover/EditPopover";
+import ImageEditor from "../common/imageEditor";
 const Design2 = ({
   device,
   choose,
@@ -27,6 +28,7 @@ const Design2 = ({
     "grid lg:grid-cols-2 gap-4 md:grid-cols-2 grid-cols-1 mb-16",
     { "!grid-cols-1": device === "mobile" }
   );
+  
   return (
     <>
       {choose ? (
@@ -56,9 +58,7 @@ const Design2 = ({
           </div>
         </Container>
       ) : (
-        <div
-        
-        >
+        <div>
           <Container className="py-16 ">
             <div className={headersClassName}>
               <EditorComp
@@ -76,13 +76,8 @@ const Design2 = ({
               {serviceData.map((service, index) => (
                 <div key={service.id}>
                   <EditPopover index={index} comp={comp}>
-                    <div className=" space-y-5">
-                      <EditPopover comp={comp} index={index} editImage>
-                      <div
-                        style={{ backgroundImage: `url(${service.pic})` }}
-                        className="bg-no-repeat bg-center bg-cover   h-72 w-full"
-                      ></div>
-                      </EditPopover>
+                    <div className="group space-y-5">
+                     <ImageEditor service={service}/>
                       <EditorComp
                         id={service.id}
                         initialValue={service.title}

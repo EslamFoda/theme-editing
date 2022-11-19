@@ -6,12 +6,14 @@ import Image from "next/image";
 import SubTitle from "../common/subTitle";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
+import ClientPic from "../common/clientPic";
 const Design2 = ({
   device,
   choose,
   handleEdit,
   clientData,
   comp,
+  compIndex,
 }) => {
   const gridClassName = cn(
     "grid gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -55,9 +57,7 @@ const Design2 = ({
           </div>
         </Container>
       ) : (
-        <div
-          
-        >
+        <div>
           <Container className="py-16 ">
             <div className="text-center space-y-4 mb-16">
               <EditorComp
@@ -79,14 +79,13 @@ const Design2 = ({
                       key={client.id}
                       className="p-2 items-center bg-gray-border flex justify-center"
                     >
-                      <div className="relative h-20 w-44">
-                        <Image
-                          src={client.img}
-                          layout="fill"
-                          objectFit="contain"
-                          className="absolute"
-                        />
-                      </div>
+                      <ClientPic
+                        design="design1"
+                        client={client}
+                        comp={comp}
+                        compIndex={compIndex}
+                        index={index}
+                      />
                     </div>
                   </EditPopover>
                 </div>

@@ -7,6 +7,7 @@ import { servicesData } from "../../../../constant/";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
+
 import { EditPopover } from "../../../ui/popover/EditPopover";
 const Design1 = ({
   device,

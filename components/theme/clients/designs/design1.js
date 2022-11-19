@@ -6,7 +6,15 @@ import Title from "../common/title";
 import SubTitle from "../common/subTitle";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
-const Design1 = ({ device, choose, handleEdit, clientData, comp }) => {
+import ClientPic from "../common/clientPic";
+const Design1 = ({
+  device,
+  choose,
+  handleEdit,
+  clientData,
+  comp,
+  compIndex,
+}) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
     {
@@ -63,14 +71,15 @@ const Design1 = ({ device, choose, handleEdit, clientData, comp }) => {
             </div>
             <div className={gridClassName}>
               {clientData.items.map((client, index) => (
-                <div key={client.id}>
+                <div className="justify-self-center" key={client.id}>
                   <EditPopover comp={comp} index={index}>
-                    <div className="relative justify-self-center h-20 w-44">
-                      <Image
-                        src={client.img}
-                        layout="fill"
-                        objectFit="contain"
-                        className="absolute"
+                    <div>
+                      <ClientPic
+                        design="design1"
+                        client={client}
+                        comp={comp}
+                        compIndex={compIndex}
+                        index={index}
                       />
                     </div>
                   </EditPopover>

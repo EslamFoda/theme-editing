@@ -2,6 +2,7 @@ import Container from "../../../ui/container/container";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 import cn from "clsx";
+import UserPic from "./common/userPic";
 const Design1 = ({
   device,
   choose,
@@ -10,7 +11,7 @@ const Design1 = ({
   handleEdit,
   headers,
   comp,
-  compIndex
+  compIndex,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -39,12 +40,13 @@ const Design1 = ({
             <div key={client.id}>
               <EditPopover comp={comp} index={index}>
                 <div className="w-full bg-white flex flex-col gap-4 self-start  p-10 pt-12  shadow-big relative">
-                  <EditPopover compIndex={compIndex} comp={comp} index={index} editImage>
-                    <div
-                      style={{ backgroundImage: `url(${client.pic})` }}
-                      className="w-20 h-20 bg-no-reapeat bg-cover bg-center bg-white shadow-md absolute -top-10 rounded-full left-8 border-4 border-[#dfe0e1]"
-                    ></div>
-                  </EditPopover>
+                  <UserPic
+                    client={client}
+                    comp={comp}
+                    compIndex={compIndex}
+                    design="design1"
+                    index={index}
+                  />
                   <EditorComp
                     id={client.id}
                     handleMultiEdit={handleMultiEdit}

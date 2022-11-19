@@ -7,6 +7,7 @@ import Position from "../common/position";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
+import TeamPic from "../common/teamPic";
 const Design5 = ({
   device,
   choose,
@@ -15,6 +16,7 @@ const Design5 = ({
   teamData,
   headers,
   comp,
+  compIndex,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -67,10 +69,13 @@ const Design5 = ({
                 <div key={team.id}>
                   <EditPopover comp={comp} index={index}>
                     <div className="text-center hover:shadow-custom rounded-md transition-all p-6 space-y-5">
-                      <div
-                        style={{ backgroundImage: `url(${team.pic})` }}
-                        className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-44 w-full "
-                      ></div>
+                    <TeamPic
+                        comp={comp}
+                        compIndex={compIndex}
+                        design="design5"
+                        index={index}
+                        pic={team.pic}
+                      />
                       <EditorComp
                         initialValue={team.userName}
                         id={team.id}

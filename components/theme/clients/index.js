@@ -8,6 +8,7 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import EditBackground from "../../mainContainer/common/editBackground";
 import useBgColor from "../../../hooks/useBgColor";
+import { IndexKind } from "typescript";
 
 const MainClients = ({
   comps,
@@ -47,6 +48,7 @@ const MainClients = ({
     >
       <EditBackground handleReset={handleReset} setColor={setColor} />
       <ClientsComp
+        compIndex={index}
         device={device}
         comp={comp}
         handleEdit={handleEdit}

@@ -7,12 +7,14 @@ import Position from "../common/position";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
+import TeamPic from "../common/teamPic";
 const Design3 = ({
   device,
   choose,
   handleMultiEdit,
   teamData,
   comp,
+  compIndex,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -43,19 +45,20 @@ const Design3 = ({
           </div>
         </Container>
       ) : (
-        <div
-         
-        >
+        <div>
           <Container className="py-16 ">
             <div className={gridClassName}>
-              {teamData?.map((team,index) => (
+              {teamData?.map((team, index) => (
                 <div key={team.id}>
                   <EditPopover comp={comp} index={index}>
                     <div className=" space-y-5">
-                      <div
-                        style={{ backgroundImage: `url(${team.pic})` }}
-                        className="bg-no-repeat bg-center bg-cover overflow-hidden  h-24 w-24 rounded-full"
-                      ></div>
+                      <TeamPic
+                        comp={comp}
+                        compIndex={compIndex}
+                        design="design3"
+                        index={index}
+                        pic={team.pic}
+                      />
                       <EditorComp
                         initialValue={team.userName}
                         id={team.id}

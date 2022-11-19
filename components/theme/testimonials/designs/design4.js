@@ -2,6 +2,7 @@ import Container from "../../../ui/container/container";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 import cn from "clsx";
 import EditorComp from "../../../editor";
+import UserPic from "./common/userPic";
 const Design4 = ({
   device,
   choose,
@@ -10,6 +11,7 @@ const Design4 = ({
   handleEdit,
   headers,
   comp,
+  compIndex,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -18,9 +20,7 @@ const Design4 = ({
     }
   );
   return (
-    <div
-     
-    >
+    <div>
       <Container className="py-16">
         <div className="text-center space-y-4 mb-16">
           <EditorComp
@@ -47,10 +47,13 @@ const Design4 = ({
                       keys="review"
                     />
                     <div className="flex items-center gap-4">
-                      <div
-                        style={{ backgroundImage: `url(${client.pic})` }}
-                        className="w-14 h-14 bg-no-reapeat bg-cover bg-center   rounded-full   "
-                      ></div>
+                      <UserPic
+                        client={client}
+                        comp={comp}
+                        compIndex={compIndex}
+                        design="design4"
+                        index={index}
+                      />
                       <div className="space-y-4 flex-1">
                         <EditorComp
                           id={client.id}

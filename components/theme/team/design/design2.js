@@ -8,6 +8,7 @@ import { teamsData } from "../../../../constant";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
+import TeamPic from "../common/teamPic";
 const Design2 = ({
   device,
   choose,
@@ -16,6 +17,7 @@ const Design2 = ({
   teamData,
   headers,
   comp,
+  compIndex,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 text-center sm:grid-cols-2 grid-cols-1",
@@ -54,9 +56,7 @@ const Design2 = ({
           </div>
         </Container>
       ) : (
-        <div
-         
-        >
+        <div>
           <Container className="py-16 ">
             <div className="text-center space-y-4 mb-16">
               <EditorComp
@@ -75,10 +75,13 @@ const Design2 = ({
                 <div key={team.id}>
                   <EditPopover comp={comp} index={index}>
                     <div className=" space-y-5">
-                      <div
-                        style={{ backgroundImage: `url(${team.pic})` }}
-                        className="bg-no-repeat bg-center bg-cover   h-72 w-full"
-                      ></div>
+                      <TeamPic
+                        comp={comp}
+                        compIndex={compIndex}
+                        design="design2"
+                        index={index}
+                        pic={team.pic}
+                      />
                       <EditorComp
                         initialValue={team.userName}
                         id={team.id}

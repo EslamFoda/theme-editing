@@ -6,12 +6,14 @@ import Image from "next/image";
 import SubTitle from "../common/subTitle";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
+import ClientPic from "../common/clientPic";
 const Design4 = ({
   device,
   choose,
   handleEdit,
   clientData,
   comp,
+  compIndex,
 }) => {
   const gridClassName = cn(
     "grid lg:grid-cols-3 md:grid-cols-3  grid-cols-1 gap-4",
@@ -54,9 +56,7 @@ const Design4 = ({
           </div>
         </Container>
       ) : (
-        <div
-        
-        >
+        <div>
           <Container className="py-16 ">
             <div className={gridClassName}>
               <div className="self-center">
@@ -75,18 +75,17 @@ const Design4 = ({
               </div>
               <div className="col-span-2">
                 <div className={"flex  flex-wrap items-center"}>
-                  {clientData.items.map((client,index) => (
+                  {clientData.items.map((client, index) => (
                     <div key={client.id}>
                       <EditPopover comp={comp} index={index}>
-                        <div className="p-2 items-center col-span-3 ">
-                          <div className="relative h-20 w-40">
-                            <Image
-                              src={client.img}
-                              layout="fill"
-                              objectFit="contain"
-                              className="absolute"
-                            />
-                          </div>
+                        <div className="p-2 items-center ">
+                          <ClientPic
+                            design="design4"
+                            client={client}
+                            comp={comp}
+                            compIndex={compIndex}
+                            index={index}
+                          />
                         </div>
                       </EditPopover>
                     </div>

@@ -205,18 +205,18 @@ const useCompData = () => {
     subTitle:
       "<p>Some of the world’s biggest brands trust us with their services</p>",
     items: [
-      { img: "https://assets.wuiltsite.com/defaults/google-logo.png", id: 1 },
-      { img: "https://assets.wuiltsite.com/defaults/facebook-logo.png", id: 2 },
-      { img: "https://assets.wuiltsite.com/defaults/evernote-logo.png", id: 3 },
+      { pic: "https://assets.wuiltsite.com/defaults/google-logo.png", id: 1 },
+      { pic: "https://assets.wuiltsite.com/defaults/facebook-logo.png", id: 2 },
+      { pic: "https://assets.wuiltsite.com/defaults/evernote-logo.png", id: 3 },
       {
-        img: "https://assets.wuiltsite.com/defaults/shutterstock-logo.png",
+        pic: "https://assets.wuiltsite.com/defaults/shutterstock-logo.png",
         id: 4,
       },
-      { img: "https://assets.wuiltsite.com/defaults/google-logo.png", id: 5 },
-      { img: "https://assets.wuiltsite.com/defaults/facebook-logo.png", id: 6 },
-      { img: "https://assets.wuiltsite.com/defaults/evernote-logo.png", id: 7 },
+      { pic: "https://assets.wuiltsite.com/defaults/google-logo.png", id: 5 },
+      { pic: "https://assets.wuiltsite.com/defaults/facebook-logo.png", id: 6 },
+      { pic: "https://assets.wuiltsite.com/defaults/evernote-logo.png", id: 7 },
       {
-        img: "https://assets.wuiltsite.com/defaults/shutterstock-logo.png",
+        pic: "https://assets.wuiltsite.com/defaults/shutterstock-logo.png",
         id: 8,
       },
     ],

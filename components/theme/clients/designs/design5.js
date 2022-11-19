@@ -6,7 +6,15 @@ import Image from "next/image";
 import SubTitle from "../common/subTitle";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
-const Design5 = ({ device, choose, handleEdit, clientData, comp }) => {
+import ClientPic from "../common/clientPic";
+const Design5 = ({
+  device,
+  choose,
+  handleEdit,
+  clientData,
+  comp,
+  compIndex,
+}) => {
   const gridClassName = cn("grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1", {
     "!grid-cols-1": device === "mobile",
   });
@@ -66,14 +74,13 @@ const Design5 = ({ device, choose, handleEdit, clientData, comp }) => {
                     <div key={client.id}>
                       <EditPopover comp={comp} index={index}>
                         <div className="p-2 items-center  ">
-                          <div className="relative h-16 w-24">
-                            <Image
-                              src={client.img}
-                              layout="fill"
-                              objectFit="contain"
-                              className="absolute"
-                            />
-                          </div>
+                          <ClientPic
+                            design="design5"
+                            client={client}
+                            comp={comp}
+                            compIndex={compIndex}
+                            index={index}
+                          />
                         </div>
                       </EditPopover>
                     </div>

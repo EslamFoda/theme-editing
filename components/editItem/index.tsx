@@ -4,8 +4,11 @@ import { TfiTrash } from "react-icons/tfi";
 import { useId } from "react";
 import { CompsContext } from "../../context/compsContext";
 import { useContext } from "react";
+import { useDispatch } from "react-redux";
+import { getItemIndex } from "../../features/edit-image";
 const EditItem = ({ index, comp }) => {
   const { comps, setComps } = useContext(CompsContext);
+  const dispatch = useDispatch();
   const randomId = useId();
   const lastItem = comp.compData.items.lastIndexOf(
     comp.compData.items[comp.compData.items.length - 1]
@@ -34,6 +37,7 @@ const EditItem = ({ index, comp }) => {
       id: 1,
       action: () => {
         moveInArray(comp.compData.items, index, index + 1);
+        dispatch(getItemIndex(index + 1));
         setComps([...comps]);
       },
     },
@@ -65,6 +69,7 @@ const EditItem = ({ index, comp }) => {
       id: 4,
       action: () => {
         moveInArray(comp.compData.items, index, index - 1);
+        dispatch(getItemIndex(index - 1));
         setComps([...comps]);
       },
     },
