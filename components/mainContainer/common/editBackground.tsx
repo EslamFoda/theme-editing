@@ -82,6 +82,7 @@ const EditBackground = ({ setColor }) => {
                     />
                     {/* @ts-ignore */}
                     <span>
+                        {/* @ts-ignore */}
                       {currentColor.hex ? currentColor.hex : "#FFFFFF"}
                     </span>
                   </div>
