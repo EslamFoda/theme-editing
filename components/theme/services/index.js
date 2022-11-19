@@ -55,6 +55,7 @@ const MainServices = ({
     >
       <EditBackground setColor={setColor} handleReset={handleReset} />
       <ServicesComp
+        compIndex={index}
         comp={comp}
         backgroundColor={backgroundColor}
         device={device}

@@ -17,6 +17,7 @@ const Design2 = ({
   handleMultiEdit,
   serviceHeaders,
   comp,
+  compIndex,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -28,7 +29,7 @@ const Design2 = ({
     "grid lg:grid-cols-2 gap-4 md:grid-cols-2 grid-cols-1 mb-16",
     { "!grid-cols-1": device === "mobile" }
   );
-  
+
   return (
     <>
       {choose ? (
@@ -77,7 +78,12 @@ const Design2 = ({
                 <div key={service.id}>
                   <EditPopover index={index} comp={comp}>
                     <div className="group space-y-5">
-                     <ImageEditor service={service}/>
+                      <ImageEditor
+                        compIndex={compIndex}
+                        index={index}
+                        comp={comp}
+                        service={service}
+                      />
                       <EditorComp
                         id={service.id}
                         initialValue={service.title}
