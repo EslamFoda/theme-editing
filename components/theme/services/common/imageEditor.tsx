@@ -39,7 +39,17 @@ const ImageEditor = ({ service, index, comp, compIndex }) => {
         rotation
       );
       setCroppedImage(croppedImage);
-      comp.compData.items[index].pic = croppedImage;
+      const formData = new FormData();
+      formData.append("file", croppedImage);
+      formData.append("upload_preset", "my-upload");
+      const data = await fetch(
+        "https://api.cloudinary.com/v1_1/dxrdyke2n/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      ).then((r) => r.json());
+      comp.compData.items[index].pic = data.secure_url;
       setComps([...comps]);
       setOpen(false);
     } catch (e) {
@@ -68,6 +78,7 @@ const ImageEditor = ({ service, index, comp, compIndex }) => {
     dispatch(closeColors());
     dispatch(filesOff());
   };
+
   return (
     <>
       {open ? (
@@ -171,6 +182,7 @@ const ImageEditor = ({ service, index, comp, compIndex }) => {
           </Popover.Root>
         </div>
       )}
+      {/* <Image src={service.pic} width='200' height='200'/> */}
     </>
   );
 };
