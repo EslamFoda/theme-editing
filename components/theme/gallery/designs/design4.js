@@ -7,7 +7,8 @@ import cn from "clsx";
 import Image from "next/image";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
-const Design4 = ({ device, choose, handleEdit, galleryData, comp }) => {
+import ImageComp from "../common/imageComp";
+const Design4 = ({ device, choose, handleEdit, galleryData, comp,compIndex }) => {
   const gridClassName = cn("grid grid-cols-1  gap-8", {
     "!grid-cols-1": device === "mobile",
   });
@@ -55,12 +56,11 @@ const Design4 = ({ device, choose, handleEdit, galleryData, comp }) => {
                 <div key={gallery.id}>
                   <EditPopover comp={comp} index={index}>
                     <div className="relative hover:shadow-custom transition-all lg:h-screen md:h-52 h-32 w-full">
-                      <Image
-                        src={gallery.img}
-                        className="absolute"
-                        objectFit="cover"
-                        layout="fill"
-                        alt="gallery img"
+                      <ImageComp
+                        comp={comp}
+                        compIndex={compIndex}
+                        image={gallery.pic}
+                        index={index}
                       />
                     </div>
                   </EditPopover>

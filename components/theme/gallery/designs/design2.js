@@ -8,7 +8,8 @@ import Image from "next/image";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 import { EditPopover } from "../../../ui/popover/EditPopover";
-const Design2 = ({ device, choose, handleEdit, galleryData, comp }) => {
+import ImageComp from "../common/imageComp";
+const Design2 = ({ device, choose, handleEdit, galleryData, comp,compIndex }) => {
   const gridClassName = cn(
     "grid lg:gap-8 md:gap-6 gap-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
     {
@@ -76,12 +77,11 @@ const Design2 = ({ device, choose, handleEdit, galleryData, comp }) => {
                       key={gallery.id}
                       className="relative hover:shadow-custom transition-all lg:h-60 md:h-52 h-32 w-full"
                     >
-                      <Image
-                        src={gallery.img}
-                        className="absolute"
-                        objectFit="cover"
-                        layout="fill"
-                        alt="gallery img"
+                     <ImageComp
+                        comp={comp}
+                        compIndex={compIndex}
+                        image={gallery.pic}
+                        index={index}
                       />
                     </div>
                   </EditPopover>

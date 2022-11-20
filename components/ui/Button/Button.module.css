@@ -50,7 +50,7 @@
 }
 
 .link {
-  @apply text-primary !p-0  !min-h-max;
+  @apply text-primary  tracking-wide uppercase !p-0  !min-h-max;
 }
 .link:hover {
   @apply opacity-80;

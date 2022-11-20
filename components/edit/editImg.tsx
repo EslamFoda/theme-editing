@@ -8,7 +8,7 @@ import { addSectionTurnOff } from "../../features/edit-sections";
 import { selectCompName } from "../../features/comp-name";
 import { closeColors } from "../../features/colors";
 import { filesOff } from "../../features/my-files";
-const EditImg = ({ comp, index, compIndex }) => {
+const EditImg = ({ index, compIndex }) => {
   const dispatch = useDispatch();
 
   return (

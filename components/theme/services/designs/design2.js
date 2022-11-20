@@ -8,7 +8,7 @@ import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 import { EditPopover } from "../../../ui/popover/EditPopover";
-import ImageEditor from "../common/imageEditor";
+import ImageComp from "../common/imageComp";
 const Design2 = ({
   device,
   choose,
@@ -78,11 +78,11 @@ const Design2 = ({
                 <div key={service.id}>
                   <EditPopover index={index} comp={comp}>
                     <div className="group space-y-5">
-                      <ImageEditor
+                      <ImageComp
                         compIndex={compIndex}
                         index={index}
                         comp={comp}
-                        service={service}
+                        image={service.pic}
                       />
                       <EditorComp
                         id={service.id}

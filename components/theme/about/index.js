@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Design1 from "./designs/design1";
 import Design2 from "./designs/design2";
 import Design3 from "./designs/design3";
@@ -41,6 +41,8 @@ const MainAbout = ({ index, comps, setComps, comp, device, editSections }) => {
         <EditBackground handleReset={handleReset} setColor={setColor} />
       ) : null}
       <AboutComp
+        comp={comp}
+        compIndex={index}
         backgroundColor={backgroundColor}
         aboutData={compData}
         handleEdit={handleEdit}

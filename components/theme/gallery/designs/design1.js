@@ -7,12 +7,14 @@ import cn from "clsx";
 import Image from "next/image";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
+import ImageComp from "../common/imageComp";
 const Design1 = ({
   device,
   choose,
   handleEdit,
   galleryData,
   comp,
+  compIndex,
 }) => {
   const gridClassName = cn(
     "grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -49,9 +51,7 @@ const Design1 = ({
           </div>
         </Container>
       ) : (
-        <div
-          
-        >
+        <div>
           <Container className="py-16 ">
             <div className="text-center space-y-4 mb-16">
               <EditorComp
@@ -66,16 +66,15 @@ const Design1 = ({
               />
             </div>
             <div className={gridClassName}>
-              {galleryData.items.map((gallery,index) => (
+              {galleryData.items.map((gallery, index) => (
                 <div key={gallery.id}>
                   <EditPopover comp={comp} index={index}>
                     <div className="relative hover:shadow-custom transition-all h-80 w-full">
-                      <Image
-                        src={gallery.img}
-                        className="absolute"
-                        objectFit="cover"
-                        layout="fill"
-                        alt="gallery img"
+                      <ImageComp
+                        comp={comp}
+                        compIndex={compIndex}
+                        image={gallery.pic}
+                        index={index}
                       />
                     </div>
                   </EditPopover>

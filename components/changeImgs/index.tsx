@@ -42,7 +42,10 @@ const ChangeImgs = ({ comps, setComps }) => {
         }
       ).then((r) => r.json());
       setStoredImgs((oldArray) => [...oldArray, data.secure_url]);
-      comps[compIndex].compData.items[itemIndex].pic = data.secure_url;
+      itemIndex
+        ? (comps[compIndex].compData.items[itemIndex].pic = data.secure_url)
+        : (comps[compIndex].compData.pic = data.secure_url);
+
       setComps([...comps]);
     } else {
       setError(true);
@@ -114,9 +117,12 @@ const ChangeImgs = ({ comps, setComps }) => {
               return (
                 <div
                   onClick={() => {
-                    if (!editFiles) {
+                    if (!editFiles && itemIndex) {
                       comps[compIndex].compData.items[itemIndex].pic = img;
-                      console.log(comps[compIndex].compData.items[itemIndex])
+
+                      setComps([...comps]);
+                    } else if (!editFiles && !itemIndex) {
+                      comps[compIndex].compData.pic = img;
                       setComps([...comps]);
                     }
                   }}

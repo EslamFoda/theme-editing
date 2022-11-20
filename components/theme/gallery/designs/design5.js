@@ -8,7 +8,15 @@ import Image from "next/image";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 import { EditPopover } from "../../../ui/popover/EditPopover";
-const Design5 = ({ device, choose, handleEdit, galleryData, comp }) => {
+import ImageComp from "../common/imageComp";
+const Design5 = ({
+  device,
+  choose,
+  handleEdit,
+  galleryData,
+  comp,
+  compIndex,
+}) => {
   const gridClassName = cn(
     "grid   lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
     {
@@ -73,12 +81,12 @@ const Design5 = ({ device, choose, handleEdit, galleryData, comp }) => {
                       key={gallery.id}
                       className="relative lg:h-60 md:h-52 h-52 w-full"
                     >
-                      <Image
-                        src={gallery.img}
-                        className="absolute"
-                        objectFit="cover"
-                        layout="fill"
-                        alt="gallery img"
+                      <ImageComp
+                        design="design5"
+                        comp={comp}
+                        compIndex={compIndex}
+                        image={gallery.pic}
+                        index={index}
                       />
                     </div>
                   </EditPopover>

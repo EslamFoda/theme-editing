@@ -32,7 +32,13 @@ const MainHero = ({ comps, index, setComps, comp, device, editSections }) => {
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <HeroComp heroData={compData} handleEdit={handleEdit} device={device} />
+      <HeroComp
+        compIndex={index}
+        heroData={compData}
+        handleEdit={handleEdit}
+        device={device}
+        comp={comp}
+      />
       <ChangeSection
         comp={comp}
         compName={compName}

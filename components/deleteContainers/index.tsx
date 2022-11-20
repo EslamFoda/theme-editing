@@ -13,19 +13,21 @@ const DeleteContainers = ({ index }) => {
   };
   return (
     <>
-      <div
-        onClick={openOverlay}
-        className="absolute z-50  top-5 left-5 transform -translate-x-1/2 -translate-y-1/2 "
-      >
-        <div className="expand-container">
-          <div className="icon-container hover:!text-[red]">
-            <span className="expand-icon">
-              <TfiTrash size={23} />
-            </span>
-            <span className="text !text-[red]">Remove Section</span>
+      {index === 0 ? null : (
+        <div
+          onClick={openOverlay}
+          className="absolute z-50  top-5 left-5 transform -translate-x-1/2 -translate-y-1/2 "
+        >
+          <div className="expand-container">
+            <div className="icon-container hover:!text-[red]">
+              <span className="expand-icon">
+                <TfiTrash size={23} />
+              </span>
+              <span className="text !text-[red]">Remove Section</span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       {overlay && (
         <div className="absolute top-0 z-50 right-0 bg-[#202b39f7] flex justify-center items-center gap-4 flex-col w-full h-full">
           <div>

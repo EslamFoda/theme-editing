@@ -2,7 +2,8 @@ import Container from "../../../ui/container";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-const Design5 = ({ device, choose, heroData, handleEdit }) => {
+import ImageComp from "../../gallery/common/imageComp";
+const Design5 = ({ device, choose, heroData, handleEdit, compIndex, comp }) => {
   const imageClassName = cn("lg:h-[450px] md:h-[400px] h-80  w-full  ", {
     "!h-80": device === "mobile",
   });
@@ -105,16 +106,10 @@ const Design5 = ({ device, choose, heroData, handleEdit }) => {
               </div>
             </div>
           </Container>
-          <div
-            style={{
-              backgroundImage:
-                "url(https://image.shutterstock.com/shutterstock/photos/2025365270/display_1500/stock-photo-beautiful-attractive-asia-lady-choosing-clothes-on-clothes-rack-dressing-looking-herself-in-mirror-2025365270.jpg)",
-              backgroundSize: "cover",
-              MozBackgroundSize: "center center",
-              backgroundRepeat: "no-repeat",
-            }}
-            className={imageClassName}
-          ></div>
+          <div className={imageClassName}>
+            {" "}
+            <ImageComp comp={comp} compIndex={compIndex} image={heroData.pic} />
+          </div>
         </div>
       )}
     </div>

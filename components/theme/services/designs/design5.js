@@ -8,6 +8,7 @@ import { servicesData } from "../../../../constant/";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 import cn from "clsx";
 import EditorComp from "../../../editor";
+import ImageComp from "../common/imageComp";
 const Design5 = ({
   device,
   choose,
@@ -16,6 +17,7 @@ const Design5 = ({
   handleMultiEdit,
   serviceHeaders,
   comp,
+  compIndex,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-2 text-center md:grid-cols-2 sm:grid-cols-1 grid-cols-1",
@@ -51,9 +53,7 @@ const Design5 = ({
           </div>
         </Container>
       ) : (
-        <div
-          
-        >
+        <div>
           <Container className="py-16 ">
             <div className={headersClassName}>
               <EditorComp
@@ -71,11 +71,14 @@ const Design5 = ({
               {serviceData?.map((service, index) => (
                 <div key={service.id}>
                   <EditPopover comp={comp} index={index}>
-                    <div className=" space-y-5">
-                      <div
-                        style={{ backgroundImage: `url(${service.pic})` }}
-                        className="bg-no-repeat bg-center bg-cover   h-72 w-full"
-                      ></div>
+                    <div className="  space-y-5">
+                      <ImageComp
+                        comp={comp}
+                        compIndex={compIndex}
+                        design="design5"
+                        image={service.pic}
+                        index={index}
+                      />
                       <EditorComp
                         initialValue={service.title}
                         id={service.id}

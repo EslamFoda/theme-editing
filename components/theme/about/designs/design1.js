@@ -2,7 +2,14 @@ import React from "react";
 import Container from "../../../ui/container";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-const Design1 = ({ choose = false, handleEdit, aboutData }) => {
+import ImageComp from "../../gallery/common/imageComp";
+const Design1 = ({
+  choose = false,
+  handleEdit,
+  aboutData,
+  compIndex,
+  comp,
+}) => {
   return (
     <div>
       {choose ? (
@@ -53,16 +60,14 @@ const Design1 = ({ choose = false, handleEdit, aboutData }) => {
                   />
                 </Button>
               </div>
-              <div
-                style={{
-                  backgroundImage:
-                    "url(https://image.shutterstock.com/shutterstock/photos/2025365270/display_1500/stock-photo-beautiful-attractive-asia-lady-choosing-clothes-on-clothes-rack-dressing-looking-herself-in-mirror-2025365270.jpg)",
-                  backgroundSize: "cover",
-                  MozBackgroundSize: "center center",
-                  backgroundRepeat: "no-repeat",
-                }}
-                className="h-96 lg:w-[450px] shadow-big md:w-[400px] w-[450px]   bg-blue-100"
-              ></div>
+              <div className="h-96 lg:w-[450px] shadow-big md:w-[400px] w-[450px]   bg-blue-100">
+                {" "}
+                <ImageComp
+                  comp={comp}
+                  compIndex={compIndex}
+                  image={aboutData.pic}
+                />
+              </div>
             </div>
           </Container>
         </div>

@@ -2,7 +2,14 @@ import React from "react";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 import Container from "../../../ui/container";
-const Design5 = ({ choose = false, handleEdit, aboutData }) => {
+import ImageComp from "../../gallery/common/imageComp";
+const Design5 = ({
+  choose = false,
+  handleEdit,
+  aboutData,
+  compIndex,
+  comp,
+}) => {
   return (
     <>
       {choose ? (
@@ -50,16 +57,13 @@ const Design5 = ({ choose = false, handleEdit, aboutData }) => {
                     keys="btn"
                   />
                 </Button>
-                <div
-                  style={{
-                    backgroundImage:
-                      "url(https://image.shutterstock.com/shutterstock/photos/2025365270/display_1500/stock-photo-beautiful-attractive-asia-lady-choosing-clothes-on-clothes-rack-dressing-looking-herself-in-mirror-2025365270.jpg)",
-                    backgroundSize: "cover",
-                    MozBackgroundSize: "center center",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                  className="h-96 lg:w-full"
-                ></div>
+                <div className="h-96 lg:w-full">
+                  <ImageComp
+                    comp={comp}
+                    image={aboutData.pic}
+                    compIndex={compIndex}
+                  />
+                </div>
               </div>
             </div>
           </Container>

@@ -2,7 +2,15 @@ import React from "react";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-const Design3 = ({ choose = false, device, handleEdit, aboutData }) => {
+import { EditPopover } from "../../../ui/popover/EditPopover";
+const Design3 = ({
+  choose = false,
+  device,
+  handleEdit,
+  aboutData,
+  compIndex,
+  comp,
+}) => {
   const gridClassName = cn(
     "grid  lg:grid-cols-2 grid-cols-1 md:grid-cols-2 sm:grid-cols-1",
     {
@@ -48,16 +56,19 @@ const Design3 = ({ choose = false, device, handleEdit, aboutData }) => {
         </div>
       ) : (
         <div className={gridClassName}>
-          <div
-            className={order1ClassName}
-            style={{
-              backgroundImage:
-                "url(https://image.shutterstock.com/shutterstock/photos/2025365270/display_1500/stock-photo-beautiful-attractive-asia-lady-choosing-clothes-on-clothes-rack-dressing-looking-herself-in-mirror-2025365270.jpg)",
-              backgroundSize: "cover",
-              MozBackgroundSize: "center center",
-              backgroundRepeat: "no-repeat",
-            }}
-          ></div>
+          <EditPopover comp={comp} compIndex={compIndex} editImage>
+            <div
+              className={order1ClassName}
+              style={{
+                backgroundImage:
+                  `url(${aboutData.pic})`,
+                backgroundSize: "cover",
+                backgroundPosition:"center",
+                MozBackgroundSize: "center center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
+          </EditPopover>
           <div className={order2ClassName}>
             <EditorComp
               initialValue={aboutData.title}

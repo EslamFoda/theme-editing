@@ -39,7 +39,7 @@ export function EditPopover({
               sideOffset={14}
             >
               {editImage ? (
-                <EditImg comp={comp} index={index} compIndex={compIndex} />
+                <EditImg index={index} compIndex={compIndex} />
               ) : (
                 <EditItem comp={comp} index={index} />
               )}

@@ -47,6 +47,7 @@ const MainGallery = ({
     >
       <EditBackground setColor={setColor} handleReset={handleReset} />
       <ServicesComp
+      compIndex={index}
         device={device}
         handleEdit={handleEdit}
         galleryData={compData}

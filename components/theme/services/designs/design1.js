@@ -16,7 +16,8 @@ const Design1 = ({
   handleEdit,
   handleMultiEdit,
   serviceHeaders,
-  comp
+  comp,
+  compIndex,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -51,9 +52,7 @@ const Design1 = ({
           </div>
         </Container>
       ) : (
-        <div
-         
-        >
+        <div>
           <Container className="py-16  ">
             <div className="text-center space-y-4 mb-16">
               <EditorComp
@@ -72,11 +71,17 @@ const Design1 = ({
                 <div key={service.id}>
                   <EditPopover comp={comp} index={index}>
                     <div key={service.id} className="text-center space-y-5">
-                      <div
-                        style={{ backgroundImage: `url(${service.pic})` }}
-                        className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-40 w-40 rounded-full"
-                      ></div>
-                      {/* <ServiceTitle title={service.title} /> */}
+                      <EditPopover
+                        comp={comp}
+                        compIndex={compIndex}
+                        editImage
+                        index={index}
+                      >
+                        <div
+                          style={{ backgroundImage: `url(${service.pic})` }}
+                          className="bg-no-repeat bg-center bg-cover overflow-hidden m-auto h-40 w-40 rounded-full"
+                        ></div>
+                      </EditPopover>
                       <EditorComp
                         id={service.id}
                         initialValue={service.title}

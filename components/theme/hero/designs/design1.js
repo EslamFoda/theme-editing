@@ -3,12 +3,21 @@ import Container from "../../../ui/container";
 import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-const Design1 = ({ device, choose = false, heroData, handleEdit }) => {
+import ImageComp from "../../gallery/common/imageComp";
+const Design1 = ({
+  device,
+  choose = false,
+  heroData,
+  handleEdit,
+  compIndex,
+  comp,
+}) => {
   const rootClassName = cn("", {
     "bg-black": device === "mobile",
     "bg-blue-500": device === "tablet",
     "bg-white": device === "desktop",
   });
+  console.log(heroData);
   return (
     <>
       {choose ? (
@@ -45,10 +54,10 @@ const Design1 = ({ device, choose = false, heroData, handleEdit }) => {
           </Container>
         </div>
       ) : (
-        <div className="">
+        <div className="bg-gradient-to-b from-primary to-secondary ">
           <Container>
             <div className="flex   mx-auto  lg:justify-between md:justify-center  justify-center items-center py-16 gap-3 flex-wrap ">
-              <div className="flex  flex-col lg:w-[450px] md:w-[400px] w-[450px]">
+              <div className="flex text-white  flex-col lg:w-[450px] md:w-[400px] w-[450px]">
                 <EditorComp
                   handleEdit={handleEdit}
                   initialValue={heroData.title}
@@ -59,16 +68,18 @@ const Design1 = ({ device, choose = false, heroData, handleEdit }) => {
                   initialValue={heroData.subTitle}
                   keys="subTitle"
                 />
-                {/* <span className="mt-5">{heroData.subTitle}</span> */}
                 <div className="flex items-center w-full justify-between gap-4 mt-4">
-                  <Button className="flex-1">
+                  <Button className="flex-1 !bg-white font-semibold !text-md !text-primary !rounded-none">
                     <EditorComp
                       handleEdit={handleEdit}
                       initialValue={heroData.primaryBtn}
                       keys="primaryBtn"
                     />
                   </Button>
-                  <Button variant="outline" className="flex-1">
+                  <Button
+                    variant="outline"
+                    className="flex-1 !border-white !rounded-none !text-white hover:!bg-transparent !bg-transparent"
+                  >
                     <EditorComp
                       handleEdit={handleEdit}
                       initialValue={heroData.secondaryBtn}
@@ -77,16 +88,13 @@ const Design1 = ({ device, choose = false, heroData, handleEdit }) => {
                   </Button>
                 </div>
               </div>
-              <div
-                style={{
-                  backgroundImage:
-                    "url(https://image.shutterstock.com/shutterstock/photos/2025365270/display_1500/stock-photo-beautiful-attractive-asia-lady-choosing-clothes-on-clothes-rack-dressing-looking-herself-in-mirror-2025365270.jpg)",
-                  backgroundSize: "cover",
-                  MozBackgroundSize: "center center",
-                  backgroundRepeat: "no-repeat",
-                }}
-                className="h-96 lg:w-[450px] md:w-[400px] w-[450px]   bg-blue-100"
-              ></div>
+              <div className="h-96 lg:w-[450px] md:w-[400px] w-[450px]">
+                <ImageComp
+                  comp={comp}
+                  compIndex={compIndex}
+                  image={heroData.pic}
+                />
+              </div>
             </div>
           </Container>
         </div>

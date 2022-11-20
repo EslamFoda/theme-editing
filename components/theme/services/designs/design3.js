@@ -7,6 +7,7 @@ import { servicesData } from "../../../../constant/";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 import cn from "clsx";
 import EditorComp from "../../../editor";
+import ChangeBgImg from "../../../changeBgImg";
 const Design3 = ({
   device,
   choose,
@@ -15,6 +16,7 @@ const Design3 = ({
   handleMultiEdit,
   serviceHeaders,
   comp,
+  compIndex,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 grid-cols-1",
@@ -53,9 +55,7 @@ const Design3 = ({
           </div>
         </Container>
       ) : (
-        <div
-          
-        >
+        <div>
           <Container className="py-16 ">
             <div className="text-center space-y-4 mb-16">
               <EditorComp
@@ -73,7 +73,8 @@ const Design3 = ({
               {serviceData?.map((service, index) => (
                 <div key={service.id}>
                   <EditPopover comp={comp} index={index}>
-                    <div className=" space-y-5">
+                    <div className=" space-y-5 img-editor-container  relative">
+                      <ChangeBgImg compIndex={compIndex} index={index} />
                       <div
                         style={{ backgroundImage: `url(${service.pic})` }}
                         className="bg-no-repeat bg-center bg-cover p-5  flex items-end   h-96 w-full"

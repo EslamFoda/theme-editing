@@ -23,7 +23,7 @@ const Design3 = ({ choose = false, heroData, handleEdit }) => {
           </Container>
         </div>
       ) : (
-        <div className=" ">
+        <div className="bg-gradient-to-b from-primary to-secondary text-white">
           <Container className="flex h-[80vh] space-y-10 flex-col justify-center text-center items-center">
             <EditorComp
               handleEdit={handleEdit}
@@ -36,14 +36,17 @@ const Design3 = ({ choose = false, heroData, handleEdit }) => {
               keys="subTitle"
             />
             <div className="flex items-center gap-6">
-              <Button>
+              <Button className="!bg-white font-semibold !text-md !text-primary">
                 <EditorComp
                   handleEdit={handleEdit}
                   initialValue={heroData.primaryBtn}
                   keys="primaryBtn"
                 />
               </Button>
-              <Button variant="outline">
+              <Button
+                className="!border-white !text-white hover:!bg-transparent !bg-transparent"
+                variant="outline"
+              >
                 <EditorComp
                   handleEdit={handleEdit}
                   initialValue={heroData.secondaryBtn}

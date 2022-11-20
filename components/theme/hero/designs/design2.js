@@ -2,7 +2,8 @@ import React from "react";
 import EditorComp from "../../../editor";
 import Container from "../../../ui/container";
 import Button from "../../../ui/Button";
-const Design2 = ({ choose = false, heroData, handleEdit }) => {
+import ChangeBgImg from "../../../changeBgImg";
+const Design2 = ({ choose = false, heroData, handleEdit, compIndex }) => {
   return (
     <>
       {choose ? (
@@ -34,15 +35,15 @@ const Design2 = ({ choose = false, heroData, handleEdit }) => {
         </>
       ) : (
         <div
-          className="h-[80vh] py-16 "
+          className="h-[80vh] img-editor-container py-16 "
           style={{
-            backgroundImage:
-              "url(https://image.shutterstock.com/shutterstock/photos/2025365270/display_1500/stock-photo-beautiful-attractive-asia-lady-choosing-clothes-on-clothes-rack-dressing-looking-herself-in-mirror-2025365270.jpg)",
+            backgroundImage: `url(${heroData.pic})`,
             backgroundSize: "cover",
             MozBackgroundSize: "center center",
             backgroundRepeat: "no-repeat",
           }}
         >
+          <ChangeBgImg compIndex={compIndex} />
           <Container>
             <div className="max-w-sm bg-white space-y-10 p-8">
               <EditorComp
