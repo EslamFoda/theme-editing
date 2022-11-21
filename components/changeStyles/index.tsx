@@ -14,7 +14,11 @@ const ChangeStyles = ({
 }) => {
   return (
     <div className="bg-[#26313f] flex px-5">
-      <Bar openColors={openColors} fontEdit={fontEdit} currentFont={currentFont}/>
+      <Bar
+        openColors={openColors}
+        fontEdit={fontEdit}
+        currentFont={currentFont}
+      />
       <div className="h-40 flex items-center gap-4 p-4  overflow-auto    w-full">
         {openColors &&
           colors?.map((color: string, i: number) => {
@@ -35,6 +39,7 @@ const ChangeStyles = ({
           ? fonts?.map((font, i) => {
               return (
                 <AllFonts
+                  key={i}
                   fonts={fonts}
                   font={font}
                   currentFont={currentFont}
