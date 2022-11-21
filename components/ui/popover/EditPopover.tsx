@@ -13,7 +13,7 @@ export function EditPopover({
 
   return (
     <>
-      <HoverCard.Root openDelay={0} closeDelay={100}>
+      <HoverCard.Root openDelay={0} closeDelay={250}>
         <HoverCard.Trigger
           className={`${
             editSections
