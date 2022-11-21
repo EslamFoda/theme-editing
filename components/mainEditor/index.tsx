@@ -11,9 +11,10 @@ import { sectionsImgs } from "../../constant";
 import { useContext } from "react";
 import { CompsContext } from "../../context/compsContext";
 import ActionBarDesc from "./common/actionBarDesc";
-import ChangeColors from "../changeColors";
+
 import { useStickyState } from "../../hooks/useStickyState";
 import ChangeImgs from "../changeImgs";
+import ChangeStyles from "../changeStyles";
 
 const colors = [
   "Captain-Green",
@@ -34,6 +35,30 @@ const colors = [
   "Gray",
   "Lime",
 ];
+
+const fonts = [
+  "sans",
+  "Poppins",
+  "Tillana",
+  "Montserrat",
+  "rubek",
+  "hind",
+  "Saira",
+  "Roboto",
+  "Amatic",
+  "Bangers",
+  "Kdam",
+  "Krub",
+  "Lato",
+  "Lora",
+  "Nerko",
+  "Roboto",
+  "Roboto-Mono",
+  "Ropa-Sans",
+  "Russo-One",
+  "Saira-Condensed",
+  "Secular-One",
+];
 const modes = ["light", "dark"];
 
 const MainEditor = () => {
@@ -42,6 +67,7 @@ const MainEditor = () => {
     colors[0],
     "theme-color"
   );
+  const [currentFont, setCurrentFont] = useStickyState(fonts[0], "theme-font");
   const [mode, setMode] = useStickyState(modes[0], "theme-mode");
   const dispatch = useDispatch();
   const editSections = useSelector((state: any) => state.editSections.value);
@@ -56,6 +82,10 @@ const MainEditor = () => {
   const containerWidth = useSelector((state: any) => state.mainWidth.width);
   const editImg = useSelector((state: any) => state.editImg.editImage);
   const editFiles = useSelector((state: any) => state.files.editFiles);
+  const stylesEditing = useSelector(
+    (state: any) => state.stylesEdit.stylesEditor
+  );
+  const fontEdit = useSelector((state: any) => state.stylesEdit.fontEdit);
 
   useEffect(() => {
     const data = window.localStorage.getItem("ALL_SECTIONS");
@@ -69,7 +99,6 @@ const MainEditor = () => {
   return (
     <div
       className={[
-        "",
         currentColor && `theme-${currentColor}`,
         mode && `theme-${mode}`,
       ]
@@ -112,8 +141,13 @@ const MainEditor = () => {
             </div>
           </div>
         )}
-        {openColors && !addSection && editSections ? (
-          <ChangeColors
+        {stylesEditing && !addSection && editSections ? (
+          <ChangeStyles
+            fonts={fonts}
+            currentFont={currentFont}
+            setCurrentFont={setCurrentFont}
+            fontEdit={fontEdit}
+            openColors={openColors}
             mode={mode}
             colors={colors}
             setCurrentColor={setCurrentColor}
@@ -124,11 +158,20 @@ const MainEditor = () => {
           <ChangeImgs setComps={setComps} comps={comps} />
         ) : null}
       </div>
-      <MainContainer
-        comps={comps}
-        setComps={setComps}
-        containerWidth={containerWidth}
-      />
+      <div
+        className={[
+          `font font-choosedFont`,
+          currentFont && `fontName-${currentFont}`,
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        <MainContainer
+          comps={comps}
+          setComps={setComps}
+          containerWidth={containerWidth}
+        />
+      </div>
     </div>
   );
 };

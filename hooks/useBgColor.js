@@ -3,30 +3,23 @@ import { CompsContext } from "../context/compsContext";
 
 const useBgColor = (index) => {
   const { comps, setComps } = useContext(CompsContext);
-  const [color, setColor] = useState({
-    rgb: {
-      r: "255",
-      g: "255",
-      b: "255",
-      a: "1",
-    },
-  });
+  const [color, setColor] = useState(null);
 
   const handleChangeColor = () => {
-    comps[index].backgroundColor = color.rgb;
+    color ? (comps[index].backgroundColor = color.rgb) : null;
     setComps([...comps]);
   };
 
   const handleReset = () => {
     setColor({
       rgb: {
-        r: "255",
-        g: "255",
-        b: "255",
-        a: "1",
+        r: 255,
+        g: 255,
+        b: 255,
+        a: 1,
       },
     });
-    comps[index].backgroundColor = color.rgb
+    comps[index].backgroundColor = color.rgb;
     setComps([...comps]);
   };
 

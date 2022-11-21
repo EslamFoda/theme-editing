@@ -53,7 +53,6 @@ const MainServices = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <EditBackground setColor={setColor} handleReset={handleReset} />
       <ServicesComp
         compIndex={index}
         comp={comp}
@@ -72,7 +71,12 @@ const MainServices = ({
         designNum={designNum}
         setComps={setComps}
       />
-      {editSections && <AddSection index={index} />}
+      {editSections && (
+        <>
+          <EditBackground backgroundColor={backgroundColor} handleReset={handleReset} setColor={setColor} />
+          <AddSection index={index} />
+        </>
+      )}
     </div>
   );
 };

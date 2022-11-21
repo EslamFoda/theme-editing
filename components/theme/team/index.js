@@ -8,7 +8,7 @@ import Design4 from "./design/design4";
 import Design5 from "./design/design5";
 import useBgColor from "../../../hooks/useBgColor";
 import EditBackground from "../../mainContainer/common/editBackground";
-
+import useAnimation from "../../../hooks/useAnimation";
 const MainTeam = ({ comps, index, setComps, comp, device, editSections }) => {
   const { compName, designNum, compData, backgroundColor } = comp;
   const { handleReset, setColor } = useBgColor(index);
@@ -22,6 +22,7 @@ const MainTeam = ({ comps, index, setComps, comp, device, editSections }) => {
   };
 
   const ServicesComp = designs[`design${designNum}`];
+  const {} = useAnimation();
 
   const handleMultiEdit = (value, id, keys) => {
     const update = compData.items.map((item) =>
@@ -40,14 +41,14 @@ const MainTeam = ({ comps, index, setComps, comp, device, editSections }) => {
 
   return (
     <div
+      // data-aos="fade-left"
       style={{
         backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
       }}
-      className={`relative group  ${
+      className={`relative group ${
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <EditBackground setColor={setColor} handleReset={handleReset} />
       <ServicesComp
         comp={comp}
         compIndex={index}
@@ -66,7 +67,16 @@ const MainTeam = ({ comps, index, setComps, comp, device, editSections }) => {
         designNum={designNum}
         setComps={setComps}
       />
-      {editSections && <AddSection index={index} />}
+      {editSections && (
+        <>
+          <EditBackground
+            backgroundColor={backgroundColor}
+            handleReset={handleReset}
+            setColor={setColor}
+          />
+          <AddSection index={index} />
+        </>
+      )}
     </div>
   );
 };

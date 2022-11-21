@@ -3,7 +3,7 @@ import { ChromePicker } from "react-color";
 
 import useClickOutside from "../../../hooks/useClickOutside";
 
-export const PopoverColor = ({ color, onChange }) => {
+export const PopoverColor = ({ color, onChange, backgroundColor }) => {
   const popover = useRef();
   const [isOpen, toggle] = useState(false);
 
@@ -22,11 +22,7 @@ export const PopoverColor = ({ color, onChange }) => {
 
       {isOpen && (
         <div className="popover" ref={popover}>
-          <ChromePicker
-            color={color.rgb}
-            onChange={onChange}
-    
-          />
+          <ChromePicker color={color.rgb} onChange={onChange} />
         </div>
       )}
     </div>

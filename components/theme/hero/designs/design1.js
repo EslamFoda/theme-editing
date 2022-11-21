@@ -17,7 +17,6 @@ const Design1 = ({
     "bg-blue-500": device === "tablet",
     "bg-white": device === "desktop",
   });
-  console.log(heroData);
   return (
     <>
       {choose ? (

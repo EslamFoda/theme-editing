@@ -46,7 +46,6 @@ const MainClients = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <EditBackground handleReset={handleReset} setColor={setColor} />
       <ClientsComp
         compIndex={index}
         device={device}
@@ -62,7 +61,12 @@ const MainClients = ({
         designNum={designNum}
         setComps={setComps}
       />
-      {editSections && <AddSection index={index} />}
+      {editSections && (
+        <>
+          <EditBackground backgroundColor={backgroundColor} handleReset={handleReset} setColor={setColor} />
+          <AddSection index={index} />
+        </>
+      )}
     </div>
   );
 };

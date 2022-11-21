@@ -67,7 +67,6 @@ const MainFeatured = ({
       editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
     }  w-full `}
     >
-      <EditBackground setColor={setColor} />
       <FeaturedComp
         icons={icons}
         comp={comp}
@@ -85,7 +84,12 @@ const MainFeatured = ({
         designNum={designNum}
         setComps={setComps}
       />
-      {editSections && <AddSection index={index} />}
+      {editSections && (
+        <>
+          <EditBackground backgroundColor={backgroundColor} handleReset={handleReset} setColor={setColor} />
+          <AddSection index={index} />
+        </>
+      )}
     </div>
   );
 };

@@ -54,7 +54,6 @@ const MainTestimonials = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <EditBackground setColor={setColor} handleReset={handleReset} />
       <TestiComp
         compIndex={index}
         comp={comp}
@@ -73,7 +72,12 @@ const MainTestimonials = ({
         designNum={designNum}
         setComps={setComps}
       />
-      {editSections && <AddSection index={index} />}
+      {editSections && (
+        <>
+          <EditBackground backgroundColor={backgroundColor} handleReset={handleReset} setColor={setColor} />
+          <AddSection index={index} />
+        </>
+      )}
     </div>
   );
 };

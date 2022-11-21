@@ -38,16 +38,15 @@ const MainGallery = ({
 
   return (
     <div
-    style={{
-      backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-    }}
-    className={`relative group  ${
-      editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
-    }  w-full `}
+      style={{
+        backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+      }}
+      className={`relative group  ${
+        editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
+      }  w-full `}
     >
-      <EditBackground setColor={setColor} handleReset={handleReset} />
       <ServicesComp
-      compIndex={index}
+        compIndex={index}
         device={device}
         handleEdit={handleEdit}
         galleryData={compData}
@@ -61,7 +60,12 @@ const MainGallery = ({
         designNum={designNum}
         setComps={setComps}
       />
-      {editSections && <AddSection index={index} />}
+      {editSections && (
+        <>
+          <EditBackground backgroundColor={backgroundColor} handleReset={handleReset} setColor={setColor} />
+          <AddSection index={index} />
+        </>
+      )}
     </div>
   );
 };

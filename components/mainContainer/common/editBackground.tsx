@@ -1,31 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoImagesOutline } from "react-icons/io5";
 import { MdOutlineInvertColors } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 import { PopoverColor } from "../../ui/colorPicker/popoverColor";
 import { GrPowerReset } from "react-icons/gr";
 import * as Popover from "@radix-ui/react-popover";
-const EditBackground = ({ setColor }) => {
+const EditBackground = ({ setColor, backgroundColor }) => {
   const [currentColor, setCurretColor] = useState<any>({
     rgb: {
-      r: "255",
-      g: "255",
-      b: "255",
-      a: "1",
+      r: 255,
+      g: 255,
+      b: 255,
+      a: 1,
     },
   });
+
+  const valueToHex = (c) => {
+    const hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+  };
+
+  const rgbaToHex = (r, g, b) => {
+    return "#" + valueToHex(r) + valueToHex(g) + valueToHex(b);
+  };
 
   const handleApplyColor = () => {
     setColor(currentColor);
   };
 
+  useEffect(() => {
+    backgroundColor
+      ? setCurretColor({
+          rgb: backgroundColor,
+          hex: rgbaToHex(
+            backgroundColor.r,
+            backgroundColor.g,
+            backgroundColor.b
+          ),
+        })
+      : null;
+  }, []);
+
   const handleReset = () => {
     setCurretColor({
       rgb: {
-        r: "255",
-        g: "255",
-        b: "255",
-        a: "1",
+        r: 255,
+        g: 255,
+        b: 255,
+        a: 1,
       },
     });
   };
@@ -77,6 +99,7 @@ const EditBackground = ({ setColor }) => {
                   <span>Background Color</span>
                   <div className="flex mt-2 items-center gap-4 w-full border border-gray rounded-md p-1 px-2">
                     <PopoverColor
+                      backgroundColor={backgroundColor}
                       color={currentColor}
                       onChange={setCurretColor}
                     />

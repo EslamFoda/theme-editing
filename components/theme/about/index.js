@@ -27,7 +27,7 @@ const MainAbout = ({ index, comps, setComps, comp, device, editSections }) => {
     }
     setComps([...comps]);
   };
-
+  console.log(comps[index].backgroundColor);
   return (
     <div
       style={{
@@ -37,9 +37,6 @@ const MainAbout = ({ index, comps, setComps, comp, device, editSections }) => {
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      {editSections ? (
-        <EditBackground handleReset={handleReset} setColor={setColor} />
-      ) : null}
       <AboutComp
         comp={comp}
         compIndex={index}
@@ -57,7 +54,12 @@ const MainAbout = ({ index, comps, setComps, comp, device, editSections }) => {
         designNum={designNum}
         setComps={setComps}
       />
-      {editSections && <AddSection index={index} />}
+      {editSections && (
+        <>
+          <EditBackground backgroundColor={backgroundColor} handleReset={handleReset} setColor={setColor} />
+          <AddSection index={index} />
+        </>
+      )}
     </div>
   );
 };
