@@ -1,7 +1,12 @@
 import Bar from "./bar";
 import ColorPalettes from "./colorPallates";
 import AllFonts from "./allFonts";
+import AllEffects from "./allEffects";
 const ChangeStyles = ({
+  currentEffect,
+  setCurrentEffect,
+  editEffects,
+  effects,
   colors,
   setCurrentColor,
   mode,
@@ -18,6 +23,7 @@ const ChangeStyles = ({
         openColors={openColors}
         fontEdit={fontEdit}
         currentFont={currentFont}
+        currentEffect={currentEffect}
       />
       <div className="h-40 flex items-center gap-4 p-4  overflow-auto    w-full">
         {openColors &&
@@ -45,6 +51,20 @@ const ChangeStyles = ({
                   currentFont={currentFont}
                   i={i}
                   setCurrentFont={setCurrentFont}
+                />
+              );
+            })
+          : null}
+        {editEffects
+          ? effects?.map((effect, i) => {
+              return (
+                <AllEffects
+                effects={effects}
+                  effect={effect}
+                  i={i}
+                  key={i}
+                  currentEffect={currentEffect}
+                  setCurrentEffect={setCurrentEffect}
                 />
               );
             })

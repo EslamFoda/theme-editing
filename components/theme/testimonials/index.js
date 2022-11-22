@@ -16,6 +16,7 @@ const MainTestimonials = ({
   comp,
   device,
   editSections,
+  animate,
 }) => {
   const { compName, designNum, compData, backgroundColor } = comp;
   const { handleReset, setColor } = useBgColor(index);
@@ -54,16 +55,18 @@ const MainTestimonials = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <TestiComp
-        compIndex={index}
-        comp={comp}
-        backgroundColor={backgroundColor}
-        device={device}
-        testiData={compData.items}
-        handleMultiEdit={handleMultiEdit}
-        headers={compData.headers}
-        handleEdit={handleEdit}
-      />
+      <div data-aos={animate}>
+        <TestiComp
+          compIndex={index}
+          comp={comp}
+          backgroundColor={backgroundColor}
+          device={device}
+          testiData={compData.items}
+          handleMultiEdit={handleMultiEdit}
+          headers={compData.headers}
+          handleEdit={handleEdit}
+        />
+      </div>
       <ChangeSection
         comp={comp}
         compName={compName}
@@ -74,7 +77,11 @@ const MainTestimonials = ({
       />
       {editSections && (
         <>
-          <EditBackground backgroundColor={backgroundColor} handleReset={handleReset} setColor={setColor} />
+          <EditBackground
+            backgroundColor={backgroundColor}
+            handleReset={handleReset}
+            setColor={setColor}
+          />
           <AddSection index={index} />
         </>
       )}

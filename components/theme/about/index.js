@@ -8,7 +8,15 @@ import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
 import EditBackground from "../../mainContainer/common/editBackground";
 import useBgColor from "../../../hooks/useBgColor";
-const MainAbout = ({ index, comps, setComps, comp, device, editSections }) => {
+const MainAbout = ({
+  index,
+  comps,
+  setComps,
+  comp,
+  device,
+  editSections,
+  animate,
+}) => {
   const { compName, designNum, compData, backgroundColor } = comp;
   const designs = {
     design1: Design1,
@@ -27,7 +35,6 @@ const MainAbout = ({ index, comps, setComps, comp, device, editSections }) => {
     }
     setComps([...comps]);
   };
-  console.log(comps[index].backgroundColor);
   return (
     <div
       style={{
@@ -37,15 +44,17 @@ const MainAbout = ({ index, comps, setComps, comp, device, editSections }) => {
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <AboutComp
-        comp={comp}
-        compIndex={index}
-        backgroundColor={backgroundColor}
-        aboutData={compData}
-        handleEdit={handleEdit}
-        choose={false}
-        device={device}
-      />
+      <div data-aos={animate}>
+        <AboutComp
+          comp={comp}
+          compIndex={index}
+          backgroundColor={backgroundColor}
+          aboutData={compData}
+          handleEdit={handleEdit}
+          choose={false}
+          device={device}
+        />
+      </div>
       <ChangeSection
         comp={comp}
         compName={compName}
@@ -56,7 +65,11 @@ const MainAbout = ({ index, comps, setComps, comp, device, editSections }) => {
       />
       {editSections && (
         <>
-          <EditBackground backgroundColor={backgroundColor} handleReset={handleReset} setColor={setColor} />
+          <EditBackground
+            backgroundColor={backgroundColor}
+            handleReset={handleReset}
+            setColor={setColor}
+          />
           <AddSection index={index} />
         </>
       )}

@@ -1,12 +1,11 @@
 import { createContext, useId, useState } from "react";
-import MainHero from "../components/theme/hero";
 
 export const CompsContext = createContext();
 
 const CompsProvider = ({ children }) => {
+  const [animate, setAnimate] = useState("");
   const [comps, setComps] = useState([
     {
-      // Component: MainHero,
       id: useId(),
       compName: "hero",
       designNum: 1,
@@ -28,7 +27,7 @@ const CompsProvider = ({ children }) => {
     },
   ]);
   return (
-    <CompsContext.Provider value={{ comps, setComps }}>
+    <CompsContext.Provider value={{ comps, setComps, animate, setAnimate }}>
       {children}
     </CompsContext.Provider>
   );

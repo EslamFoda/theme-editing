@@ -34,7 +34,7 @@ const ChangeBgImg: FC<Props> = ({ compIndex, index }) => {
       {editSections ? (
         <div
           onClick={handleChangeImg}
-          className="absolute z-50 floating-img-editor top-5 left-5 transform -translate-x-1/2 -translate-y-1/2 "
+          className="absolute z-40 floating-img-editor top-5 left-5 transform -translate-x-1/2 -translate-y-1/2 "
         >
           <div className="expand-container">
             <div className="icon-container">

@@ -60,7 +60,6 @@ const EditItem = ({ index, comp }) => {
           ...comp.compData.items[index],
           id: randomId,
         });
-        console.log(comp.compData.items);
         setComps([...comps]);
       },
     },

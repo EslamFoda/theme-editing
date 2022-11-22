@@ -16,6 +16,7 @@ const MainGallery = ({
   comp,
   device,
   editSections,
+  animate,
 }) => {
   const { compName, designNum, compData, backgroundColor } = comp;
   const designs = {
@@ -45,13 +46,15 @@ const MainGallery = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <ServicesComp
-        compIndex={index}
-        device={device}
-        handleEdit={handleEdit}
-        galleryData={compData}
-        comp={comp}
-      />
+      <div data-aos={animate}>
+        <ServicesComp
+          compIndex={index}
+          device={device}
+          handleEdit={handleEdit}
+          galleryData={compData}
+          comp={comp}
+        />
+      </div>
       <ChangeSection
         comp={comp}
         compName={compName}
@@ -62,7 +65,11 @@ const MainGallery = ({
       />
       {editSections && (
         <>
-          <EditBackground backgroundColor={backgroundColor} handleReset={handleReset} setColor={setColor} />
+          <EditBackground
+            backgroundColor={backgroundColor}
+            handleReset={handleReset}
+            setColor={setColor}
+          />
           <AddSection index={index} />
         </>
       )}

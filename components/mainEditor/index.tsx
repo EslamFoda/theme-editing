@@ -59,6 +59,9 @@ const fonts = [
   "Saira-Condensed",
   "Secular-One",
 ];
+
+const effects = ["no-animation", "fade-up", "zoom-in-up", "flip-up"];
+
 const modes = ["light", "dark"];
 
 const MainEditor = () => {
@@ -66,6 +69,10 @@ const MainEditor = () => {
   const [currentColor, setCurrentColor] = useStickyState(
     colors[0],
     "theme-color"
+  );
+  const [currentEffect, setCurrentEffect] = useStickyState(
+    effects[0],
+    "theme-effects"
   );
   const [currentFont, setCurrentFont] = useStickyState(fonts[0], "theme-font");
   const [mode, setMode] = useStickyState(modes[0], "theme-mode");
@@ -86,6 +93,7 @@ const MainEditor = () => {
     (state: any) => state.stylesEdit.stylesEditor
   );
   const fontEdit = useSelector((state: any) => state.stylesEdit.fontEdit);
+  const editEffects = useSelector((state: any) => state.stylesEdit.editEffects);
 
   useEffect(() => {
     const data = window.localStorage.getItem("ALL_SECTIONS");
@@ -105,7 +113,7 @@ const MainEditor = () => {
         .filter(Boolean)
         .join(" ")}
     >
-      <div>
+      <div className="sticky top-0 right-0 z-50">
         <ActionNavBar />
         {editSections && compName && !addSection && (
           <SelectDesign
@@ -143,6 +151,10 @@ const MainEditor = () => {
         )}
         {stylesEditing && !addSection && editSections ? (
           <ChangeStyles
+            currentEffect={currentEffect}
+            setCurrentEffect={setCurrentEffect}
+            editEffects={editEffects}
+            effects={effects}
             fonts={fonts}
             currentFont={currentFont}
             setCurrentFont={setCurrentFont}
@@ -167,6 +179,7 @@ const MainEditor = () => {
           .join(" ")}
       >
         <MainContainer
+          animate={currentEffect}
           comps={comps}
           setComps={setComps}
           containerWidth={containerWidth}

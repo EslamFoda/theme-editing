@@ -16,7 +16,7 @@ const DeleteContainers = ({ index }) => {
       {index === 0 ? null : (
         <div
           onClick={openOverlay}
-          className="absolute z-50  top-5 left-5 transform -translate-x-1/2 -translate-y-1/2 "
+          className="absolute z-40  top-5 left-5 transform -translate-x-1/2 -translate-y-1/2 "
         >
           <div className="expand-container">
             <div className="icon-container hover:!text-[red]">

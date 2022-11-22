@@ -34,7 +34,7 @@
     --color-neutral-700: theme("colors.gray.700");
     --color-neutral-800: theme("colors.gray.800");
     --color-neutral-900: theme("colors.gray.900");
-    @apply overflow-x-hidden
+    @apply overflow-x-hidden;
   }
 }
 
@@ -1014,6 +1014,11 @@ button:hover .button-text {
   background-color: var(--violet3);
 }
 .Toggle[data-state="on"] > div > div {
+  background-color: white;
+  color: #1f2b39;
+}
+
+.ToggleGroupLookAndFeel[data-state="on"] > div > button > div {
   background-color: white;
   color: #1f2b39;
 }

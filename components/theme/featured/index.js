@@ -23,6 +23,7 @@ const MainFeatured = ({
   comp,
   device,
   editSections,
+  animate
 }) => {
   const { compName, designNum, compData, backgroundColor } = comp;
   const { setColor, handleReset } = useBgColor(index);
@@ -67,6 +68,7 @@ const MainFeatured = ({
       editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
     }  w-full `}
     >
+      <div data-aos={animate}>
       <FeaturedComp
         icons={icons}
         comp={comp}
@@ -76,6 +78,8 @@ const MainFeatured = ({
         featuredData={compData.items}
         device={device}
       />
+
+      </div>
       <ChangeSection
         comp={comp}
         compName={compName}

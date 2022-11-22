@@ -8,6 +8,11 @@ import { selectCompName } from "../../features/comp-name";
 import { editImgOff } from "../../features/edit-image";
 import PreviewEdit from "./commons/previewEdit";
 import { IoImageOutline } from "react-icons/io5";
+import {
+  editEffectsOff,
+  fontEditOff,
+  stylesEditorOff,
+} from "../../features/stylesEditing";
 import LookAndFeel from "./commons/lookAndFeel";
 import ChangeDevices from "./commons/changeDevices";
 import Mode from "./commons/mode";
@@ -20,7 +25,7 @@ const ActionNavBar = () => {
   return (
     <>
       {" "}
-      <div className="bg-[#353f4b] min-h-[65px] py-2 grid grid-cols-3 items-center">
+      <div className="bg-[#353f4b]   min-h-[65px] py-2 grid grid-cols-3 items-center">
         <div className="justify-self-start px-2  flex gap-3 items-center">
           <PreviewEdit dispatch={dispatch} editSections={editSections} />
 
@@ -39,6 +44,9 @@ const ActionNavBar = () => {
                   dispatch(addSectionTurnOff());
                   dispatch(editImgOff());
                   dispatch(closeColors());
+                  dispatch(editEffectsOff());
+                  dispatch(fontEditOff());
+                  dispatch(stylesEditorOff());
                 }}
               >
                 <div className="flex gap-2 rounded-sm bg-[#283340] cursor-pointer hover:bg-[hsla(0,0%,100%,.7)] hover:text-[#0a0a0a] p-2">

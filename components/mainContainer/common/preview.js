@@ -1,9 +1,17 @@
 import ControlBtns from "./controlBtns";
 import { containersData } from "../../../constant/data";
 import DeleteContainers from "../../deleteContainers";
-import { useState } from "react";
-const Preview = ({ containerWidth, comps, setComps, device, editSections }) => {
- 
+import useAnimation from "../../../hooks/useAnimation";
+
+const Preview = ({
+  containerWidth,
+  comps,
+  setComps,
+  device,
+  editSections,
+  animate,
+}) => {
+  const effect = useAnimation();
   return (
     <div
       style={{
@@ -19,6 +27,7 @@ const Preview = ({ containerWidth, comps, setComps, device, editSections }) => {
         return (
           <div className="relative demo-inline" key={comp.id}>
             <Component
+              animate={animate}
               comp={comp}
               setComps={setComps}
               comps={comps}
@@ -28,13 +37,13 @@ const Preview = ({ containerWidth, comps, setComps, device, editSections }) => {
             />
             {editSections ? (
               <>
-              <DeleteContainers index={i} />
-              <ControlBtns
-                comps={comps}
-                i={i}
-                comp={comp}
-                setComps={setComps}
-              />
+                <DeleteContainers index={i} />
+                <ControlBtns
+                  comps={comps}
+                  i={i}
+                  comp={comp}
+                  setComps={setComps}
+                />
               </>
             ) : null}
           </div>

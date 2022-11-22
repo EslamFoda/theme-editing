@@ -56,7 +56,7 @@ const EditBackground = ({ setColor, backgroundColor }) => {
     <>
       <Popover.Root>
         <Popover.Trigger asChild>
-          <div className="absolute z-50  top-20 left-5 transform -translate-x-1/2 -translate-y-1/2 ">
+          <div className="absolute z-40  top-20 left-5 transform -translate-x-1/2 -translate-y-1/2 ">
             <div className="expand-container">
               <div className="icon-container">
                 <span className="expand-icon">

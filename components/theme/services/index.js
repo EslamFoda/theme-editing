@@ -15,6 +15,7 @@ const MainServices = ({
   comp,
   device,
   editSections,
+  animate,
 }) => {
   const { compName, designNum, compData, backgroundColor } = comp;
   const { handleReset, setColor } = useBgColor(index);
@@ -53,16 +54,18 @@ const MainServices = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <ServicesComp
-        compIndex={index}
-        comp={comp}
-        backgroundColor={backgroundColor}
-        device={device}
-        serviceData={compData.items}
-        handleMultiEdit={handleMultiEdit}
-        handleEdit={handleEdit}
-        serviceHeaders={compData.headers}
-      />
+      <div data-aos={animate}>
+        <ServicesComp
+          compIndex={index}
+          comp={comp}
+          backgroundColor={backgroundColor}
+          device={device}
+          serviceData={compData.items}
+          handleMultiEdit={handleMultiEdit}
+          handleEdit={handleEdit}
+          serviceHeaders={compData.headers}
+        />
+      </div>
       <ChangeSection
         comp={comp}
         compName={compName}
@@ -73,7 +76,11 @@ const MainServices = ({
       />
       {editSections && (
         <>
-          <EditBackground backgroundColor={backgroundColor} handleReset={handleReset} setColor={setColor} />
+          <EditBackground
+            backgroundColor={backgroundColor}
+            handleReset={handleReset}
+            setColor={setColor}
+          />
           <AddSection index={index} />
         </>
       )}

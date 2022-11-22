@@ -5,6 +5,12 @@ import { getNextIndex } from "../../features/add-section";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { closeColors } from "../../features/colors";
 import { editImgOff } from "../../features/edit-image";
+import { filesOff } from "../../features/my-files";
+import {
+  editEffectsOff,
+  fontEditOff,
+  stylesEditorOff,
+} from "../../features/stylesEditing";
 const ChangeSection = ({
   compName,
   designNum,
@@ -29,6 +35,10 @@ const ChangeSection = ({
     dispatch(addSectionTurnOff());
     dispatch(closeColors());
     dispatch(editImgOff());
+    dispatch(editEffectsOff());
+    dispatch(fontEditOff());
+    dispatch(stylesEditorOff());
+    dispatch(filesOff());
   };
 
   const handleNext = () => {
@@ -42,6 +52,10 @@ const ChangeSection = ({
     dispatch(addSectionTurnOff());
     dispatch(closeColors());
     dispatch(editImgOff());
+    dispatch(editEffectsOff());
+    dispatch(fontEditOff());
+    dispatch(filesOff());
+    dispatch(stylesEditorOff());
   };
 
   return (

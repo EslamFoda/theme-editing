@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { MdOutlineDone } from "react-icons/md";
+import ActiveIcon from "./activeIcon";
 interface Props {
   colors?: [];
   i?: number;
@@ -51,11 +52,7 @@ const ColorPalettes: FC<Props> = ({
         {" "}
         <span className="text-white font-mono">{labels}</span>
       </div>
-      {color === currentColor ? (
-        <div className="absolute -top-2 -left-2 rounded-full p-1 bg-[#23cba5]">
-          <MdOutlineDone color="white" size={18} />
-        </div>
-      ) : null}
+      <ActiveIcon styles={color} currentStyle={currentColor}/>
     </div>
   );
 };

@@ -8,7 +8,7 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import EditBackground from "../../mainContainer/common/editBackground";
 import useBgColor from "../../../hooks/useBgColor";
-import { IndexKind } from "typescript";
+
 
 const MainClients = ({
   comps,
@@ -17,6 +17,7 @@ const MainClients = ({
   comp,
   device,
   editSections,
+  animate
 }) => {
   const { compName, designNum, compData, backgroundColor } = comp;
   const { setColor, handleReset } = useBgColor(index);
@@ -46,6 +47,7 @@ const MainClients = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
+      <div data-aos={animate}>
       <ClientsComp
         compIndex={index}
         device={device}
@@ -53,6 +55,8 @@ const MainClients = ({
         handleEdit={handleEdit}
         clientData={compData}
       />
+
+      </div>
       <ChangeSection
         comp={comp}
         compName={compName}
