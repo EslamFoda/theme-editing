@@ -43,7 +43,8 @@ const ChangeImgs = ({ comps, setComps }) => {
         }
       ).then((r) => r.json());
       setStoredImgs((oldArray) => [...oldArray, data.secure_url]);
-      itemIndex
+      console.log(itemIndex)
+      itemIndex || itemIndex === 0
         ? (comps[compIndex].compData.items[itemIndex].pic = data.secure_url)
         : (comps[compIndex].compData.pic = data.secure_url);
 
@@ -53,7 +54,7 @@ const ChangeImgs = ({ comps, setComps }) => {
     }
   };
 
-  const handleDeleteImg = () => {};
+
 
   const onButtonClick = () => {
     backgroundInput.current.click();
@@ -118,7 +119,7 @@ const ChangeImgs = ({ comps, setComps }) => {
               return (
                 <div
                   onClick={() => {
-                    if (!editFiles && itemIndex) {
+                    if (!editFiles && itemIndex || itemIndex === 0) {
                       comps[compIndex].compData.items[itemIndex].pic = img;
 
                       setComps([...comps]);

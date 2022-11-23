@@ -103,7 +103,6 @@ const MainEditor = () => {
 
   useEffect(() => {
     window.localStorage.setItem("ALL_SECTIONS", JSON.stringify(comps));
-    console.log(comps);
   }, [comps]);
 
   return (
