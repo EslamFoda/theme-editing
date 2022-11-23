@@ -8,7 +8,7 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import EditBackground from "../../mainContainer/common/editBackground";
 import useBgColor from "../../../hooks/useBgColor";
-
+import useCloseEditorfrom from "../../../hooks/useCloseEditor";
 
 const MainClients = ({
   comps,
@@ -17,10 +17,11 @@ const MainClients = ({
   comp,
   device,
   editSections,
-  animate
+  animate,
 }) => {
   const { compName, designNum, compData, backgroundColor } = comp;
   const { setColor, handleReset } = useBgColor(index);
+  const { handleCloseEditor } = useCloseEditorfrom();
 
   const designs = {
     design1: Design1,
@@ -43,19 +44,18 @@ const MainClients = ({
       style={{
         backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
       }}
-      className={`relative group  ${
+      className={`relative group transition ease-in-out duration-700  ${
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <div data-aos={animate}>
-      <ClientsComp
-        compIndex={index}
-        device={device}
-        comp={comp}
-        handleEdit={handleEdit}
-        clientData={compData}
-      />
-
+      <div onClick={handleCloseEditor} data-aos={animate}>
+        <ClientsComp
+          compIndex={index}
+          device={device}
+          comp={comp}
+          handleEdit={handleEdit}
+          clientData={compData}
+        />
       </div>
       <ChangeSection
         comp={comp}
@@ -67,7 +67,11 @@ const MainClients = ({
       />
       {editSections && (
         <>
-          <EditBackground backgroundColor={backgroundColor} handleReset={handleReset} setColor={setColor} />
+          <EditBackground
+            backgroundColor={backgroundColor}
+            handleReset={handleReset}
+            setColor={setColor}
+          />
           <AddSection index={index} />
         </>
       )}

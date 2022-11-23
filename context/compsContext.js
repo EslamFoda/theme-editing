@@ -25,6 +25,22 @@ const CompsProvider = ({ children }) => {
         a: "1",
       },
     },
+    {
+      id: useId(),
+      compName: "footer",
+      designNum: 1,
+      compData: {
+        desc: "<p class='mb-5'>orem ipsum dolor sit amet, consectetuputate eros. Fusce imperdiet condimentum augue, ut ull</p>",
+        copyRight:
+          "<span class='inline-block text-lg text-gray-400'>© All rights reserved</span>",
+      },
+      backgroundColor: {
+        r: "255",
+        g: "255",
+        b: "255",
+        a: "1",
+      },
+    },
   ]);
   return (
     <CompsContext.Provider value={{ comps, setComps, animate, setAnimate }}>

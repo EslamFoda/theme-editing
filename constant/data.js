@@ -6,7 +6,7 @@ import MainClients from "../components/theme/clients";
 import MainGallery from "../components/theme/gallery";
 import MainTestimonials from "../components/theme/testimonials";
 import MainHero from "../components/theme/hero";
-
+import MainFooter from "../components/theme/footer";
 export const containersData = {
   hero: MainHero,
   about: MainAbout,
@@ -16,4 +16,5 @@ export const containersData = {
   gallery: MainGallery,
   testimonials: MainTestimonials,
   clients: MainClients,
+  footer: MainFooter,
 };

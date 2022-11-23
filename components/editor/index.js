@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { useSelector } from "react-redux";
 import parse from "html-react-parser";
-import { useDispatch } from "react-redux";
+import useCloseEditor from "../../hooks/useCloseEditor";
 const EditorComp = ({
   initialValue,
   keys,
@@ -11,7 +11,8 @@ const EditorComp = ({
   id = undefined,
 }) => {
   const editSections = useSelector((state) => state.editSections.value);
-  const dispatch = useDispatch();
+  const { handleCloseEditor } = useCloseEditor();
+
   const [value, setValue] = useState(initialValue ?? "");
 
   useEffect(() => setValue(initialValue ?? ""), [initialValue]);
@@ -22,6 +23,7 @@ const EditorComp = ({
       {editSections ? (
         <Editor
           value={value}
+          onFocus={handleCloseEditor}
           apiKey="wofsz7vjfejaxoulvwsud2qp5pe1lqlyslyr4w7kqv5391u0"
           onBlur={() => {
             handleEdit

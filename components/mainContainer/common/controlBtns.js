@@ -1,9 +1,12 @@
 import { useDispatch } from "react-redux";
 import { getNextIndex } from "../../../features/add-section";
-import { selectCompName } from "../../../features/comp-name";
+import useCloseEditorfrom from "../../../hooks/useCloseEditor";
+// import { selectCompName } from "../../../features/comp-name";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-const ControlBtns = ({ i, comp, comps, setComps }) => {
+
+const ControlBtns = ({ i, comp, comps, setComps, id }) => {
   const dispatch = useDispatch();
+  const { handleCloseEditor } = useCloseEditorfrom();
   const moveInArray = function (arr, from, to, compsName) {
     // Make sure a valid array is provided
     if (Object.prototype.toString.call(arr) !== "[object Array]") {
@@ -20,17 +23,28 @@ const ControlBtns = ({ i, comp, comps, setComps }) => {
 
     // Move the item to its new position
     arr.splice(to, 0, item[0]);
-    dispatch(selectCompName(compsName));
+    // dispatch(selectCompName(compsName));
     dispatch(getNextIndex(to));
     setComps([...arr]);
+    handleCloseEditor();
+
+    // handleClickScroll()
   };
+
   return (
     <div className="absolute space-y-16 top-1/2 left-5 transform -translate-x-1/2  -translate-y-1/2 ">
-      {i === 0 ? null : (
+      {i === 0 || comps.lastIndexOf(comps[comps.length - 1]) === i || i === 1 ? null : (
         <div
           onClick={() => {
             const { compName } = comp;
             moveInArray(comps, i, i - 1, compName);
+            const element = document.getElementById(id);
+            if (element) {
+              element.previousElementSibling.style.scrollMargin = "67px";
+              element.previousElementSibling.scrollIntoView({
+                behavior: "smooth",
+              });
+            }
           }}
           className="expand-container"
         >
@@ -42,11 +56,19 @@ const ControlBtns = ({ i, comp, comps, setComps }) => {
           </div>
         </div>
       )}
-      {comps.lastIndexOf(comps[comps.length - 1]) === i ? null : (
+      {comps.lastIndexOf(comps[comps.length - 1]) === i || i === 0 || comps.lastIndexOf(comps[comps.length - 2]) === i ? null : (
         <div
           onClick={() => {
             const { compName } = comp;
             moveInArray(comps, i, i + 1, compName);
+            const element = document.getElementById(id);
+            if (element) {
+              element.nextElementSibling.scrollIntoView({
+                behavior: "smooth",
+                block: "end",
+                inline: "end",
+              });
+            }
           }}
           className="expand-container"
         >

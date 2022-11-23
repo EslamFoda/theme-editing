@@ -7,6 +7,7 @@ import { selectTeamDesign } from "../features/team-section";
 import { selectClientsDesign } from "../features/clients-section";
 import { selectgalleryDesign } from "../features/gallery-section";
 import { selectTestimonialsDesign } from "../features/testimonials-section";
+import { selectFooterDesign } from "../features/footer-section";
 const useSelectDesign = (compName) => {
   const dispatch = useDispatch();
 
@@ -27,6 +28,8 @@ const useSelectDesign = (compName) => {
       dispatch(selectgalleryDesign(i + 1));
     } else if (compName === "testimonials") {
       dispatch(selectTestimonialsDesign(i + 1));
+    } else if (compName === "footer") {
+      dispatch(selectFooterDesign(i + 1));
     }
   };
 

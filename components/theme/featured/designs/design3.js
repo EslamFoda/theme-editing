@@ -103,7 +103,7 @@ const Design3 = ({
                     <EditPopover comp={comp} index={index}>
                       <div className="p-4 flex  flex-col space-y-5 items-start  ">
                         <div className="flex flex-col gap-5">
-                          <div className="w-8 h-8 bg-red-200 rounded-full flex justify-center items-center">
+                          <div className="w-8 h-8 bg-primaryBg rounded-full flex justify-center items-center">
                             <div className="feat2-icon"><IconComp/></div>
                           </div>
                           <div className="text-xl">

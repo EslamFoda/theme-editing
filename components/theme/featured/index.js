@@ -23,7 +23,7 @@ const MainFeatured = ({
   comp,
   device,
   editSections,
-  animate
+  animate,
 }) => {
   const { compName, designNum, compData, backgroundColor } = comp;
   const { setColor, handleReset } = useBgColor(index);
@@ -61,24 +61,23 @@ const MainFeatured = ({
 
   return (
     <div
-    style={{
-      backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-    }}
-    className={`relative group  ${
-      editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
-    }  w-full `}
+      style={{
+        backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+      }}
+      className={`relative group transition ease-in-out duration-700  ${
+        editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
+      }  w-full `}
     >
       <div data-aos={animate}>
-      <FeaturedComp
-        icons={icons}
-        comp={comp}
-        handleMultiEdit={handleMultiEdit}
-        handleEdit={handleEdit}
-        featuredHeader={compData.header}
-        featuredData={compData.items}
-        device={device}
-      />
-
+        <FeaturedComp
+          icons={icons}
+          comp={comp}
+          handleMultiEdit={handleMultiEdit}
+          handleEdit={handleEdit}
+          featuredHeader={compData.header}
+          featuredData={compData.items}
+          device={device}
+        />
       </div>
       <ChangeSection
         comp={comp}
@@ -90,7 +89,11 @@ const MainFeatured = ({
       />
       {editSections && (
         <>
-          <EditBackground backgroundColor={backgroundColor} handleReset={handleReset} setColor={setColor} />
+          <EditBackground
+            backgroundColor={backgroundColor}
+            handleReset={handleReset}
+            setColor={setColor}
+          />
           <AddSection index={index} />
         </>
       )}

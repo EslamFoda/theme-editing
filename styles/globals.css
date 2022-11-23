@@ -38,6 +38,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .theme-Captain-Green {
   --color-primary-50: theme("colors.green.50");
   --color-primary-100: theme("colors.green.100");
@@ -345,7 +349,7 @@
 .theme-dark {
   --neutralBg: var(--color-neutral-900);
   --onNeutralBg: theme("colors.white");
-  --primaryBg: var(--color-primary-900);
+  --primaryBg: var(--color-primary-300);
   --onPrimaryBg: var(--color-primary-50);
   --primary: var(--color-primary-400);
 }
@@ -520,17 +524,17 @@ button:hover .button-text {
 /* featured icons  */
 
 .feat1-icon > svg {
-  @apply text-primary w-10 h-10;
+  @apply text-secondary w-10 h-10;
 }
 .feat2-icon > svg {
-  @apply text-primary h-4 w-4;
+  @apply text-secondary h-4 w-4;
 }
 
 .feat4-icon > svg {
-  @apply text-primary h-6 w-6;
+  @apply text-secondary h-6 w-6;
 }
 .feat5-icon > svg {
-  @apply text-primary h-5 w-5;
+  @apply text-secondary h-5 w-5;
 }
 
 /*  testi icons */

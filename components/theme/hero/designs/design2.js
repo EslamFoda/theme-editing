@@ -40,7 +40,7 @@ const Design2 = ({ choose = false, heroData, handleEdit, compIndex }) => {
           <Container>
             <nav className=" border-gray-200 px-2 sm:px-4 py-2.5 rounded ">
               <div className="container flex flex-wrap items-center justify-between lg:justify-start md:justify-start gap-5 mx-auto">
-                <a href="https://flowbite.com/" className="flex items-center">
+                <span  className="flex items-center">
                   <img
                     src="https://flowbite.com/docs/images/logo.svg"
                     className="h-6 mr-3 sm:h-9"
@@ -49,7 +49,7 @@ const Design2 = ({ choose = false, heroData, handleEdit, compIndex }) => {
                   <span className="self-center text-xl font-semibold whitespace-nowrap text-gray-400">
                     Logo
                   </span>
-                </a>
+                </span>
                 <button
                   onClick={() => {
                     setOpenNav(!openNav);

@@ -75,7 +75,7 @@ const Design4 = ({
                 return (
                   <div key={card.id} className="p-1 flex  flex-col space-y-1 items-start  ">
                     <div className="flex flex-col gap-1">
-                      <div className="w-4 h-4 bg-red-200 rounded-full flex justify-center items-center">
+                      <div className="w-4 h-4 bg-primaryBg rounded-full flex justify-center items-center">
                         <div>{card.icon}</div>
                       </div>
                       <h3 className="text-very-small font-semibold">
@@ -102,7 +102,7 @@ const Design4 = ({
                     <EditPopover comp={comp} index={index}>
                       <div className="p-4 flex  flex-col space-y-5 items-start  ">
                         <div className="flex flex-col gap-5">
-                          <div className="w-12 h-12 bg-red-200 rounded-full flex justify-center items-center">
+                          <div className="w-12 h-12 bg-primaryBg rounded-full flex justify-center items-center">
                             <div className="feat4-icon"><IconComp/></div>
                           </div>
                           <div className="text-xl">

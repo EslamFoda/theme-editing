@@ -14,6 +14,10 @@ import { closeColors } from "../../../features/colors";
 import { filesOff } from "../../../features/my-files";
 import { MdPublishedWithChanges } from "react-icons/md";
 import { BiCrop } from "react-icons/bi";
+import {
+  editEffectsOff,
+  stylesEditorOff,
+} from "../../../features/stylesEditing";
 
 const EditImgPopover = ({
   compIndex,
@@ -31,6 +35,8 @@ const EditImgPopover = ({
     dispatch(selectCompName(""));
     dispatch(closeColors());
     dispatch(filesOff());
+    dispatch(editEffectsOff());
+    dispatch(stylesEditorOff());
   };
   const cameraBtnClass = cn("absolute camera-icon  top-4", {
     "left-4": iconPosition === "left",

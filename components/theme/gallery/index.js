@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
 import Design1 from "./designs/design1";
@@ -8,7 +8,6 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import useBgColor from "../../../hooks/useBgColor";
 import EditBackground from "../../mainContainer/common/editBackground";
-
 const MainGallery = ({
   comps,
   index,
@@ -42,11 +41,11 @@ const MainGallery = ({
       style={{
         backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
       }}
-      className={`relative group  ${
+      className={`relative group transition ease-in-out duration-700  ${
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <div data-aos={animate}>
+      <div  data-aos={animate}>
         <ServicesComp
           compIndex={index}
           device={device}

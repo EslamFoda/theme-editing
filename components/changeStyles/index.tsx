@@ -2,6 +2,7 @@ import Bar from "./bar";
 import ColorPalettes from "./colorPallates";
 import AllFonts from "./allFonts";
 import AllEffects from "./allEffects";
+import CloseEditor from "../mainEditor/common/closeEditor";
 const ChangeStyles = ({
   currentEffect,
   setCurrentEffect,
@@ -18,7 +19,7 @@ const ChangeStyles = ({
   setCurrentFont,
 }) => {
   return (
-    <div className="bg-[#26313f] flex px-5">
+    <div className="bg-[#26313f] flex px-5 relative">
       <Bar
         openColors={openColors}
         fontEdit={fontEdit}
@@ -59,7 +60,7 @@ const ChangeStyles = ({
           ? effects?.map((effect, i) => {
               return (
                 <AllEffects
-                effects={effects}
+                  effects={effects}
                   effect={effect}
                   i={i}
                   key={i}
@@ -70,6 +71,7 @@ const ChangeStyles = ({
             })
           : null}
       </div>
+      <CloseEditor />
     </div>
   );
 };

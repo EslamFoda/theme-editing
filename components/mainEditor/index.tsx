@@ -15,6 +15,7 @@ import ActionBarDesc from "./common/actionBarDesc";
 import { useStickyState } from "../../hooks/useStickyState";
 import ChangeImgs from "../changeImgs";
 import ChangeStyles from "../changeStyles";
+import CloseEditor from "./common/closeEditor";
 
 const colors = [
   "Captain-Green",
@@ -102,6 +103,7 @@ const MainEditor = () => {
 
   useEffect(() => {
     window.localStorage.setItem("ALL_SECTIONS", JSON.stringify(comps));
+    console.log(comps);
   }, [comps]);
 
   return (
@@ -147,6 +149,7 @@ const MainEditor = () => {
                 />
               )}
             </div>
+            <CloseEditor />
           </div>
         )}
         {stylesEditing && !addSection && editSections ? (

@@ -1,5 +1,3 @@
-
-
 export const sectionsImgs = [
   { src: "/assets/about.png", id: 1, title: "about" },
   {

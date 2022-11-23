@@ -39,6 +39,11 @@ import TestimonialsDesign2 from "../components/theme/testimonials/designs/design
 import TestimonialsDesign3 from "../components/theme/testimonials/designs/design3";
 import TestimonialsDesign4 from "../components/theme/testimonials/designs/design4";
 import TestimonialsDesign5 from "../components/theme/testimonials/designs/design5";
+import FooterDesign1 from "../components/theme/footer/designs/design1";
+import FooterDesign2 from "../components/theme/footer/designs/design2";
+import FooterDesign3 from "../components/theme/footer/designs/design3";
+import FooterDesign4 from "../components/theme/footer/designs/design4";
+import FooterDesign5 from "../components/theme/footer/designs/design5";
 
 const useChooseDesign = (compName) => {
   const aboutDesigns = [
@@ -101,6 +106,8 @@ const useChooseDesign = (compName) => {
     TestimonialsDesign5,
   ];
 
+  const FooterDesigns = [FooterDesign1,FooterDesign2,FooterDesign3,FooterDesign4,FooterDesign5];
+
   const [designs, setDesigns] = useState(heroDesigns);
 
   const selectedDesigns = () => {
@@ -120,6 +127,8 @@ const useChooseDesign = (compName) => {
       setDesigns(galleryDesigns);
     } else if (compName === "testimonials") {
       setDesigns(TestimonialsDesigns);
+    } else if (compName === "footer") {
+      setDesigns(FooterDesigns);
     }
   };
 

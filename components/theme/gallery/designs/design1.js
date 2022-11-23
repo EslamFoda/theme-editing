@@ -69,7 +69,7 @@ const Design1 = ({
               {galleryData.items.map((gallery, index) => (
                 <div key={gallery.id}>
                   <EditPopover comp={comp} index={index}>
-                    <div className="relative hover:shadow-custom transition-all h-80 w-full">
+                    <div  className="relative hover:shadow-custom transition-all h-80 w-full">
                       <ImageComp
                         comp={comp}
                         compIndex={compIndex}

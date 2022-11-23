@@ -15,7 +15,7 @@ import colorsReducer from "../features/colors";
 import editImgReducer from "../features/edit-image";
 import fileReducer from "../features/my-files";
 import stylesReducer from "../features/stylesEditing";
-
+import footerReducer from "../features/footer-section";
 export const store = configureStore({
   reducer: {
     hero: heroReducer,
@@ -34,5 +34,6 @@ export const store = configureStore({
     editImg: editImgReducer,
     files: fileReducer,
     stylesEdit: stylesReducer,
+    footerComp: footerReducer,
   },
 });

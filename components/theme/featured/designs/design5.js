@@ -79,7 +79,7 @@ const Design5 = ({
                   <div key={card.id} className="flex  flex-col space-y-1 items-start  ">
                     <div className="flex gap-2">
                       <div>
-                        <div className="w-3 h-3  bg-red-200 rounded-full flex justify-center items-center">
+                        <div className="w-3 h-3  bg-primaryBg rounded-full flex justify-center items-center">
                           <div>{card.icon}</div>
                         </div>
                       </div>
@@ -115,7 +115,7 @@ const Design5 = ({
                       <div className="flex flex-col space-y-5 items-start  ">
                         <div className="flex gap-4">
                           <div>
-                            <div className="w-12 h-12  bg-red-200 rounded-full flex justify-center items-center">
+                            <div className="w-12 h-12  bg-primaryBg rounded-full flex justify-center items-center">
                               <div className="feat5-icon">
                                 <IconComp />
                               </div>

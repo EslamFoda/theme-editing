@@ -1,3 +1,4 @@
+import CloseEditor from "./closeEditor";
 import Designs from "./designs";
 const SelectDesign = ({ designs, comps, nextIndex, setComps }) => {
   const handleSelectDesign = (i) => {
@@ -6,7 +7,7 @@ const SelectDesign = ({ designs, comps, nextIndex, setComps }) => {
   };
 
   return (
-    <div className="bg-[#26313f] px-5">
+    <div className="bg-[#26313f] relative px-5">
       <div className="h-40 flex items-center  overflow-auto gap-8  w-full">
         {designs.map((Design, i) => (
           <div key={i}>
@@ -21,6 +22,7 @@ const SelectDesign = ({ designs, comps, nextIndex, setComps }) => {
           </div>
         ))}
       </div>
+      <CloseEditor/>
     </div>
   );
 };

@@ -5,7 +5,10 @@ import { IoClose } from "react-icons/io5";
 import { PopoverColor } from "../../ui/colorPicker/popoverColor";
 import { GrPowerReset } from "react-icons/gr";
 import * as Popover from "@radix-ui/react-popover";
+import useCloseEditor from "../../../hooks/useCloseEditor";
 const EditBackground = ({ setColor, backgroundColor }) => {
+  const { handleCloseEditor } = useCloseEditor();
+
   const [currentColor, setCurretColor] = useState<any>({
     rgb: {
       r: 255,
@@ -55,7 +58,7 @@ const EditBackground = ({ setColor, backgroundColor }) => {
   return (
     <>
       <Popover.Root>
-        <Popover.Trigger asChild>
+        <Popover.Trigger onClick={handleCloseEditor} asChild>
           <div className="absolute z-40  top-20 left-5 transform -translate-x-1/2 -translate-y-1/2 ">
             <div className="expand-container">
               <div className="icon-container">

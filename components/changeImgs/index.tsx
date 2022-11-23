@@ -7,6 +7,7 @@ import * as Toast from "@radix-ui/react-toast";
 import { MdError, MdClose } from "react-icons/md";
 import { TfiTrash } from "react-icons/tfi";
 import EmptyFiles from "./common/emptyFiles";
+import CloseEditor from "../mainEditor/common/closeEditor";
 const ChangeImgs = ({ comps, setComps }) => {
   const [storedImgs, setStoredImgs] = useState([]);
   const [error, setError] = useState(false);
@@ -87,7 +88,7 @@ const ChangeImgs = ({ comps, setComps }) => {
         </Toast.Root>
         <Toast.Viewport className="ToastViewport" />
       </Toast.Provider>
-      <div className="bg-[#26313f] flex px-5">
+      <div className="bg-[#26313f] relative flex px-5">
         {editFiles ? null : (
           <div className="w-80 space-y-2 pr-6   py-4 border-r mr-4 border-solid border-[#353f4b] h-[164px]">
             <div
@@ -156,6 +157,7 @@ const ChangeImgs = ({ comps, setComps }) => {
             <EmptyFiles />
           )}
         </div>
+        <CloseEditor/>
       </div>
     </>
   );

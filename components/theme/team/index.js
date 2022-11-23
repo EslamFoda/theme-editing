@@ -50,7 +50,7 @@ const MainTeam = ({
       style={{
         backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
       }}
-      className={`relative group ${
+      className={`relative group transition ease-in-out duration-700  ${
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >

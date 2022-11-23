@@ -25,7 +25,7 @@ const Preview = ({
       {comps.map((comp, i) => {
         const Component = containersData[comp.compName];
         return (
-          <div className="relative demo-inline" key={comp.id}>
+          <div className="relative demo-inline" id={comp.id} key={comp.id}>
             <Component
               animate={animate}
               comp={comp}
@@ -39,6 +39,7 @@ const Preview = ({
               <>
                 <DeleteContainers index={i} />
                 <ControlBtns
+                  id={comp.id}
                   comps={comps}
                   i={i}
                   comp={comp}
