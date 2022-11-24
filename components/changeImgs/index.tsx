@@ -43,7 +43,6 @@ const ChangeImgs = ({ comps, setComps }) => {
         }
       ).then((r) => r.json());
       setStoredImgs((oldArray) => [...oldArray, data.secure_url]);
-      console.log(itemIndex)
       itemIndex || itemIndex === 0
         ? (comps[compIndex].compData.items[itemIndex].pic = data.secure_url)
         : (comps[compIndex].compData.pic = data.secure_url);

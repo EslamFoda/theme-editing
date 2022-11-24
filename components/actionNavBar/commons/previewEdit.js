@@ -20,13 +20,13 @@ const PreviewEdit = ({ editSections, dispatch }) => {
     >
       {editSections ? (
         <div className="flex text-[#98A2B3] hover:text-white items-center gap-3">
-          <span>preview</span>
           <FaEye size={16} />
+          <span>preview</span>
         </div>
       ) : (
         <div className="flex text-[#98A2B3] hover:text-white items-center gap-3">
-          <span>edit</span>
           <FaEdit size={16} />
+          <span>edit</span>
         </div>
       )}
     </div>

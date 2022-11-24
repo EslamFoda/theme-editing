@@ -72,7 +72,7 @@ const EditBackground = ({ setColor, backgroundColor }) => {
         </Popover.Trigger>
         <Popover.Portal>
           <Popover.Content
-            className="PopoverContent "
+            className="PopoverContent z-50"
             collisionPadding={{ left: 20 }}
             avoidCollisions={false}
             align="start"
@@ -82,7 +82,7 @@ const EditBackground = ({ setColor, backgroundColor }) => {
               <div className="bg-[#202b39] flex justify-between rounded-t-xl items-center p-4 text-white ">
                 <h3 className="font-bold text-lg">Background settings</h3>
                 <Popover.Close className="PopoverClose" aria-label="Close">
-                  <div className="cursor-pointer" onClick={close}>
+                  <div className="cursor-pointer">
                     <IoClose />
                   </div>
                 </Popover.Close>

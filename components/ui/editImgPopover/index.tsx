@@ -28,7 +28,6 @@ const EditImgPopover = ({
   const dispatch = useDispatch();
   const btn = useRef(null);
   const handleChangeImg = () => {
-    console.log(index)
     dispatch(editImgOn());
     dispatch(getCompIndex(compIndex));
     dispatch(getItemIndex(index));
