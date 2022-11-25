@@ -57,6 +57,7 @@ const MainTestimonials = ({
     >
       <div data-aos={animate}>
         <TestiComp
+          choose={false}
           compIndex={index}
           comp={comp}
           backgroundColor={backgroundColor}

@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 
 const useCompData = () => {
   const compName = useSelector((state) => state.compName.compName);
-  //   const aboutData = useSelector((state) => state.aboutComp.aboutData);
   const featuredData = {
     header: "<h1 class='text-2xl font-semibold text-center'>Features</h1>",
     items: [

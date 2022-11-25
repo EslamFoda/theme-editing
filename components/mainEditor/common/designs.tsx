@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Props {
-  comps: [];
+  comps: [] | any;
   nextIndex: number;
   i: number;
   Design: any;
@@ -29,7 +29,7 @@ const Designs: React.FC<Props> = ({
         handle(i);
       }}
     >
-      {<Design choose={true} />}
+      {<Design data={comps[nextIndex].compData} choose={true} />}
     </div>
   );
 };
