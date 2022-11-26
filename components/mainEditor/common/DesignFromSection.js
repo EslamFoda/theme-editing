@@ -1,17 +1,20 @@
 import { selectSectionOff } from "../../../features/add-section";
 import Designs from "./designs";
 import useCompData from "../../../hooks/useCompData";
+import { db } from "../../../utlis/firebase";
+import { doc, updateDoc } from "firebase/firestore";
 const DesignFromSection = ({
   designs,
-  setComps,
   dispatch,
   compName,
   nextIndex,
   comps,
+  themeId
 }) => {
-  const { compData } = useCompData();
+  const { compData } = useCompData(compName);
+  const themeData = doc(db, "themes", themeId);
 
-  const handleCreateSection = (i) => {
+  const handleCreateSection = async (i) => {
     dispatch(selectSectionOff());
     comps.splice(nextIndex, 0, {
       id: Math.floor(Math.random() * Date.now()).toString(),
@@ -25,7 +28,9 @@ const DesignFromSection = ({
         a: 1,
       },
     });
-    setComps([...comps]);
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
   };
   return (
     <>

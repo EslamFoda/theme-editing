@@ -1,9 +1,14 @@
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../../utlis/firebase";
 import CloseEditor from "./closeEditor";
 import Designs from "./designs";
-const SelectDesign = ({ designs, comps, nextIndex, setComps }) => {
-  const handleSelectDesign = (i) => {
+const SelectDesign = ({ designs, comps, nextIndex, themeId }) => {
+  const themeData = doc(db, "themes", themeId);
+  const handleSelectDesign = async (i) => {
     comps[nextIndex].designNum = i + 1;
-    setComps([...comps]);
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
   };
 
   return (
@@ -22,7 +27,7 @@ const SelectDesign = ({ designs, comps, nextIndex, setComps }) => {
           </div>
         ))}
       </div>
-      <CloseEditor/>
+      <CloseEditor  />
     </div>
   );
 };

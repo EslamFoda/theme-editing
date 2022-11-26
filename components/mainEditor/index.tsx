@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import MainContainer from "../mainContainer";
 import ActionNavBar from "../actionNavBar";
 import { useSelector, useDispatch } from "react-redux";
@@ -16,6 +16,8 @@ import { useStickyState } from "../../hooks/useStickyState";
 import ChangeImgs from "../changeImgs";
 import ChangeStyles from "../changeStyles";
 import CloseEditor from "./common/closeEditor";
+import { collection, doc, onSnapshot } from "firebase/firestore";
+import { db } from "../../utlis/firebase";
 
 const colors = [
   "Captain-Green",
@@ -66,7 +68,11 @@ const effects = ["no-animation", "fade-up", "zoom-in-up", "flip-up"];
 const modes = ["light", "dark"];
 
 const MainEditor = () => {
-  const { comps, setComps } = useContext(CompsContext);
+  // const { comps, setComps } = useContext(CompsContext);
+  const [themeId, setThemeId] = useState(null);
+  const [nextIndex, setNextIndex] = useState(null);
+  const [itemIndex, setItemIndex] = useState(null);
+  const [compName, setCompName] = useState(null);
   const [currentColor, setCurrentColor] = useStickyState(
     colors[0],
     "theme-color"
@@ -77,15 +83,16 @@ const MainEditor = () => {
   );
   const [currentFont, setCurrentFont] = useStickyState(fonts[0], "theme-font");
   const [mode, setMode] = useStickyState(modes[0], "theme-mode");
+
   const dispatch = useDispatch();
   const editSections = useSelector((state: any) => state.editSections.value);
   const addSection = useSelector((state: any) => state.editSections.addSection);
   const selectSection = useSelector(
     (state: any) => state.addSections.selectSection
   );
-  const nextIndex = useSelector((state: any) => state.addSections.compIndex);
+  // const nextIndex = useSelector((state: any) => state.addSections.compIndex);
   const openColors = useSelector((state: any) => state.colors.enableColors);
-  const compName = useSelector((state: any) => state.compName.compName);
+  // const compName = useSelector((state: any) => state.compName.compName);
   const { designs } = useChooseDesign(compName);
   const containerWidth = useSelector((state: any) => state.mainWidth.width);
   const editImg = useSelector((state: any) => state.editImg.editImage);
@@ -96,15 +103,28 @@ const MainEditor = () => {
   const fontEdit = useSelector((state: any) => state.stylesEdit.fontEdit);
   const editEffects = useSelector((state: any) => state.stylesEdit.editEffects);
 
+  // useEffect(() => {
+  //   const data = window.localStorage.getItem("ALL_SECTIONS");
+  //   if (data !== null) setComps([...JSON.parse(data)]);
+  // }, []);
+
+  // useEffect(() => {
+  //   window.localStorage.setItem("ALL_SECTIONS", JSON.stringify(comps));
+  // }, [comps]);
+
+  const [comps, setComps] = useState(null);
+  // const [themeId, setThemeId] = useState(null);
   useEffect(() => {
-    const data = window.localStorage.getItem("ALL_SECTIONS");
-    if (data !== null) setComps([...JSON.parse(data)]);
+    onSnapshot(collection(db, "themes"), (snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        setThemeId(doc.id);
+        setNextIndex(doc.data().nextIndex);
+        setComps(doc.data().allSections);
+        setItemIndex(doc.data().itemIndex);
+        setCompName(doc.data().compName);
+      });
+    });
   }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem("ALL_SECTIONS", JSON.stringify(comps));
-  }, [comps]);
-
   return (
     <div
       className={[
@@ -118,10 +138,11 @@ const MainEditor = () => {
         <ActionNavBar />
         {editSections && compName && !addSection && (
           <SelectDesign
+            themeId={themeId}
             comps={comps}
             designs={designs}
             nextIndex={nextIndex}
-            setComps={setComps}
+            // setComps={setComps}
           />
         )}
         {addSection && editSections && (
@@ -134,25 +155,28 @@ const MainEditor = () => {
             <div className="h-40 flex items-center gap-4  scrollable overflow-auto w-full">
               {selectSection ? (
                 <DesignFromSection
+                  themeId={themeId}
                   designs={designs}
                   dispatch={dispatch}
-                  setComps={setComps}
+                  // setComps={setComps}
                   compName={compName}
                   comps={comps}
                   nextIndex={nextIndex}
                 />
               ) : (
                 <SelectSection
+                themeId={themeId}
                   dispatch={dispatch}
                   sectionsImgs={sectionsImgs}
                 />
               )}
             </div>
-            <CloseEditor />
+            <CloseEditor  />
           </div>
         )}
         {stylesEditing && !addSection && editSections ? (
           <ChangeStyles
+            themeId={themeId}
             currentEffect={currentEffect}
             setCurrentEffect={setCurrentEffect}
             editEffects={editEffects}
@@ -169,7 +193,13 @@ const MainEditor = () => {
           />
         ) : null}
         {editImg || editFiles ? (
-          <ChangeImgs setComps={setComps} comps={comps} />
+          <ChangeImgs
+            itemIndex={itemIndex}
+            compIndex={nextIndex}
+            setComps={setComps}
+            comps={comps}
+            themeId={themeId}
+          />
         ) : null}
       </div>
       <div
@@ -181,6 +211,7 @@ const MainEditor = () => {
           .join(" ")}
       >
         <MainContainer
+          themeId={themeId}
           animate={currentEffect}
           comps={comps}
           setComps={setComps}

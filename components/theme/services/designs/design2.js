@@ -18,6 +18,7 @@ const Design2 = ({
   serviceHeaders,
   comp,
   compIndex,
+  themeData,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -79,6 +80,7 @@ const Design2 = ({
                   <EditPopover index={index} comp={comp}>
                     <div className="group space-y-5">
                       <ImageComp
+                        themeData={themeData}
                         compIndex={compIndex}
                         index={index}
                         comp={comp}

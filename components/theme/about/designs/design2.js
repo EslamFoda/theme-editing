@@ -40,7 +40,7 @@ const Design2 = ({ choose = false, device, handleEdit, aboutData }) => {
                 />
               </div>
               <div>
-                <EditorComp
+                <EditorComp 
                   initialValue={aboutData.subTitle}
                   handleEdit={handleEdit}
                   keys="subTitle"

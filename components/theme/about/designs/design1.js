@@ -9,6 +9,8 @@ const Design1 = ({
   aboutData,
   compIndex,
   comp,
+  comps,
+  themeData,
 }) => {
   return (
     <div>
@@ -63,6 +65,8 @@ const Design1 = ({
               <div className="h-96 lg:w-[450px] shadow-big md:w-[400px] w-[450px]   bg-blue-100">
                 {" "}
                 <ImageComp
+                  themeData={themeData}
+                  comps={comps}
                   comp={comp}
                   compIndex={compIndex}
                   image={aboutData.pic}

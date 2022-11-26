@@ -1,16 +1,17 @@
-import { useState, useContext, useEffect } from "react";
-import { CompsContext } from "../context/compsContext";
+import { updateDoc } from "firebase/firestore";
+import { useState, useEffect } from "react";
 
-const useBgColor = (index) => {
-  const { comps, setComps } = useContext(CompsContext);
+const useBgColor = (index, comps, themeData) => {
   const [color, setColor] = useState(null);
 
-  const handleChangeColor = () => {
+  const handleChangeColor = async () => {
     color ? (comps[index].backgroundColor = color.rgb) : null;
-    setComps([...comps]);
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
   };
 
-  const handleReset = () => {
+  const handleReset = async () => {
     setColor({
       rgb: {
         r: 255,
@@ -20,11 +21,15 @@ const useBgColor = (index) => {
       },
     });
     comps[index].backgroundColor = color.rgb;
-    setComps([...comps]);
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
   };
 
   useEffect(() => {
-    handleChangeColor();
+    if (comps) {
+      handleChangeColor();
+    }
   }, [color]);
 
   return { color, setColor, handleReset };

@@ -2,13 +2,17 @@ import { TfiTrash } from "react-icons/tfi";
 import { useContext, useState } from "react";
 import { CompsContext } from "../../context/compsContext";
 import useCloseEditor from "../../hooks/useCloseEditor";
-const DeleteContainers = ({ index }) => {
-  const { comps, setComps } = useContext(CompsContext);
+import { updateDoc } from "firebase/firestore";
+const DeleteContainers = ({ index, themeData,comps }) => {
+  // const { comps, setComps } = useContext(CompsContext);
   const [overlay, setOverlay] = useState(false);
   const { handleCloseEditor } = useCloseEditor();
-  const handleDeleteSection = () => {
+  const handleDeleteSection = async () => {
     const removedSection = comps.filter((_: any, i: number) => i !== index);
-    setComps([...removedSection]);
+    await updateDoc(themeData, {
+      allSections: [...removedSection],
+    });
+    // setComps([...removedSection]);
     handleCloseEditor();
   };
   const openOverlay = () => {
@@ -16,7 +20,8 @@ const DeleteContainers = ({ index }) => {
   };
   return (
     <>
-      {index === 0 || comps.lastIndexOf(comps[comps.length - 1]) === index ? null : (
+      {index === 0 ||
+      comps.lastIndexOf(comps[comps.length - 1]) === index ? null : (
         <div
           onClick={openOverlay}
           className="absolute z-40  top-5 left-5 transform -translate-x-1/2 -translate-y-1/2 "

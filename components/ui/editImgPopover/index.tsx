@@ -18,19 +18,33 @@ import {
   editEffectsOff,
   stylesEditorOff,
 } from "../../../features/stylesEditing";
+import { updateDoc } from "firebase/firestore";
 
 const EditImgPopover = ({
   compIndex,
   index,
   setOpen,
   iconPosition = "left",
+  themeData,
+  comps,
 }) => {
   const dispatch = useDispatch();
   const btn = useRef(null);
-  const handleChangeImg = () => {
+  const handleChangeImg = async () => {
+    if (index) {
+      await updateDoc(themeData, {
+        itemIndex: index,
+        nextIndex: compIndex,
+      });
+    } else {
+      await updateDoc(themeData, {
+        itemIndex: "",
+        nextIndex: compIndex,
+      });
+    }
     dispatch(editImgOn());
-    dispatch(getCompIndex(compIndex));
-    dispatch(getItemIndex(index));
+    // dispatch(getCompIndex(compIndex));
+    // dispatch(getItemIndex(index));
     dispatch(addSectionTurnOff());
     dispatch(selectCompName(""));
     dispatch(closeColors());

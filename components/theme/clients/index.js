@@ -9,6 +9,7 @@ import Design5 from "./designs/design5";
 import EditBackground from "../../mainContainer/common/editBackground";
 import useBgColor from "../../../hooks/useBgColor";
 import useCloseEditorfrom from "../../../hooks/useCloseEditor";
+import { updateDoc } from "firebase/firestore";
 
 const MainClients = ({
   comps,
@@ -18,9 +19,11 @@ const MainClients = ({
   device,
   editSections,
   animate,
+  themeData,
 }) => {
   const { compName, designNum, compData, backgroundColor } = comp;
-  const { setColor, handleReset } = useBgColor(index);
+  const { handleReset, setColor } = useBgColor(index, comps, themeData);
+
   const { handleCloseEditor } = useCloseEditorfrom();
 
   const designs = {
@@ -32,12 +35,15 @@ const MainClients = ({
   };
 
   const ClientsComp = designs[`design${designNum}`];
-  const handleEdit = (value, keys) => {
+
+  const handleEdit = async (value, keys) => {
     const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
     if (objectIndex === index) {
       comp.compData[keys] = value;
     }
-    setComps([...comps]);
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
   };
   return (
     <div
@@ -59,6 +65,7 @@ const MainClients = ({
       </div>
       <ChangeSection
         comp={comp}
+        themeData={themeData}
         compName={compName}
         comps={comps}
         index={index}
@@ -72,7 +79,7 @@ const MainClients = ({
             handleReset={handleReset}
             setColor={setColor}
           />
-          <AddSection index={index} />
+          <AddSection index={index} themeData={themeData} />
         </>
       )}
     </div>

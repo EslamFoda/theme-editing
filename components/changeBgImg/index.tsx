@@ -10,21 +10,28 @@ import {
 } from "../../features/edit-image";
 import { addSectionTurnOff } from "../../features/edit-sections";
 import { filesOff } from "../../features/my-files";
+import { updateDoc } from "firebase/firestore";
 
 interface Props {
   compIndex: number;
   index: number;
+  themeData: any;
 }
 
-const ChangeBgImg: FC<Props> = ({ compIndex, index }) => {
+const ChangeBgImg: FC<Props> = ({ compIndex, index, themeData }) => {
   const editSections = useSelector((state: any) => state.editSections.value);
   const dispatch = useDispatch();
-  const handleChangeImg = () => {
+  const handleChangeImg = async () => {
+    await updateDoc(themeData, {
+      nextIndex: compIndex,
+      itemIndex: index,
+      compName: "",
+    });
     dispatch(editImgOn());
-    dispatch(getCompIndex(compIndex));
-    dispatch(getItemIndex(index));
+    // dispatch(getCompIndex(compIndex));
+    // dispatch(getItemIndex(index));
     dispatch(addSectionTurnOff());
-    dispatch(selectCompName(""));
+    // dispatch(selectCompName(""));
     dispatch(closeColors());
     dispatch(filesOff());
   };

@@ -11,15 +11,20 @@ import {
   fontEditOff,
   stylesEditorOff,
 } from "../../features/stylesEditing";
-const AddSection = ({ index }) => {
+import { updateDoc } from "firebase/firestore";
+const AddSection = ({ index, themeData }) => {
   const dispatch = useDispatch();
 
   return (
     <div className="absolute transition-all hidden group-hover:flex  z-10 duration-300 -bottom-21 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
       <div
-        onClick={() => {
+        onClick={async () => {
           const nextIndex = index + 1;
-          dispatch(getNextIndex(nextIndex));
+          await updateDoc(themeData, {
+            nextIndex: nextIndex,
+            compName: "",
+          });
+          // dispatch(getNextIndex(nextIndex));
           dispatch(selectSectionOff());
           dispatch(addSectionTurnOn());
           dispatch(selectCompName(""));

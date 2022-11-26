@@ -8,6 +8,7 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import useBgColor from "../../../hooks/useBgColor";
 import EditBackground from "../../mainContainer/common/editBackground";
+import { updateDoc } from "firebase/firestore";
 const MainServices = ({
   comps,
   index,
@@ -16,9 +17,10 @@ const MainServices = ({
   device,
   editSections,
   animate,
+  themeData,
 }) => {
   const { compName, designNum, compData, backgroundColor } = comp;
-  const { handleReset, setColor } = useBgColor(index);
+  const { handleReset, setColor } = useBgColor(index, comps, themeData);
 
   const designs = {
     design1: Design1,
@@ -30,19 +32,23 @@ const MainServices = ({
 
   const ServicesComp = designs[`design${designNum}`];
 
-  const handleMultiEdit = (value, id, keys) => {
+  const handleMultiEdit = async (value, id, keys) => {
     const update = compData.items.map((item) =>
       item.id === id ? { ...item, [keys]: value } : item
     );
     comp.compData.items = update;
-    setComps([...comps]);
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
   };
-  const handleEdit = (value, keys) => {
+  const handleEdit = async (value, keys) => {
     const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
     if (objectIndex === index) {
-      comp.compData.headers[keys] = value;
+      comp.compData[keys] = value;
     }
-    setComps([...comps]);
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
   };
 
   return (
@@ -56,6 +62,7 @@ const MainServices = ({
     >
       <div data-aos={animate}>
         <ServicesComp
+         themeData={themeData}
           compIndex={index}
           comp={comp}
           backgroundColor={backgroundColor}
@@ -73,6 +80,7 @@ const MainServices = ({
         index={index}
         designNum={designNum}
         setComps={setComps}
+        themeData={themeData}
       />
       {editSections && (
         <>
@@ -81,7 +89,7 @@ const MainServices = ({
             handleReset={handleReset}
             setColor={setColor}
           />
-          <AddSection index={index} />
+          <AddSection index={index} themeData={themeData} />
         </>
       )}
     </div>

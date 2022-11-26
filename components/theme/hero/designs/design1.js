@@ -14,11 +14,7 @@ const Design1 = ({
   comp,
 }) => {
   const [openNav, setOpenNav] = useState(false);
-  const rootClassName = cn("", {
-    "bg-black": device === "mobile",
-    "bg-blue-500": device === "tablet",
-    "bg-white": device === "desktop",
-  });
+  
   return (
     <>
       {choose ? (

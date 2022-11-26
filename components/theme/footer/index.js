@@ -5,8 +5,17 @@ import Design3 from "./designs/design3";
 import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import ChangeSection from "../../edit/changeSection";
+import { updateDoc } from "firebase/firestore";
 
-const MainFooter = ({ comps, index, setComps, comp, device, editSections }) => {
+const MainFooter = ({
+  comps,
+  index,
+  setComps,
+  comp,
+  device,
+  editSections,
+  themeData,
+}) => {
   const { compName, designNum, compData } = comp;
   const designs = {
     design1: Design1,
@@ -18,12 +27,14 @@ const MainFooter = ({ comps, index, setComps, comp, device, editSections }) => {
 
   const FooterComp = designs[`design${designNum}`];
 
-  const handleEdit = (value, keys) => {
+  const handleEdit = async (value, keys) => {
     const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
     if (objectIndex === index) {
       comp.compData[keys] = value;
     }
-    setComps([...comps]);
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
   };
   return (
     <div
@@ -40,6 +51,7 @@ const MainFooter = ({ comps, index, setComps, comp, device, editSections }) => {
       />
       <ChangeSection
         comp={comp}
+        themeData={themeData}
         compName={compName}
         comps={comps}
         index={index}

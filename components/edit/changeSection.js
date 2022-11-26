@@ -11,6 +11,7 @@ import {
   fontEditOff,
   stylesEditorOff,
 } from "../../features/stylesEditing";
+import { updateDoc } from "firebase/firestore";
 const ChangeSection = ({
   compName,
   designNum,
@@ -18,19 +19,24 @@ const ChangeSection = ({
   index,
   setComps,
   comp,
+  themeData,
 }) => {
   const editSections = useSelector((state) => state.editSections.value);
   const device = useSelector((state) => state.mainWidth.device);
   const dispatch = useDispatch();
 
-  const handlePrev = () => {
-    dispatch(selectCompName(compName));
-    dispatch(getNextIndex(index));
+  const handlePrev = async () => {
+    // dispatch(selectCompName(compName));
+    // dispatch(getNextIndex(index));
 
     if (designNum >= 2) {
       const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
       comps[objectIndex].designNum -= 1;
-      setComps([...comps]);
+      await updateDoc(themeData, {
+        allSections: [...comps],
+        nextIndex: index,
+        compName: compName,
+      });
     }
     dispatch(addSectionTurnOff());
     dispatch(closeColors());
@@ -41,14 +47,19 @@ const ChangeSection = ({
     dispatch(filesOff());
   };
 
-  const handleNext = () => {
-    dispatch(selectCompName(compName));
-    dispatch(getNextIndex(index));
+  const handleNext = async () => {
+    // dispatch(selectCompName(compName));
+    // dispatch(getNextIndex(index));
     if (designNum <= 4) {
       const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
       comps[objectIndex].designNum += 1;
-      setComps([...comps]);
+      await updateDoc(themeData, {
+        allSections: [...comps],
+        nextIndex: index,
+        compName: compName,
+      });
     }
+
     dispatch(addSectionTurnOff());
     dispatch(closeColors());
     dispatch(editImgOff());

@@ -8,6 +8,7 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import useBgColor from "../../../hooks/useBgColor";
 import EditBackground from "../../mainContainer/common/editBackground";
+import { updateDoc } from "firebase/firestore";
 const MainGallery = ({
   comps,
   index,
@@ -16,6 +17,7 @@ const MainGallery = ({
   device,
   editSections,
   animate,
+  themeData,
 }) => {
   const { compName, designNum, compData, backgroundColor } = comp;
   const designs = {
@@ -27,13 +29,16 @@ const MainGallery = ({
   };
 
   const ServicesComp = designs[`design${designNum}`];
-  const { handleReset, setColor } = useBgColor(index);
-  const handleEdit = (value, keys) => {
+  const { handleReset, setColor } = useBgColor(index, comps, themeData);
+
+  const handleEdit = async (value, keys) => {
     const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
     if (objectIndex === index) {
       comp.compData[keys] = value;
     }
-    setComps([...comps]);
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
   };
 
   return (
@@ -45,17 +50,19 @@ const MainGallery = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <div  data-aos={animate}>
+      <div data-aos={animate}>
         <ServicesComp
           compIndex={index}
           device={device}
           handleEdit={handleEdit}
           galleryData={compData}
           comp={comp}
+          themeData={themeData}
         />
       </div>
       <ChangeSection
         comp={comp}
+        themeData={themeData}
         compName={compName}
         comps={comps}
         index={index}
@@ -69,7 +76,7 @@ const MainGallery = ({
             handleReset={handleReset}
             setColor={setColor}
           />
-          <AddSection index={index} />
+          <AddSection index={index} themeData={themeData} />
         </>
       )}
     </div>

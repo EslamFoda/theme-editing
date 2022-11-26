@@ -17,6 +17,7 @@ const ChangeStyles = ({
   fonts,
   currentFont,
   setCurrentFont,
+  themeId,
 }) => {
   return (
     <div className="bg-[#26313f] flex px-5 relative">
@@ -71,7 +72,7 @@ const ChangeStyles = ({
             })
           : null}
       </div>
-      <CloseEditor />
+      <CloseEditor  />
     </div>
   );
 };

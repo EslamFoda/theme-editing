@@ -14,7 +14,7 @@ const Design1 = ({
   handleEdit,
   headers,
   comp,
-  compIndex,
+  compIndex,themeData
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -54,7 +54,8 @@ const Design1 = ({
                 <div key={client.id}>
                   <EditPopover comp={comp} index={index}>
                     <div className="w-full bg-white flex flex-col gap-4 self-start  p-10 pt-12  shadow-big relative">
-                      <UserPic
+                      <UserPic 
+                      themeData={themeData}
                         client={client}
                         comp={comp}
                         compIndex={compIndex}

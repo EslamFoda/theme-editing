@@ -6,8 +6,17 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
+import { updateDoc } from "firebase/firestore";
 
-const MainHero = ({ comps, index, setComps, comp, device, editSections }) => {
+const MainHero = ({
+  comps,
+  index,
+  setComps,
+  comp,
+  device,
+  editSections,
+  themeData,
+}) => {
   const { compName, designNum, compData } = comp;
   const designs = {
     design1: Design1,
@@ -19,12 +28,14 @@ const MainHero = ({ comps, index, setComps, comp, device, editSections }) => {
 
   const HeroComp = designs[`design${designNum}`];
 
-  const handleEdit = (value, keys) => {
+  const handleEdit = async (value, keys) => {
     const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
     if (objectIndex === index) {
       comp.compData[keys] = value;
     }
-    setComps([...comps]);
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
   };
   return (
     <div
@@ -40,6 +51,7 @@ const MainHero = ({ comps, index, setComps, comp, device, editSections }) => {
         comp={comp}
       />
       <ChangeSection
+        themeData={themeData}
         comp={comp}
         compName={compName}
         comps={comps}
@@ -47,7 +59,7 @@ const MainHero = ({ comps, index, setComps, comp, device, editSections }) => {
         designNum={designNum}
         setComps={setComps}
       />
-      {editSections && <AddSection index={index} />}
+      {editSections && <AddSection index={index} themeData={themeData} />}
     </div>
   );
 };

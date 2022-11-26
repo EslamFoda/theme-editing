@@ -10,6 +10,7 @@ const Design3 = ({
   aboutData,
   compIndex,
   comp,
+  themeData,
 }) => {
   const gridClassName = cn(
     "grid  lg:grid-cols-2 grid-cols-1 md:grid-cols-2 sm:grid-cols-1",
@@ -56,14 +57,18 @@ const Design3 = ({
         </div>
       ) : (
         <div className={gridClassName}>
-          <EditPopover comp={comp} compIndex={compIndex} editImage>
+          <EditPopover
+            themeData={themeData}
+            comp={comp}
+            compIndex={compIndex}
+            editImage
+          >
             <div
               className={order1ClassName}
               style={{
-                backgroundImage:
-                  `url(${aboutData.pic})`,
+                backgroundImage: `url(${aboutData.pic})`,
                 backgroundSize: "cover",
-                backgroundPosition:"center",
+                backgroundPosition: "center",
                 MozBackgroundSize: "center center",
                 backgroundRepeat: "no-repeat",
               }}

@@ -3,11 +3,12 @@ import { getNextIndex } from "../../../features/add-section";
 import useCloseEditorfrom from "../../../hooks/useCloseEditor";
 // import { selectCompName } from "../../../features/comp-name";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { updateDoc } from "firebase/firestore";
 
-const ControlBtns = ({ i, comp, comps, setComps, id }) => {
+const ControlBtns = ({ i, comp, comps, id,themeData }) => {
   const dispatch = useDispatch();
   const { handleCloseEditor } = useCloseEditorfrom();
-  const moveInArray = function (arr, from, to, compsName) {
+  const moveInArray = async (arr, from, to, compsName) => {
     // Make sure a valid array is provided
     if (Object.prototype.toString.call(arr) !== "[object Array]") {
       throw new Error("Please provide a valid array");
@@ -25,7 +26,11 @@ const ControlBtns = ({ i, comp, comps, setComps, id }) => {
     arr.splice(to, 0, item[0]);
     // dispatch(selectCompName(compsName));
     dispatch(getNextIndex(to));
-    setComps([...arr]);
+    await updateDoc(themeData, {
+      allSections: [...arr],
+      nextIndex:to
+    });
+    // setComps([...arr]);
     handleCloseEditor();
 
     // handleClickScroll()
@@ -33,7 +38,9 @@ const ControlBtns = ({ i, comp, comps, setComps, id }) => {
 
   return (
     <div className="absolute space-y-16 top-1/2 left-5 transform -translate-x-1/2  -translate-y-1/2 ">
-      {i === 0 || comps.lastIndexOf(comps[comps.length - 1]) === i || i === 1 ? null : (
+      {i === 0 ||
+      comps.lastIndexOf(comps[comps.length - 1]) === i ||
+      i === 1 ? null : (
         <div
           onClick={() => {
             const { compName } = comp;
@@ -56,7 +63,9 @@ const ControlBtns = ({ i, comp, comps, setComps, id }) => {
           </div>
         </div>
       )}
-      {comps.lastIndexOf(comps[comps.length - 1]) === i || i === 0 || comps.lastIndexOf(comps[comps.length - 2]) === i ? null : (
+      {comps.lastIndexOf(comps[comps.length - 1]) === i ||
+      i === 0 ||
+      comps.lastIndexOf(comps[comps.length - 2]) === i ? null : (
         <div
           onClick={() => {
             const { compName } = comp;

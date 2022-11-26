@@ -7,9 +7,17 @@ interface Props {
   index: number;
   client: any;
   comp: any;
+  themeData: any;
 }
 
-const UserPic: FC<Props> = ({ design, compIndex, comp, index, client }) => {
+const UserPic: FC<Props> = ({
+  design,
+  compIndex,
+  comp,
+  index,
+  client,
+  themeData,
+}) => {
   const rootClassName = cn("", {
     "w-20 h-20 bg-no-reapeat bg-cover bg-center bg-white shadow-md absolute -top-10 rounded-full left-8 border-4 border-[#dfe0e1]":
       design === "design1",
@@ -21,7 +29,13 @@ const UserPic: FC<Props> = ({ design, compIndex, comp, index, client }) => {
       design === "design4",
   });
   return (
-    <EditPopover compIndex={compIndex} comp={comp} index={index} editImage>
+    <EditPopover
+      themeData={themeData}
+      compIndex={compIndex}
+      comp={comp}
+      index={index}
+      editImage
+    >
       <div
         style={{ backgroundImage: `url(${client.pic})` }}
         className={rootClassName}

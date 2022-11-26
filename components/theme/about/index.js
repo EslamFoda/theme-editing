@@ -8,6 +8,7 @@ import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
 import EditBackground from "../../mainContainer/common/editBackground";
 import useBgColor from "../../../hooks/useBgColor";
+import { updateDoc } from "firebase/firestore";
 const MainAbout = ({
   index,
   comps,
@@ -16,6 +17,7 @@ const MainAbout = ({
   device,
   editSections,
   animate,
+  themeData,
 }) => {
   const { compName, designNum, compData, backgroundColor } = comp;
   const designs = {
@@ -26,14 +28,16 @@ const MainAbout = ({
     design5: Design5,
   };
   const AboutComp = designs[`design${designNum}`];
-  const { setColor, handleReset } = useBgColor(index);
+  const { setColor, handleReset } = useBgColor(index, comps, themeData);
 
-  const handleEdit = (value, keys) => {
+  const handleEdit = async (value, keys) => {
     const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
     if (objectIndex === index) {
       comp.compData[keys] = value;
     }
-    setComps([...comps]);
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
   };
   return (
     <div
@@ -46,6 +50,7 @@ const MainAbout = ({
     >
       <div data-aos={animate}>
         <AboutComp
+          comps={comps}
           comp={comp}
           compIndex={index}
           backgroundColor={backgroundColor}
@@ -53,9 +58,11 @@ const MainAbout = ({
           handleEdit={handleEdit}
           choose={false}
           device={device}
+          themeData={themeData}
         />
       </div>
       <ChangeSection
+        themeData={themeData}
         comp={comp}
         compName={compName}
         comps={comps}
@@ -70,7 +77,7 @@ const MainAbout = ({
             handleReset={handleReset}
             setColor={setColor}
           />
-          <AddSection index={index} />
+          <AddSection index={index} themeData={themeData} />
         </>
       )}
     </div>

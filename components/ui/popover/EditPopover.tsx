@@ -8,6 +8,7 @@ export function EditPopover({
   comp,
   editImage = false,
   compIndex,
+  themeData = undefined,
 }) {
   const editSections = useSelector((state: any) => state.editSections.value);
 
@@ -39,7 +40,7 @@ export function EditPopover({
               sideOffset={14}
             >
               {editImage ? (
-                <EditImg index={index} compIndex={compIndex} />
+                <EditImg themeData={themeData} index={index} compIndex={compIndex} />
               ) : (
                 <EditItem comp={comp} index={index} />
               )}

@@ -2,7 +2,8 @@ import ControlBtns from "./controlBtns";
 import { containersData } from "../../../constant/data";
 import DeleteContainers from "../../deleteContainers";
 import useAnimation from "../../../hooks/useAnimation";
-
+import { doc } from "firebase/firestore";
+import { db } from "../../../utlis/firebase";
 const Preview = ({
   containerWidth,
   comps,
@@ -10,8 +11,11 @@ const Preview = ({
   device,
   editSections,
   animate,
+  themeId,
 }) => {
   const effect = useAnimation();
+  const themeData = doc(db, "themes", themeId);
+  
   return (
     <div
       style={{
@@ -22,7 +26,7 @@ const Preview = ({
       }}
       className="flex flex-col"
     >
-      {comps.map((comp, i) => {
+      {comps?.map((comp, i) => {
         const Component = containersData[comp.compName];
         return (
           <div className="relative demo-inline" id={comp.id} key={comp.id}>
@@ -31,14 +35,17 @@ const Preview = ({
               comp={comp}
               setComps={setComps}
               comps={comps}
+              themeId={themeId}
               index={i}
+              themeData={themeData}
               device={device}
               editSections={editSections}
             />
             {editSections ? (
               <>
-                <DeleteContainers index={i} />
+                <DeleteContainers index={i} themeData={themeData} comps={comps}/>
                 <ControlBtns
+                  themeData={themeData}
                   id={comp.id}
                   comps={comps}
                   i={i}

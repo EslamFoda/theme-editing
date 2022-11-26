@@ -16,6 +16,7 @@ const Design2 = ({
   headers,
   comp,
   compIndex,
+  themeData,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -77,6 +78,7 @@ const Design2 = ({
                     <div>
                       <div className="w-full bg-white flex flex-col gap-4 self-start  p-8 pb-12 rounded-md  shadow-big relative">
                         <UserPic
+                          themeData={themeData}
                           client={client}
                           comp={comp}
                           compIndex={compIndex}

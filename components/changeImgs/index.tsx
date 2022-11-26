@@ -8,11 +8,14 @@ import { MdError, MdClose } from "react-icons/md";
 import { TfiTrash } from "react-icons/tfi";
 import EmptyFiles from "./common/emptyFiles";
 import CloseEditor from "../mainEditor/common/closeEditor";
-const ChangeImgs = ({ comps, setComps }) => {
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../utlis/firebase";
+const ChangeImgs = ({ comps, setComps,themeId,itemIndex,compIndex }) => {
   const [storedImgs, setStoredImgs] = useState([]);
+  const themeData = doc(db, "themes", themeId);
   const [error, setError] = useState(false);
-  const compIndex = useSelector((state: any) => state.editImg.compIndex);
-  const itemIndex = useSelector((state: any) => state.editImg.itemIndex);
+  // const compIndex = useSelector((state: any) => state.editImg.compIndex);
+  // const itemIndex = useSelector((state: any) => state.editImg.itemIndex);
   const editFiles = useSelector((state: any) => state.files.editFiles);
 
   const bgSstyle = {
@@ -47,13 +50,14 @@ const ChangeImgs = ({ comps, setComps }) => {
         ? (comps[compIndex].compData.items[itemIndex].pic = data.secure_url)
         : (comps[compIndex].compData.pic = data.secure_url);
 
-      setComps([...comps]);
+      // setComps([...comps]);
+      await updateDoc(themeData, {
+        allSections: [...comps],
+      });
     } else {
       setError(true);
     }
   };
-
-
 
   const onButtonClick = () => {
     backgroundInput.current.click();
@@ -117,14 +121,18 @@ const ChangeImgs = ({ comps, setComps }) => {
             storedImgs.map((img, index) => {
               return (
                 <div
-                  onClick={() => {
-                    if (!editFiles && itemIndex || itemIndex === 0) {
+                  onClick={async() => {
+                    if ((!editFiles && itemIndex) || itemIndex === 0) {
                       comps[compIndex].compData.items[itemIndex].pic = img;
 
-                      setComps([...comps]);
+                      await updateDoc(themeData, {
+                        allSections: [...comps],
+                      });
                     } else if (!editFiles && !itemIndex) {
                       comps[compIndex].compData.pic = img;
-                      setComps([...comps]);
+                      await updateDoc(themeData, {
+                        allSections: [...comps],
+                      });
                     }
                   }}
                   style={bgSstyle}
@@ -157,7 +165,7 @@ const ChangeImgs = ({ comps, setComps }) => {
             <EmptyFiles />
           )}
         </div>
-        <CloseEditor/>
+        <CloseEditor />
       </div>
     </>
   );

@@ -8,16 +8,30 @@ import { addSectionTurnOff } from "../../features/edit-sections";
 import { selectCompName } from "../../features/comp-name";
 import { closeColors } from "../../features/colors";
 import { filesOff } from "../../features/my-files";
-const EditImg = ({ index, compIndex }) => {
+import { updateDoc } from "firebase/firestore";
+const EditImg = ({ index, compIndex, themeData }) => {
   const dispatch = useDispatch();
 
   return (
     <div className="bg-[#444f5b] divide-x divide-slate-400/[.24]  rounded-md flex ">
       <span
-        onClick={() => {
+        onClick={async() => {
+          if (index) {
+            await updateDoc(themeData, {
+              itemIndex: index,
+              nextIndex: compIndex,
+              compName:""
+            });
+          } else {
+            await updateDoc(themeData, {
+              itemIndex: "",
+              nextIndex: compIndex,
+              compName:""
+            });
+          }
           dispatch(editImgOn());
-          dispatch(getCompIndex(compIndex));
-          dispatch(getItemIndex(index));
+          // dispatch(getCompIndex(compIndex));
+          // dispatch(getItemIndex(index));
           dispatch(addSectionTurnOff());
           dispatch(selectCompName(""));
           dispatch(closeColors());

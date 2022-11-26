@@ -11,6 +11,8 @@ interface Props {
   compIndex: number;
   design?: "design5";
   iconPosition?: "right" | "left";
+  comps: any;
+  themeData:any
 }
 
 const ImageComp: FC<Props> = ({
@@ -19,7 +21,9 @@ const ImageComp: FC<Props> = ({
   comp,
   compIndex,
   design,
+  comps,
   iconPosition = "left",
+  themeData
 }) => {
   const [open, setOpen] = useState(false);
   const editSections = useSelector((state: any) => state.editSections.value);
@@ -44,6 +48,8 @@ const ImageComp: FC<Props> = ({
         >
           {editSections ? (
             <EditImgPopover
+            themeData={themeData}
+            comps={comps}
               compIndex={compIndex}
               index={index}
               setOpen={setOpen}

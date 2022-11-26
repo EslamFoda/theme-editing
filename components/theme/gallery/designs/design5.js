@@ -16,6 +16,7 @@ const Design5 = ({
   galleryData,
   comp,
   compIndex,
+  themeData,
 }) => {
   const gridClassName = cn(
     "grid   lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
@@ -82,6 +83,7 @@ const Design5 = ({
                       className="relative lg:h-60 md:h-52 h-52 w-full"
                     >
                       <ImageComp
+                        themeData={themeData}
                         design="design5"
                         comp={comp}
                         compIndex={compIndex}

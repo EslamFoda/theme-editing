@@ -8,6 +8,7 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import EditBackground from "../../mainContainer/common/editBackground";
 import useBgColor from "../../../hooks/useBgColor";
+import { updateDoc } from "firebase/firestore";
 
 const MainTestimonials = ({
   comps,
@@ -17,9 +18,10 @@ const MainTestimonials = ({
   device,
   editSections,
   animate,
+  themeData,
 }) => {
   const { compName, designNum, compData, backgroundColor } = comp;
-  const { handleReset, setColor } = useBgColor(index);
+  const { handleReset, setColor } = useBgColor(index, comps, themeData);
 
   const designs = {
     design1: Design1,
@@ -31,19 +33,23 @@ const MainTestimonials = ({
 
   const TestiComp = designs[`design${designNum}`];
 
-  const handleMultiEdit = (value, id, keys) => {
+  const handleMultiEdit = async (value, id, keys) => {
     const update = compData.items.map((item) =>
       item.id === id ? { ...item, [keys]: value } : item
     );
     comp.compData.items = update;
-    setComps([...comps]);
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
   };
-  const handleEdit = (value, keys) => {
+  const handleEdit = async (value, keys) => {
     const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
     if (objectIndex === index) {
-      comp.compData.headers[keys] = value;
+      comp.compData[keys] = value;
     }
-    setComps([...comps]);
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
   };
 
   return (
@@ -66,10 +72,12 @@ const MainTestimonials = ({
           handleMultiEdit={handleMultiEdit}
           headers={compData.headers}
           handleEdit={handleEdit}
+          themeData={themeData}
         />
       </div>
       <ChangeSection
         comp={comp}
+        themeData={themeData}
         compName={compName}
         comps={comps}
         index={index}
@@ -83,7 +91,7 @@ const MainTestimonials = ({
             handleReset={handleReset}
             setColor={setColor}
           />
-          <AddSection index={index} />
+          <AddSection index={index} themeData={themeData} />
         </>
       )}
     </div>

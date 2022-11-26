@@ -17,7 +17,7 @@ const Design1 = ({
   handleMultiEdit,
   serviceHeaders,
   comp,
-  compIndex,
+  compIndex,themeData
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -71,7 +71,8 @@ const Design1 = ({
                 <div key={service.id}>
                   <EditPopover comp={comp} index={index}>
                     <div key={service.id} className="text-center space-y-5">
-                      <EditPopover
+                      <EditPopover 
+                       themeData={themeData}
                         comp={comp}
                         compIndex={compIndex}
                         editImage

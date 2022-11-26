@@ -9,6 +9,7 @@ const Design5 = ({
   aboutData,
   compIndex,
   comp,
+  themeData,
 }) => {
   return (
     <>
@@ -59,6 +60,7 @@ const Design5 = ({
                 </Button>
                 <div className="h-96 lg:w-full">
                   <ImageComp
+                    themeData={themeData}
                     comp={comp}
                     image={aboutData.pic}
                     compIndex={compIndex}
