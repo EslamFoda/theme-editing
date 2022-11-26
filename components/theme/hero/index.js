@@ -28,8 +28,8 @@ const MainHero = ({ comps, index, setComps, comp, device, editSections }) => {
   };
   return (
     <div
-      className={`relative group  ${
-        editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
+      className={`relative group transition ease-in-out duration-700   ${
+        editSections ? "hover:shadow-[#23cba5] hover:shadow-inside " : ""
       }  w-full `}
     >
       <HeroComp
