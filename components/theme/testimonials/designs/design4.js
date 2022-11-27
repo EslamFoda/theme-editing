@@ -15,7 +15,7 @@ const Design4 = ({
   headers,
   comp,
   compIndex,
-  themeData,
+  themeData,comps
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -76,7 +76,7 @@ const Design4 = ({
             <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-8">
               {testiData?.map((client, index) => (
                 <div key={client.id}>
-                  <EditPopover comp={comp} index={index}>
+                  <EditPopover comps={comps} themeData={themeData} comp={comp} index={index}>
                     <div className="flex">
                       <div className="w-full h-full justify-between flex flex-col gap-4   p-6  rounded-md   border-gray-border border">
                         <EditorComp
@@ -88,7 +88,7 @@ const Design4 = ({
                         <div className="flex items-center gap-4">
                           <UserPic
                             themeData={themeData}
-                            client={client}
+                            testi={client}
                             comp={comp}
                             compIndex={compIndex}
                             design="design4"

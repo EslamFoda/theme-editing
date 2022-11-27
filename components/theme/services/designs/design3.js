@@ -16,7 +16,7 @@ const Design3 = ({
   handleMultiEdit,
   serviceHeaders,
   comp,
-  compIndex,themeData
+  compIndex,themeData,comps,editSections
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 grid-cols-1",
@@ -72,9 +72,9 @@ const Design3 = ({
             <div className={gridClassName}>
               {serviceData?.map((service, index) => (
                 <div key={service.id}>
-                  <EditPopover comp={comp} index={index}>
+                  <EditPopover comps={comps} themeData={themeData} comp={comp} index={index}>
                     <div className=" space-y-5 img-editor-container  relative">
-                      <ChangeBgImg  themeData={themeData} compIndex={compIndex} index={index} />
+                      <ChangeBgImg editSections={editSections}  themeData={themeData} compIndex={compIndex} index={index} />
                       <div
                         style={{ backgroundImage: `url(${service.pic})` }}
                         className="bg-no-repeat bg-center bg-cover p-5  flex items-end   h-96 w-full"

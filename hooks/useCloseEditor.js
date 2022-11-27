@@ -28,15 +28,22 @@ const useCloseEditor = () => {
     const themeData = doc(db, "themes", themeId);
     await updateDoc(themeData, {
       compName: "",
+      editImg: false,
+      editFiles: false,
+      colorsEdit: false,
+      fontEdit: false,
+      addSection: false,
+      editEffects: false,
+      stylesEditing: false,
     });
-    dispatch(closeColors());
-    dispatch(fontEditOff());
+    // dispatch(closeColors());
+    // dispatch(fontEditOff());
     // dispatch(selectCompName(""));
-    dispatch(addSectionTurnOff());
-    dispatch(editImgOff());
-    dispatch(filesOff());
-    dispatch(editEffectsOff());
-    dispatch(stylesEditorOff());
+    // dispatch(addSectionTurnOff());
+    // dispatch(editImgOff());
+    // dispatch(filesOff());
+    // dispatch(editEffectsOff());
+    // dispatch(stylesEditorOff());
   };
 
   return { handleCloseEditor };

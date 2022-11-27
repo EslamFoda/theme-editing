@@ -57,6 +57,7 @@ const MainGallery = ({
           handleEdit={handleEdit}
           galleryData={compData}
           comp={comp}
+          comps={comps}
           themeData={themeData}
         />
       </div>

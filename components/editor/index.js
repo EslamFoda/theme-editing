@@ -3,6 +3,9 @@ import { Editor } from "@tinymce/tinymce-react";
 import { useSelector } from "react-redux";
 import parse from "html-react-parser";
 import useCloseEditor from "../../hooks/useCloseEditor";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "../../utlis/firebase";
+import useMainData from "../../hooks/useMainData";
 const EditorComp = ({
   initialValue,
   keys,
@@ -10,7 +13,7 @@ const EditorComp = ({
   handleMultiEdit = false,
   id = undefined,
 }) => {
-  const editSections = useSelector((state) => state.editSections.value);
+  const { editSections } = useMainData();
   const { handleCloseEditor } = useCloseEditor();
 
   const [value, setValue] = useState(initialValue ?? "");

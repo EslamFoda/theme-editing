@@ -35,23 +35,58 @@ const EditImgPopover = ({
       await updateDoc(themeData, {
         itemIndex: index,
         nextIndex: compIndex,
+        editImg: true,
+        compName:"",
+        editFiles:false
       });
     } else {
       await updateDoc(themeData, {
         itemIndex: "",
         nextIndex: compIndex,
+        editImg: true,
+        compName:"",
+        editFiles:false
       });
     }
-    dispatch(editImgOn());
+    // dispatch(editImgOn());
     // dispatch(getCompIndex(compIndex));
     // dispatch(getItemIndex(index));
     dispatch(addSectionTurnOff());
-    dispatch(selectCompName(""));
+    // dispatch(selectCompName(""));
     dispatch(closeColors());
-    dispatch(filesOff());
+    // dispatch(filesOff());
     dispatch(editEffectsOff());
     dispatch(stylesEditorOff());
   };
+  const handleOpenCrop = async()=>{
+    setOpen(true);
+    if (index) {
+      await updateDoc(themeData, {
+        itemIndex: index,
+        nextIndex: compIndex,
+        editImg: false,
+        compName:"",
+        editFiles:false
+      });
+    } else {
+      await updateDoc(themeData, {
+        itemIndex: "",
+        nextIndex: compIndex,
+        editImg: false,
+        compName:"",
+        editFiles:false
+      });
+    }
+    // dispatch(editImgOff());
+    // dispatch(getCompIndex(compIndex));
+    // dispatch(getItemIndex(index));
+    dispatch(addSectionTurnOff());
+    // dispatch(selectCompName(""));
+    dispatch(closeColors());
+    // dispatch(filesOff());
+    dispatch(editEffectsOff());
+    dispatch(stylesEditorOff());
+  }
   const cameraBtnClass = cn("absolute camera-icon  top-4", {
     "left-4": iconPosition === "left",
     "right-4": iconPosition === "right",
@@ -87,9 +122,7 @@ const EditImgPopover = ({
             <span className="text-md">change image</span>
           </div>
           <div
-            onClick={() => {
-              setOpen(true);
-            }}
+            onClick={handleOpenCrop}
             className="flex bg-white cursor-pointer hover:bg-slate-200 px-3 py-2 gap-2  items-center"
           >
             <BiCrop size={18} />

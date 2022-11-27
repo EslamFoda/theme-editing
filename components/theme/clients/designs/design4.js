@@ -13,7 +13,7 @@ const Design4 = ({
   handleEdit,
   clientData,
   comp,
-  compIndex,
+  compIndex,themeData,comps
 }) => {
   const gridClassName = cn(
     "grid lg:grid-cols-3 md:grid-cols-3  grid-cols-1 gap-4",
@@ -77,9 +77,10 @@ const Design4 = ({
                 <div className={"flex  flex-wrap items-center"}>
                   {clientData.items.map((client, index) => (
                     <div key={client.id}>
-                      <EditPopover comp={comp} index={index}>
+                      <EditPopover themeData={themeData} comps={comps} comp={comp} index={index}>
                         <div className="p-2 items-center ">
-                          <ClientPic
+                          <ClientPic 
+                          themeData={themeData}
                             design="design4"
                             client={client}
                             comp={comp}

@@ -14,6 +14,8 @@ const Design5 = ({
   handleEdit,
   headers,
   comp,
+  comps,
+  themeData,
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -70,7 +72,12 @@ const Design5 = ({
                   className="odd:bg-primary   testi5  flex  rounded-md flex-col self-start   even:bg-white odd:text-white"
                   key={client.id}
                 >
-                  <EditPopover comp={comp} index={index}>
+                  <EditPopover
+                    comps={comps}
+                    themeData={themeData}
+                    comp={comp}
+                    index={index}
+                  >
                     <div className="w-full space-y-4  p-8  shadow-big ">
                       <TbQuote size={40} className="quote-icon" />
                       <EditorComp

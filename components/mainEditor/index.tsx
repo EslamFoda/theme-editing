@@ -16,8 +16,7 @@ import { useStickyState } from "../../hooks/useStickyState";
 import ChangeImgs from "../changeImgs";
 import ChangeStyles from "../changeStyles";
 import CloseEditor from "./common/closeEditor";
-import { collection, doc, onSnapshot } from "firebase/firestore";
-import { db } from "../../utlis/firebase";
+import useMainData from "../../hooks/useMainData";
 
 const colors = [
   "Captain-Green",
@@ -69,10 +68,34 @@ const modes = ["light", "dark"];
 
 const MainEditor = () => {
   // const { comps, setComps } = useContext(CompsContext);
-  const [themeId, setThemeId] = useState(null);
-  const [nextIndex, setNextIndex] = useState(null);
-  const [itemIndex, setItemIndex] = useState(null);
-  const [compName, setCompName] = useState(null);
+  const {
+    addSection,
+    colorsEdit,
+    compName,
+    comps,
+    editEffects,
+    editFiles,
+    editImg,
+    editSections,
+    fontEdit,
+    itemIndex,
+    nextIndex,
+    stylesEditing,
+    themeId,
+    selectSection,
+  } = useMainData();
+  // const [themeId, setThemeId] = useState(null);
+  // const [nextIndex, setNextIndex] = useState(null);
+  // const [itemIndex, setItemIndex] = useState(null);
+  // const [compName, setCompName] = useState(null);
+  // const [editImg, setEditImg] = useState(null);
+  // const [editFiles, setEditFiles] = useState(null);
+  // const [fontEdit, setFontEdit] = useState(null);
+  // const [editEffects, setEditEffects] = useState(null);
+  // const [colorsEdit, setColorsEdit] = useState(null);
+  // const [stylesEditing, setStylesEditing] = useState(null);
+  // const [addSection, setAddSection] = useState(null);
+  // const [editSections, setEditSections] = useState(null);
   const [currentColor, setCurrentColor] = useStickyState(
     colors[0],
     "theme-color"
@@ -85,23 +108,23 @@ const MainEditor = () => {
   const [mode, setMode] = useStickyState(modes[0], "theme-mode");
 
   const dispatch = useDispatch();
-  const editSections = useSelector((state: any) => state.editSections.value);
-  const addSection = useSelector((state: any) => state.editSections.addSection);
-  const selectSection = useSelector(
-    (state: any) => state.addSections.selectSection
-  );
+  // const editSections = useSelector((state: any) => state.editSections.value);
+  // const addSection = useSelector((state: any) => state.editSections.addSection);
+  // const selectSection = useSelector(
+  //   (state: any) => state.addSections.selectSection
+  // );
   // const nextIndex = useSelector((state: any) => state.addSections.compIndex);
-  const openColors = useSelector((state: any) => state.colors.enableColors);
+  // const openColors = useSelector((state: any) => state.colors.enableColors);
   // const compName = useSelector((state: any) => state.compName.compName);
   const { designs } = useChooseDesign(compName);
   const containerWidth = useSelector((state: any) => state.mainWidth.width);
-  const editImg = useSelector((state: any) => state.editImg.editImage);
-  const editFiles = useSelector((state: any) => state.files.editFiles);
-  const stylesEditing = useSelector(
-    (state: any) => state.stylesEdit.stylesEditor
-  );
-  const fontEdit = useSelector((state: any) => state.stylesEdit.fontEdit);
-  const editEffects = useSelector((state: any) => state.stylesEdit.editEffects);
+  // const editImg = useSelector((state: any) => state.editImg.editImage);
+  // const editFiles = useSelector((state: any) => state.files.editFiles);
+  // const stylesEditing = useSelector(
+  //   (state: any) => state.stylesEdit.stylesEditor
+  // );
+  // const fontEdit = useSelector((state: any) => state.stylesEdit.fontEdit);
+  // const editEffects = useSelector((state: any) => state.stylesEdit.editEffects);
 
   // useEffect(() => {
   //   const data = window.localStorage.getItem("ALL_SECTIONS");
@@ -112,19 +135,27 @@ const MainEditor = () => {
   //   window.localStorage.setItem("ALL_SECTIONS", JSON.stringify(comps));
   // }, [comps]);
 
-  const [comps, setComps] = useState(null);
+  // const [comps, setComps] = useState(null);
   // const [themeId, setThemeId] = useState(null);
-  useEffect(() => {
-    onSnapshot(collection(db, "themes"), (snapshot) => {
-      snapshot.docs.forEach((doc) => {
-        setThemeId(doc.id);
-        setNextIndex(doc.data().nextIndex);
-        setComps(doc.data().allSections);
-        setItemIndex(doc.data().itemIndex);
-        setCompName(doc.data().compName);
-      });
-    });
-  }, []);
+  // useEffect(() => {
+  //   onSnapshot(collection(db, "themes"), (snapshot) => {
+  //     snapshot.docs.forEach((doc) => {
+  //       setThemeId(doc.id);
+  //       setNextIndex(doc.data().nextIndex);
+  //       setComps(doc.data().allSections);
+  //       setItemIndex(doc.data().itemIndex);
+  //       setCompName(doc.data().compName);
+  //       setEditImg(doc.data().editImg);
+  //       setEditFiles(doc.data().editFiles);
+  //       setFontEdit(doc.data().fontEdit);
+  //       setEditEffects(doc.data().editEffects);
+  //       setColorsEdit(doc.data().colorsEdit);
+  //       setStylesEditing(doc.data().stylesEditing);
+  //       setAddSection(doc.data().addSection);
+  //       setEditSections(doc.data().editSections);
+  //     });
+  //   });
+  // }, []);
   return (
     <div
       className={[
@@ -135,7 +166,16 @@ const MainEditor = () => {
         .join(" ")}
     >
       <div className="sticky top-0 right-0 z-50">
-        <ActionNavBar />
+        {themeId && (
+          <ActionNavBar
+            editSections={editSections}
+            fontEdit={fontEdit}
+            editEffects={editEffects}
+            colorsEdit={colorsEdit}
+            editFiles={editFiles}
+            themeId={themeId}
+          />
+        )}
         {editSections && compName && !addSection && (
           <SelectDesign
             themeId={themeId}
@@ -151,6 +191,7 @@ const MainEditor = () => {
               selectSection={selectSection}
               dispatch={dispatch}
               compName={compName}
+              themeId={themeId}
             />
             <div className="h-40 flex items-center gap-4  scrollable overflow-auto w-full">
               {selectSection ? (
@@ -165,13 +206,13 @@ const MainEditor = () => {
                 />
               ) : (
                 <SelectSection
-                themeId={themeId}
+                  themeId={themeId}
                   dispatch={dispatch}
                   sectionsImgs={sectionsImgs}
                 />
               )}
             </div>
-            <CloseEditor  />
+            <CloseEditor />
           </div>
         )}
         {stylesEditing && !addSection && editSections ? (
@@ -185,7 +226,7 @@ const MainEditor = () => {
             currentFont={currentFont}
             setCurrentFont={setCurrentFont}
             fontEdit={fontEdit}
-            openColors={openColors}
+            openColors={colorsEdit}
             mode={mode}
             colors={colors}
             setCurrentColor={setCurrentColor}
@@ -194,9 +235,9 @@ const MainEditor = () => {
         ) : null}
         {editImg || editFiles ? (
           <ChangeImgs
+            editFiles={editFiles}
             itemIndex={itemIndex}
             compIndex={nextIndex}
-            setComps={setComps}
             comps={comps}
             themeId={themeId}
           />
@@ -211,10 +252,10 @@ const MainEditor = () => {
           .join(" ")}
       >
         <MainContainer
+          editSections={editSections}
           themeId={themeId}
           animate={currentEffect}
           comps={comps}
-          setComps={setComps}
           containerWidth={containerWidth}
         />
       </div>

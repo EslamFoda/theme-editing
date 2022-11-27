@@ -10,13 +10,19 @@ import EmptyFiles from "./common/emptyFiles";
 import CloseEditor from "../mainEditor/common/closeEditor";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../utlis/firebase";
-const ChangeImgs = ({ comps, setComps,themeId,itemIndex,compIndex }) => {
+const ChangeImgs = ({
+  comps,
+  themeId,
+  itemIndex,
+  compIndex,
+  editFiles,
+}) => {
   const [storedImgs, setStoredImgs] = useState([]);
   const themeData = doc(db, "themes", themeId);
   const [error, setError] = useState(false);
   // const compIndex = useSelector((state: any) => state.editImg.compIndex);
   // const itemIndex = useSelector((state: any) => state.editImg.itemIndex);
-  const editFiles = useSelector((state: any) => state.files.editFiles);
+  // const editFiles = useSelector((state: any) => state.files.editFiles);
 
   const bgSstyle = {
     backgroundImage:
@@ -121,7 +127,7 @@ const ChangeImgs = ({ comps, setComps,themeId,itemIndex,compIndex }) => {
             storedImgs.map((img, index) => {
               return (
                 <div
-                  onClick={async() => {
+                  onClick={async () => {
                     if ((!editFiles && itemIndex) || itemIndex === 0) {
                       comps[compIndex].compData.items[itemIndex].pic = img;
 

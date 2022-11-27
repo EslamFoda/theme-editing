@@ -63,6 +63,7 @@ const MainTeam = ({
       <div data-aos={animate}>
         <ServicesComp
           comp={comp}
+          comps={comps}
           compIndex={index}
           backgroundColor={backgroundColor}
           device={device}
@@ -70,6 +71,7 @@ const MainTeam = ({
           headers={compData.headers}
           handleMultiEdit={handleMultiEdit}
           handleEdit={handleEdit}
+          themeData={themeData}
         />
       </div>
       <ChangeSection

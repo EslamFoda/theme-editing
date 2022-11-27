@@ -17,6 +17,7 @@ const Design2 = ({
   comp,
   compIndex,
   themeData,
+  comps,
 }) => {
   const gridClassName = cn(
     "grid lg:gap-8 md:gap-6 gap-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
@@ -80,15 +81,18 @@ const Design2 = ({
             <div className={gridClassName}>
               {galleryData.items.map((gallery, index) => (
                 <div key={gallery.id}>
-                  <EditPopover comp={comp} index={index}>
+                  <EditPopover
+                    comps={comps}
+                    themeData={themeData}
+                    comp={comp}
+                    index={index}
+                  >
                     <div
                       key={gallery.id}
                       className="relative hover:shadow-custom transition-all lg:h-60 md:h-52 h-32 w-full"
                     >
                       <ImageComp
                         themeData={themeData}
-                        comp={comp}
-                        compIndex={compIndex}
                         image={gallery.pic}
                         index={index}
                       />

@@ -6,11 +6,11 @@ import Editable from "./common/editable";
 const MainContainer = ({
   containerWidth,
   comps,
-  setComps,
   animate,
   themeId,
+  editSections,
 }) => {
-  const editSections = useSelector((state) => state.editSections.value);
+  // const editSections = useSelector((state) => state.editSections.value);
   const device = useSelector((state) => state.mainWidth.device);
 
   return (
@@ -20,7 +20,6 @@ const MainContainer = ({
           animate={animate}
           comps={comps}
           containerWidth={containerWidth}
-          setComps={setComps}
           device={device}
           editSections={editSections}
           themeId={themeId}

@@ -13,7 +13,7 @@ const Design2 = ({
   handleEdit,
   clientData,
   comp,
-  compIndex,
+  compIndex,themeData,comps
 }) => {
   const gridClassName = cn(
     "grid gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -74,12 +74,13 @@ const Design2 = ({
             <div className={gridClassName}>
               {clientData.items.map((client, index) => (
                 <div key={client.id}>
-                  <EditPopover comp={comp} index={index}>
+                  <EditPopover themeData={themeData} comps={comps} comp={comp} index={index}>
                     <div
                       key={client.id}
                       className="p-2 items-center bg-gray-border flex justify-center"
                     >
-                      <ClientPic
+                      <ClientPic 
+                      themeData={themeData}
                         design="design1"
                         client={client}
                         comp={comp}

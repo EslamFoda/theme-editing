@@ -18,7 +18,7 @@ const Design4 = ({
   serviceHeaders,
   comp,
   compIndex,
-  themeData,
+  themeData,comps
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -86,7 +86,7 @@ const Design4 = ({
             <div className={gridClassName}>
               {serviceData?.map((service, index) => (
                 <div key={service.id}>
-                  <EditPopover comp={comp} index={index}>
+                  <EditPopover comps={comps} themeData={themeData} comp={comp} index={index}>
                     <div className="bg-white shadow-xl">
                       <ImageComp
                         themeData={themeData}

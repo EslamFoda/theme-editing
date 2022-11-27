@@ -62,9 +62,11 @@ const MainServices = ({
     >
       <div data-aos={animate}>
         <ServicesComp
+        editSections={editSections}
          themeData={themeData}
           compIndex={index}
           comp={comp}
+          comps={comps}
           backgroundColor={backgroundColor}
           device={device}
           serviceData={compData.items}

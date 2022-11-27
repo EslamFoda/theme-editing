@@ -11,16 +11,30 @@ interface Props {
   client: {
     pic: string;
   };
+  themeData: any;
 }
 
-const ClientPic: FC<Props> = ({ compIndex, index, comp, client, design }) => {
+const ClientPic: FC<Props> = ({
+  compIndex,
+  index,
+  comp,
+  client,
+  design,
+  themeData,
+}) => {
   const rootClassName = cn("relative", {
     "h-20 w-44": design === "design1",
     "h-20 w-40": design === "design4",
     "h-16 w-24": design === "design5",
   });
   return (
-    <EditPopover compIndex={compIndex} comp={comp} index={index} editImage>
+    <EditPopover
+      themeData={themeData}
+      compIndex={compIndex}
+      comp={comp}
+      index={index}
+      editImage
+    >
       <div className={rootClassName}>
         <Image
           src={client.pic}

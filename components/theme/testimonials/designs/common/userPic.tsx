@@ -5,7 +5,7 @@ interface Props {
   design: "design1" | "design2" | "design3" | "design4" | "design5";
   compIndex: number;
   index: number;
-  client: any;
+  testi: any;
   comp: any;
   themeData: any;
 }
@@ -15,7 +15,7 @@ const UserPic: FC<Props> = ({
   compIndex,
   comp,
   index,
-  client,
+  testi,
   themeData,
 }) => {
   const rootClassName = cn("", {
@@ -37,7 +37,7 @@ const UserPic: FC<Props> = ({
       editImage
     >
       <div
-        style={{ backgroundImage: `url(${client.pic})` }}
+        style={{ backgroundImage: `url(${testi.pic})` }}
         className={rootClassName}
       ></div>
     </EditPopover>

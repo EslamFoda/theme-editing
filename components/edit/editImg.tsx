@@ -15,27 +15,39 @@ const EditImg = ({ index, compIndex, themeData }) => {
   return (
     <div className="bg-[#444f5b] divide-x divide-slate-400/[.24]  rounded-md flex ">
       <span
-        onClick={async() => {
+        onClick={async () => {
           if (index) {
             await updateDoc(themeData, {
               itemIndex: index,
               nextIndex: compIndex,
-              compName:""
+              compName: "",
+              editImg: true,
+              editFiles: false,
+              addSection: false,
+              colorsEdit: false,
             });
           } else {
             await updateDoc(themeData, {
               itemIndex: "",
               nextIndex: compIndex,
-              compName:""
+              compName: "",
+              editImg: true,
+              editFiles: false,
+              addSection: false,
+              colorsEdit: false,
+              editEffects: false,
+              fontEdit: false,
+              stylesEditing: false,
             });
           }
-          dispatch(editImgOn());
+
+          // dispatch(editImgOn());
           // dispatch(getCompIndex(compIndex));
           // dispatch(getItemIndex(index));
-          dispatch(addSectionTurnOff());
-          dispatch(selectCompName(""));
-          dispatch(closeColors());
-          dispatch(filesOff());
+          // dispatch(addSectionTurnOff());
+          // dispatch(selectCompName(""));
+          // dispatch(closeColors());
+          // dispatch(filesOff());
         }}
         className="inline-block p-2 text-white cursor-pointer"
       >

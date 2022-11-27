@@ -17,19 +17,36 @@ import LookAndFeel from "./commons/lookAndFeel";
 import ChangeDevices from "./commons/changeDevices";
 import Mode from "./commons/mode";
 import * as Toggle from "@radix-ui/react-toggle";
-const ActionNavBar = () => {
-  const editSections = useSelector((state) => state.editSections.value);
+import { db } from "../../utlis/firebase";
+import { doc, updateDoc } from "firebase/firestore";
+const ActionNavBar = ({
+  themeId,
+  editFiles,
+  fontEdit,
+  editEffects,
+  colorsEdit,
+  editSections
+}) => {
+  const themeData = doc(db, "themes", themeId);
+  // const editSections = useSelector((state) => state.editSections.value);
   const device = useSelector((state) => state.mainWidth.device);
-  const editFiles = useSelector((state) => state.files.editFiles);
+  // const editFiles = useSelector((state) => state.files.editFiles);
   const dispatch = useDispatch();
   return (
     <>
       {" "}
       <div className="bg-[#353f4b]   min-h-[65px] py-2 grid grid-cols-3 items-center">
         <div className="justify-self-start px-2  flex gap-3 items-center">
-          <PreviewEdit dispatch={dispatch} editSections={editSections} />
+          <PreviewEdit themeData={themeData} dispatch={dispatch} editSections={editSections} />
 
-          <LookAndFeel dispatch={dispatch} editSections={editSections} />
+          <LookAndFeel
+            themeData={themeData}
+            dispatch={dispatch}
+            editSections={editSections}
+            fontEdit={fontEdit}
+            editEffects={editEffects}
+            colorsEdit={colorsEdit}
+          />
           {editSections ? (
             <Toggle.Root
               pressed={editFiles}
@@ -38,15 +55,25 @@ const ActionNavBar = () => {
             >
               <div
                 className="text-[#98A2B3] rounded-sm  p-1 bg-[#1f2b39]  cursor-pointer"
-                onClick={() => {
-                  dispatch(toggleEditFile());
-                  dispatch(selectCompName(""));
-                  dispatch(addSectionTurnOff());
-                  dispatch(editImgOff());
-                  dispatch(closeColors());
-                  dispatch(editEffectsOff());
-                  dispatch(fontEditOff());
-                  dispatch(stylesEditorOff());
+                onClick={async () => {
+                  await updateDoc(themeData, {
+                    editFiles: !editFiles,
+                    compName: "",
+                    editImg: false,
+                    fontEdit: false,
+                    editEffects: false,
+                    colorsEdit: false,
+                    stylesEditing: false,
+                    addSection: false,
+                  });
+                  // dispatch(toggleEditFile());
+                  // dispatch(selectCompName(""));
+                  // dispatch(addSectionTurnOff());
+                  // dispatch(editImgOff());
+                  // dispatch(closeColors());
+                  // dispatch(editEffectsOff());
+                  // dispatch(fontEditOff());
+                  // dispatch(stylesEditorOff());
                 }}
               >
                 <div className="flex gap-2 rounded-sm bg-[#283340] cursor-pointer hover:bg-[hsla(0,0%,100%,.7)] hover:text-[#0a0a0a] p-2">

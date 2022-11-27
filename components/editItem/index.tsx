@@ -1,15 +1,14 @@
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { IoDuplicateOutline } from "react-icons/io5";
 import { TfiTrash } from "react-icons/tfi";
-import { useId } from "react";
 import { CompsContext } from "../../context/compsContext";
 import { useContext } from "react";
 import { useDispatch } from "react-redux";
 import { getItemIndex } from "../../features/edit-image";
-const EditItem = ({ index, comp }) => {
-  const { comps, setComps } = useContext(CompsContext);
+import { updateDoc } from "firebase/firestore";
+const EditItem = ({ index, comp, themeData, comps }) => {
+  // const { comps, setComps } = useContext(CompsContext);
   const dispatch = useDispatch();
-  const randomId = useId();
   const lastItem = comp.compData.items.lastIndexOf(
     comp.compData.items[comp.compData.items.length - 1]
   );
@@ -35,41 +34,55 @@ const EditItem = ({ index, comp }) => {
     {
       icon: <BsChevronRight size={25} />,
       id: 1,
-      action: () => {
+      action: async () => {
         moveInArray(comp.compData.items, index, index + 1);
-        dispatch(getItemIndex(index + 1));
-        setComps([...comps]);
+        await updateDoc(themeData, {
+          allSections: [...comps],
+          itemIndex: index + 1,
+        });
+        // dispatch(getItemIndex(index + 1));
+        // setComps([...comps]);
       },
     },
     {
       icon: <TfiTrash size={25} />,
       id: 2,
-      action: () => {
+      action: async () => {
         const removedItem = comp.compData.items.filter(
           (_: any, i: number) => i !== index
         );
         comp.compData.items = removedItem;
-        setComps([...comps]);
+        await updateDoc(themeData, {
+          allSections: [...comps],
+        });
+        // setComps([...comps]);
       },
     },
     {
       icon: <IoDuplicateOutline size={25} />,
       id: 3,
-      action: () => {
+      action: async () => {
         comp.compData.items.splice(index + 1, 0, {
           ...comp.compData.items[index],
-          id: randomId,
+          id: Math.floor(Math.random() * Date.now()).toString(),
         });
-        setComps([...comps]);
+        await updateDoc(themeData, {
+          allSections: [...comps],
+        });
+        // setComps([...comps]);
       },
     },
     {
       icon: index === 0 ? null : <BsChevronLeft size={25} />,
       id: 4,
-      action: () => {
+      action: async () => {
         moveInArray(comp.compData.items, index, index - 1);
-        dispatch(getItemIndex(index - 1));
-        setComps([...comps]);
+        await updateDoc(themeData, {
+          allSections: [...comps],
+          itemIndex: index - 1,
+        });
+        // dispatch(getItemIndex(index - 1));
+        // setComps([...comps]);
       },
     },
   ];

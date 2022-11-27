@@ -15,7 +15,7 @@ const DesignFromSection = ({
   const themeData = doc(db, "themes", themeId);
 
   const handleCreateSection = async (i) => {
-    dispatch(selectSectionOff());
+    // dispatch(selectSectionOff());
     comps.splice(nextIndex, 0, {
       id: Math.floor(Math.random() * Date.now()).toString(),
       compName: compName,
@@ -30,6 +30,7 @@ const DesignFromSection = ({
     });
     await updateDoc(themeData, {
       allSections: [...comps],
+      selectSection:false
     });
   };
   return (

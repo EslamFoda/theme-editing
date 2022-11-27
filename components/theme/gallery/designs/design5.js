@@ -17,6 +17,7 @@ const Design5 = ({
   comp,
   compIndex,
   themeData,
+  comps,
 }) => {
   const gridClassName = cn(
     "grid   lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
@@ -77,16 +78,19 @@ const Design5 = ({
             <div className={gridClassName}>
               {galleryData.items.map((gallery, index) => (
                 <div key={gallery.id}>
-                  <EditPopover comp={comp} index={index}>
+                  <EditPopover
+                    comps={comps}
+                    themeData={themeData}
+                    comp={comp}
+                    index={index}
+                  >
                     <div
                       key={gallery.id}
                       className="relative lg:h-60 md:h-52 h-52 w-full"
                     >
                       <ImageComp
-                        themeData={themeData}
                         design="design5"
-                        comp={comp}
-                        compIndex={compIndex}
+                        themeData={themeData}
                         image={gallery.pic}
                         index={index}
                       />

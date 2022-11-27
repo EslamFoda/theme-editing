@@ -17,7 +17,7 @@ const Design5 = ({
   handleEdit,
   featuredHeader,
   comp,
-  icons,
+  icons,comps,themeData
 }) => {
   const data = [
     {
@@ -111,7 +111,7 @@ const Design5 = ({
                 const IconComp = icons[card.icon];
                 return (
                   <div key={card.id}>
-                    <EditPopover comp={comp} index={index}>
+                    <EditPopover themeData={themeData} comps={comps} comp={comp} index={index}>
                       <div className="flex flex-col space-y-5 items-start  ">
                         <div className="flex gap-4">
                           <div>

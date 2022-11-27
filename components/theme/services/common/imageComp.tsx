@@ -30,11 +30,14 @@ const ImageComp: FC<Props> = ({
     "hover:outline-none": design === "design4",
   });
   const [comps, setComps] = useState(null);
-  // const [themeId, setThemeId] = useState(null);
+  const [nextIndex, setNextIndex] = useState(null);
+  const [itemIndex, setItemIndex] = useState(null);
   useEffect(() => {
     onSnapshot(collection(db, "themes"), (snapshot) => {
       snapshot.docs.forEach((doc) => {
         setComps(doc.data().allSections);
+        setNextIndex(doc.data().nextIndex);
+        setItemIndex(doc.data().itemIndex);
       });
     });
   }, []);
@@ -43,10 +46,12 @@ const ImageComp: FC<Props> = ({
     <div className={rootClassName}>
       {open ? (
         <ImageEditor
-          comp={comp}
-          index={index}
+          compIndex={nextIndex}
+          itemIndex={itemIndex}
+          themeData={themeData}
           image={image}
           setOpen={setOpen}
+          comps={comps}
         />
       ) : (
         <div

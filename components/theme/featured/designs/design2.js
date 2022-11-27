@@ -16,7 +16,7 @@ const Design2 = ({
   featuredData,
   handleMultiEdit,
   comp,
-  icons,
+  icons,comps,themeData
 }) => {
   const data = [
     {
@@ -104,7 +104,7 @@ const Design2 = ({
                 const IconComp = icons[card.icon];
                 return (
                   <div key={card.id}>
-                    <EditPopover comp={comp} index={index}>
+                    <EditPopover themeData={themeData} comps={comps} comp={comp} index={index}>
                       <div className="p-4 flex border border-solid border-gray-border rounded-lg flex-col space-y-5 items-start  ">
                         <div className="flex gap-2">
                           <div className="w-8 h-8 min-w-max bg-primaryBg rounded-full flex justify-center items-center">

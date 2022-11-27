@@ -5,7 +5,7 @@ import useCloseEditorfrom from "../../../hooks/useCloseEditor";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { updateDoc } from "firebase/firestore";
 
-const ControlBtns = ({ i, comp, comps, id,themeData }) => {
+const ControlBtns = ({ i, comp, comps, id, themeData }) => {
   const dispatch = useDispatch();
   const { handleCloseEditor } = useCloseEditorfrom();
   const moveInArray = async (arr, from, to, compsName) => {
@@ -28,7 +28,7 @@ const ControlBtns = ({ i, comp, comps, id,themeData }) => {
     dispatch(getNextIndex(to));
     await updateDoc(themeData, {
       allSections: [...arr],
-      nextIndex:to
+      nextIndex: to,
     });
     // setComps([...arr]);
     handleCloseEditor();

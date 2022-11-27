@@ -17,7 +17,6 @@ const Designs: React.FC<Props> = ({
   handle,
   select = false,
 }) => {
-  console.log(comps[nextIndex].designNum)
   return (
     <div
       className={`h-32 relative rounded-md overflow-hidden  cursor-pointer min-w-[288px] ${

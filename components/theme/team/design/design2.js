@@ -17,7 +17,7 @@ const Design2 = ({
   teamData,
   headers,
   comp,
-  compIndex,
+  compIndex,themeData,comps
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 text-center sm:grid-cols-2 grid-cols-1",
@@ -73,10 +73,12 @@ const Design2 = ({
             <div className={gridClassName}>
               {teamData?.map((team, index) => (
                 <div key={team.id}>
-                  <EditPopover comp={comp} index={index}>
+                  <EditPopover comps={comps} themeData={themeData} comp={comp} index={index}>
                     <div className=" space-y-5">
                       <TeamPic
-                        comp={comp}
+                       themeData={themeData}
+                       comp={comp}
+                       comps={comps}
                         compIndex={compIndex}
                         design="design2"
                         index={index}

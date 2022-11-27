@@ -1,17 +1,25 @@
 import * as Slider from "@radix-ui/react-slider";
+import { updateDoc } from "firebase/firestore";
 import { useState, useContext, useCallback } from "react";
 import Cropper from "react-easy-crop";
 import { BiCrop } from "react-icons/bi";
 import { CompsContext } from "../../context/compsContext";
 import getCroppedImg from "../theme/services/common/cropImg";
 
-const ImageEditor = ({ image, index, comp, setOpen }) => {
+const ImageEditor = ({
+  image,
+  setOpen,
+  themeData,
+  comps,
+  itemIndex = undefined,
+  compIndex,
+}) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [rotation, setRotation] = useState(0);
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
-  const { comps, setComps } = useContext(CompsContext);
+  // const { comps, setComps } = useContext(CompsContext);
   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
   }, []);
@@ -34,23 +42,25 @@ const ImageEditor = ({ image, index, comp, setOpen }) => {
         }
       ).then((r) => r.json());
 
-      index
-        ? (comp.compData.items[index].pic = data.secure_url)
-        : (comp.compData.pic = data.secure_url);
-        
-      setComps([...comps]);
+      itemIndex || itemIndex === 0
+        ? (comps[compIndex].compData.items[itemIndex].pic = data.secure_url)
+        : (comps[compIndex].compData.pic = data.secure_url);
+
+      await updateDoc(themeData, {
+        allSections: [...comps],
+      });
       setOpen(false);
     } catch (e) {
       console.error(e);
     }
-  }, [croppedAreaPixels, rotation]);
+  }, [croppedAreaPixels, rotation, croppedImage]);
 
   const onClose = useCallback(() => {
     setCroppedImage(null);
     setOpen(false);
   }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
   };
 

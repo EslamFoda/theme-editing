@@ -58,7 +58,9 @@ const MainClients = ({
         <ClientsComp
           compIndex={index}
           device={device}
+          themeData={themeData}
           comp={comp}
+          comps={comps}
           handleEdit={handleEdit}
           clientData={compData}
         />

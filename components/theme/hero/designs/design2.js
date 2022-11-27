@@ -4,7 +4,14 @@ import Container from "../../../ui/container";
 import Button from "../../../ui/Button";
 import ChangeBgImg from "../../../changeBgImg";
 
-const Design2 = ({ choose = false, heroData, handleEdit, compIndex }) => {
+const Design2 = ({
+  choose = false,
+  heroData,
+  handleEdit,
+  compIndex,
+  themeData,
+  editSections,
+}) => {
   const [openNav, setOpenNav] = useState(false);
   return (
     <>
@@ -40,7 +47,7 @@ const Design2 = ({ choose = false, heroData, handleEdit, compIndex }) => {
           <Container>
             <nav className=" border-gray-200 px-2 sm:px-4 py-2.5 rounded ">
               <div className="container flex flex-wrap items-center justify-between lg:justify-start md:justify-start gap-5 mx-auto">
-                <span  className="flex items-center">
+                <span className="flex items-center">
                   <img
                     src="https://flowbite.com/docs/images/logo.svg"
                     className="h-6 mr-3 sm:h-9"
@@ -124,7 +131,11 @@ const Design2 = ({ choose = false, heroData, handleEdit, compIndex }) => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <ChangeBgImg compIndex={compIndex} />
+            <ChangeBgImg
+              editSections={editSections}
+              compIndex={compIndex}
+              themeData={themeData}
+            />
             <Container>
               <div className="max-w-sm bg-white space-y-10 p-8">
                 <EditorComp

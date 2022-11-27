@@ -14,6 +14,7 @@ const Design5 = ({
   clientData,
   comp,
   compIndex,
+  themeData,comps
 }) => {
   const gridClassName = cn("grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1", {
     "!grid-cols-1": device === "mobile",
@@ -72,9 +73,10 @@ const Design5 = ({
                 <div className={"flex  flex-wrap items-center"}>
                   {clientData.items.map((client, index) => (
                     <div key={client.id}>
-                      <EditPopover comp={comp} index={index}>
-                        <div className="p-2 items-center  ">
+                      <EditPopover themeData={themeData} comps={comps} comp={comp} index={index}>
+                        <div className="p-2 items-center ">
                           <ClientPic
+                            themeData={themeData}
                             design="design5"
                             client={client}
                             comp={comp}

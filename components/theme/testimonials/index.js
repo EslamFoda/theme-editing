@@ -66,6 +66,7 @@ const MainTestimonials = ({
           choose={false}
           compIndex={index}
           comp={comp}
+          comps={comps}
           backgroundColor={backgroundColor}
           device={device}
           testiData={compData.items}

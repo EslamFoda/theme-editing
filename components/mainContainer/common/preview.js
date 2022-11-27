@@ -7,7 +7,6 @@ import { db } from "../../../utlis/firebase";
 const Preview = ({
   containerWidth,
   comps,
-  setComps,
   device,
   editSections,
   animate,
@@ -15,7 +14,7 @@ const Preview = ({
 }) => {
   const effect = useAnimation();
   const themeData = doc(db, "themes", themeId);
-  
+
   return (
     <div
       style={{
@@ -33,7 +32,6 @@ const Preview = ({
             <Component
               animate={animate}
               comp={comp}
-              setComps={setComps}
               comps={comps}
               themeId={themeId}
               index={i}
@@ -43,14 +41,17 @@ const Preview = ({
             />
             {editSections ? (
               <>
-                <DeleteContainers index={i} themeData={themeData} comps={comps}/>
+                <DeleteContainers
+                  index={i}
+                  themeData={themeData}
+                  comps={comps}
+                />
                 <ControlBtns
                   themeData={themeData}
                   id={comp.id}
                   comps={comps}
                   i={i}
                   comp={comp}
-                  setComps={setComps}
                 />
               </>
             ) : null}

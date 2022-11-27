@@ -11,7 +11,7 @@ const Design1 = ({
   heroData,
   handleEdit,
   compIndex,
-  comp,
+  comp,themeData
 }) => {
   const [openNav, setOpenNav] = useState(false);
   
@@ -163,6 +163,7 @@ const Design1 = ({
               </div>
               <div className="h-96 lg:w-[450px] md:w-[400px] w-[450px]">
                 <ImageComp
+                themeData={themeData}
                   comp={comp}
                   compIndex={compIndex}
                   image={heroData.pic}

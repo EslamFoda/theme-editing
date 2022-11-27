@@ -4,7 +4,7 @@ import { useState } from "react";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 import ImageComp from "../../gallery/common/imageComp";
-const Design4 = ({ device, choose, heroData, handleEdit, compIndex, comp }) => {
+const Design4 = ({ device, choose, heroData, handleEdit, compIndex, comp,themeData }) => {
   const [openNav, setOpenNav] = useState(false);
   const imageClassName = cn("lg:h-[550px] md:h-[500px] h-80  w-full  ", {
     "!h-80": device === "mobile",
@@ -181,6 +181,7 @@ const Design4 = ({ device, choose, heroData, handleEdit, compIndex, comp }) => {
               <div className={imageClassName}>
                 {" "}
                 <ImageComp
+                themeData={themeData}
                   comp={comp}
                   compIndex={compIndex}
                   image={heroData.pic}

@@ -83,6 +83,8 @@ const MainFeatured = ({
           featuredHeader={compData.header}
           featuredData={compData.items}
           device={device}
+          comps={comps}
+          themeData={themeData}
         />
       </div>
       <ChangeSection

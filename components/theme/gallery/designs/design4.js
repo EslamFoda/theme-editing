@@ -8,7 +8,7 @@ import Image from "next/image";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 import ImageComp from "../common/imageComp";
-const Design4 = ({ device, choose, handleEdit, galleryData, comp,compIndex,themeData }) => {
+const Design4 = ({ device, choose, handleEdit, galleryData, comp,compIndex,themeData,comps }) => {
   const gridClassName = cn("grid grid-cols-1  gap-8", {
     "!grid-cols-1": device === "mobile",
   });
@@ -54,12 +54,11 @@ const Design4 = ({ device, choose, handleEdit, galleryData, comp,compIndex,theme
             <div className={gridClassName}>
               {galleryData.items.map((gallery, index) => (
                 <div key={gallery.id}>
-                  <EditPopover comp={comp} index={index}>
+                  <EditPopover  comps={comps}
+                    themeData={themeData} comp={comp} index={index}>
                     <div className="relative hover:shadow-custom transition-all lg:h-screen md:h-52 h-32 w-full">
-                      <ImageComp
+                       <ImageComp
                         themeData={themeData}
-                        comp={comp}
-                        compIndex={compIndex}
                         image={gallery.pic}
                         index={index}
                       />

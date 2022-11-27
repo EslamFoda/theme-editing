@@ -23,17 +23,25 @@ const AddSection = ({ index, themeData }) => {
           await updateDoc(themeData, {
             nextIndex: nextIndex,
             compName: "",
+            editFiles: false,
+            editImg: false,
+            addSection: true,
+            editEffects: false,
+            fontEdit: true,
+            stylesEditing: false,
+            colorsEdit: false,
+            selectSection:false
           });
           // dispatch(getNextIndex(nextIndex));
-          dispatch(selectSectionOff());
-          dispatch(addSectionTurnOn());
-          dispatch(selectCompName(""));
-          dispatch(editImgOff());
-          dispatch(filesOff());
-          dispatch(editEffectsOff());
-          dispatch(fontEditOff());
-          dispatch(stylesEditorOff());
-          dispatch(closeColors());
+          // dispatch(selectSectionOff());
+          // dispatch(addSectionTurnOn());
+          // dispatch(selectCompName(""));
+          // dispatch(editImgOff());
+          // dispatch(filesOff());
+          // dispatch(editEffectsOff());
+          // dispatch(fontEditOff());
+          // dispatch(stylesEditorOff());
+          // dispatch(closeColors());
         }}
         class="add-section fb "
       >

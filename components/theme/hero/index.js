@@ -49,6 +49,8 @@ const MainHero = ({
         handleEdit={handleEdit}
         device={device}
         comp={comp}
+        themeData={themeData}
+        editSections={editSections}
       />
       <ChangeSection
         themeData={themeData}

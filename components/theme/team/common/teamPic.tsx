@@ -8,9 +8,19 @@ interface Props {
   comp: {};
   index: number;
   pic: string;
+  themeData: any;
+  comps: any;
 }
 
-const TeamPic: FC<Props> = ({ compIndex, comp, index, pic, design }) => {
+const TeamPic: FC<Props> = ({
+  compIndex,
+  comp,
+  index,
+  pic,
+  design,
+  themeData,
+  comps,
+}) => {
   const rootClassName = cn("bg-no-repeat bg-center bg-cover", {
     " overflow-hidden m-auto h-28 w-28 rounded-full": design === "design1",
     "h-72 w-full": design === "design2",
@@ -19,7 +29,14 @@ const TeamPic: FC<Props> = ({ compIndex, comp, index, pic, design }) => {
     "overflow-hidden m-auto h-44 w-full": design === "design5",
   });
   return (
-    <EditPopover compIndex={compIndex} comp={comp} index={index} editImage>
+    <EditPopover
+      comps={comps}
+      themeData={themeData}
+      compIndex={compIndex}
+      comp={comp}
+      index={index}
+      editImage
+    >
       <div
         style={{ backgroundImage: `url(${pic})` }}
         className={rootClassName}

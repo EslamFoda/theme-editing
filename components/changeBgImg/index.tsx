@@ -16,24 +16,52 @@ interface Props {
   compIndex: number;
   index: number;
   themeData: any;
+  editSections: boolean;
 }
 
-const ChangeBgImg: FC<Props> = ({ compIndex, index, themeData }) => {
-  const editSections = useSelector((state: any) => state.editSections.value);
+const ChangeBgImg: FC<Props> = ({
+  compIndex,
+  index = undefined,
+  themeData,
+  editSections,
+}) => {
+  // const editSections = useSelector((state: any) => state.editSections.value);
   const dispatch = useDispatch();
   const handleChangeImg = async () => {
-    await updateDoc(themeData, {
-      nextIndex: compIndex,
-      itemIndex: index,
-      compName: "",
-    });
-    dispatch(editImgOn());
-    // dispatch(getCompIndex(compIndex));
-    // dispatch(getItemIndex(index));
-    dispatch(addSectionTurnOff());
-    // dispatch(selectCompName(""));
-    dispatch(closeColors());
-    dispatch(filesOff());
+    if (index) {
+      await updateDoc(themeData, {
+        nextIndex: compIndex,
+        itemIndex: index,
+        compName: "",
+        editImg: true,
+        editFiles: false,
+        addSection: false,
+        colorsEdit: false,
+      });
+      // dispatch(editImgOn());
+      // dispatch(getCompIndex(compIndex));
+      // dispatch(getItemIndex(index));
+      // dispatch(addSectionTurnOff());
+      // dispatch(selectCompName(""));
+      // dispatch(closeColors());
+      // dispatch(filesOff());
+    } else {
+      await updateDoc(themeData, {
+        nextIndex: compIndex,
+        compName: "",
+        editImg: true,
+        editFiles: false,
+        addSection: false,
+        colorsEdit: false,
+      });
+      // dispatch(editImgOn());
+      // dispatch(getCompIndex(compIndex));
+      // dispatch(getItemIndex(index));
+      // dispatch(addSectionTurnOff());
+      // dispatch(selectCompName(""));
+      // dispatch(closeColors());
+      // dispatch(filesOff());
+    }
   };
 
   return (

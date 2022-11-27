@@ -12,6 +12,7 @@ import {
   stylesEditorOff,
 } from "../../features/stylesEditing";
 import { updateDoc } from "firebase/firestore";
+import useMainData from "../../hooks/useMainData";
 const ChangeSection = ({
   compName,
   designNum,
@@ -21,7 +22,7 @@ const ChangeSection = ({
   comp,
   themeData,
 }) => {
-  const editSections = useSelector((state) => state.editSections.value);
+  const { editSections } = useMainData();
   const device = useSelector((state) => state.mainWidth.device);
   const dispatch = useDispatch();
 
@@ -36,15 +37,22 @@ const ChangeSection = ({
         allSections: [...comps],
         nextIndex: index,
         compName: compName,
+        editFiles: false,
+        editImg: false,
+        addSection: false,
+        colorsEdit: false,
+        editEffects: false,
+        fontEdit: false,
+        stylesEditing: false,
       });
     }
-    dispatch(addSectionTurnOff());
-    dispatch(closeColors());
-    dispatch(editImgOff());
-    dispatch(editEffectsOff());
-    dispatch(fontEditOff());
-    dispatch(stylesEditorOff());
-    dispatch(filesOff());
+    // dispatch(addSectionTurnOff());
+    // dispatch(closeColors());
+    // dispatch(editImgOff());
+    // dispatch(editEffectsOff());
+    // dispatch(fontEditOff());
+    // dispatch(stylesEditorOff());
+    // dispatch(filesOff());
   };
 
   const handleNext = async () => {
@@ -57,16 +65,23 @@ const ChangeSection = ({
         allSections: [...comps],
         nextIndex: index,
         compName: compName,
+        editFiles: false,
+        editImg: false,
+        addSection: false,
+        colorsEdit: false,
+        editEffects: false,
+        fontEdit: false,
+        stylesEditing: false,
       });
     }
 
-    dispatch(addSectionTurnOff());
-    dispatch(closeColors());
-    dispatch(editImgOff());
-    dispatch(editEffectsOff());
-    dispatch(fontEditOff());
-    dispatch(filesOff());
-    dispatch(stylesEditorOff());
+    // dispatch(addSectionTurnOff());
+    // dispatch(closeColors());
+    // dispatch(editImgOff());
+    // dispatch(editEffectsOff());
+    // dispatch(fontEditOff());
+    // dispatch(filesOff());
+    // dispatch(stylesEditorOff());
   };
 
   return (

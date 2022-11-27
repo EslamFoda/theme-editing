@@ -14,6 +14,7 @@ const Design1 = ({
   clientData,
   comp,
   compIndex,
+  themeData,comps
 }) => {
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -72,9 +73,10 @@ const Design1 = ({
             <div className={gridClassName}>
               {clientData.items.map((client, index) => (
                 <div className="justify-self-center" key={client.id}>
-                  <EditPopover comp={comp} index={index}>
+                  <EditPopover comps={comps} themeData={themeData} comp={comp} index={index}>
                     <div>
                       <ClientPic
+                        themeData={themeData}
                         design="design1"
                         client={client}
                         comp={comp}

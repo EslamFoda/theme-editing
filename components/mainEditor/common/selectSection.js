@@ -14,9 +14,10 @@ const SelectSection = ({ sectionsImgs, dispatch, themeId }) => {
           onClick={async () => {
             await updateDoc(themeData, {
               compName: title,
+              selectSection:true
             });
             // dispatch(selectCompName(title));
-            dispatch(selectSectionOn());
+            // dispatch(selectSectionOn());
           }}
         >
           <div className="text-center h-full">

@@ -18,10 +18,18 @@ import {
   editEffectsOn,
 } from "../../../features/stylesEditing";
 import { useSelector } from "react-redux";
-const LookAndFeel = ({ editSections, dispatch }) => {
-  const fontEdit = useSelector((state) => state.stylesEdit.fontEdit);
-  const editEffects = useSelector((state) => state.stylesEdit.editEffects);
-  const colorsEdit = useSelector((state) => state.colors.enableColors);
+import { updateDoc } from "firebase/firestore";
+const LookAndFeel = ({
+  editSections,
+  dispatch,
+  themeData,
+  fontEdit,
+  editEffects,
+  colorsEdit,
+}) => {
+  // const fontEdit = useSelector((state) => state.stylesEdit.fontEdit);
+  // const editEffects = useSelector((state) => state.stylesEdit.editEffects);
+  // const colorsEdit = useSelector((state) => state.colors.enableColors);
   const [value, setValue] = useState(null);
   useEffect(() => {
     if (!fontEdit && !editEffects && !colorsEdit) {
@@ -34,20 +42,37 @@ const LookAndFeel = ({ editSections, dispatch }) => {
       isOpen: editEffects,
       id: 1,
       Icon: HiOutlineSparkles,
-      action: () => {
-        dispatch(closeColors());
-        dispatch(selectCompName(""));
-        dispatch(addSectionTurnOff());
-        dispatch(editImgOff());
-        dispatch(filesOff());
-        dispatch(fontEditOff());
-        dispatch(stylesEditorOn());
-        dispatch(editEffectsOn());
+      action: async () => {
+        await updateDoc(themeData, {
+          editFiles: false,
+          compName: "",
+          editImg: false,
+          colorsEdit: false,
+          fontEdit: false,
+          editEffects: true,
+          stylesEditing: true,
+          addSection: false,
+        });
+        // dispatch(closeColors());
+        // dispatch(selectCompName(""));
+        // dispatch(addSectionTurnOff());
+        // dispatch(editImgOff());
+        // dispatch(filesOff());
+        // dispatch(fontEditOff());
+        // dispatch(stylesEditorOn());
+        // dispatch(editEffectsOn());
         if (editEffects) {
-          dispatch(editEffectsOff());
-          dispatch(stylesEditorOff());
+          await updateDoc(themeData, {
+            editEffects: false,
+            stylesEditing: false,
+          });
+          // dispatch(editEffectsOff());
+          // dispatch(stylesEditorOff());
         } else {
-          dispatch(stylesEditorOn());
+          await updateDoc(themeData, {
+            stylesEditing: true,
+          });
+          // dispatch(stylesEditorOn());
         }
       },
     },
@@ -56,20 +81,37 @@ const LookAndFeel = ({ editSections, dispatch }) => {
       id: 2,
       isOpen: fontEdit,
       Icon: BsFonts,
-      action: () => {
-        dispatch(closeColors());
-        dispatch(selectCompName(""));
-        dispatch(addSectionTurnOff());
-        dispatch(editImgOff());
-        dispatch(filesOff());
-        dispatch(fontEditOn());
-        dispatch(editEffectsOff());
-        dispatch(stylesEditorOn());
+      action: async () => {
+        await updateDoc(themeData, {
+          editFiles: false,
+          compName: "",
+          editImg: false,
+          colorsEdit: false,
+          fontEdit: true,
+          editEffects: false,
+          stylesEditing: true,
+          addSection: false,
+        });
+        // dispatch(closeColors());
+        // dispatch(selectCompName(""));
+        // dispatch(addSectionTurnOff());
+        // dispatch(editImgOff());
+        // dispatch(filesOff());
+        // dispatch(fontEditOn());
+        // dispatch(editEffectsOff());
+        // dispatch(stylesEditorOn());
         if (fontEdit) {
-          dispatch(fontEditOff());
-          dispatch(stylesEditorOff());
+          await updateDoc(themeData, {
+            fontEdit: false,
+            stylesEditing: false,
+          });
+          // dispatch(fontEditOff());
+          // dispatch(stylesEditorOff());
         } else {
-          dispatch(stylesEditorOn());
+          await updateDoc(themeData, {
+            stylesEditing: true,
+          });
+          // dispatch(stylesEditorOn());
         }
       },
     },
@@ -78,20 +120,37 @@ const LookAndFeel = ({ editSections, dispatch }) => {
       id: 3,
       isOpen: colorsEdit,
       Icon: MdOutlineInvertColors,
-      action: () => {
-        dispatch(openColors());
-        dispatch(fontEditOff());
-        dispatch(selectCompName(""));
-        dispatch(addSectionTurnOff());
-        dispatch(editImgOff());
-        dispatch(filesOff());
-        dispatch(editEffectsOff());
-        dispatch(stylesEditorOn());
+      action: async () => {
+        await updateDoc(themeData, {
+          editFiles: false,
+          compName: "",
+          editImg: false,
+          colorsEdit: true,
+          fontEdit: false,
+          editEffects: false,
+          stylesEditing: true,
+          addSection: false,
+        });
+        // dispatch(openColors());
+        // dispatch(fontEditOff());
+        // dispatch(selectCompName(""));
+        // dispatch(addSectionTurnOff());
+        // dispatch(editImgOff());
+        // dispatch(filesOff());
+        // dispatch(editEffectsOff());
+        // dispatch(stylesEditorOn());
         if (colorsEdit) {
-          dispatch(stylesEditorOff());
-          dispatch(closeColors());
+          await updateDoc(themeData, {
+            colorsEdit: false,
+            stylesEditing: false,
+          });
+          // dispatch(stylesEditorOff());
+          // dispatch(closeColors());
         } else {
-          dispatch(stylesEditorOn());
+          await updateDoc(themeData, {
+            stylesEditing: true,
+          });
+          // dispatch(stylesEditorOn());
         }
       },
     },
