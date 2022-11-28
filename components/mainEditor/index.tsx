@@ -175,7 +175,7 @@ const MainEditor = () => {
         }
       ).then(() => console.log("Document updated"));
     }
-  }, [currentColor,currentFont]);
+  }, [currentColor,currentFont,themeId]);
   return (
     <div
       className={[themeColor && `theme-${themeColor}`, mode && `theme-${mode}`]

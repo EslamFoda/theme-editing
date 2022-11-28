@@ -150,6 +150,7 @@ const ChangeImgs = ({
                     layout="fill"
                     objectFit="contain"
                     className="absolute"
+                    alt='image file'
                   />
                   {editFiles ? (
                     <div
