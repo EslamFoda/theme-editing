@@ -2,6 +2,7 @@ import Image from "next/image";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 import { FC } from "react";
 import cn from "clsx";
+import useMainData from "../../../../hooks/useMainData";
 
 interface Props {
   design: "design1" | "design4" | "design5";
@@ -27,8 +28,10 @@ const ClientPic: FC<Props> = ({
     "h-20 w-40": design === "design4",
     "h-16 w-24": design === "design5",
   });
+  const { comps } = useMainData();
   return (
     <EditPopover
+      comps={comps}
       themeData={themeData}
       compIndex={compIndex}
       comp={comp}
@@ -41,7 +44,7 @@ const ClientPic: FC<Props> = ({
           layout="fill"
           objectFit="contain"
           className="absolute"
-          alt="client pic"
+          alt="client picture"
         />
       </div>
     </EditPopover>

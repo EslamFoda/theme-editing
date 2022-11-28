@@ -44,6 +44,7 @@ const Design5 = ({
                       layout="fill"
                       objectFit="contain"
                       className="absolute"
+                      alt="client picture"
                     />
                   </div>
                 </div>

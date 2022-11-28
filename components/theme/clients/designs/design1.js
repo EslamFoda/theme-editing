@@ -50,6 +50,7 @@ const Design1 = ({
                   layout="fill"
                   objectFit="contain"
                   className="absolute"
+                  alt="client picture"
                 />
               </div>
             ))}
