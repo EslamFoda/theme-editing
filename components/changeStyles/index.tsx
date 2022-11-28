@@ -3,6 +3,8 @@ import ColorPalettes from "./colorPallates";
 import AllFonts from "./allFonts";
 import AllEffects from "./allEffects";
 import CloseEditor from "../mainEditor/common/closeEditor";
+import { doc } from "firebase/firestore";
+import { db } from "../../utlis/firebase";
 const ChangeStyles = ({
   currentEffect,
   setCurrentEffect,
@@ -19,6 +21,7 @@ const ChangeStyles = ({
   setCurrentFont,
   themeId,
 }) => {
+  const docRef = doc(db, "themes", themeId);
   return (
     <div className="bg-[#26313f] flex px-5 relative">
       <Bar
@@ -33,6 +36,7 @@ const ChangeStyles = ({
             return (
               <ColorPalettes
                 key={i}
+                // docRef={docRef}
                 allPaltes
                 color={color}
                 colors={colors}

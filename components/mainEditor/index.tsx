@@ -17,6 +17,8 @@ import ChangeImgs from "../changeImgs";
 import ChangeStyles from "../changeStyles";
 import CloseEditor from "./common/closeEditor";
 import useMainData from "../../hooks/useMainData";
+import { doc, setDoc, updateDoc } from "firebase/firestore";
+import { db } from "../../utlis/firebase";
 
 const colors = [
   "Captain-Green",
@@ -83,6 +85,8 @@ const MainEditor = () => {
     stylesEditing,
     themeId,
     selectSection,
+    themeColor,themeFont
+    // currentColor,
   } = useMainData();
   // const [themeId, setThemeId] = useState(null);
   // const [nextIndex, setNextIndex] = useState(null);
@@ -156,12 +160,25 @@ const MainEditor = () => {
   //     });
   //   });
   // }, []);
+
+  useEffect(() => {
+    if (themeId) {
+      const docRef = doc(db, "themes", themeId);
+      setDoc(
+        docRef,
+        {
+          themeColor: currentColor,
+          themeFont: currentFont,
+        },
+        {
+          merge: true,
+        }
+      ).then(() => console.log("Document updated"));
+    }
+  }, [currentColor,currentFont]);
   return (
     <div
-      className={[
-        currentColor && `theme-${currentColor}`,
-        mode && `theme-${mode}`,
-      ]
+      className={[themeColor && `theme-${themeColor}`, mode && `theme-${mode}`]
         .filter(Boolean)
         .join(" ")}
     >
@@ -246,7 +263,7 @@ const MainEditor = () => {
       <div
         className={[
           `font font-choosedFont`,
-          currentFont && `fontName-${currentFont}`,
+          themeFont && `fontName-${themeFont}`,
         ]
           .filter(Boolean)
           .join(" ")}

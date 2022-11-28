@@ -16,6 +16,8 @@ const useMainData = () => {
   const [addSection, setAddSection] = useState(null);
   const [editSections, setEditSections] = useState(null);
   const [selectSection, setSelectSection] = useState(null);
+  const [themeColor, setThemeColor] = useState(null);
+  const [themeFont, setThemeFont] = useState(null);
 
   useEffect(
     () =>
@@ -35,6 +37,8 @@ const useMainData = () => {
           setAddSection(doc.data().addSection);
           setEditSections(doc.data().editSections);
           setSelectSection(doc.data().selectSection);
+          setThemeColor(doc.data().themeColor);
+          setThemeFont(doc.data().themeFont);
         });
       }),
     []
@@ -54,7 +58,9 @@ const useMainData = () => {
     stylesEditing,
     editSections,
     addSection,
-    selectSection
+    selectSection,
+    themeColor,
+    themeFont,
   };
 };
 
