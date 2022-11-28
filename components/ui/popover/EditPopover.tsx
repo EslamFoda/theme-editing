@@ -13,7 +13,7 @@ export function EditPopover({
   editImage = false,
   compIndex,
   themeData = undefined,
-  comps,
+  comps = undefined,
 }) {
   const { editSections } = useMainData();
 
