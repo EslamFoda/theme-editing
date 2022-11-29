@@ -42,7 +42,7 @@ const EditBackground = ({ setColor, backgroundColor }) => {
           ),
         })
       : null;
-  }, [backgroundColor, rgbaToHex]);
+  }, []);
 
   const handleReset = () => {
     setCurretColor({
