@@ -182,7 +182,7 @@ const MainEditor = () => {
         .filter(Boolean)
         .join(" ")}
     >
-      <div className="sticky top-0 right-0 z-50">
+      {/* <div className="sticky top-0 right-0 z-50">
         {themeId && (
           <ActionNavBar
             editSections={editSections}
@@ -259,7 +259,7 @@ const MainEditor = () => {
             themeId={themeId}
           />
         ) : null}
-      </div>
+      </div> */}
       <div
         className={[
           `font font-choosedFont`,
