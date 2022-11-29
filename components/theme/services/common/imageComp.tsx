@@ -5,6 +5,7 @@ import cn from "clsx";
 import { useSelector } from "react-redux";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../../../utlis/firebase";
+import useMainData from "../../../../hooks/useMainData";
 
 interface Props {
   image: string;
@@ -24,7 +25,7 @@ const ImageComp: FC<Props> = ({
   themeData,
 }) => {
   const [open, setOpen] = useState(false);
-  const editSections = useSelector((state: any) => state.editSections.value);
+  const {editSections } = useMainData()
   const rootClassName = cn("h-72 w-full relative", {
     "hover:outline hover:outline-solid outline-[#23cba5]": editSections,
     "hover:outline-none": design === "design4",
