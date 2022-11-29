@@ -17,7 +17,7 @@ import ChangeImgs from "../changeImgs";
 import ChangeStyles from "../changeStyles";
 import CloseEditor from "./common/closeEditor";
 import useMainData from "../../hooks/useMainData";
-import { doc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../utlis/firebase";
 
 const colors = [
@@ -85,7 +85,8 @@ const MainEditor = () => {
     stylesEditing,
     themeId,
     selectSection,
-    themeColor,themeFont
+    themeColor,
+    themeFont,
     // currentColor,
   } = useMainData();
   // const [themeId, setThemeId] = useState(null);
@@ -175,7 +176,7 @@ const MainEditor = () => {
         }
       ).then(() => console.log("Document updated"));
     }
-  }, [currentColor,currentFont,themeId]);
+  }, [currentColor, currentFont, themeId]);
   return (
     <div
       className={[themeColor && `theme-${themeColor}`, mode && `theme-${mode}`]
