@@ -4,8 +4,10 @@ import useCloseEditorfrom from "../../../hooks/useCloseEditor";
 // import { selectCompName } from "../../../features/comp-name";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { updateDoc } from "firebase/firestore";
+import { useRouter } from 'next/router'
 
 const ControlBtns = ({ i, comp, comps, id, themeData }) => {
+  const {push} = useRouter()
   const dispatch = useDispatch();
   const { handleCloseEditor } = useCloseEditorfrom();
   const moveInArray = async (arr, from, to, compsName) => {
@@ -47,7 +49,7 @@ const ControlBtns = ({ i, comp, comps, id, themeData }) => {
             moveInArray(comps, i, i - 1, compName);
             const element = document.getElementById(id);
             if (element) {
-              element.previousElementSibling.style.scrollMargin = "67px";
+              // element.previousElementSibling.style.scrollMargin = "67px";
               element.previousElementSibling.scrollIntoView({
                 behavior: "smooth",
               });
