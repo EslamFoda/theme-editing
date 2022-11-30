@@ -41,7 +41,7 @@ const useMainData = () => {
           setThemeFont(doc.data().themeFont);
         });
       }),
-    [editSections]
+    []
   );
 
   return {

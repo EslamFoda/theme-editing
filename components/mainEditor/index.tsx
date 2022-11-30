@@ -114,7 +114,6 @@ const MainEditor = () => {
           themeId={themeId}
           animate={currentEffect}
           comps={comps}
-          containerWidth={containerWidth}
         />
       </div>
     </div>

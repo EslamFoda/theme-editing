@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Preview from "./common/preview";
 const MainContainer = ({
-  containerWidth,
   comps,
   animate,
   themeId,
@@ -17,7 +16,6 @@ const MainContainer = ({
         <Preview
           animate={animate}
           comps={comps}
-          containerWidth={containerWidth}
           device={device}
           editSections={editSections}
           themeId={themeId}
