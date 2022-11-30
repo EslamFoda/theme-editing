@@ -1,16 +1,7 @@
-import { useSelector, useDispatch } from "react-redux";
-import { selectCompName } from "../../features/comp-name";
-import { addSectionTurnOff } from "../../features/edit-sections";
-import { getNextIndex } from "../../features/add-section";
+import { useSelector } from "react-redux";
+
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { closeColors } from "../../features/colors";
-import { editImgOff } from "../../features/edit-image";
-import { filesOff } from "../../features/my-files";
-import {
-  editEffectsOff,
-  fontEditOff,
-  stylesEditorOff,
-} from "../../features/stylesEditing";
+
 import { updateDoc } from "firebase/firestore";
 import useMainData from "../../hooks/useMainData";
 const ChangeSection = ({
@@ -24,12 +15,8 @@ const ChangeSection = ({
 }) => {
   const { editSections } = useMainData();
   const device = useSelector((state) => state.mainWidth.device);
-  const dispatch = useDispatch();
 
   const handlePrev = async () => {
-    // dispatch(selectCompName(compName));
-    // dispatch(getNextIndex(index));
-
     if (designNum >= 2) {
       const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
       comps[objectIndex].designNum -= 1;
@@ -46,18 +33,9 @@ const ChangeSection = ({
         stylesEditing: false,
       });
     }
-    // dispatch(addSectionTurnOff());
-    // dispatch(closeColors());
-    // dispatch(editImgOff());
-    // dispatch(editEffectsOff());
-    // dispatch(fontEditOff());
-    // dispatch(stylesEditorOff());
-    // dispatch(filesOff());
   };
 
   const handleNext = async () => {
-    // dispatch(selectCompName(compName));
-    // dispatch(getNextIndex(index));
     if (designNum <= 4) {
       const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
       comps[objectIndex].designNum += 1;
@@ -74,14 +52,6 @@ const ChangeSection = ({
         stylesEditing: false,
       });
     }
-
-    // dispatch(addSectionTurnOff());
-    // dispatch(closeColors());
-    // dispatch(editImgOff());
-    // dispatch(editEffectsOff());
-    // dispatch(fontEditOff());
-    // dispatch(filesOff());
-    // dispatch(stylesEditorOff());
   };
 
   return (

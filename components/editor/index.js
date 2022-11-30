@@ -1,10 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Editor } from "@tinymce/tinymce-react";
-import { useSelector } from "react-redux";
 import parse from "html-react-parser";
 import useCloseEditor from "../../hooks/useCloseEditor";
-import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../../utlis/firebase";
 import useMainData from "../../hooks/useMainData";
 const EditorComp = ({
   initialValue,

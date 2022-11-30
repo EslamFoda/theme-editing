@@ -1,10 +1,6 @@
 import EditItem from "../../editItem";
 import EditImg from "../../edit/editImg";
-import { useSelector } from "react-redux";
-import { useState, useEffect } from "react";
 import * as HoverCard from "@radix-ui/react-hover-card";
-import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../../../utlis/firebase";
 import useMainData from "../../../hooks/useMainData";
 export function EditPopover({
   children,

@@ -8,7 +8,6 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import EditBackground from "../../mainContainer/common/editBackground";
 import useBgColor from "../../../hooks/useBgColor";
-import useCloseEditorfrom from "../../../hooks/useCloseEditor";
 import { updateDoc } from "firebase/firestore";
 
 const MainClients = ({
@@ -24,7 +23,6 @@ const MainClients = ({
   const { compName, designNum, compData, backgroundColor } = comp;
   const { handleReset, setColor } = useBgColor(index, comps, themeData);
 
-  const { handleCloseEditor } = useCloseEditorfrom();
 
   const designs = {
     design1: Design1,
@@ -54,7 +52,7 @@ const MainClients = ({
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
-      <div onClick={handleCloseEditor} data-aos={animate}>
+      <div  data-aos={animate}>
         <ClientsComp
           compIndex={index}
           device={device}

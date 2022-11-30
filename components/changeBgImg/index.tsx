@@ -1,15 +1,6 @@
 import { IoImagesOutline } from "react-icons/io5";
-import { useDispatch, useSelector } from "react-redux";
-import { closeColors } from "../../features/colors";
 import { FC } from "react";
-import { selectCompName } from "../../features/comp-name";
-import {
-  editImgOn,
-  getCompIndex,
-  getItemIndex,
-} from "../../features/edit-image";
-import { addSectionTurnOff } from "../../features/edit-sections";
-import { filesOff } from "../../features/my-files";
+
 import { updateDoc } from "firebase/firestore";
 
 interface Props {
@@ -25,8 +16,6 @@ const ChangeBgImg: FC<Props> = ({
   themeData,
   editSections,
 }) => {
-  // const editSections = useSelector((state: any) => state.editSections.value);
-  const dispatch = useDispatch();
   const handleChangeImg = async () => {
     if (index) {
       await updateDoc(themeData, {
@@ -38,13 +27,6 @@ const ChangeBgImg: FC<Props> = ({
         addSection: false,
         colorsEdit: false,
       });
-      // dispatch(editImgOn());
-      // dispatch(getCompIndex(compIndex));
-      // dispatch(getItemIndex(index));
-      // dispatch(addSectionTurnOff());
-      // dispatch(selectCompName(""));
-      // dispatch(closeColors());
-      // dispatch(filesOff());
     } else {
       await updateDoc(themeData, {
         nextIndex: compIndex,
@@ -54,13 +36,6 @@ const ChangeBgImg: FC<Props> = ({
         addSection: false,
         colorsEdit: false,
       });
-      // dispatch(editImgOn());
-      // dispatch(getCompIndex(compIndex));
-      // dispatch(getItemIndex(index));
-      // dispatch(addSectionTurnOff());
-      // dispatch(selectCompName(""));
-      // dispatch(closeColors());
-      // dispatch(filesOff());
     }
   };
 

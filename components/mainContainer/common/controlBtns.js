@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { getNextIndex } from "../../../features/add-section";
 import useCloseEditorfrom from "../../../hooks/useCloseEditor";
-// import { selectCompName } from "../../../features/comp-name";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { updateDoc } from "firebase/firestore";
 

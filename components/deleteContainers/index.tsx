@@ -1,10 +1,8 @@
 import { TfiTrash } from "react-icons/tfi";
-import { useContext, useState } from "react";
-import { CompsContext } from "../../context/compsContext";
+import { useState } from "react";
 import useCloseEditor from "../../hooks/useCloseEditor";
 import { updateDoc } from "firebase/firestore";
-const DeleteContainers = ({ index, themeData,comps }) => {
-  // const { comps, setComps } = useContext(CompsContext);
+const DeleteContainers = ({ index, themeData, comps }) => {
   const [overlay, setOverlay] = useState(false);
   const { handleCloseEditor } = useCloseEditor();
   const handleDeleteSection = async () => {
@@ -12,7 +10,6 @@ const DeleteContainers = ({ index, themeData,comps }) => {
     await updateDoc(themeData, {
       allSections: [...removedSection],
     });
-    // setComps([...removedSection]);
     handleCloseEditor();
   };
   const openOverlay = () => {

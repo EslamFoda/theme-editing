@@ -1,8 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import DragAndDrop from "./common/dragAndDrop";
 import Preview from "./common/preview";
-import Editable from "./common/editable";
 const MainContainer = ({
   containerWidth,
   comps,
