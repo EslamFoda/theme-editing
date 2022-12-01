@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import MainContainer from "../mainContainer";
-import { useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import { useStickyState } from "../../hooks/useStickyState";
 import useMainData from "../../hooks/useMainData";
 import { doc, setDoc } from "firebase/firestore";
@@ -55,14 +55,8 @@ const effects = ["no-animation", "fade-up", "zoom-in-up", "flip-up"];
 
 const modes = ["light", "dark"];
 
-const MainEditor = () => {
-  const {
-    comps,
-    editSections,
-    themeId,
-    themeColor,
-    themeFont,
-  } = useMainData();
+const MainEditor = ({ id }) => {
+  const { comps, editSections, themeId, themeColor, themeFont } = useMainData();
 
   const [currentColor, setCurrentColor] = useStickyState(
     colors[0],
@@ -75,32 +69,28 @@ const MainEditor = () => {
   const [currentFont, setCurrentFont] = useStickyState(fonts[0], "theme-font");
   const [mode, setMode] = useStickyState(modes[0], "theme-mode");
 
- 
   const containerWidth = useSelector((state: any) => state.mainWidth.width);
-
+  const docRef = doc(db, "themes", id);
 
   useEffect(() => {
-    if (themeId) {
-      const docRef = doc(db, "themes", themeId);
-      setDoc(
-        docRef,
-        {
-          themeColor: currentColor,
-          themeFont: currentFont,
-        },
-        {
-          merge: true,
-        }
-      ).then(() => console.log("Document updated"));
-    }
+    setDoc(
+      docRef,
+      {
+        themeColor: currentColor,
+        themeFont: currentFont,
+      },
+      {
+        merge: true,
+      }
+    ).then(() => console.log("Document updated"));
   }, [currentColor, currentFont, themeId]);
+
   return (
     <div
       className={[themeColor && `theme-${themeColor}`, mode && `theme-light`]
         .filter(Boolean)
         .join(" ")}
     >
-     
       <div
         className={[
           `font font-choosedFont`,
