@@ -5,7 +5,9 @@ const website = () => {
     query: { id },
   } = useRouter();
 
-  return <> {id && <MainEditor  id={id}/>}</>;
+  return <> 
+  {/* {id && <MainEditor  id={id}/>} */}
+  </>;
 };
 
 export default website;
