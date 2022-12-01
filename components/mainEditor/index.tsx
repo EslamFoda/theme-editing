@@ -1,11 +1,9 @@
 import React from "react";
-import { useEffect } from "react";
 import MainContainer from "../mainContainer";
 import { useSelector } from "react-redux";
 import { useStickyState } from "../../hooks/useStickyState";
 import useMainData from "../../hooks/useMainData";
-import { doc, setDoc } from "firebase/firestore";
-import { db } from "../../utlis/firebase";
+
 
 const colors = [
   "Captain-Green",
@@ -70,7 +68,7 @@ const MainEditor = ({ id }) => {
   const [mode, setMode] = useStickyState(modes[0], "theme-mode");
 
   const containerWidth = useSelector((state: any) => state.mainWidth.width);
-  const docRef = doc(db, "themes", id);
+  // const docRef = doc(db, "themes", id);
 
   // useEffect(() => {
   //   setDoc(
