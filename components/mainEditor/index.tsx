@@ -72,18 +72,18 @@ const MainEditor = ({ id }) => {
   const containerWidth = useSelector((state: any) => state.mainWidth.width);
   const docRef = doc(db, "themes", id);
 
-  useEffect(() => {
-    setDoc(
-      docRef,
-      {
-        themeColor: currentColor,
-        themeFont: currentFont,
-      },
-      {
-        merge: true,
-      }
-    ).then(() => console.log("Document updated"));
-  }, [currentColor, currentFont, themeId]);
+  // useEffect(() => {
+  //   setDoc(
+  //     docRef,
+  //     {
+  //       themeColor: currentColor,
+  //       themeFont: currentFont,
+  //     },
+  //     {
+  //       merge: true,
+  //     }
+  //   ).then(() => console.log("Document updated"));
+  // }, [currentColor, currentFont, themeId]);
 
   return (
     <div
