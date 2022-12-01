@@ -1,13 +1,12 @@
 import MainEditor from "../../components/mainEditor";
 import { useRouter } from "next/router";
-const website = () => {
+const Website = () => {
   const {
     query: { id },
   } = useRouter();
 
   return <> 
-  {/* {id && <MainEditor  id={id}/>} */}
-  </>;
+  {id && <MainEditor  id={id}/>}</>;
 };
 
-export default website;
+export default Website;
