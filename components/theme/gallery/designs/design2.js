@@ -92,6 +92,7 @@ const Design2 = ({
                       className="relative hover:shadow-custom transition-all lg:h-60 md:h-52 h-32 w-full"
                     >
                       <ImageComp
+                        compIndex={compIndex}
                         themeData={themeData}
                         image={gallery.pic}
                         index={index}

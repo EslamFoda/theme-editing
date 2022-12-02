@@ -25,29 +25,18 @@ const ImageComp: FC<Props> = ({
   themeData,
 }) => {
   const [open, setOpen] = useState(false);
-  const {editSections } = useMainData()
+  const { editSections } = useMainData();
   const rootClassName = cn("h-72 w-full relative", {
     "hover:outline hover:outline-solid outline-[#23cba5]": editSections,
     "hover:outline-none": design === "design4",
   });
-  const [comps, setComps] = useState(null);
-  const [nextIndex, setNextIndex] = useState(null);
-  const [itemIndex, setItemIndex] = useState(null);
-  useEffect(() => {
-    onSnapshot(collection(db, "themes"), (snapshot) => {
-      snapshot.docs.forEach((doc) => {
-        setComps(doc.data().allSections);
-        setNextIndex(doc.data().nextIndex);
-        setItemIndex(doc.data().itemIndex);
-      });
-    });
-  }, []);
+  const { itemIndex, comps } = useMainData();
 
   return (
     <div className={rootClassName}>
       {open ? (
         <ImageEditor
-          compIndex={nextIndex}
+          compIndex={compIndex}
           itemIndex={itemIndex}
           themeData={themeData}
           image={image}
@@ -74,7 +63,6 @@ const ImageComp: FC<Props> = ({
           ) : null}
           {editSections ? (
             <EditImgPopover
-              comps={comps}
               themeData={themeData}
               compIndex={compIndex}
               index={index}

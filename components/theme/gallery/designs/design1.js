@@ -16,6 +16,7 @@ const Design1 = ({
   comp,
   themeData,
   comps,
+  compIndex,
 }) => {
   const gridClassName = cn(
     "grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
@@ -23,6 +24,7 @@ const Design1 = ({
       "!grid-cols-1": device === "mobile",
     }
   );
+
   return (
     <>
       {choose ? (
@@ -77,6 +79,7 @@ const Design1 = ({
                   >
                     <div className="relative hover:shadow-custom transition-all h-80 w-full">
                       <ImageComp
+                        compIndex={compIndex}
                         themeData={themeData}
                         image={gallery.pic}
                         index={index}

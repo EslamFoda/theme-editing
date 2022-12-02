@@ -89,6 +89,7 @@ const Design5 = ({
                       className="relative lg:h-60 md:h-52 h-52 w-full"
                     >
                       <ImageComp
+                        compIndex={compIndex}
                         design="design5"
                         themeData={themeData}
                         image={gallery.pic}

@@ -1,23 +1,9 @@
 import { useRef } from "react";
 import * as Popover from "@radix-ui/react-popover";
 import { HiCamera } from "react-icons/hi";
-import { useDispatch } from "react-redux";
 import cn from "clsx";
-import {
-  editImgOn,
-  getCompIndex,
-  getItemIndex,
-} from "../../../features/edit-image";
-import { addSectionTurnOff } from "../../../features/edit-sections";
-import { selectCompName } from "../../../features/comp-name";
-import { closeColors } from "../../../features/colors";
-import { filesOff } from "../../../features/my-files";
 import { MdPublishedWithChanges } from "react-icons/md";
 import { BiCrop } from "react-icons/bi";
-import {
-  editEffectsOff,
-  stylesEditorOff,
-} from "../../../features/stylesEditing";
 import { updateDoc } from "firebase/firestore";
 
 const EditImgPopover = ({
@@ -26,9 +12,7 @@ const EditImgPopover = ({
   setOpen,
   iconPosition = "left",
   themeData,
-  comps,
 }) => {
-  const dispatch = useDispatch();
   const btn = useRef(null);
   const handleChangeImg = async () => {
     if (index) {
@@ -36,57 +20,59 @@ const EditImgPopover = ({
         itemIndex: index,
         nextIndex: compIndex,
         editImg: true,
-        compName:"",
-        editFiles:false
+        compName: "",
+        editFiles: false,
+        addSection: false,
+        colorsEdit: false,
+        editEffects: false,
+        fontEdit: false,
+        stylesEditor: false,
       });
     } else {
       await updateDoc(themeData, {
         itemIndex: "",
         nextIndex: compIndex,
         editImg: true,
-        compName:"",
-        editFiles:false
+        compName: "",
+        editFiles: false,
+        addSection: false,
+        colorsEdit: false,
+        editEffects: false,
+        fontEdit: false,
+        stylesEditor: false,
       });
     }
-    // dispatch(editImgOn());
-    // dispatch(getCompIndex(compIndex));
-    // dispatch(getItemIndex(index));
-    dispatch(addSectionTurnOff());
-    // dispatch(selectCompName(""));
-    dispatch(closeColors());
-    // dispatch(filesOff());
-    dispatch(editEffectsOff());
-    dispatch(stylesEditorOff());
   };
-  const handleOpenCrop = async()=>{
+  const handleOpenCrop = async () => {
     setOpen(true);
-    if (index) {
+    if (index || index === 0) {
       await updateDoc(themeData, {
         itemIndex: index,
         nextIndex: compIndex,
         editImg: false,
-        compName:"",
-        editFiles:false
+        compName: "",
+        editFiles: false,
+        addSection: false,
+        colorsEdit: false,
+        editEffects: false,
+        fontEdit: false,
+        stylesEditor: false,
       });
     } else {
       await updateDoc(themeData, {
         itemIndex: "",
         nextIndex: compIndex,
         editImg: false,
-        compName:"",
-        editFiles:false
+        compName: "",
+        editFiles: false,
+        addSection: false,
+        colorsEdit: false,
+        editEffects: false,
+        fontEdit: false,
+        stylesEditor: false,
       });
     }
-    // dispatch(editImgOff());
-    // dispatch(getCompIndex(compIndex));
-    // dispatch(getItemIndex(index));
-    dispatch(addSectionTurnOff());
-    // dispatch(selectCompName(""));
-    dispatch(closeColors());
-    // dispatch(filesOff());
-    dispatch(editEffectsOff());
-    dispatch(stylesEditorOff());
-  }
+  };
   const cameraBtnClass = cn("absolute camera-icon  top-4", {
     "left-4": iconPosition === "left",
     "right-4": iconPosition === "right",

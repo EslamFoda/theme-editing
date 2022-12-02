@@ -58,6 +58,7 @@ const Design4 = ({ device, choose, handleEdit, galleryData, comp,compIndex,theme
                     themeData={themeData} comp={comp} index={index}>
                     <div className="relative hover:shadow-custom transition-all lg:h-screen md:h-52 h-32 w-full">
                        <ImageComp
+                       compIndex={compIndex}
                         themeData={themeData}
                         image={gallery.pic}
                         index={index}
