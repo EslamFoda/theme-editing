@@ -37,7 +37,7 @@ const ImageComp: FC<Props> = ({
       {open ? (
         <ImageEditor
           compIndex={compIndex}
-          itemIndex={itemIndex}
+          itemIndex={index}
           themeData={themeData}
           image={image}
           setOpen={setOpen}
