@@ -33,7 +33,7 @@ const ImageComp: FC<Props> = ({
     <div className={rootClassName}>
       {open ? (
         <ImageEditor
-          itemIndex={itemIndex}
+          itemIndex={index}
           compIndex={compIndex}
           themeData={themeData}
           comps={comps}

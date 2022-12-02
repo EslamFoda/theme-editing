@@ -15,7 +15,8 @@ const EditImgPopover = ({
 }) => {
   const btn = useRef(null);
   const handleChangeImg = async () => {
-    if (index) {
+    console.log(compIndex, index);
+    if (index || index === 0) {
       await updateDoc(themeData, {
         itemIndex: index,
         nextIndex: compIndex,
