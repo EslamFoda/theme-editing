@@ -1,91 +1,14 @@
 import React from "react";
 import MainContainer from "../mainContainer";
-import { useSelector } from "react-redux";
-import { useStickyState } from "../../hooks/useStickyState";
 import useMainData from "../../hooks/useMainData";
 
-
-const colors = [
-  "Captain-Green",
-  "Masr",
-  "Egyption-Blue",
-  "Custard-With-Mustard",
-  "Ron-Burgundy",
-  "Baby-Blue",
-  "Black-Panther",
-  "Blue-Sky",
-  "Barbie-Girl",
-  "Juice-Box",
-  "Rose-Flower",
-  "Teal",
-  "Emerald",
-  "Indigo",
-  "Violet",
-  "Gray",
-  "Lime",
-];
-
-const fonts = [
-  "sans",
-  "Poppins",
-  "Tillana",
-  "Montserrat",
-  "rubek",
-  "hind",
-  "Saira",
-  "Roboto",
-  "Amatic",
-  "Bangers",
-  "Kdam",
-  "Krub",
-  "Lato",
-  "Lora",
-  "Nerko",
-  "Roboto",
-  "Roboto-Mono",
-  "Ropa-Sans",
-  "Russo-One",
-  "Saira-Condensed",
-  "Secular-One",
-];
-
-const effects = ["no-animation", "fade-up", "zoom-in-up", "flip-up"];
-
-const modes = ["light", "dark"];
-
 const MainEditor = ({ id }) => {
-  const { comps, editSections, themeId, themeColor, themeFont } = useMainData();
-
-  const [currentColor, setCurrentColor] = useStickyState(
-    colors[0],
-    "theme-color"
-  );
-  const [currentEffect, setCurrentEffect] = useStickyState(
-    effects[0],
-    "theme-effects"
-  );
-  const [currentFont, setCurrentFont] = useStickyState(fonts[0], "theme-font");
-  const [mode, setMode] = useStickyState(modes[0], "theme-mode");
-
-  const containerWidth = useSelector((state: any) => state.mainWidth.width);
-  // const docRef = doc(db, "themes", id);
-
-  // useEffect(() => {
-  //   setDoc(
-  //     docRef,
-  //     {
-  //       themeColor: currentColor,
-  //       themeFont: currentFont,
-  //     },
-  //     {
-  //       merge: true,
-  //     }
-  //   ).then(() => console.log("Document updated"));
-  // }, [currentColor, currentFont, themeId]);
+  const { comps, editSections, themeId, themeColor, themeFont, themeEffect } =
+    useMainData();
 
   return (
     <div
-      className={[themeColor && `theme-${themeColor}`, mode && `theme-light`]
+      className={[themeColor && `theme-${themeColor}`, `theme-light`]
         .filter(Boolean)
         .join(" ")}
     >
@@ -100,7 +23,7 @@ const MainEditor = ({ id }) => {
         <MainContainer
           editSections={editSections}
           themeId={themeId}
-          animate={currentEffect}
+          animate={themeEffect}
           comps={comps}
         />
       </div>

@@ -24,8 +24,10 @@ const useMainData = () => {
   const [selectSection, setSelectSection] = useState(null);
   const [themeColor, setThemeColor] = useState(null);
   const [themeFont, setThemeFont] = useState(null);
+  const [themeEffect, setThemeEffect] = useState(null);
 
   const docRef = doc(db, "themes", id);
+
   useEffect(() => {
     const unsub = onSnapshot(docRef, (doc) => {
       setNextIndex(doc.data().nextIndex);
@@ -43,6 +45,7 @@ const useMainData = () => {
       setSelectSection(doc.data().selectSection);
       setThemeColor(doc.data().themeColor);
       setThemeFont(doc.data().themeFont);
+      setThemeEffect(doc.data().themeEffect);
     });
     return () => unsub();
   }, [id]);
@@ -64,6 +67,7 @@ const useMainData = () => {
     selectSection,
     themeColor,
     themeFont,
+    themeEffect,
   };
 };
 
