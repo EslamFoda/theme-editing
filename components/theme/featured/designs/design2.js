@@ -10,13 +10,16 @@ import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 import { EditPopover } from "../../../ui/popover/EditPopover";
+import Test2popver from "../../../ui/popover/Test2popver";
 const Design2 = ({
   choose = false,
   device,
   featuredData,
   handleMultiEdit,
   comp,
-  icons,comps,themeData
+  icons,
+  comps,
+  themeData,
 }) => {
   const data = [
     {
@@ -104,7 +107,13 @@ const Design2 = ({
                 const IconComp = icons[card.icon];
                 return (
                   <div key={card.id}>
-                    <EditPopover themeData={themeData} comps={comps} comp={comp} index={index}>
+                    {/* <EditPopover themeData={themeData} comps={comps} comp={comp} index={index}> */}
+                    <Test2popver
+                      themeData={themeData}
+                      comps={comps}
+                      comp={comp}
+                      index={index}
+                    >
                       <div className="p-4 flex border border-solid border-gray-border rounded-lg flex-col space-y-5 items-start  ">
                         <div className="flex gap-2">
                           <div className="w-8 h-8 min-w-max bg-primaryBg rounded-full flex justify-center items-center">
@@ -136,7 +145,8 @@ const Design2 = ({
                           />
                         </Button>
                       </div>
-                    </EditPopover>
+                    </Test2popver>
+                    {/* </EditPopover> */}
                   </div>
                 );
               })}

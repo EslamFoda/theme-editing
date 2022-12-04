@@ -2,6 +2,8 @@ import EditItem from "../../editItem";
 import EditImg from "../../edit/editImg";
 import * as HoverCard from "@radix-ui/react-hover-card";
 import useMainData from "../../../hooks/useMainData";
+import { useState, useEffect } from "react";
+import { Popover } from '@headlessui/react'
 export function EditPopover({
   children,
   index,
@@ -12,10 +14,19 @@ export function EditPopover({
   comps = undefined,
 }) {
   const { editSections } = useMainData();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <HoverCard.Root openDelay={0} closeDelay={250}>
+      <HoverCard.Root
+        open={isOpen}
+        onOpenChange={(e) => {
+          setIsOpen(e);
+          console.log(e);
+        }}
+        openDelay={0}
+        closeDelay={250}
+      >
         <HoverCard.Trigger
           className={`${
             editSections

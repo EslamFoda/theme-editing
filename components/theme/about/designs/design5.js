@@ -60,7 +60,7 @@ const Design5 = ({
                   />
                 </Button>
                 <div className="h-96 lg:w-full">
-                  <ImageComp
+                  <Imag   eComp
                     themeData={themeData}
                     comps={comps}
                     comp={comp}
