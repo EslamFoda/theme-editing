@@ -1,14 +1,9 @@
 import Container from "../../../ui/container";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
-import cn from "clsx";
 import UserPic from "./common/userPic";
-import TestiGridData from "./common/testiGridData";
-import Title from "./common/title";
-import SubTitle from "./common/subTitle";
+
 const Design1 = ({
-  device,
-  choose,
   testiData,
   handleMultiEdit,
   handleEdit,
@@ -17,25 +12,10 @@ const Design1 = ({
   compIndex,
   themeData,comps
 }) => {
-  const gridClassName = cn(
-    "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
-    {
-      "!grid-cols-1": device === "mobile",
-    }
-  );
+
   return (
     <>
-      {choose ? (
-        <div>
-          <Container className="p-1">
-            <div className="text-center space-y-1 mb-4">
-              <Title />
-              <SubTitle />
-            </div>
-            <TestiGridData />
-          </Container>
-        </div>
-      ) : (
+    
         <div>
           <Container className="py-16">
             <div className="text-center space-y-4 mb-16">
@@ -88,7 +68,6 @@ const Design1 = ({
             </div>
           </Container>
         </div>
-      )}
     </>
   );
 };

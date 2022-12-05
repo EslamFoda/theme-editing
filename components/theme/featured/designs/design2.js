@@ -5,7 +5,6 @@ import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 const Design2 = ({
-  device,
   featuredData,
   handleMultiEdit,
   comp,
@@ -14,11 +13,7 @@ const Design2 = ({
   themeData,
 }) => {
   const gridClassName = cn(
-    "py-16 grid lg:grid-cols-3  sm:grid-cols-2   grid-cols-1 md:grid-cols-2 gap-4",
-    {
-      "!grid-cols-1": device === "mobile",
-      "!grid-cols-2": device === "tablet",
-    }
+    "py-16 grid lg:grid-cols-3  sm:grid-cols-2   grid-cols-1 md:grid-cols-2 gap-4"
   );
 
   return (

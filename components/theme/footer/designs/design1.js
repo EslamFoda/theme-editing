@@ -1,27 +1,17 @@
 import React from "react";
 import Container from "../../../ui/container";
-import cn from "clsx";
 import EditorComp from "../../../editor";
-import { useState } from "react";
 
 const Design1 = ({
-  device,
-  choose = false,
   footerData,
   handleEdit,
   compIndex,
   comp,
 }) => {
-  const rootClassName = cn("", {
-    "bg-black": device === "mobile",
-    "bg-blue-500": device === "tablet",
-    "bg-white": device === "desktop",
-  });
+ 
   return (
     <>
-      {choose ? (
-        <div className=""></div>
-      ) : (
+     
         <div>
           <Container className="py-10">
             <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-6 border-b border-solid py-5 border-b-[#96999d]">
@@ -70,7 +60,6 @@ const Design1 = ({
             </div>
           </Container>
         </div>
-      )}
     </>
   );
 };
