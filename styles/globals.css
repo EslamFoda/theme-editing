@@ -81,7 +81,7 @@ html {
   --color-primary-900: theme("colors.blue.900");
 }
 
-.theme-Custard-With-Mustard {
+.theme-Custard-Mustard {
   --color-primary-50: theme("colors.yellow.50");
   --color-primary-100: theme("colors.yellow.100");
   --color-primary-200: theme("colors.yellow.200");
