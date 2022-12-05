@@ -48,7 +48,7 @@ const useMainData = () => {
       setThemeEffect(doc.data().themeEffect);
     });
     return () => unsub();
-  }, [id, editSections]);
+  }, [id]);
 
   return {
     comps,
