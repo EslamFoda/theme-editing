@@ -1,8 +1,11 @@
-import EditItem from "../../editItem";
-import EditImg from "../../edit/editImg";
+// import EditItem from "../../editItem";
+// import EditImg from "../../edit/editImg";
+import dynamic from "next/dynamic";
 import * as HoverCard from "@radix-ui/react-hover-card";
 import useMainData from "../../../hooks/useMainData";
 import { useState } from "react";
+const EditItem = dynamic(() => import("../../editItem"));
+const EditImg = dynamic(() => import("../../edit/editImg"));
 export function EditPopover({
   children,
   index,

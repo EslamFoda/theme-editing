@@ -3,6 +3,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import parse from "html-react-parser";
 import useCloseEditor from "../../hooks/useCloseEditor";
 import useMainData from "../../hooks/useMainData";
+
 const EditorComp = ({
   initialValue,
   keys,
