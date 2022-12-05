@@ -48,7 +48,25 @@ const useMainData = () => {
       setThemeEffect(doc.data().themeEffect);
     });
     return () => unsub();
-  }, [id]);
+  }, [
+    comps,
+    themeId,
+    nextIndex,
+    itemIndex,
+    compName,
+    editImg,
+    editFiles,
+    fontEdit,
+    editEffects,
+    colorsEdit,
+    stylesEditing,
+    editSections,
+    addSection,
+    selectSection,
+    themeColor,
+    themeFont,
+    themeEffect,
+  ]);
 
   return {
     comps,
