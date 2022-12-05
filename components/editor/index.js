@@ -6,7 +6,7 @@ import useMainData from "../../hooks/useMainData";
 const EditorComp = ({
   initialValue,
   keys,
-  handleEdit,
+  handleEdit = undefined,
   handleMultiEdit = false,
   id = undefined,
 }) => {

@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "components/mainContainer/common/preview.js"  ],
+, "components/mainContainer/common/preview.js", "components/theme/featured/designs/design2.js"  ],
   "exclude": [
     "node_modules"
   ]

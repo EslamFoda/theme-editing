@@ -2,7 +2,7 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { IoDuplicateOutline } from "react-icons/io5";
 import { TfiTrash } from "react-icons/tfi";
 import { updateDoc } from "firebase/firestore";
-const EditItem = ({ index, comp, themeData, comps }) => {
+const EditItem = ({ index, comp, themeData, comps, setIsOpen }) => {
   const lastItem = comp.compData.items.lastIndexOf(
     comp.compData.items[comp.compData.items.length - 1]
   );
@@ -34,6 +34,7 @@ const EditItem = ({ index, comp, themeData, comps }) => {
           allSections: [...comps],
           itemIndex: index + 1,
         });
+        setIsOpen(false);
       },
     },
     {
@@ -47,6 +48,7 @@ const EditItem = ({ index, comp, themeData, comps }) => {
         await updateDoc(themeData, {
           allSections: [...comps],
         });
+        setIsOpen(false);
       },
     },
     {
@@ -60,6 +62,7 @@ const EditItem = ({ index, comp, themeData, comps }) => {
         await updateDoc(themeData, {
           allSections: [...comps],
         });
+        setIsOpen(false);
       },
     },
     {
@@ -71,6 +74,7 @@ const EditItem = ({ index, comp, themeData, comps }) => {
           allSections: [...comps],
           itemIndex: index - 1,
         });
+        setIsOpen(false);
       },
     },
   ];

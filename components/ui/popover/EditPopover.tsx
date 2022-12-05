@@ -2,14 +2,13 @@ import EditItem from "../../editItem";
 import EditImg from "../../edit/editImg";
 import * as HoverCard from "@radix-ui/react-hover-card";
 import useMainData from "../../../hooks/useMainData";
-import { useState, useEffect } from "react";
-import { Popover } from '@headlessui/react'
+import { useState } from "react";
 export function EditPopover({
   children,
   index,
   comp,
   editImage = false,
-  compIndex,
+  compIndex = undefined,
   themeData = undefined,
   comps = undefined,
 }) {
@@ -22,7 +21,6 @@ export function EditPopover({
         open={isOpen}
         onOpenChange={(e) => {
           setIsOpen(e);
-          console.log(e);
         }}
         openDelay={0}
         closeDelay={250}
@@ -59,6 +57,7 @@ export function EditPopover({
                 />
               ) : (
                 <EditItem
+                  setIsOpen={setIsOpen}
                   comps={comps}
                   themeData={themeData}
                   comp={comp}
