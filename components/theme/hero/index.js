@@ -30,7 +30,7 @@ const MainHero = ({
     design7: Design7,
   };
 
-  const HeroComp = designs[`design${7}`];
+  const HeroComp = designs[`design${designNum}`];
 
   const handleEdit = async (value, keys) => {
     const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
