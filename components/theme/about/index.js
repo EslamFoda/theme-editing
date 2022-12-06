@@ -4,6 +4,7 @@ import Design2 from "./designs/design2";
 import Design3 from "./designs/design3";
 import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
+import Design6 from "./designs/design6";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
 import EditBackground from "../../mainContainer/common/editBackground";
@@ -26,6 +27,7 @@ const MainAbout = ({
     design3: Design3,
     design4: Design4,
     design5: Design5,
+    design6: Design6,
   };
   const AboutComp = designs[`design${designNum}`];
   const { setColor, handleReset } = useBgColor(index, comps, themeData);

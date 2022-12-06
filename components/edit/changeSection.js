@@ -1,7 +1,5 @@
 import { useSelector } from "react-redux";
-
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
 import { updateDoc } from "firebase/firestore";
 import useMainData from "../../hooks/useMainData";
 const ChangeSection = ({
@@ -15,9 +13,10 @@ const ChangeSection = ({
 }) => {
   const { editSections } = useMainData();
   const device = useSelector((state) => state.mainWidth.device);
+  const { totalDesigns } = comp;
 
   const handlePrev = async () => {
-    if (designNum >= 2) {
+    if (designNum > 1) {
       const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
       comps[objectIndex].designNum -= 1;
       await updateDoc(themeData, {
@@ -36,7 +35,7 @@ const ChangeSection = ({
   };
 
   const handleNext = async () => {
-    if (designNum <= 4) {
+    if (designNum < totalDesigns) {
       const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
       comps[objectIndex].designNum += 1;
       await updateDoc(themeData, {
