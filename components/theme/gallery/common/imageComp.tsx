@@ -7,7 +7,7 @@ import useMainData from "../../../../hooks/useMainData";
 interface Props {
   image: string;
   index?: number;
-  design?: "design5";
+  design?: "design5" | "design6";
   iconPosition?: "right" | "left";
   themeData: any;
   compIndex: any;
@@ -26,6 +26,7 @@ const ImageComp: FC<Props> = ({
   const rootClassName = cn("h-full w-full relative", {
     "hover:outline hover:outline-solid outline-[#23cba5]": editSections,
     "hover:outline-none": design === "design5",
+    "z-10":design === 'design6'
   });
   const {  itemIndex, comps } = useMainData();
 
