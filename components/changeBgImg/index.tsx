@@ -17,6 +17,7 @@ const ChangeBgImg: FC<Props> = ({
   editSections,
 }) => {
   const handleChangeImg = async () => {
+    console.log(index)
     if (index) {
       await updateDoc(themeData, {
         nextIndex: compIndex,
@@ -30,6 +31,7 @@ const ChangeBgImg: FC<Props> = ({
     } else {
       await updateDoc(themeData, {
         nextIndex: compIndex,
+        itemIndex: "",
         compName: "",
         editImg: true,
         editFiles: false,
