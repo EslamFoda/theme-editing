@@ -39,7 +39,7 @@ const Design1 = ({
                   comp={comp}
                   index={index}
                 >
-                  <div className="w-full space-y-7 p-6  border border-solid border-black ">
+                  <div className="w-full flex flex-col gap-7 p-6  border border-solid border-black ">
                     <EditorComp
                       id={price.id}
                       initialValue={price.title}

@@ -36,7 +36,7 @@ const Design2 = ({
                   comp={comp}
                   index={index}
                 >
-                  <div className={`w-full p-6 space-y-6 text-center`}>
+                  <div className={`flex flex-col justify-center items-center gap-6 p-6  text-center`}>
                     <EditorComp
                       id={price.id}
                       initialValue={price.title}

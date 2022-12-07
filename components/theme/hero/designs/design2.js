@@ -94,7 +94,7 @@ const Design2 = ({
           </nav>
         </Container>
         <div
-          className="h-[500px] relative img-editor-container py-16 "
+          className="h-[550px] relative img-editor-container py-16 "
           style={{
             backgroundImage: `url(${heroData.pic})`,
             backgroundSize: "cover",
@@ -109,7 +109,7 @@ const Design2 = ({
             themeData={themeData}
           />
           <Container>
-            <div className="max-w-sm bg-white space-y-10 p-8">
+            <div className="max-w-sm bg-white flex flex-col gap-10 p-8">
               <EditorComp
                 handleEdit={handleEdit}
                 initialValue={heroData.title}
