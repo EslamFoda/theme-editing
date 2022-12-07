@@ -32,7 +32,7 @@ const MainServices = ({
     design6: Design6,
   };
 
-  const ServicesComp = designs[`design${6}`];
+  const ServicesComp = designs[`design${designNum}`];
 
   const handleMultiEdit = async (value, id, keys) => {
     const update = compData.items.map((item) =>

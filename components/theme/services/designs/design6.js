@@ -10,12 +10,11 @@ const Design6 = ({
   handleMultiEdit,
   serviceHeaders,
   comp,
-  compIndex,
   themeData,
   comps,
 }) => {
   const gridClassName = cn(
-    "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
+    "grid gap-10 lg:grid-cols-3 md:grid-cols-2 justify-center sm:grid-cols-2 grid-cols-1",
     {
       "!grid-cols-1": device === "mobile",
     }
@@ -24,7 +23,7 @@ const Design6 = ({
     <>
       <div className="bg-gradient-to-bl text-white from-primary to-secondary">
         <Container className="py-16">
-          <div className="text-center space-y-4 mb-16">
+          <div className="text-center  space-y-4 mb-16">
             <EditorComp
               initialValue={serviceHeaders.title}
               handleEdit={handleEdit}
@@ -36,18 +35,23 @@ const Design6 = ({
               keys="subTitle"
             />
           </div>
-          <div className={gridClassName}>
+          <div className={'flex items-start gap-8 justify-center flex-wrap'}>
             {serviceData?.map((service, index) => (
-              <div  key={service.id}>
+              <div key={service.id}>
                 <EditPopover
                   comps={comps}
                   themeData={themeData}
                   comp={comp}
                   index={index}
                 >
-                  <div key={service.id} className="space-y-5 bg-secondary rounded-md px-8 py-16">
+                  <div
+                    key={service.id}
+                    className="space-y-5 lg:w-[344px] md:w-[344px] w-full min-h-[389px]   hover:border-b-8 hover:border-white border-b-8 border-transparent transition-all bg-secondary rounded-md px-8 py-16"
+                  >
                     <div>
-                      <span className="text-4xl">{index < 9 ? `0${index + 1}` : `${index + 1}`}</span>
+                      <span className="text-4xl">
+                        {index < 9 ? `0${index + 1}` : `${index + 1}`}
+                      </span>
                     </div>
                     <EditorComp
                       id={service.id}
@@ -55,7 +59,7 @@ const Design6 = ({
                       handleMultiEdit={handleMultiEdit}
                       keys="title"
                     />
-                    <div className='w-16 h-[1px] bg-white'></div>
+                    <div className="w-16 h-[1px] bg-white"></div>
                     <EditorComp
                       id={service.id}
                       initialValue={service.desc}
