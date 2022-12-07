@@ -9,6 +9,7 @@ import MainHero from "../components/theme/hero";
 import MainFooter from "../components/theme/footer";
 import MainWork from "../components/theme/work";
 import MainPrices from "../components/theme/prices";
+import MainContact from "../components/theme/contact";
 
 export const containersData = {
   hero: MainHero,
@@ -22,4 +23,5 @@ export const containersData = {
   footer: MainFooter,
   work: MainWork,
   prices: MainPrices,
+  contact: MainContact,
 };
