@@ -1,12 +1,12 @@
 import React from "react";
 import Design1 from "./designs/design1";
 import Design2 from "./designs/design2";
-
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
 import EditBackground from "../../mainContainer/common/editBackground";
 import useBgColor from "../../../hooks/useBgColor";
 import { updateDoc } from "firebase/firestore";
+
 const MainWork = ({
   index,
   comps,

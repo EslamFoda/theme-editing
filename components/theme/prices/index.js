@@ -22,7 +22,7 @@ const MainPrices = ({
     design2: Design2,
     design3: Design3,
   };
-  const PricesComp = designs[`design${2}`];
+  const PricesComp = designs[`design${designNum}`];
   const { setColor, handleReset } = useBgColor(index, comps, themeData);
 
   const handleMultiEdit = async (value, id, keys) => {
