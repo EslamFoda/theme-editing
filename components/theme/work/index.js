@@ -1,5 +1,6 @@
 import React from "react";
 import Design1 from "./designs/design1";
+import Design2 from "./designs/design2";
 
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
@@ -18,6 +19,7 @@ const MainWork = ({
   const { compName, designNum, compData, backgroundColor } = comp;
   const designs = {
     design1: Design1,
+    design2: Design2,
   };
   const WorkComp = designs[`design${designNum}`];
   const { setColor, handleReset } = useBgColor(index, comps, themeData);

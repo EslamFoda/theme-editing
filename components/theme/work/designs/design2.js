@@ -1,8 +1,7 @@
 import Container from "../../../ui/container";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
-const Design1 = ({ workData, handleEdit }) => {
-  console.log(workData);
+const Design2 = ({ workData, handleEdit }) => {
   return (
     <Container>
       <div className="py-28 gap-4 justify-center items-center flex flex-col">
@@ -17,18 +16,11 @@ const Design1 = ({ workData, handleEdit }) => {
           initialValue={workData.subTitle}
         />
         <div className="flex items-center gap-8">
-          <Button>
+          <Button variant="outline" className="!bg-white hover:bg-none hover:!text-primary shadow-custom">
             <EditorComp
               initialValue={workData.primaryBtn}
               handleEdit={handleEdit}
               keys="primaryBtn"
-            />
-          </Button>
-          <Button variant="outline">
-            <EditorComp
-              initialValue={workData.secondaryBtn}
-              handleEdit={handleEdit}
-              keys="secondaryBtn"
             />
           </Button>
         </div>
@@ -37,4 +29,4 @@ const Design1 = ({ workData, handleEdit }) => {
   );
 };
 
-export default Design1;
+export default Design2;

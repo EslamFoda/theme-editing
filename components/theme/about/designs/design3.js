@@ -1,34 +1,11 @@
 import React from "react";
-import cn from "clsx";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 import { EditPopover } from "../../../ui/popover/EditPopover";
-const Design3 = ({
-  device,
-  handleEdit,
-  aboutData,
-  compIndex,
-  comp,
-  themeData,
-}) => {
-  const gridClassName = cn(
-    "grid  lg:grid-cols-2 grid-cols-1 md:grid-cols-2 sm:grid-cols-1",
-    {
-      "!grid-cols-1": device === "mobile",
-    }
-  );
-  const order1ClassName = cn("h-[400px] order-2 lg:order-1 md:order-1", {
-    "!order-2": device === "mobile",
-  });
-  const order2ClassName = cn(
-    "space-y-4  order-1 lg:order-2 md:order-2 self-center max-w-xl px-16 p-5",
-    {
-      "!order-1": device === "mobile",
-    }
-  );
+const Design3 = ({ handleEdit, aboutData, compIndex, comp, themeData }) => {
   return (
     <>
-      <div className={gridClassName}>
+      <div className="grid  lg:grid-cols-2 grid-cols-1 md:grid-cols-2 sm:grid-cols-1">
         <EditPopover
           themeData={themeData}
           comp={comp}
@@ -36,7 +13,7 @@ const Design3 = ({
           editImage
         >
           <div
-            className={order1ClassName}
+            className="h-[400px] order-2 lg:order-1 md:order-1"
             style={{
               backgroundImage: `url(${aboutData.pic})`,
               backgroundSize: "cover",
@@ -46,7 +23,7 @@ const Design3 = ({
             }}
           ></div>
         </EditPopover>
-        <div className={order2ClassName}>
+        <div className="space-y-4  order-1 lg:order-2 md:order-2 self-center max-w-xl px-16 p-5">
           <EditorComp
             initialValue={aboutData.title}
             handleEdit={handleEdit}

@@ -6,8 +6,6 @@ const Design7 = ({
   handleEdit,
   aboutData,
   compIndex,
-  comp,
-  comps,
   themeData,
   editSections,
 }) => {

@@ -3,7 +3,7 @@ import { EditPopover } from "../../../ui/popover/EditPopover";
 import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 
-const Design1 = ({
+const Design3 = ({
   pricesData,
   handleMultiEdit,
   handleEdit,
@@ -27,51 +27,29 @@ const Design1 = ({
               keys="subTitle"
             />
           </div>
-          <div className="grid lg:grid-cols-3  md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-8">
+          <div className="grid lg:grid-cols-3  md:grid-cols-2  grid-cols-1 gap-10">
             {pricesData?.items?.map((price, index) => (
-              <div
-                className=" flex  rounded-md flex-col self-start"
-                key={price.id}
-              >
+              <div key={price.id}>
                 <EditPopover
                   comps={comps}
                   themeData={themeData}
                   comp={comp}
                   index={index}
                 >
-                  <div className="w-full space-y-7 p-6  border border-solid border-black ">
+                  <div  className={`w-full p-4 space-y-4 text-center border border-solid ${index === 1 ? "border-primary":""}`}>
                     <EditorComp
                       id={price.id}
                       initialValue={price.title}
                       handleMultiEdit={handleMultiEdit}
                       keys="title"
                     />
+
                     <EditorComp
                       id={price.id}
-                      initialValue={price.subTitle}
+                      initialValue={price.price}
                       handleMultiEdit={handleMultiEdit}
-                      keys="subTitle"
+                      keys="price"
                     />
-                    <hr className="bg-black h-[2px] block" />
-                    <div className="text-4xl ">
-                      <EditorComp
-                        id={price.id}
-                        initialValue={price.price}
-                        handleMultiEdit={handleMultiEdit}
-                        keys="price"
-                      />
-                    </div>
-
-                    <Button full className="!rounded-none">
-                      <EditorComp
-                        id={price.id}
-                        initialValue={price.btn}
-                        handleMultiEdit={handleMultiEdit}
-                        keys="btn"
-                      />
-                    </Button>
-
-                    <hr className="bg-black h-[3px] block" />
 
                     <EditorComp
                       id={price.id}
@@ -79,6 +57,15 @@ const Design1 = ({
                       handleMultiEdit={handleMultiEdit}
                       keys="features"
                     />
+
+                    <Button height={'20px'} className={`!px-6 !rounded-sm ${index !== 1 ? "!bg-white !text-black border-solid border-[#e5e7eb] border" :"" }`}>
+                      <EditorComp
+                        id={price.id}
+                        initialValue={price.btn}
+                        handleMultiEdit={handleMultiEdit}
+                        keys="btn"
+                      />
+                    </Button>
                   </div>
                 </EditPopover>
               </div>
@@ -90,4 +77,4 @@ const Design1 = ({
   );
 };
 
-export default Design1;
+export default Design3;

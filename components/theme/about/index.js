@@ -61,8 +61,6 @@ const MainAbout = ({
           backgroundColor={backgroundColor}
           aboutData={compData}
           handleEdit={handleEdit}
-          choose={false}
-          device={device}
           themeData={themeData}
         />
       </div>

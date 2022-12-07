@@ -1,6 +1,6 @@
 .root {
   transition: all 0.3s ease-in-out;
-  min-height: 50px;
+  min-height: 45px;
   padding: 10px 46px;
   display: inline-flex;
   justify-content: center;
