@@ -7,6 +7,8 @@ import MainGallery from "../components/theme/gallery";
 import MainTestimonials from "../components/theme/testimonials";
 import MainHero from "../components/theme/hero";
 import MainFooter from "../components/theme/footer";
+import MainWork from "../components/theme/work";
+
 export const containersData = {
   hero: MainHero,
   about: MainAbout,
@@ -17,4 +19,5 @@ export const containersData = {
   testimonials: MainTestimonials,
   clients: MainClients,
   footer: MainFooter,
+  work: MainWork,
 };
