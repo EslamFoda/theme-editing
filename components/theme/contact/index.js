@@ -26,7 +26,7 @@ const MainContact = ({
     design2: Design2,
   };
 
-  const ContactComp = designs[`design${2}`];
+  const ContactComp = designs[`design${designNum}`];
 
   const handleContactsEdit = async (value, id, keys) => {
     const update = compData.contacts.map((contact) =>
