@@ -4,12 +4,7 @@ import AddSection from "../../edit/addSection";
 import dynamic from "next/dynamic";
 import useBgColor from "../../../hooks/useBgColor";
 import EditBackground from "../../mainContainer/common/editBackground";
-import {
-  HiOutlineSupport,
-  HiOutlineBriefcase,
-  HiOutlineUsers,
-} from "react-icons/hi";
-import { TbAsteriskSimple } from "react-icons/tb";
+
 import { updateDoc } from "firebase/firestore";
 const Design1 = dynamic(() => import("./designs/design1"));
 const Design2 = dynamic(() => import("./designs/design2"));
@@ -19,7 +14,6 @@ const MainContact = ({
   index,
   setComps,
   comp,
-  device,
   editSections,
   animate,
   themeData,
@@ -32,12 +26,6 @@ const MainContact = ({
     design2: Design2,
   };
 
-  const icons = {
-    support: HiOutlineSupport,
-    users: HiOutlineUsers,
-    briefcase: HiOutlineBriefcase,
-    asterisk: TbAsteriskSimple,
-  };
   const ContactComp = designs[`design${2}`];
 
   const handleContactsEdit = async (value, id, keys) => {
@@ -71,11 +59,9 @@ const MainContact = ({
       <div data-aos={animate}>
         <ContactComp
           handleContactsEdit={handleContactsEdit}
-          icons={icons}
           comp={comp}
           handleEdit={handleEdit}
           contactData={compData}
-          device={device}
           comps={comps}
           themeData={themeData}
         />
