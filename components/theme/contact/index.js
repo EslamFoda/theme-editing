@@ -12,6 +12,7 @@ import {
 import { TbAsteriskSimple } from "react-icons/tb";
 import { updateDoc } from "firebase/firestore";
 const Design1 = dynamic(() => import("./designs/design1"));
+const Design2 = dynamic(() => import("./designs/design2"));
 
 const MainContact = ({
   comps,
@@ -28,6 +29,7 @@ const MainContact = ({
 
   const designs = {
     design1: Design1,
+    design2: Design2,
   };
 
   const icons = {
@@ -36,13 +38,13 @@ const MainContact = ({
     briefcase: HiOutlineBriefcase,
     asterisk: TbAsteriskSimple,
   };
-  const ContactComp = designs[`design${designNum}`];
+  const ContactComp = designs[`design${2}`];
 
-  const handleMultiEdit = async (value, id, keys) => {
-    const update = compData.items.map((item) =>
-      item.id === id ? { ...item, [keys]: value } : item
+  const handleContactsEdit = async (value, id, keys) => {
+    const update = compData.contacts.map((contact) =>
+      contact.id === id ? { ...contact, [keys]: value } : contact
     );
-    comp.compData.items = update;
+    comp.compData.contacts = update;
     await updateDoc(themeData, {
       allSections: [...comps],
     });
@@ -68,12 +70,11 @@ const MainContact = ({
     >
       <div data-aos={animate}>
         <ContactComp
+          handleContactsEdit={handleContactsEdit}
           icons={icons}
           comp={comp}
-          handleMultiEdit={handleMultiEdit}
           handleEdit={handleEdit}
-          featuredHeader={compData.header}
-          featuredData={compData.items}
+          contactData={compData}
           device={device}
           comps={comps}
           themeData={themeData}

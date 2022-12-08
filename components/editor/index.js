@@ -10,6 +10,7 @@ const EditorComp = ({
   handleEdit = undefined,
   handleMultiEdit = false,
   id = undefined,
+  handleContactsEdit = undefined,
 }) => {
   const { editSections } = useMainData();
   const { handleCloseEditor } = useCloseEditor();
@@ -27,9 +28,13 @@ const EditorComp = ({
           onFocus={handleCloseEditor}
           apiKey="wofsz7vjfejaxoulvwsud2qp5pe1lqlyslyr4w7kqv5391u0"
           onBlur={() => {
-            handleEdit
-              ? handleEdit(value, keys)
-              : handleMultiEdit(value, id, keys);
+            if (handleContactsEdit) {
+              handleContactsEdit(value, id, keys);
+            } else {
+              handleEdit
+                ? handleEdit(value, keys)
+                : handleMultiEdit(value, id, keys);
+            }
           }}
           onEditorChange={(newValue, editor) => {
             setValue(newValue);
