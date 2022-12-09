@@ -41,7 +41,7 @@ const Design6 = ({
                 >
                   <div className="flex relative">
                     <div className="w-full h-full z-10 relative space-y-4 justify-between flex flex-col gap-4   p-6  rounded-md  bg-white shadow">
-                      <TbQuote size={40} color="#2c925a" className="" />
+                      <TbQuote size={40}  className="text-primary" />
                       <EditorComp
                         id={client.id}
                         initialValue={client.review}

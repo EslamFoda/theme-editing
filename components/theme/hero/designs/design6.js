@@ -2,11 +2,11 @@ import EditorComp from "../../../editor";
 import { useState } from "react";
 import Container from "../../../ui/container";
 import Button from "../../../ui/Button";
-const Design6 = ({ heroData, handleEdit, compIndex, comp, themeData }) => {
+const Design6 = ({ heroData, handleEdit  }) => {
   const [openNav, setOpenNav] = useState(false);
   return (
     <div className=" bg-primary text-white relative">
-      <Container className="h-full z-10 relative ">
+      <Container className="h-full  relative ">
         <nav className=" border-gray-200 px-2 sm:px-4 py-2.5 rounded ">
           <div className="container flex flex-wrap items-center justify-between mx-auto">
             <span className="flex items-center">
