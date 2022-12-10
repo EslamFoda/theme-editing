@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 import { IoImagesOutline } from "react-icons/io5";
 import { MdOutlineInvertColors } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
-import { PopoverColor } from "../../ui/colorPicker/popoverColor";
+import { PopoverColor } from "../ui/colorPicker/popoverColor";
 import { GrPowerReset } from "react-icons/gr";
 import * as Popover from "@radix-ui/react-popover";
-import useCloseEditor from "../../../hooks/useCloseEditor";
+import useCloseEditor from "../../hooks/useCloseEditor";
+import BgImg from "./bgImg";
+import BgColor from "./bgColor";
 const EditBackground = ({ setColor, backgroundColor }) => {
   const { handleCloseEditor } = useCloseEditor();
+  const [openBgColor, setOpenBgColor] = useState(true);
+  const [openBgImg, setOpenBgImg] = useState(false);
 
   const [currentColor, setCurretColor] = useState<any>({
     rgb: {
@@ -27,10 +31,6 @@ const EditBackground = ({ setColor, backgroundColor }) => {
     return "#" + valueToHex(r) + valueToHex(g) + valueToHex(b);
   };
 
-  const handleApplyColor = () => {
-    setColor(currentColor);
-  };
-
   useEffect(() => {
     backgroundColor
       ? setCurretColor({
@@ -43,17 +43,6 @@ const EditBackground = ({ setColor, backgroundColor }) => {
         })
       : null;
   }, []);
-
-  const handleReset = () => {
-    setCurretColor({
-      rgb: {
-        r: 255,
-        g: 255,
-        b: 255,
-        a: 1,
-      },
-    });
-  };
 
   return (
     <>
@@ -88,50 +77,45 @@ const EditBackground = ({ setColor, backgroundColor }) => {
                 </Popover.Close>
               </div>
               <div className="flex p-2 items-center gap-2">
-                <div className="flex items-center justify-center p-2 cursor-pointer rounded-full border border-gray  gap-2 bg-[#0e9384] w-full text-white">
+                <div
+                  onClick={() => {
+                    setOpenBgColor(true);
+                    setOpenBgImg(false);
+                  }}
+                  className={`flex items-center justify-center p-2 cursor-pointer rounded-full border border-gray  gap-2 ${
+                    openBgColor
+                      ? "bg-[#0e9384] text-white"
+                      : "border border-gray text-[#667085] bg-white"
+                  }  w-full`}
+                >
                   <MdOutlineInvertColors size={23} />
                   <span className="font-bold">Color</span>
                 </div>
-                <div className="flex text-[#667085] items-center gap-2 p-2 cursor-pointer rounded-full justify-center  border border-gray bg-white w-full ">
+                <div
+                  onClick={() => {
+                    setOpenBgImg(true);
+                    setOpenBgColor(false);
+                  }}
+                  className={`${
+                    openBgImg
+                      ? "bg-[#0e9384] text-white"
+                      : "text-[#667085] border border-gray bg-white "
+                  } flex  items-center gap-2 p-2 cursor-pointer rounded-full justify-center   w-full `}
+                >
                   <IoImagesOutline size={20} />
                   <span className="font-bold">Images</span>
                 </div>
               </div>
               <div className="space-y-8 p-4">
-                <div>
-                  <span>Background Color</span>
-                  <div className="flex mt-2 items-center gap-4 w-full border border-gray rounded-md p-1 px-2">
-                    <PopoverColor
-                      backgroundColor={backgroundColor}
-                      color={currentColor}
-                      onChange={setCurretColor}
-                    />
-                    <span>
-                      {currentColor.hex ? currentColor.hex : "#FFFFFF"}
-                    </span>
-                  </div>
-                </div>
-                <div
-                  onClick={handleReset}
-                  className="inline-flex items-center cursor-pointer font-bold gap-2"
-                >
-                  <GrPowerReset scale={10} size={20} />
-                  <span>Reset Background Color</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span
-                    onClick={close}
-                    className="cursor-pointer font-semibold"
-                  >
-                    Cancel
-                  </span>
-                  <span
-                    onClick={handleApplyColor}
-                    className="bg-[#0e9384] px-6 py-1 cursor-pointer rounded-full text-white"
-                  >
-                    Apply
-                  </span>
-                </div>
+                {openBgColor && (
+                  <BgColor
+                    backgroundColor={backgroundColor}
+                    currentColor={currentColor}
+                    setColor={setColor}
+                    setCurretColor={setCurretColor}
+                  />
+                )}
+                {openBgImg && <BgImg />}
               </div>
             </div>
           </Popover.Content>

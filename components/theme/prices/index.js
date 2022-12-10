@@ -4,7 +4,7 @@ import Design2 from "./designs/design2";
 import Design3 from "./designs/design3";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
-import EditBackground from "../../mainContainer/common/editBackground";
+import EditBackground from "../../editBackground";
 import useBgColor from "../../../hooks/useBgColor";
 import { updateDoc } from "firebase/firestore";
 const MainPrices = ({

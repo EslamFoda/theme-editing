@@ -8,7 +8,7 @@ import Design6 from "./designs/design6";
 import Design7 from "./designs/design7";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
-import EditBackground from "../../mainContainer/common/editBackground";
+import EditBackground from "../../editBackground";
 import useBgColor from "../../../hooks/useBgColor";
 import { updateDoc } from "firebase/firestore";
 const MainAbout = ({

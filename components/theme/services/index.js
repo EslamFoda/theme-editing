@@ -8,7 +8,7 @@ import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import Design6 from "./designs/design6";
 import useBgColor from "../../../hooks/useBgColor";
-import EditBackground from "../../mainContainer/common/editBackground";
+import EditBackground from "../../editBackground";
 import { updateDoc } from "firebase/firestore";
 const MainServices = ({
   comps,

@@ -3,7 +3,7 @@ import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
 import dynamic from "next/dynamic";
 import useBgColor from "../../../hooks/useBgColor";
-import EditBackground from "../../mainContainer/common/editBackground";
+import EditBackground from "../../editBackground";
 import {
   HiOutlineSupport,
   HiOutlineBriefcase,
