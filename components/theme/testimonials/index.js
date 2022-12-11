@@ -93,6 +93,8 @@ const MainTestimonials = ({
             backgroundColor={backgroundColor}
             handleReset={handleReset}
             setColor={setColor}
+            themeData={themeData} 
+            compIndex={index}
           />
           <AddSection index={index} themeData={themeData} />
         </>
