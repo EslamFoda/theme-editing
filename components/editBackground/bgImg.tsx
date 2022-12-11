@@ -27,7 +27,6 @@ const BgImg = ({ themeData, compIndex, selectedBgImg }) => {
           <button
             onClick={async () => {
               await updateDoc(themeData, {
-                editImg: true,
                 nextIndex: compIndex,
                 bgImg: true,
               });
