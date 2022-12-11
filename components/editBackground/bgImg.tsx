@@ -5,8 +5,13 @@ import useMainData from "../../hooks/useMainData";
 const BgImg = ({ themeData, compIndex, selectedBgImg }) => {
   const { comps } = useMainData();
   const handleReset = async () => {
-    comps[compIndex].backgroundImage = "";
     comps[compIndex].selectedBgImg = "";
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
+  };
+  const handleApplyBgImg = async () => {
+    comps[compIndex].backgroundImage = selectedBgImg;
     await updateDoc(themeData, {
       allSections: [...comps],
     });
@@ -44,7 +49,7 @@ const BgImg = ({ themeData, compIndex, selectedBgImg }) => {
             Cancel
           </span>
           <span
-            // onClick={handleApplyColor}
+            onClick={handleApplyBgImg}
             className="bg-[#0e9384] px-6 py-1 cursor-pointer rounded-full text-white"
           >
             Apply
