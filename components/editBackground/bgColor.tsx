@@ -40,7 +40,7 @@ const BgColor = ({
         className="inline-flex items-center cursor-pointer font-bold gap-2"
       >
         <GrPowerReset scale={10} size={20} />
-        <span>Reset Background Color</span>
+        <span>Reset Background</span>
       </div>
       <div className="flex justify-between items-center">
         <span onClick={close} className="cursor-pointer font-semibold">

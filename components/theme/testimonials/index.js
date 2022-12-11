@@ -21,7 +21,8 @@ const MainTestimonials = ({
   animate,
   themeData,
 }) => {
-  const { compName, designNum, compData, backgroundColor } = comp;
+  const { compName, designNum, compData, backgroundColor, backgroundImage,selectedBgImg } =
+    comp;
   const { handleReset, setColor } = useBgColor(index, comps, themeData);
 
   const designs = {
@@ -57,9 +58,10 @@ const MainTestimonials = ({
   return (
     <div
       style={{
+        backgroundImage: `url(${backgroundImage})`,
         backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
       }}
-      className={`relative group transition ease-in-out duration-700  ${
+      className={`relative group transition ease-in-out duration-700 bg-no-repeat bg-cover bg-center  ${
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full `}
     >
@@ -93,8 +95,9 @@ const MainTestimonials = ({
             backgroundColor={backgroundColor}
             handleReset={handleReset}
             setColor={setColor}
-            themeData={themeData} 
+            themeData={themeData}
             compIndex={index}
+            selectedBgImg={selectedBgImg}
           />
           <AddSection index={index} themeData={themeData} />
         </>

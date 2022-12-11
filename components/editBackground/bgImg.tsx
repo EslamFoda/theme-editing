@@ -1,11 +1,24 @@
 import { updateDoc } from "firebase/firestore";
+import { GrPowerReset } from "react-icons/gr";
+import useMainData from "../../hooks/useMainData";
 
-const BgImg = ({ themeData, compIndex }) => {
+const BgImg = ({ themeData, compIndex, selectedBgImg }) => {
+  const { comps } = useMainData();
+  const handleReset = async () => {
+    comps[compIndex].backgroundImage = "";
+    comps[compIndex].selectedBgImg = "";
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
+  };
   return (
     <>
       <div className="space-y-2">
         <span>Background Image</span>
-        <div className="border border-solid h-32 w-full rounded-md flex items-center justify-center">
+        <div
+          style={{ backgroundImage: `url(${selectedBgImg})` }}
+          className="border bg-no-repeat bg-cover bg-center border-solid h-36 w-full rounded-md flex items-center justify-center"
+        >
           <button
             onClick={async () => {
               await updateDoc(themeData, {
@@ -18,6 +31,24 @@ const BgImg = ({ themeData, compIndex }) => {
           >
             choose image
           </button>
+        </div>
+        <div
+          onClick={handleReset}
+          className="inline-flex items-center cursor-pointer font-bold gap-2"
+        >
+          <GrPowerReset scale={10} size={20} />
+          <span>Reset Background</span>
+        </div>
+        <div className="flex justify-between items-center">
+          <span onClick={close} className="cursor-pointer font-semibold">
+            Cancel
+          </span>
+          <span
+            // onClick={handleApplyColor}
+            className="bg-[#0e9384] px-6 py-1 cursor-pointer rounded-full text-white"
+          >
+            Apply
+          </span>
         </div>
       </div>
     </>

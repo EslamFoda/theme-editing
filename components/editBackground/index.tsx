@@ -8,7 +8,13 @@ import * as Popover from "@radix-ui/react-popover";
 import useCloseEditor from "../../hooks/useCloseEditor";
 import BgImg from "./bgImg";
 import BgColor from "./bgColor";
-const EditBackground = ({ setColor, backgroundColor,themeData,compIndex }) => {
+const EditBackground = ({
+  setColor,
+  backgroundColor,
+  themeData,
+  compIndex,
+  selectedBgImg,
+}) => {
   const { handleCloseEditor } = useCloseEditor();
   const [openBgColor, setOpenBgColor] = useState(true);
   const [openBgImg, setOpenBgImg] = useState(false);
@@ -115,7 +121,13 @@ const EditBackground = ({ setColor, backgroundColor,themeData,compIndex }) => {
                     setCurretColor={setCurretColor}
                   />
                 )}
-                {openBgImg && <BgImg themeData={themeData} compIndex={compIndex}/>}
+                {openBgImg && (
+                  <BgImg
+                    themeData={themeData}
+                    compIndex={compIndex}
+                    selectedBgImg={selectedBgImg}
+                  />
+                )}
               </div>
             </div>
           </Popover.Content>
