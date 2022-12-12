@@ -36,7 +36,7 @@ const ControlBtns = ({ i, comp, comps, id, themeData }) => {
   };
 
   return (
-    <div className="absolute space-y-16 top-1/2 left-5 transform -translate-x-1/2  -translate-y-1/2 ">
+    <div className="absolute z-40 space-y-16 top-1/2 left-5 transform -translate-x-1/2  -translate-y-1/2 ">
       {i === 0 ||
       comps.lastIndexOf(comps[comps.length - 1]) === i ||
       i === 1 ? null : (

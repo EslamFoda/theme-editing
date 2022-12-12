@@ -1,9 +1,7 @@
 import { updateDoc } from "firebase/firestore";
 import { GrPowerReset } from "react-icons/gr";
-import useMainData from "../../hooks/useMainData";
 
-const BgImg = ({ themeData, compIndex, selectedBgImg }) => {
-  const { comps } = useMainData();
+const BgImg = ({ themeData, compIndex, selectedBgImg, comps }) => {
   const handleReset = async () => {
     comps[compIndex].selectedBgImg = "";
     await updateDoc(themeData, {
@@ -27,6 +25,7 @@ const BgImg = ({ themeData, compIndex, selectedBgImg }) => {
           <button
             onClick={async () => {
               await updateDoc(themeData, {
+                editImg: true,
                 nextIndex: compIndex,
                 bgImg: true,
               });

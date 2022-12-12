@@ -93,7 +93,7 @@ const EditImgPopover = ({
           }}
           onMouseEnter={() => (btn.current.style.display = "block")}
           hideWhenDetached
-          className="w-52 overflow-hidden rounded-xl "
+          className="w-52 overflow-hidden rounded-xl z-40"
           sideOffset={5}
           align={iconPosition === "left" ? "start" : "end"}
         >

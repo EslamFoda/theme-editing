@@ -8,13 +8,17 @@ import * as Popover from "@radix-ui/react-popover";
 import useCloseEditor from "../../hooks/useCloseEditor";
 import BgImg from "./bgImg";
 import BgColor from "./bgColor";
+import useMainData from "../../hooks/useMainData";
+import { updateDoc } from "firebase/firestore";
 const EditBackground = ({
   setColor,
   backgroundColor,
   themeData,
   compIndex,
   selectedBgImg,
+  backgroundImage,
 }) => {
+  const { comps } = useMainData();
   const { handleCloseEditor } = useCloseEditor();
   const [openBgColor, setOpenBgColor] = useState(true);
   const [openBgImg, setOpenBgImg] = useState(false);
@@ -72,6 +76,12 @@ const EditBackground = ({
             avoidCollisions={false}
             align="start"
             sideOffset={60}
+            onInteractOutside={async () => {
+              comps[compIndex].selectedBgImg = backgroundImage;
+              await updateDoc(themeData, {
+                allSections: [...comps],
+              });
+            }}
           >
             <div className="bg-white shadow-custom w-80 rounded-xl ">
               <div className="bg-[#202b39] flex justify-between rounded-t-xl items-center p-4 text-white ">
@@ -123,6 +133,7 @@ const EditBackground = ({
                 )}
                 {openBgImg && (
                   <BgImg
+                    comps={comps}
                     themeData={themeData}
                     compIndex={compIndex}
                     selectedBgImg={selectedBgImg}

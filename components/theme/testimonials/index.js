@@ -21,8 +21,14 @@ const MainTestimonials = ({
   animate,
   themeData,
 }) => {
-  const { compName, designNum, compData, backgroundColor, backgroundImage,selectedBgImg } =
-    comp;
+  const {
+    compName,
+    designNum,
+    compData,
+    backgroundColor,
+    backgroundImage,
+    selectedBgImg,
+  } = comp;
   const { handleReset, setColor } = useBgColor(index, comps, themeData);
 
   const designs = {
@@ -92,6 +98,7 @@ const MainTestimonials = ({
       {editSections && (
         <>
           <EditBackground
+            backgroundImage={backgroundImage}
             backgroundColor={backgroundColor}
             handleReset={handleReset}
             setColor={setColor}
