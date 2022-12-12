@@ -17,6 +17,8 @@ const EditBackground = ({
   compIndex,
   selectedBgImg,
   backgroundImage,
+  enableBgColor,
+  bgImgColor,
 }) => {
   const { comps } = useMainData();
   const { handleCloseEditor } = useCloseEditor();
@@ -52,7 +54,7 @@ const EditBackground = ({
           ),
         })
       : null;
-  }, []);
+  }, [backgroundColor]);
 
   return (
     <>
@@ -125,7 +127,9 @@ const EditBackground = ({
               <div className="space-y-8 p-4">
                 {openBgColor && (
                   <BgColor
-                    backgroundColor={backgroundColor}
+                    comps={comps}
+                    themeData={themeData}
+                    compIndex={compIndex}
                     currentColor={currentColor}
                     setColor={setColor}
                     setCurretColor={setCurretColor}
@@ -133,10 +137,13 @@ const EditBackground = ({
                 )}
                 {openBgImg && (
                   <BgImg
+                    setColor={setColor}
+                    bgImgColor={bgImgColor}
                     comps={comps}
                     themeData={themeData}
                     compIndex={compIndex}
                     selectedBgImg={selectedBgImg}
+                    enableBgColor={enableBgColor}
                   />
                 )}
               </div>

@@ -98,13 +98,13 @@ const InputTypesPopup = ({
                 defaultChecked={required}
                 onCheckedChange={handleChangeRequired}
                 className="SwitchRoot"
-                id="airplane-mode"
+                id="required-mode"
               >
                 <Switch.Thumb className="SwitchThumb" />
               </Switch.Root>
               <label
                 className="Label"
-                htmlFor="airplane-mode"
+                htmlFor="required-mode"
                 style={{ paddingRight: 15 }}
               >
                 Required

@@ -28,6 +28,8 @@ const MainTestimonials = ({
     backgroundColor,
     backgroundImage,
     selectedBgImg,
+    bgImgColor,
+    enableBgColor,
   } = comp;
   const { handleReset, setColor } = useBgColor(index, comps, themeData);
 
@@ -64,7 +66,7 @@ const MainTestimonials = ({
   return (
     <div
       style={{
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: `linear-gradient(rgba(${bgImgColor?.r}, ${bgImgColor?.g}, ${bgImgColor?.b}, ${bgImgColor?.a}), rgba(${bgImgColor?.r}, ${bgImgColor?.g}, ${bgImgColor?.b}, ${bgImgColor?.a})), url(${backgroundImage})`,
         backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
       }}
       className={`relative group transition ease-in-out duration-700 bg-no-repeat bg-cover bg-center  ${
@@ -98,6 +100,7 @@ const MainTestimonials = ({
       {editSections && (
         <>
           <EditBackground
+            bgImgColor={bgImgColor}
             backgroundImage={backgroundImage}
             backgroundColor={backgroundColor}
             handleReset={handleReset}
@@ -105,6 +108,7 @@ const MainTestimonials = ({
             themeData={themeData}
             compIndex={index}
             selectedBgImg={selectedBgImg}
+            enableBgColor={enableBgColor}
           />
           <AddSection index={index} themeData={themeData} />
         </>

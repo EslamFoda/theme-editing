@@ -1,14 +1,28 @@
+import { updateDoc } from "firebase/firestore";
 import { GrPowerReset } from "react-icons/gr";
 import { PopoverColor } from "../ui/colorPicker/popoverColor";
 
 const BgColor = ({
-  backgroundColor,
   currentColor,
   setCurretColor,
   setColor,
+  comps,
+  themeData,
+  compIndex,
 }) => {
-  const handleApplyColor = () => {
+  const handleApplyColor = async () => {
     setColor(currentColor);
+    comps[compIndex].backgroundImage = "";
+    comps[compIndex].selectedBgImg = "";
+    comps[compIndex].bgImgColor = {
+      r: 255,
+      g: 255,
+      b: 255,
+      a: 0,
+    };
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
   };
 
   const handleReset = () => {
@@ -27,11 +41,7 @@ const BgColor = ({
       <div>
         <span>Background Color</span>
         <div className="flex mt-2 items-center gap-4 w-full border border-gray rounded-md p-1 px-2">
-          <PopoverColor
-            backgroundColor={backgroundColor}
-            color={currentColor}
-            onChange={setCurretColor}
-          />
+          <PopoverColor color={currentColor} onChange={setCurretColor} />
           <span>{currentColor.hex ? currentColor.hex : "#FFFFFF"}</span>
         </div>
       </div>
