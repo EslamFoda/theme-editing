@@ -23,7 +23,7 @@ const Design3 = ({ handleEdit, aboutData, compIndex, comp, themeData }) => {
             }}
           ></div>
         </EditPopover>
-        <div className="space-y-4  order-1 lg:order-2 md:order-2 self-center max-w-xl px-16 p-5">
+        <div className="space-y-4  order-1 lg:order-2 md:order-2 self-center max-w-xl px-6 p-5">
           <EditorComp
             initialValue={aboutData.title}
             handleEdit={handleEdit}
