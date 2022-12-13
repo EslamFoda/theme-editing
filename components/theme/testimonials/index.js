@@ -10,13 +10,13 @@ import Design6 from "./designs/design6";
 import EditBackground from "../../editBackground";
 import useBgColor from "../../../hooks/useBgColor";
 import { updateDoc } from "firebase/firestore";
+import useMainData from "../../../hooks/useMainData";
 
 const MainTestimonials = ({
   comps,
   index,
   setComps,
   comp,
-  device,
   editSections,
   animate,
   themeData,
@@ -32,6 +32,7 @@ const MainTestimonials = ({
     enableBgColor,
   } = comp;
   const { handleReset, setColor } = useBgColor(index, comps, themeData);
+  const { nextIndex, addSection } = useMainData();
 
   const designs = {
     design1: Design1,
@@ -71,7 +72,11 @@ const MainTestimonials = ({
       }}
       className={`relative group transition ease-in-out duration-700 bg-no-repeat bg-cover bg-center  ${
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
-      }  w-full `}
+      }  w-full ${
+        nextIndex === index + 1 && addSection
+          ? "shadow-[#23cba5] shadow-inside"
+          : ""
+      } `}
     >
       <div data-aos={animate}>
         <TestiComp
@@ -80,7 +85,6 @@ const MainTestimonials = ({
           comp={comp}
           comps={comps}
           backgroundColor={backgroundColor}
-          device={device}
           testiData={compData.items}
           handleMultiEdit={handleMultiEdit}
           headers={compData.headers}
@@ -100,13 +104,13 @@ const MainTestimonials = ({
       {editSections && (
         <>
           <EditBackground
-            bgImgColor={bgImgColor}
-            backgroundImage={backgroundImage}
             backgroundColor={backgroundColor}
             handleReset={handleReset}
             setColor={setColor}
             themeData={themeData}
             compIndex={index}
+            backgroundImage={backgroundImage}
+            bgImgColor={bgImgColor}
             selectedBgImg={selectedBgImg}
             enableBgColor={enableBgColor}
           />

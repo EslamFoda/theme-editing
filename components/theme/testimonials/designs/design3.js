@@ -5,7 +5,6 @@ import { EditPopover } from "../../../ui/popover/EditPopover";
 import UserPic from "./common/userPic";
 
 const Design3 = ({
-  device,
   testiData,
   handleMultiEdit,
   handleEdit,
@@ -18,7 +17,6 @@ const Design3 = ({
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
     {
-      "!grid-cols-1": device === "mobile",
     }
   );
   return (

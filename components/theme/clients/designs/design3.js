@@ -4,7 +4,6 @@ import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 import ClientPic from "../common/clientPic";
 const Design2 = ({
-  device,
   handleEdit,
   clientData,
   comp,
@@ -15,7 +14,6 @@ const Design2 = ({
   const gridClassName = cn(
     "grid gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
     {
-      "!grid-cols-1": device === "mobile",
     }
   );
   return (

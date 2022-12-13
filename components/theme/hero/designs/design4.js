@@ -5,7 +5,6 @@ import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 import ImageComp from "../../gallery/common/imageComp";
 const Design4 = ({
-  device,
   heroData,
   handleEdit,
   compIndex,
@@ -14,19 +13,16 @@ const Design4 = ({
 }) => {
   const [openNav, setOpenNav] = useState(false);
   const imageClassName = cn("lg:h-[550px] md:h-[500px] h-80  w-full  ", {
-    "!h-80": device === "mobile",
   });
   const headerClassName = cn(
     "lg:text-6xl md:text-5xl text-4xl font-semibold max-w-3xl",
     {
-      "!text-4xl": device === "mobile",
     }
   );
 
   const flexClassName = cn(
     "flex py-20 flex-col justify-center items-center text-center lg:gap-20 md:gap-20 gap-10",
     {
-      "!gap-10": device === "mobile",
     }
   );
 

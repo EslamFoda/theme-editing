@@ -4,7 +4,6 @@ import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 import ImageComp from "../common/imageComp";
 const Design3 = ({
-  device,
   handleEdit,
   galleryData,
   comp,
@@ -15,7 +14,6 @@ const Design3 = ({
   const gridClassName = cn(
     "grid gap-6 lg:grid-cols-2 md:grid-cols-2  grid-cols-2",
     {
-      "!grid-cols-1": device === "mobile",
     }
   );
   return (

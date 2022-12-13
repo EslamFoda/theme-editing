@@ -1,10 +1,7 @@
-import { useState, FC, useEffect } from "react";
+import { useState, FC } from "react";
 import ImageEditor from "../../../imageEditor";
 import EditImgPopover from "../../../ui/editImgPopover";
 import cn from "clsx";
-import { useSelector } from "react-redux";
-import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../../../../utlis/firebase";
 import useMainData from "../../../../hooks/useMainData";
 
 interface Props {

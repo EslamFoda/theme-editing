@@ -11,17 +11,27 @@ import AddSection from "../../edit/addSection";
 import EditBackground from "../../editBackground";
 import useBgColor from "../../../hooks/useBgColor";
 import { updateDoc } from "firebase/firestore";
+import useMainData from "../../../hooks/useMainData";
+
 const MainAbout = ({
   index,
   comps,
   setComps,
   comp,
-  device,
   editSections,
   animate,
   themeData,
 }) => {
-  const { compName, designNum, compData, backgroundColor } = comp;
+  const {
+    compName,
+    designNum,
+    compData,
+    backgroundColor,
+    backgroundImage,
+    selectedBgImg,
+    bgImgColor,
+    enableBgColor,
+  } = comp;
   const designs = {
     design1: Design1,
     design2: Design2,
@@ -33,7 +43,7 @@ const MainAbout = ({
   };
   const AboutComp = designs[`design${designNum}`];
   const { setColor, handleReset } = useBgColor(index, comps, themeData);
-
+  const { nextIndex, addSection } = useMainData();
   const handleEdit = async (value, keys) => {
     const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
     if (objectIndex === index) {
@@ -46,11 +56,16 @@ const MainAbout = ({
   return (
     <div
       style={{
+        backgroundImage: `linear-gradient(rgba(${bgImgColor?.r}, ${bgImgColor?.g}, ${bgImgColor?.b}, ${bgImgColor?.a}), rgba(${bgImgColor?.r}, ${bgImgColor?.g}, ${bgImgColor?.b}, ${bgImgColor?.a})), url(${backgroundImage})`,
         backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
       }}
-      className={`relative group transition ease-in-out duration-700  ${
+      className={`relative group transition ease-in-out duration-700 bg-no-repeat bg-cover bg-center  ${
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
-      }  w-full `}
+      }  w-full ${
+        nextIndex === index + 1 && addSection
+          ? "shadow-[#23cba5] shadow-inside"
+          : ""
+      } `}
     >
       <div data-aos={animate}>
         <AboutComp
@@ -79,6 +94,12 @@ const MainAbout = ({
             backgroundColor={backgroundColor}
             handleReset={handleReset}
             setColor={setColor}
+            themeData={themeData}
+            compIndex={index}
+            backgroundImage={backgroundImage}
+            bgImgColor={bgImgColor}
+            selectedBgImg={selectedBgImg}
+            enableBgColor={enableBgColor}
           />
           <AddSection index={index} themeData={themeData} />
         </>

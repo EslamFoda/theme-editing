@@ -1,9 +1,14 @@
 import React from "react";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
-import dynamic from "next/dynamic";
 import useBgColor from "../../../hooks/useBgColor";
 import EditBackground from "../../editBackground";
+import Design1 from "./designs/design1";
+import Design2 from "./designs/design2";
+import Design3 from "./designs/design3";
+import Design4 from "./designs/design4";
+import Design5 from "./designs/design5";
+
 import {
   HiOutlineSupport,
   HiOutlineBriefcase,
@@ -11,25 +16,30 @@ import {
 } from "react-icons/hi";
 import { TbAsteriskSimple } from "react-icons/tb";
 import { updateDoc } from "firebase/firestore";
-const Design1 = dynamic(() => import("./designs/design1"));
-const Design2 = dynamic(() => import("./designs/design2"));
-const Design3 = dynamic(() => import("./designs/design3"));
-const Design4 = dynamic(() => import("./designs/design4"));
-const Design5 = dynamic(() => import("./designs/design5"));
+import useMainData from "../../../hooks/useMainData";
 
 const MainFeatured = ({
   comps,
   index,
   setComps,
   comp,
-  device,
   editSections,
   animate,
   themeData,
 }) => {
-  const { compName, designNum, compData, backgroundColor } = comp;
+  const {
+    compName,
+    designNum,
+    compData,
+    backgroundColor,
+    backgroundImage,
+    selectedBgImg,
+    bgImgColor,
+    enableBgColor,
+  } = comp;
   const { handleReset, setColor } = useBgColor(index, comps, themeData);
-
+  const { nextIndex, addSection } = useMainData();
+  
   const designs = {
     design1: Design1,
     design2: Design2,
@@ -67,12 +77,17 @@ const MainFeatured = ({
 
   return (
     <div
-      style={{
-        backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-      }}
-      className={`relative group transition ease-in-out duration-700  ${
-        editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
-      }  w-full `}
+    style={{
+      backgroundImage: `linear-gradient(rgba(${bgImgColor?.r}, ${bgImgColor?.g}, ${bgImgColor?.b}, ${bgImgColor?.a}), rgba(${bgImgColor?.r}, ${bgImgColor?.g}, ${bgImgColor?.b}, ${bgImgColor?.a})), url(${backgroundImage})`,
+      backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+    }}
+    className={`relative group transition ease-in-out duration-700 bg-no-repeat bg-cover bg-center  ${
+      editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
+    }  w-full ${
+      nextIndex === index + 1 && addSection
+        ? "shadow-[#23cba5] shadow-inside"
+        : ""
+    } `}
     >
       <div data-aos={animate}>
         <FeaturedComp
@@ -82,7 +97,6 @@ const MainFeatured = ({
           handleEdit={handleEdit}
           featuredHeader={compData.header}
           featuredData={compData.items}
-          device={device}
           comps={comps}
           themeData={themeData}
         />
@@ -102,6 +116,12 @@ const MainFeatured = ({
             backgroundColor={backgroundColor}
             handleReset={handleReset}
             setColor={setColor}
+            themeData={themeData}
+            compIndex={index}
+            backgroundImage={backgroundImage}
+            bgImgColor={bgImgColor}
+            selectedBgImg={selectedBgImg}
+            enableBgColor={enableBgColor}
           />
           <AddSection index={index} themeData={themeData} />
         </>

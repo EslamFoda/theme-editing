@@ -1,13 +1,12 @@
 import React from "react";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
-import dynamic from "next/dynamic";
 import useBgColor from "../../../hooks/useBgColor";
 import EditBackground from "../../editBackground";
-
 import { updateDoc } from "firebase/firestore";
-const Design1 = dynamic(() => import("./designs/design1"));
-const Design2 = dynamic(() => import("./designs/design2"));
+import Design1 from "../contact/designs/design1";
+import Design2 from "../contact/designs/design2";
+import useMainData from "../../../hooks/useMainData";
 
 const MainContact = ({
   comps,
@@ -18,9 +17,18 @@ const MainContact = ({
   animate,
   themeData,
 }) => {
-  const { compName, designNum, compData, backgroundColor } = comp;
+  const {
+    compName,
+    designNum,
+    compData,
+    backgroundColor,
+    backgroundImage,
+    selectedBgImg,
+    bgImgColor,
+    enableBgColor,
+  } = comp;
   const { handleReset, setColor } = useBgColor(index, comps, themeData);
-
+  const { nextIndex, addSection } = useMainData();
   const designs = {
     design1: Design1,
     design2: Design2,
@@ -49,12 +57,17 @@ const MainContact = ({
 
   return (
     <div
-      style={{
-        backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-      }}
-      className={`relative group transition ease-in-out duration-700  ${
-        editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
-      }  w-full `}
+    style={{
+      backgroundImage: `linear-gradient(rgba(${bgImgColor?.r}, ${bgImgColor?.g}, ${bgImgColor?.b}, ${bgImgColor?.a}), rgba(${bgImgColor?.r}, ${bgImgColor?.g}, ${bgImgColor?.b}, ${bgImgColor?.a})), url(${backgroundImage})`,
+      backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+    }}
+    className={`relative group transition ease-in-out duration-700 bg-no-repeat bg-cover bg-center  ${
+      editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
+    }  w-full ${
+      nextIndex === index + 1 && addSection
+        ? "shadow-[#23cba5] shadow-inside"
+        : ""
+    } `}
     >
       <div data-aos={animate}>
         <ContactComp
@@ -81,6 +94,12 @@ const MainContact = ({
             backgroundColor={backgroundColor}
             handleReset={handleReset}
             setColor={setColor}
+            themeData={themeData}
+            compIndex={index}
+            backgroundImage={backgroundImage}
+            bgImgColor={bgImgColor}
+            selectedBgImg={selectedBgImg}
+            enableBgColor={enableBgColor}
           />
           <AddSection index={index} themeData={themeData} />
         </>

@@ -4,7 +4,6 @@ import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 import TeamPic from "../common/teamPic";
 const Design5 = ({
-  device,
   handleMultiEdit,
   handleEdit,
   teamData,
@@ -17,7 +16,6 @@ const Design5 = ({
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
     {
-      "!grid-cols-1": device === "mobile",
     }
   );
   return (

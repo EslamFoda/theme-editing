@@ -9,17 +9,18 @@ import Design7 from "./designs/design7";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
 import { updateDoc } from "firebase/firestore";
+import useMainData from "../../../hooks/useMainData";
 
 const MainHero = ({
   comps,
   index,
   setComps,
   comp,
-  device,
   editSections,
   themeData,
 }) => {
-  const { compName, designNum, compData, backgroundColor } = comp;
+  const { compName, designNum, compData } = comp;
+  const { nextIndex, addSection } = useMainData();
   const designs = {
     design1: Design1,
     design2: Design2,
@@ -43,18 +44,18 @@ const MainHero = ({
   };
   return (
     <div
-      style={{
-        backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-      }}
-      className={`relative group transition ease-in-out duration-700   ${
-        editSections ? "hover:shadow-[#23cba5] hover:shadow-inside " : ""
-      }  w-full `}
+      className={`relative group transition ease-in-out duration-700 bg-no-repeat bg-cover bg-center  ${
+        editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
+      }  w-full ${
+        nextIndex === index + 1 && addSection
+          ? "shadow-[#23cba5] shadow-inside"
+          : ""
+      } `}
     >
       <HeroComp
         compIndex={index}
         heroData={compData}
         handleEdit={handleEdit}
-        device={device}
         comp={comp}
         themeData={themeData}
         editSections={editSections}

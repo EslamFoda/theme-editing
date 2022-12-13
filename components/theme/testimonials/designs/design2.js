@@ -5,7 +5,6 @@ import EditorComp from "../../../editor";
 import UserPic from "./common/userPic";
 
 const Design2 = ({
-  device,
   testiData,
   handleMultiEdit,
   handleEdit,

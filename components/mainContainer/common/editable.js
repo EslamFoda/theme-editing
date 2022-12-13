@@ -1,12 +1,6 @@
 import ControlBtns from "./controlBtns";
 
-const Editable = ({
-  containerWidth,
-  comps,
-  setComps,
-  device,
-  editSections,
-}) => {
+const Editable = ({ containerWidth, comps, setComps, editSections }) => {
   return (
     <div
       style={{
@@ -25,7 +19,6 @@ const Editable = ({
               setComps={setComps}
               comps={comps}
               index={i}
-              device={device}
               editSections={editSections}
             />
             <ControlBtns comps={comps} i={i} comp={comp} setComps={setComps} />

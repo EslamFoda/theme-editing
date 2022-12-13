@@ -11,9 +11,9 @@ const BgColor = ({
   compIndex,
 }) => {
   const handleApplyColor = async () => {
-    setColor(currentColor);
-    comps[compIndex].backgroundImage = "";
+    comps[compIndex].enableBgColor = false;
     comps[compIndex].selectedBgImg = "";
+    comps[compIndex].backgroundImage = "";
     comps[compIndex].bgImgColor = {
       r: 255,
       g: 255,
@@ -23,6 +23,7 @@ const BgColor = ({
     await updateDoc(themeData, {
       allSections: [...comps],
     });
+    setColor(currentColor);
   };
 
   const handleReset = () => {

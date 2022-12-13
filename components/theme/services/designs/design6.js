@@ -4,7 +4,6 @@ import EditorComp from "../../../editor";
 
 import { EditPopover } from "../../../ui/popover/EditPopover";
 const Design6 = ({
-  device,
   serviceData,
   handleEdit,
   handleMultiEdit,
@@ -16,7 +15,6 @@ const Design6 = ({
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 justify-center sm:grid-cols-2 grid-cols-1",
     {
-      "!grid-cols-1": device === "mobile",
     }
   );
   return (

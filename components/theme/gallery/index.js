@@ -9,17 +9,27 @@ import Design5 from "./designs/design5";
 import useBgColor from "../../../hooks/useBgColor";
 import EditBackground from "../../editBackground";
 import { updateDoc } from "firebase/firestore";
+import useMainData from "../../../hooks/useMainData";
+
 const MainGallery = ({
   comps,
   index,
   setComps,
   comp,
-  device,
   editSections,
   animate,
   themeData,
 }) => {
-  const { compName, designNum, compData, backgroundColor } = comp;
+  const {
+    compName,
+    designNum,
+    compData,
+    backgroundColor,
+    backgroundImage,
+    selectedBgImg,
+    bgImgColor,
+    enableBgColor,
+  } = comp;
   const designs = {
     design1: Design1,
     design2: Design2,
@@ -30,7 +40,7 @@ const MainGallery = ({
 
   const ServicesComp = designs[`design${designNum}`];
   const { handleReset, setColor } = useBgColor(index, comps, themeData);
-
+  const { nextIndex, addSection } = useMainData();
   const handleEdit = async (value, keys) => {
     const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
     if (objectIndex === index) {
@@ -43,17 +53,21 @@ const MainGallery = ({
 
   return (
     <div
-      style={{
-        backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-      }}
-      className={`relative group transition ease-in-out duration-700  ${
-        editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
-      }  w-full `}
+    style={{
+      backgroundImage: `linear-gradient(rgba(${bgImgColor?.r}, ${bgImgColor?.g}, ${bgImgColor?.b}, ${bgImgColor?.a}), rgba(${bgImgColor?.r}, ${bgImgColor?.g}, ${bgImgColor?.b}, ${bgImgColor?.a})), url(${backgroundImage})`,
+      backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+    }}
+    className={`relative group transition ease-in-out duration-700 bg-no-repeat bg-cover bg-center  ${
+      editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
+    }  w-full ${
+      nextIndex === index + 1 && addSection
+        ? "shadow-[#23cba5] shadow-inside"
+        : ""
+    } `}
     >
       <div data-aos={animate}>
         <ServicesComp
           compIndex={index}
-          device={device}
           handleEdit={handleEdit}
           galleryData={compData}
           comp={comp}
@@ -76,6 +90,12 @@ const MainGallery = ({
             backgroundColor={backgroundColor}
             handleReset={handleReset}
             setColor={setColor}
+            themeData={themeData}
+            compIndex={index}
+            backgroundImage={backgroundImage}
+            bgImgColor={bgImgColor}
+            selectedBgImg={selectedBgImg}
+            enableBgColor={enableBgColor}
           />
           <AddSection index={index} themeData={themeData} />
         </>

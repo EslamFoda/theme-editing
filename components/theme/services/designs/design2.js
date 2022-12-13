@@ -5,7 +5,6 @@ import Button from "../../../ui/Button";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 import ImageComp from "../common/imageComp";
 const Design2 = ({
-  device,
   serviceData,
   handleEdit,
   handleMultiEdit,
@@ -18,12 +17,10 @@ const Design2 = ({
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
     {
-      "!grid-cols-1": device === "mobile",
     }
   );
   const headersClassName = cn(
     "grid lg:grid-cols-2 gap-4 md:grid-cols-2 grid-cols-1 mb-16",
-    { "!grid-cols-1": device === "mobile" }
   );
 
   return (

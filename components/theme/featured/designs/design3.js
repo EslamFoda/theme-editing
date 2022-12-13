@@ -5,7 +5,6 @@ import cn from "clsx";
 import EditorComp from "../../../editor";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 const Design3 = ({
-  device,
   featuredData,
   handleMultiEdit,
   comp,
@@ -16,8 +15,6 @@ const Design3 = ({
   const gridClassName = cn(
     "py-16 grid lg:grid-cols-3  sm:grid-cols-2   grid-cols-1 md-grid-cols-2 gap-4",
     {
-      "!grid-cols-1": device === "mobile",
-      "!grid-cols-2": device === "tablet",
     }
   );
 

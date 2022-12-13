@@ -5,7 +5,6 @@ import EditorComp from "../../../editor";
 import Button from "../../../ui/Button";
 import ImageComp from "../common/imageComp";
 const Design4 = ({
-  device,
   choose,
   serviceData,
   handleEdit,
@@ -19,7 +18,6 @@ const Design4 = ({
   const gridClassName = cn(
     "grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1",
     {
-      "!grid-cols-1": device === "mobile",
       "!gap-2": choose,
     }
   );

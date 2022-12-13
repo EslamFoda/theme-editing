@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { IoImagesOutline } from "react-icons/io5";
 import { MdOutlineInvertColors } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
-import { PopoverColor } from "../ui/colorPicker/popoverColor";
-import { GrPowerReset } from "react-icons/gr";
 import * as Popover from "@radix-ui/react-popover";
 import useCloseEditor from "../../hooks/useCloseEditor";
 import BgImg from "./bgImg";
@@ -56,6 +54,23 @@ const EditBackground = ({
       : null;
   }, [backgroundColor]);
 
+  const clickOutSideModal = async () => {
+    backgroundColor
+      ? setCurretColor({
+          rgb: backgroundColor,
+          hex: rgbaToHex(
+            backgroundColor.r,
+            backgroundColor.g,
+            backgroundColor.b
+          ),
+        })
+      : null;
+    comps[compIndex].selectedBgImg = backgroundImage;
+    await updateDoc(themeData, {
+      allSections: [...comps],
+    });
+  };
+
   return (
     <>
       <Popover.Root>
@@ -78,12 +93,7 @@ const EditBackground = ({
             avoidCollisions={false}
             align="start"
             sideOffset={60}
-            onInteractOutside={async () => {
-              comps[compIndex].selectedBgImg = backgroundImage;
-              await updateDoc(themeData, {
-                allSections: [...comps],
-              });
-            }}
+            onInteractOutside={clickOutSideModal}
           >
             <div className="bg-white shadow-custom w-80 rounded-xl ">
               <div className="bg-[#202b39] flex justify-between rounded-t-xl items-center p-4 text-white ">

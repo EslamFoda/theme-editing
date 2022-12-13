@@ -1,11 +1,8 @@
-import { useDispatch } from "react-redux";
-import { getNextIndex } from "../../../features/add-section";
 import useCloseEditorfrom from "../../../hooks/useCloseEditor";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { updateDoc } from "firebase/firestore";
 
 const ControlBtns = ({ i, comp, comps, id, themeData }) => {
-  const dispatch = useDispatch();
   const { handleCloseEditor } = useCloseEditorfrom();
   const moveInArray = async (arr, from, to, compsName) => {
     // Make sure a valid array is provided
@@ -23,8 +20,6 @@ const ControlBtns = ({ i, comp, comps, id, themeData }) => {
 
     // Move the item to its new position
     arr.splice(to, 0, item[0]);
-    // dispatch(selectCompName(compsName));
-    dispatch(getNextIndex(to));
     await updateDoc(themeData, {
       allSections: [...arr],
       nextIndex: to,

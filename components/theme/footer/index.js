@@ -12,7 +12,6 @@ const MainFooter = ({
   index,
   setComps,
   comp,
-  device,
   editSections,
   themeData,
 }) => {
@@ -49,7 +48,6 @@ const MainFooter = ({
         compIndex={index}
         footerData={compData}
         handleEdit={handleEdit}
-        device={device}
         comp={comp}
       />
       <ChangeSection

@@ -5,7 +5,6 @@ import Button from "../../../ui/Button";
 import { EditPopover } from "../../../ui/popover/EditPopover";
 import ImageComp from "../common/imageComp";
 const Design5 = ({
-  device,
   handleEdit,
   galleryData,
   comp,
@@ -16,7 +15,6 @@ const Design5 = ({
   const gridClassName = cn(
     "grid   lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2",
     {
-      "!grid-cols-1": device === "mobile",
     }
   );
   return (

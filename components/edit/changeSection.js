@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { updateDoc } from "firebase/firestore";
 import useMainData from "../../hooks/useMainData";
@@ -12,7 +11,6 @@ const ChangeSection = ({
   themeData,
 }) => {
   const { editSections } = useMainData();
-  const device = useSelector((state) => state.mainWidth.device);
   const { totalDesigns } = comp;
 
   const handlePrev = async () => {
@@ -63,22 +61,19 @@ const ChangeSection = ({
             onClick={handlePrev}
           >
             <FaChevronLeft />
-            {device === "mobile" ? null : (
-              <span className="text-sm hidden lg:block md:block">
-                Previous Design
-              </span>
-            )}
+
+            <span className="text-sm hidden lg:block md:block">
+              Previous Design
+            </span>
           </div>
           <div
             style={{ boxShadow: "0 1px 6px 1px rgba(2,18,43,.25)" }}
             className={`cursor-pointer coolBeans flex items-center duration-300  btn btn-3  transition-all lg:w-48 md:w-48 w-11 justify-between z-30  px-4 py-1 rounded-full`}
             onClick={handleNext}
           >
-            {device === "mobile" ? null : (
-              <span className="text-sm hidden lg:block md:block">
-                Next Design
-              </span>
-            )}
+            <span className="text-sm hidden lg:block md:block">
+              Next Design
+            </span>
             <FaChevronRight />
           </div>
         </div>

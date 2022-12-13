@@ -4,13 +4,7 @@ import DeleteContainers from "../../deleteContainers";
 import useAnimation from "../../../hooks/useAnimation";
 import { doc } from "firebase/firestore";
 import { db } from "../../../utlis/firebase";
-const Preview = ({
-  comps,
-  device,
-  editSections,
-  animate,
-  themeId,
-}) => {
+const Preview = ({ comps, editSections, animate, themeId }) => {
   const effect = useAnimation();
   const themeData = doc(db, "themes", themeId);
 
@@ -27,7 +21,6 @@ const Preview = ({
               themeId={themeId}
               index={i}
               themeData={themeData}
-              device={device}
               editSections={editSections}
             />
             {editSections ? (
