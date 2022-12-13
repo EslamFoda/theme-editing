@@ -19,7 +19,7 @@ const MainHero = ({
   editSections,
   themeData,
 }) => {
-  const { compName, designNum, compData } = comp;
+  const { compName, designNum, compData, backgroundColor } = comp;
   const { nextIndex, addSection } = useMainData();
   const designs = {
     design1: Design1,
@@ -44,6 +44,9 @@ const MainHero = ({
   };
   return (
     <div
+      style={{
+        backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+      }}
       className={`relative group transition ease-in-out duration-700 bg-no-repeat bg-cover bg-center  ${
         editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
       }  w-full ${
