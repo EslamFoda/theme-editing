@@ -57,22 +57,22 @@ const ChangeSection = ({
         <div className="hidden group-hover:flex absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-40">
           <div
             style={{ boxShadow: "0 1px 6px 1px rgba(2,18,43,.25)" }}
-            className={`cursor-pointer coolBeans flex items-center z-30 duration-300  btn btn-3  transition-all lg:w-48 md:w-48 w-11 justify-between  px-4 py-1 rounded-full`}
+            className={`cursor-pointer coolBeans flex items-center z-30 duration-300  btn btn-3  transition-all lg:w-32 md:w-32 w-11 justify-between  px-4 py-1 rounded-full`}
             onClick={handlePrev}
           >
             <FaChevronLeft />
 
             <span className="text-sm hidden lg:block md:block">
-              Previous Design
+              Previous
             </span>
           </div>
           <div
             style={{ boxShadow: "0 1px 6px 1px rgba(2,18,43,.25)" }}
-            className={`cursor-pointer coolBeans flex items-center duration-300  btn btn-3  transition-all lg:w-48 md:w-48 w-11 justify-between z-30  px-4 py-1 rounded-full`}
+            className={`cursor-pointer coolBeans flex items-center duration-300  btn btn-3  transition-all lg:w-32 md:w-32 w-11 justify-between z-30  px-4 py-1 rounded-full`}
             onClick={handleNext}
           >
             <span className="text-sm hidden lg:block md:block">
-              Next Design
+              Next
             </span>
             <FaChevronRight />
           </div>
