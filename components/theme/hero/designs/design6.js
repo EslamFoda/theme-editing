@@ -2,11 +2,11 @@ import EditorComp from "../../../editor";
 import { useState } from "react";
 import Container from "../../../ui/container";
 import Button from "../../../ui/Button";
-const Design6 = ({ heroData, handleEdit  }) => {
+const Design6 = ({ heroData, handleEdit }) => {
   const [openNav, setOpenNav] = useState(false);
   return (
     <div className=" bg-primary text-white relative">
-      <Container className="h-full  relative ">
+      <Container style={{zIndex:50}} className="h-full  relative ">
         <nav className=" border-gray-200 px-2 sm:px-4 py-2.5 rounded ">
           <div className="container flex flex-wrap items-center justify-between mx-auto">
             <span className="flex items-center">
@@ -95,7 +95,7 @@ const Design6 = ({ heroData, handleEdit  }) => {
             keys="subTitle"
           />
           <div className="flex items-center lg:flex-row md:flex-row flex-col  w-full gap-4 mt-4">
-            <Button  className=" !bg-white w-full lg:w-auto md:w-auto font-semibold !text-md !text-primary !rounded-none">
+            <Button className=" !bg-white w-full lg:w-auto md:w-auto font-semibold !text-md !text-primary !rounded-none">
               <EditorComp
                 handleEdit={handleEdit}
                 initialValue={heroData.primaryBtn}
