@@ -40,8 +40,8 @@ const Design6 = ({
                   index={index}
                 >
                   <div className="flex relative">
-                    <div className="w-full h-full z-10 relative space-y-4 justify-between flex flex-col gap-4   p-6  rounded-md  bg-white shadow">
-                      <TbQuote size={40}  className="text-primary" />
+                    <div style={{zIndex:1}} className="w-full h-full relative space-y-4 justify-between flex flex-col gap-4   p-6  rounded-md  bg-white shadow">
+                      <TbQuote size={40} className="text-primary" />
                       <EditorComp
                         id={client.id}
                         initialValue={client.review}
@@ -73,7 +73,7 @@ const Design6 = ({
                         </div>
                       </div>
                     </div>
-                <div className="w-full rounded-md z-0 h-full absolute bg-gradient-to-r from-primary to-secondary -bottom-3 -right-3"></div>
+                    <div className="w-full rounded-md z-0 h-full absolute bg-gradient-to-r from-primary to-secondary -bottom-3 -right-3"></div>
                   </div>
                 </EditPopover>
               </div>

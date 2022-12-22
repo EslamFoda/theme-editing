@@ -26,12 +26,15 @@ const ImageComp: FC<Props> = ({
   const rootClassName = cn("h-full w-full relative", {
     "hover:outline hover:outline-solid outline-[#23cba5]": editSections,
     "hover:outline-none": design === "design5",
-    "z-10":design === 'design6'
+    // "z-10":design === 'design6'
   });
-  const {  itemIndex, comps } = useMainData();
+  const { itemIndex, comps } = useMainData();
 
   return (
-    <div className={rootClassName}>
+    <div
+      style={{ zIndex: design === "design6" ? 1 : "" }}
+      className={rootClassName}
+    >
       {open ? (
         <ImageEditor
           itemIndex={index}
@@ -44,7 +47,7 @@ const ImageComp: FC<Props> = ({
       ) : (
         <div
           style={{ backgroundImage: `url(${image})` }}
-          className="bg-no-repeat relative service-img bg-center h-full w-full bg-cover "
+          className="bg-no-repeat  relative service-img bg-center h-full w-full bg-cover "
         >
           {editSections ? (
             <EditImgPopover
