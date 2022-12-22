@@ -50,7 +50,7 @@ const Design6 = ({ heroData, handleEdit }) => {
               } w-full md:block md:w-auto`}
               id="navbar-default"
             >
-              <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0  md:text-sm md:font-medium md:border-0 md:bg-white  md:dark:bg-transparent dark:border-white">
+              <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0  md:text-sm md:font-medium md:border-0   md:dark:bg-transparent dark:border-white">
                 <li>
                   <span
                     className="block cursor-pointer md:px-2  py-2 pl-3 pr-4 text-white bg-secondary rounded md:bg-secondary  text-lg md:text-primary md:p-0 dark:text-primary"
@@ -60,22 +60,22 @@ const Design6 = ({ heroData, handleEdit }) => {
                   </span>
                 </li>
                 <li>
-                  <span className="block text-lg cursor-pointer py-2 pl-3 pr-4 text-gray-700 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-white dark:hover:bg-secondary dark:hover:text-white md:dark:hover:bg-transparent">
+                  <span className="block text-lg cursor-pointer py-2 pl-3 pr-4 text-white rounded hover:bg-primary md:hover:bg-primary md:border-0  md:p-0    md:dark:hover:bg-transparent">
                     About
                   </span>
                 </li>
                 <li>
-                  <span className="block text-lg cursor-pointer py-2 pl-3 pr-4 text-white rounded hover:bg-primary md:hover:bg-primary md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-white dark:hover:bg-secondary dark:hover:text-white md:dark:hover:bg-transparent">
+                  <span className="block text-lg cursor-pointer py-2 pl-3 pr-4 text-white rounded hover:bg-primary md:hover:bg-primary md:border-0  md:p-0    md:dark:hover:bg-transparent">
                     Services
                   </span>
                 </li>
                 <li>
-                  <span className="block text-lg cursor-pointer py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-white dark:hover:bg-secondary dark:hover:text-white md:dark:hover:bg-transparent">
+                  <span className="block text-lg cursor-pointer py-2 pl-3 pr-4 text-white rounded hover:bg-primary md:hover:bg-primary md:border-0  md:p-0    md:dark:hover:bg-transparent">
                     Pricing
                   </span>
                 </li>
                 <li>
-                  <span className="block text-lg cursor-pointer py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-white dark:hover:bg-secondary dark:hover:text-white md:dark:hover:bg-transparent">
+                  <span className="block text-lg cursor-pointer py-2 pl-3 pr-4 text-white rounded hover:bg-primary md:hover:bg-none md:border-0  md:p-0    md:dark:hover:bg-transparent">
                     Contact
                   </span>
                 </li>
