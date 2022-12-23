@@ -7,6 +7,7 @@ import { updateDoc } from "firebase/firestore";
 import Design1 from "../contact/designs/design1";
 import Design2 from "../contact/designs/design2";
 import useMainData from "../../../hooks/useMainData";
+import useHandleEdit from "../../../hooks/useHandleEdit";
 
 const MainContact = ({
   comps,
@@ -45,29 +46,21 @@ const MainContact = ({
       allSections: [...comps],
     });
   };
-  const handleEdit = async (value, keys) => {
-    const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
-    if (objectIndex === index) {
-      comp.compData[keys] = value;
-    }
-    await updateDoc(themeData, {
-      allSections: [...comps],
-    });
-  };
+  const { handleEdit } = useHandleEdit(comps, comp, index, themeData);
 
   return (
     <div
-    style={{
-      backgroundImage: `linear-gradient(rgba(${bgImgColor?.r}, ${bgImgColor?.g}, ${bgImgColor?.b}, ${bgImgColor?.a}), rgba(${bgImgColor?.r}, ${bgImgColor?.g}, ${bgImgColor?.b}, ${bgImgColor?.a})), url(${backgroundImage})`,
-      backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
-    }}
-    className={`relative group transition ease-in-out duration-700 bg-no-repeat bg-cover bg-center  ${
-      editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
-    }  w-full ${
-      nextIndex === index + 1 && addSection
-        ? "shadow-[#23cba5] shadow-inside"
-        : ""
-    } `}
+      style={{
+        backgroundImage: `linear-gradient(rgba(${bgImgColor?.r}, ${bgImgColor?.g}, ${bgImgColor?.b}, ${bgImgColor?.a}), rgba(${bgImgColor?.r}, ${bgImgColor?.g}, ${bgImgColor?.b}, ${bgImgColor?.a})), url(${backgroundImage})`,
+        backgroundColor: `rgba(${backgroundColor?.r}, ${backgroundColor?.g}, ${backgroundColor?.b}, ${backgroundColor?.a})`,
+      }}
+      className={`relative group transition ease-in-out duration-700 bg-no-repeat bg-cover bg-center  ${
+        editSections ? "hover:shadow-[#23cba5] hover:shadow-inside" : ""
+      }  w-full ${
+        nextIndex === index + 1 && addSection
+          ? "shadow-[#23cba5] shadow-inside"
+          : ""
+      } `}
     >
       <div data-aos={animate}>
         <ContactComp

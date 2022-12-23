@@ -6,9 +6,8 @@ import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
 import EditBackground from "../../editBackground";
 import useBgColor from "../../../hooks/useBgColor";
-import { updateDoc } from "firebase/firestore";
 import useMainData from "../../../hooks/useMainData";
-
+import useHandleEdit from "../../../hooks/useHandleEdit";
 
 const MainPrices = ({
   index,
@@ -37,25 +36,14 @@ const MainPrices = ({
   const PricesComp = designs[`design${designNum}`];
   const { setColor, handleReset } = useBgColor(index, comps, themeData);
   const { nextIndex, addSection } = useMainData();
-  const handleMultiEdit = async (value, id, keys) => {
-    const update = compData.items.map((item) =>
-      item.id === id ? { ...item, [keys]: value } : item
-    );
-    comp.compData.items = update;
-    await updateDoc(themeData, {
-      allSections: [...comps],
-    });
-  };
+  const { handleEdit, handleMultiEdit } = useHandleEdit(
+    comps,
+    comp,
+    index,
+    themeData,
+    compData
+  );
 
-  const handleEdit = async (value, keys) => {
-    const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
-    if (objectIndex === index) {
-      comp.compData[keys] = value;
-    }
-    await updateDoc(themeData, {
-      allSections: [...comps],
-    });
-  };
   return (
     <div
       style={{

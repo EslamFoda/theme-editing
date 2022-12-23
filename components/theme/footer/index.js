@@ -5,7 +5,7 @@ import Design3 from "./designs/design3";
 import Design4 from "./designs/design4";
 import Design5 from "./designs/design5";
 import ChangeSection from "../../edit/changeSection";
-import { updateDoc } from "firebase/firestore";
+import useHandleEdit from "../../../hooks/useHandleEdit";
 
 const MainFooter = ({
   comps,
@@ -26,15 +26,9 @@ const MainFooter = ({
 
   const FooterComp = designs[`design${designNum}`];
 
-  const handleEdit = async (value, keys) => {
-    const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
-    if (objectIndex === index) {
-      comp.compData[keys] = value;
-    }
-    await updateDoc(themeData, {
-      allSections: [...comps],
-    });
-  };
+  const { handleEdit } = useHandleEdit(comps, comp, index, themeData);
+
+
   return (
     <div
       style={{

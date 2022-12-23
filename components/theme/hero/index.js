@@ -8,8 +8,9 @@ import Design6 from "./designs/design6";
 import Design7 from "./designs/design7";
 import ChangeSection from "../../edit/changeSection";
 import AddSection from "../../edit/addSection";
-import { updateDoc } from "firebase/firestore";
+// import { updateDoc } from "firebase/firestore";
 import useMainData from "../../../hooks/useMainData";
+import useHandleEdit from "../../../hooks/useHandleEdit";
 
 const MainHero = ({
   comps,
@@ -21,6 +22,7 @@ const MainHero = ({
 }) => {
   const { compName, designNum, compData, backgroundColor } = comp;
   const { nextIndex, addSection } = useMainData();
+  const { handleEdit } = useHandleEdit(comps, comp, index, themeData);
   const designs = {
     design1: Design1,
     design2: Design2,
@@ -33,15 +35,15 @@ const MainHero = ({
 
   const HeroComp = designs[`design${designNum}`];
 
-  const handleEdit = async (value, keys) => {
-    const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
-    if (objectIndex === index) {
-      comp.compData[keys] = value;
-    }
-    await updateDoc(themeData, {
-      allSections: [...comps],
-    });
-  };
+  // const handleEdit = async (value, keys) => {
+  //   const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
+  //   if (objectIndex === index) {
+  //     comp.compData[keys] = value;
+  //   }
+  //   await updateDoc(themeData, {
+  //     allSections: [...comps],
+  //   });
+  // };
   return (
     <div
       style={{

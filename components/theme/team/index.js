@@ -8,8 +8,8 @@ import Design4 from "./design/design4";
 import Design5 from "./design/design5";
 import useBgColor from "../../../hooks/useBgColor";
 import EditBackground from "../../editBackground";
-import { updateDoc } from "firebase/firestore";
 import useMainData from "../../../hooks/useMainData";
+import useHandleEdit from "../../../hooks/useHandleEdit";
 
 const MainTeam = ({
   comps,
@@ -42,24 +42,13 @@ const MainTeam = ({
 
   const ServicesComp = designs[`design${designNum}`];
 
-  const handleMultiEdit = async (value, id, keys) => {
-    const update = compData.items.map((item) =>
-      item.id === id ? { ...item, [keys]: value } : item
-    );
-    comp.compData.items = update;
-    await updateDoc(themeData, {
-      allSections: [...comps],
-    });
-  };
-  const handleEdit = async (value, keys) => {
-    const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
-    if (objectIndex === index) {
-      comp.compData[keys] = value;
-    }
-    await updateDoc(themeData, {
-      allSections: [...comps],
-    });
-  };
+  const { handleEdit, handleMultiEdit } = useHandleEdit(
+    comps,
+    comp,
+    index,
+    themeData,
+    compData
+  );
 
   return (
     <div

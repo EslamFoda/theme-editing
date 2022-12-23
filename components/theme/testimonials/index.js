@@ -9,8 +9,8 @@ import Design5 from "./designs/design5";
 import Design6 from "./designs/design6";
 import EditBackground from "../../editBackground";
 import useBgColor from "../../../hooks/useBgColor";
-import { updateDoc } from "firebase/firestore";
 import useMainData from "../../../hooks/useMainData";
+import useHandleEdit from "../../../hooks/useHandleEdit";
 
 const MainTestimonials = ({
   comps,
@@ -45,24 +45,13 @@ const MainTestimonials = ({
 
   const TestiComp = designs[`design${designNum}`];
 
-  const handleMultiEdit = async (value, id, keys) => {
-    const update = compData.items.map((item) =>
-      item.id === id ? { ...item, [keys]: value } : item
-    );
-    comp.compData.items = update;
-    await updateDoc(themeData, {
-      allSections: [...comps],
-    });
-  };
-  const handleEdit = async (value, keys) => {
-    const objectIndex = comps.findIndex((obj) => obj.id === comp.id);
-    if (objectIndex === index) {
-      comp.compData[keys] = value;
-    }
-    await updateDoc(themeData, {
-      allSections: [...comps],
-    });
-  };
+  const { handleEdit, handleMultiEdit } = useHandleEdit(
+    comps,
+    comp,
+    index,
+    themeData,
+    compData
+  );
 
   return (
     <div
